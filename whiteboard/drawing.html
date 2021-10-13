@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+<head>
+<title>Drawing</title>
+<style>
+canvas#maincanvas { position:relative; margin:0 1em 1em 0; border:solid; float:left }
+</style>
+
+<script src='draw.js'>
+</script>
+</head>
+
+<body>
+<noscript><h3>To use this website Javascript must be turned on.<h3><br></noscript>
+<h3>A Virtual Whiteboard</h3>
+<center>
+
+<table cellpadding = 20 ><tr><td>
+
+<p>Pen color:</p>
+<table border=1 cellpadding=5>
+<tr><td>
+<button onclick="document.getElementById('maincanvas').btrclick('color','#0000ff')">
+Blue</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('color','#4B0082')">
+Indigo</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('color','#00ffff')">
+Aqua</button></td></tr><tr><td>
+<button onclick="document.getElementById('maincanvas').btrclick('color','#ff0000')">
+Red</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('color','#EE82EE')">
+Violet</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('color','#800080')">
+Purple</button></td></tr><tr><td>
+<button onclick="document.getElementById('maincanvas').btrclick('color','#ffff00')">
+Yellow</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('color','#FFA500')">
+Gold</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('color','#FF4500')">
+Orange</button></td></tr><tr><td>
+<button onclick="document.getElementById('maincanvas').btrclick('color','#00ff00')">
+Green</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('color','#808000')">
+Olive</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('color','#A52A2A')">
+Brown</button></td></tr><tr><td>
+<button onclick="document.getElementById('maincanvas').btrclick('color','#000000')">
+Black</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('color','#808080')">
+Grey</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('color','#ffffff')">
+White</button></td></tr><tr><td colspan='3'>
+Other: <br>
+<input type='text' id='text1' size = '7' name='text1' value='#000000'
+onblur="document.getElementById('maincanvas').btrclick('color',
+document.getElementById('text1').value)"/>
+</td></tr></table>
+
+<td>
+<p>
+<center>
+<button onclick="document.getElementById('maincanvas').btrclick('color','erase')">
+Erase</button>
+<button onclick="document.getElementById('maincanvas').btrclick('clear')">
+Clear</button>
+<button onclick="document.getElementById('maincanvas').btrclick('restore')">
+Undo</button>
+<button onclick="document.getElementById('maincanvas').btrclick('save')">
+Save</button>
+<button onclick="document.getElementById('maincanvas').btrclick('restimg')">
+Restore</button>
+</p>
+<p><canvas id="maincanvas" width="300" height="300">
+Your browser does not support HTML5 Canvas. Most modern browsers do.
+In case of Internet Explorer, you need to upgrade to version 9 if you want to use
+the canvas.</canvas></p>
+</center>
+
+<td>
+<p>Line width:</p>
+<table border=1 cellpadding=5>
+<tr><td>
+<button onclick="document.getElementById('maincanvas').btrclick('linewidth','1')">
+1</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('linewidth','3')">
+3</button></td></tr><tr><td>
+<button onclick="document.getElementById('maincanvas').btrclick('linewidth','5')">
+5</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('linewidth','7')">
+7</button></td></tr><tr><td>
+<button onclick="document.getElementById('maincanvas').btrclick('linewidth','9')">
+9</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('linewidth','11')">
+11</button></td></tr><tr><td colspan='2'>
+
+Other: <br>
+<input type='text' id='text3' size = '2' name='text3'
+onblur="document.getElementById('maincanvas').btrclick('linewidth',
+document.getElementById('text3').value)"/>
+</td></tr></table>
+</td></tr></table>
+
+<p>
+Enter text:
+<input type='text' id='text4' size = '22' name='text4'
+onblur="document.getElementById('maincanvas').btrclick('textinp')"/>
+<button>Submit text</button>
+
+&nbsp; &nbsp; Font size:
+<input type='text' id='text4a' size = '2' name='text4a'
+onblur="document.getElementById('maincanvas').btrclick('fontinp',
+document.getElementById('text4a').value)"/>
+</p>
+
+<table cellpadding='10'><tr><td>
+Start a new picture with this background:</td><td>
+<table border=1 cellpadding=5>
+<tr><td>
+
+<button onclick="document.getElementById('maincanvas').btrclick('bgcolor','#9999FF')">
+Blue</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('bgcolor','#FF9999')">
+Red</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('bgcolor','#FFFF90')">
+Yellow</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('bgcolor','#99FF99')">
+Green</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('bgcolor','#000000')">
+Black</button></td><td rowspan='3'>
+Other: <br>
+<input type='text' id='text2' size = '7' name='text2' value='#000000'
+onblur="document.getElementById('maincanvas').btrclick('bgcolor',
+document.getElementById('text2').value)"/></td></tr><tr><td>
+
+<button onclick="document.getElementById('maincanvas').btrclick('bgcolor','#E6E6FA')">
+Lavender</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('bgcolor','#FFB6C1')">
+Pink</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('bgcolor','#FFFACD')">
+Lemon</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('bgcolor','#F0E68C')">
+Khaki</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('bgcolor','#D3D3D3')">
+Grey</button></td></tr><tr><td>
+<button onclick="document.getElementById('maincanvas').btrclick('bgcolor','#E0FFFF')">
+Cyan</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('bgcolor','#CC99CC')">
+Purple</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('bgcolor','#FF8855')">
+Orange</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('bgcolor','#CD853F')">
+Brown</button></td><td>
+<button onclick="document.getElementById('maincanvas').btrclick('bgcolor','#ffffff')">
+White</button>
+</td></tr></table>
+</td></tr></table>
+
+<p>
+<p><button onclick="document.getElementById('howtosave').innerHTML = 
+'Right click on the image below to save it:';
+document.getElementById('igs').src=
+document.getElementById('maincanvas').toDataURL()">
+Save the file</button></p>
+
+<div id="howtosave"></div>
+<img id="igs" src="data:,"></img>
+
+
+</center>
+<hr>
+<p>
+Notes: Undo functionality is limited. Works only for up to three steps
+and not in all circumstances. After erasing, another color should be chosen
+before text can be entered. There are probably some more bugs ...</p>
+
+<p>This has only been tested for Firefox, Chrome and Safari.</p>
+
+<p>The event handling in this example was adopted from
+<a href="http://annevankesteren.nl/2006/08-paintr21">this example</a>.</p>
+
+<p>This page was developed by <a href="http://www.upriss.org.uk/">Uta Priss</a></p>
+</body>
+</html>
