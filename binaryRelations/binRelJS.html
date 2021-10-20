@@ -3,178 +3,36 @@
 <script src="d3.v4.js"></script>
 <script src="graphlib-dot.js"></script>
 <script src="dagre-d3.js"></script>
+<script src="sets.js"></script>
+<link rel="stylesheet" type="text/css" href="sets.css" />
 
-<style>
-svg { border: 1px solid #999;  overflow: hidden; }
-.node { white-space: nowrap; }
-.node rect,
-.node circle,
-.node ellipse { stroke: #333;  fill: #fff;  stroke-width: 1.5px; }
-.cluster rect { stroke: #333;  fill: #000;  fill-opacity: 0.1;  stroke-width: 1.5px;}
-.edgePath path.path { stroke: #333;  stroke-width: 1.5px;  fill: none;}
-
-textarea { width: 800px; }
-label { margin-top: 1em;  display: block; }
-.error { color: red; }
-th.row{ border-right: 4px solid black; padding: 5px} 
-th.column{ border-bottom: 4px solid black; padding: 5px} 
-td{ padding: 5px} 
-table { border-collapse: collapse; }
-
-</style>
-
-<body onLoad="drawGraph(); showMatrix();">
+<body onLoad="drawRelationGraph(); showMatrix('auto');">
 
 <h2>Enter a binary relation:</h2>
 
 <form>
-  <textarea id="inputSet" rows="3" style="display: block" onKeyUp="drawGraph(); showMatrix();">
-{[1,2],[0,1], [5,5]}
-  </textarea>
+<textarea id="inputArea" rows="3" onKeyUp="drawRelationGraph(); showMatrix('auto');">
+{[1,2], [0,1], [5,5]}
+</textarea>
 </form>
 
 <h2>Relation graph:</h2>
 
 <svg width=800 height=250>  <g/> </svg>
-<p>
+
 <h2>Matrix:</h2>
+
 <div id="matrixArea"></div>
 
 <script>
-var inputSet = document.querySelector("#inputSet");
+var inputArea = document.querySelector("#inputArea");    // global variables
 var matrixArea = document.querySelector("#matrixArea");
-var oldInputSetValue;
+var oldInputAreaValue;
 
-// Set up zoom support
-var svg = d3.select("svg"),
-    inner = d3.select("svg g"),
-    zoom = d3.zoom().on("zoom", function() {
-      inner.attr("transform", d3.event.transform);
-    });
-svg.call(zoom);
-
-// Create and configure the renderer
-var render = dagreD3.render();
+var render = dagreD3.render();      // Create and configure the renderer
 var grapharea;
-function drawGraph() {
-  if (oldInputSetValue !== inputSet.value) {
-    inputSet.setAttribute("class", "");       // in order to distinguish from error
 
-    var gValue = inputSet.value;
-// Todo: convert into Set in order to delete double Elements
-// Todo: check that Set is well-formed, otherwise error
-
-    const bracketRE = /[{}]/g;
-    const quotesRE = /['`"’]/g;
-    const ReplaceRE = /\[(.*?),(.*?)\],?/g;
-    gValue = gValue.replace(bracketRE,'');
-    gValue = gValue.replace(quotesRE,'');
-    gValue = gValue.replace(ReplaceRE, '$1 -> $2;');
-    gValue = "digraph {"+gValue+"}";
-    oldInputSetValue = gValue;
-    try {
-      grapharea = graphlibDot.read(gValue);
-    } catch (e) {
-      inputSet.setAttribute("class", "error");
-      throw e;
-    }
-
-    // Set margins, if not present
-    if (!grapharea.graph().hasOwnProperty("marginx") &&
-        !grapharea.graph().hasOwnProperty("marginy")) {
-      grapharea.graph().marginx = 20;
-      grapharea.graph().marginy = 20;
-    }
-
-    grapharea.graph().transition = function(selection) {
-      return selection.transition().duration(500);
-    };
-
-    // Render the graph into svg g
-    d3.select("svg g").call(render, grapharea);
-  }
-}
-
-function showMatrix() {
-    var grValue = inputSet.value;
-    const bracketLRE = /[{]/g;
-    const bracketRRE = /[}]/g;
-    grValue = grValue.replace(bracketLRE,'[');
-    grValue = grValue.replace(bracketRRE,']');
-
-// ToDo: do Quotes always work?
-
-    grArray = JSON.parse(grValue); 
-    var objs = new Set();
-    var attrs = new Set();
-    for (const val of grArray) {            // objects and attributes as sets
-	objs.add(val[0]);
-	attrs.add(val[1]);
-    }
-    var objsAndAttrs = objs;                // union
-    for (let elem of attrs) { objsAndAttrs.add(elem) }
-
-    var objsList = Array.from(objs);        // objects and attributes as array
-    var attrsList = Array.from(attrs);
-    var objsAndAttrsList = Array.from(objsAndAttrs);
-    objsList.sort();
-    attrsList.sort();
-    objsAndAttrsList.sort();
-
-    var context = {};                       // create empty context as an object
-    for (const elem of objsList) { context[elem]= {};    }
-    for (const elem of grArray) {           // fill in the 1s
-	context[elem[0]][elem[1]] = 1;
-    }
-
-    var contextList = []; 
-    // non-autorelation
-//    contextList = contextArray (objsList,attrsList,context);
-//    matrixArea.innerHTML = displayTableHTML(objsList,attrsList,contextList);
-    // autorelation
-    contextList = contextArray (objsAndAttrsList,objsAndAttrsList,context);
-    matrixArea.innerHTML = displayTableHTML(objsAndAttrsList,objsAndAttrsList,contextList);
-
-}
-
-function contextArray (myObjs,myAttrs,myContext) {
-    var myCtxtList = [];                 
-    for (var i = 0; i < myObjs.length; i++) {
-	myCtxtList[i] = [];
-	for (var j = 0; j < myAttrs.length; j++) {
-            if (myContext[myObjs[i]][myAttrs[j]] == 1) {
-		myCtxtList[i][j] = '1';
-	    } else {
-		myCtxtList[i][j] = '0';
-	    }
-	}
-    }
-    return myCtxtList;
-}
-
-
-function displayTableHTML(myObjs,myAttrs,myArray) {
-    var result = "<table>";
-    result += "<tr><th class='row column'></th>";
-    for(var j=0; j<myAttrs.length; j++){
-        result += "<th class='column'>" + myAttrs[j] + "</th>";
-    }
-    result += "</tr>";
-    for(var i=0; i<myArray.length; i++) {
-        result += "<tr>";
-        result += "<th class='row'>" + myObjs[i] + "</th>";
-        for(var j=0; j<myArray[i].length; j++){
-            result += "<td>" + myArray[i][j] + "</td>";
-        }
-        result += "</tr>";
-    }
-    result += "</table>";
-    return result;
-}
-
-
-
-
+setUpZoomSupport();
 </script>
 </body>
 </html>
