@@ -3,15 +3,15 @@
 <script src="d3.v4.js"></script>
 <script src="graphlib-dot.js"></script>
 <script src="dagre-d3.js"></script>
-<script src="sets.js"></script>
-<link rel="stylesheet" type="text/css" href="sets.css" />
+<script src="educa.js"></script>
+<link rel="stylesheet" type="text/css" href="educaJS.css" />
 
 <body onLoad="drawRelationGraph(); showMatrix('auto');">
 
 <h2>Enter a binary relation:</h2>
 
 <form>
-<textarea id="inputArea" rows="3" onKeyUp="drawRelationGraph(); showMatrix('auto');">
+<textarea class="codeLineInput" id="inputArea" rows="3" onKeyUp="drawRelationGraph(); showMatrix('auto');">
 {[1,2], [0,1], [5,5]}
 </textarea>
 </form>
@@ -28,9 +28,6 @@
 var inputArea = document.querySelector("#inputArea");    // global variables
 var matrixArea = document.querySelector("#matrixArea");
 var oldInputAreaValue;
-
-var render = dagreD3.render();      // Create and configure the renderer
-var grapharea;
 
 setUpZoomSupport();
 </script>

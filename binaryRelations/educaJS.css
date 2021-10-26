@@ -1,0 +1,24 @@
+svg { border: 1px solid #999;  overflow: hidden; }
+.node { white-space: nowrap; }
+.node rect,
+.node circle,
+.node ellipse { stroke: #333;  fill: #fff;  stroke-width: 1.5px; }
+.cluster rect { stroke: #333;  fill: #000;  fill-opacity: 0.1;  stroke-width: 1.5px;}
+.edgePath path.path { stroke: #333;  stroke-width: 1.5px;  fill: none;}
+
+textarea.codeLineInput { width: 800px; display: block}
+label { margin-top: 1em;  display: block; }
+.error { color: red; }
+
+table.matrix th.row{ border-right: 4px solid black; padding: 5px}
+table.matrix th.column{ border-bottom: 4px solid black; padding: 5px}
+table.matrix td{ padding: 5px}
+table.matrix { border-collapse: collapse; }
+
+table.truth {  border-collapse:collapse;  margin-left:auto;  margin-right:auto;
+  margin-top:10px;  margin-bottom:10px;}
+table.truth th {  border-bottom:1px solid black;  text-align: center;
+  padding:.2em;  font-weight: normal;}
+table.truth td {  border:0;  padding:.2em;}
+table.truth .dv {  border-right:1px solid black;}
+table.truth .mc {  color:red; }

@@ -131,14 +131,6 @@ function construct() {
 	var formulas = document.getElementById('in').value.replace(/ /g,'');// remove whitespace
 	if(formulas=='') {return alert("You have to enter a formula.");};
 
-// following code changed (UP)
-        formulas = formulas.replace(/!/g,'~');
-        formulas = formulas.replace(/&&/g,'&');
-        formulas = formulas.replace(/\|\|/g,'v');
-        formulas = formulas.replace(/<==>/g,'<>');
-        formulas = formulas.replace(/=>/g,'>');
-// up to here
-
 	var r = badchar(formulas);
 	if(r>=0) {return alert("The string you entered contains the following unrecognized symbol: "+formulas[r]);};
 
@@ -190,13 +182,13 @@ function htmlTable(table,trees,flag,tv,cs) {
     var newArray = [];
     var newStr = "";
     var newflag = "";
-    sets = [];
+    setArray = [];
     intersectionArray = [];
-    sets.push({sets: ['U'], size: 100});
+    setArray.push({sets: ['U'], size: 100});
     for(var i=0;i<table[0][0].length;i++) {
-        sets.push({sets: ['U',table[0][0][i]], size: 12});
-        sets.push({sets: [table[0][0][i]], size: 12});
-//        sets[i] = {sets: [table[0][0][i]], size: 12};
+        setArray.push({sets: ['U',table[0][0][i]], size: 12});
+        setArray.push({sets: [table[0][0][i]], size: 12});
+//        setArray[i] = {sets: [table[0][0][i]], size: 12};
     }
 
 // end of changed code
@@ -246,7 +238,7 @@ function htmlTable(table,trees,flag,tv,cs) {
               newflag = "one";
            }
        }
-       if (newArray.length > 1) { sets.push({sets: newArray, size: 2});}
+       if (newArray.length > 1) { setArray.push({sets: newArray, size: 2});}
        if (newStr != "") { 
            newStr = newStr.slice(1); 
            intersectionArray.push(newStr);
@@ -254,7 +246,7 @@ function htmlTable(table,trees,flag,tv,cs) {
        if (newflag != "one") { 
            intersectionArray.push("U");
        }
-//console.log(JSON.stringify(sets));
+//console.log(JSON.stringify(setArray));
 //console.log(JSON.stringify(intersectionArray));
 
 } 
