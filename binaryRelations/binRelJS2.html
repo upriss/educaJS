@@ -1,0 +1,35 @@
+<html>
+<meta charset="utf-8">
+<script src="d3.v4.js"></script>
+<script src="graphlib-dot.js"></script>
+<script src="dagre-d3.js"></script>
+<script src="educa.js"></script>
+<link rel="stylesheet" type="text/css" href="educaJS.css" />
+
+<body onLoad="drawRelationGraph(); showMatrix('');">
+
+<h2>Enter a binary relation:</h2>
+
+<form>
+<textarea class="codeLineInput" id="inputArea" rows="3" onKeyUp="drawRelationGraph(); showMatrix('auto');">
+{[1,2], [0,1], [5,5]}
+</textarea>
+</form>
+
+<h2>Relation graph:</h2>
+
+<svg width=800 height=250>  <g/> </svg>
+
+<h2>Matrix:</h2>
+
+<div id="matrixArea"></div>
+
+<script>
+var inputArea = document.querySelector("#inputArea");    // global variables
+var matrixArea = document.querySelector("#matrixArea");
+var oldInputAreaValue;
+
+setUpZoomSupport();
+</script>
+</body>
+</html>
