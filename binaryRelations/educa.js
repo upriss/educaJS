@@ -12,18 +12,56 @@ function setUpZoomSupport () {
 //////////////////////////////////////////////////////////////////////
 //// set in inputArea -> graph in <svg> <g> (via dot format)
 //////////////////////////////////////////////////////////////////////
-function drawRelationGraph () {
-  if (oldInputAreaValue !== inputArea.value) {
-    inputArea.setAttribute("class", "codeLineInput"); // in order to distinguish from error
+function drawRelationGraph (dot) {
+  var gValue = "";
 
-    var gValue = inputArea.value;
-    var gSet = stringToSet(gValue,"toDot");           // convert into set of "a -> b"
-    gValue = "digraph {" + Array.from(gSet).join('') + "}";
-    oldInputAreaValue = gValue;
+  if (oldInputAreaValue !== inputArea.value) {
+    if (typeof dot == 'undefined' || dot != 1) {
+       inputArea.setAttribute("class", "codeLineInput"); // in order to distngsh from error
+       gValue = inputArea.value;
+       var gSet = stringToSet(gValue,"toDot");           // convert into set of "a -> b"
+       gValue = "digraph {" + Array.from(gSet).join('') + "}";
+       oldInputAreaValue = gValue;
+    } else if (dot == 1) {                               // for combinatorics
+       if (formFirst.value > formSecond.value) {
+          gValue = "digraph { \"Fehler: Die erste Zahl muss kleiner sein!\"}"; 
+          resultLength.innerHTML = "Fehler: Die erste Zahl muss kleiner sein!";
+       } else if (parseInt(formFirst.value) + parseInt(formSecond.value) > 10) {
+          gValue = "digraph { \"W&auml;hlen Sie bittere kleinere Zahlenwerte.\"}"; 
+          resultLength.innerHTML = "W&auml;hlen Sie bittere kleinere Zahlenwerte.";
+       } else {
+          var tempArray = [];                               // create data structure
+          tempArray = combinArray(formFirst.value,formSecond.value,formBack.checked,formSequence.checked);
+          resultLength.innerHTML =                          // display count and content
+              displayComArray(tempArray,formFirst.value,formSequence.checked);
+          var tempString = "";                              // convert array to dot
+          var tempString2 = "";
+          for (let val of tempArray[formFirst.value-1]) {   // process first level
+                tempString += "node" + "1" + val.substring(1,2)
+                           +" [label=\"" + val.substring(1,2) + "\"];";
+          }
+          for (let val of tempArray[formFirst.value-1]) {   // process array of last level
+             for(let i = 2; i < Array.from(val).length; i++) {   // create edges
+                tempString2 = "node"+ (i-1).toString() + val.substring(1,i)
+                              + "->node" + i.toString() + val.substring(1,i+1) + ";";
+//                let reg = new RegExp(tempString2);          // avoid duplicate edges
+//                if (tempString.search(reg) < 0) {           // not needed with strict
+		tempString += tempString2;
+//                }
+                tempString2 = "node"+ i.toString() + val.substring(1,i+1) +  // node labels
+                          " [label=\"" + val.substring(i,i+1).toString() + "\"];";
+                tempString += tempString2;                  // ToDo: avoid duplicates
+             }
+          }
+          gValue = "strict digraph {rankdir=LR;" + tempString + "}";
+       }
+    }
     try {
       grapharea = graphlibDot.read(gValue);           // Todo: need more checks?
     } catch (e) {
-      inputArea.setAttribute("class", "codeLineInput error");
+      if (typeof inputArea != 'undefined') { 
+         inputArea.setAttribute("class", "codeLineInput error");
+      }
       throw e;
     }
     if (!grapharea.graph().hasOwnProperty("marginx") &&  // Set margins, if not present
@@ -87,6 +125,68 @@ function drawVennDiagram() {
 	d3.selectAll(".venn-area[data-venn-sets="+elem+"]").attr("stroke-width", 3);
 	d3.selectAll(".venn-area[data-venn-sets="+elem+"]").attr("stroke", "red");
     }
+}
+
+//////////////////////////////////////////////////////////////////////
+//// form parameters -> array of possible combinations 
+//////////////////////////////////////////////////////////////////////
+
+function combinArray(size1,size2,kind1,kind2) {
+    var _tempArray = [];
+    for (let i = 0; i < size1; i++) {
+        _tempArray[i] = [];
+        for (let j = 0; j < size2; j++) {
+            if (i == 0) { _tempArray[i].push("a"+j.toString()); }
+            if (i > 0) {
+               for (let k = 0; k < size2; k++) {
+                   for (let val of _tempArray[i-1]) {
+		       if (val.slice(-1) == j ) {
+                           if (kind1 == true && kind2 == true) { // replacm and seqnce
+ 			     _tempArray[i].push(val+k.toString()); 
+			   } else if (kind1 == false && kind2 == false) {
+			     if (j < k) {_tempArray[i].push(val+k.toString());}
+                           } else if (kind1 == false && kind2 == true) { // no repl.
+ 			     if (!val.includes(k)) {_tempArray[i].push(val+k.toString());}
+                           } else if (kind1 == true && kind2 == false) {
+			     if (j <= k) {_tempArray[i].push(val+k.toString());}
+                           }
+		       }
+		   }
+
+               }
+            }
+        } 
+    }
+    return _tempArray;
+}
+
+//////////////////////////////////////////////////////////////////////
+//// array and form parameters -> produce string for count
+//////////////////////////////////////////////////////////////////////
+
+function displayComArray (myArray,size,bool) {
+    var _tempString = "";
+    var _tempStr2 = "";
+    for (let i = 0; i < size; i++) {                             // calculate the count
+       if (i == 0) { 
+          _tempString += myArray[i].length.toString() + "*";
+       } else {
+          _tempString += myArray[i].length/myArray[i-1].length.toString() + "*";
+       }
+    }
+    _tempString = " = " + _tempString.slice(0,-1);
+    if (bool == false) { 
+	_tempString = ""; 
+        pascal.innerHTML ="Pascal-Dreieck:<br><img src='pascal.jpg'>";
+    } else { pascal.innerHTML =""; }
+    _tempString = "<h3>" + myArray[size-1].length + _tempString + "</h3>";
+    for (let val of myArray[formFirst.value-1]) {   // process array of last level
+	_tempStr2 = val.substring(1);
+        _tempStr2 = Array.from(_tempStr2).join(', ');
+        if (bool == true) { _tempString += "["+_tempStr2+"] "; }
+        else { _tempString += "{"+_tempStr2+"} "; }
+    }
+    return _tempString;
 }
 
 //////////////////////////////////////////////////////////////////////

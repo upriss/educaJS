@@ -10,6 +10,8 @@ textarea.codeLineInput { width: 800px; display: block}
 label { margin-top: 1em;  display: block; }
 .error { color: red; }
 
+.smallInp {width : 30px}
+
 table.matrix th.row{ border-right: 4px solid black; padding: 5px}
 table.matrix th.column{ border-bottom: 4px solid black; padding: 5px}
 table.matrix td{ padding: 5px}
