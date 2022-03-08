@@ -12,35 +12,39 @@ function setUpZoomSupport () {
 //////////////////////////////////////////////////////////////////////
 //// set in inputArea -> graph in <svg> <g> (via dot format)
 //////////////////////////////////////////////////////////////////////
-function drawRelationGraph (dot) {
+function drawRelationGraph (taskType,inA1,oldIn,outA1,outA2) {
   var gValue = "";
 
-  if (oldInputAreaValue !== inputArea.value) {
-    if (typeof dot == 'undefined' || dot != 1) {
-       inputArea.setAttribute("class", "codeLineInput"); // in order to distngsh from error
-       gValue = inputArea.value;
+  if (oldIn !== inA1.value) {
+    if (taskType == "binRel") {
+       inA1.setAttribute("class", "codeLineInput");      // in order to distngsh from error
+       gValue = inA1.value;
        var gSet = stringToSet(gValue,"toDot");           // convert into set of "a -> b"
        gValue = "digraph {" + Array.from(gSet).join('') + "}";
-       oldInputAreaValue = gValue;
-    } else if (dot == 1) {                               // for combinatorics
-       if (formFirst.value > formSecond.value) {
+       oldIn = gValue;
+    } else if (taskType == "combin") {                          // for combinatorics
+       var fm1 = inA1[0];
+       var fm2 = inA1[1];
+       var fmBck = inA1[2];
+       var fmSeq = inA1[3];
+       if (fm1.value > fm2.value) {
           gValue = "digraph { \"Fehler: Die erste Zahl muss kleiner sein!\"}"; 
-          resultLength.innerHTML = "Fehler: Die erste Zahl muss kleiner sein!";
-       } else if (parseInt(formFirst.value) + parseInt(formSecond.value) > 10) {
+          outA1.innerHTML = "Fehler: Die erste Zahl muss kleiner sein!";
+       } else if (parseInt(fm1.value) + parseInt(fm2.value) > 10) {
           gValue = "digraph { \"W&auml;hlen Sie bittere kleinere Zahlenwerte.\"}"; 
-          resultLength.innerHTML = "W&auml;hlen Sie bittere kleinere Zahlenwerte.";
+          outA1.innerHTML = "W&auml;hlen Sie bittere kleinere Zahlenwerte.";
        } else {
           var tempArray = [];                               // create data structure
-          tempArray = combinArray(formFirst.value,formSecond.value,formBack.checked,formSequence.checked);
-          resultLength.innerHTML =                          // display count and content
-              displayComArray(tempArray,formFirst.value,formSequence.checked);
+          tempArray = combinArray(fm1.value,fm2.value,fmBck.checked,fmSeq.checked);
+          outA1.innerHTML =                                 // display count and content
+              displayComArray(tempArray,fm1.value,fmSeq.checked,outA2);
           var tempString = "";                              // convert array to dot
           var tempString2 = "";
-          for (let val of tempArray[formFirst.value-1]) {   // process first level
+          for (let val of tempArray[fm1.value-1]) {   // process first level
                 tempString += "node" + "1" + val.substring(1,2)
                            +" [label=\"" + val.substring(1,2) + "\"];";
           }
-          for (let val of tempArray[formFirst.value-1]) {   // process array of last level
+          for (let val of tempArray[fm1.value-1]) {   // process array of last level
              for(let i = 2; i < Array.from(val).length; i++) {   // create edges
                 tempString2 = "node"+ (i-1).toString() + val.substring(1,i)
                               + "->node" + i.toString() + val.substring(1,i+1) + ";";
@@ -59,8 +63,8 @@ function drawRelationGraph (dot) {
     try {
       grapharea = graphlibDot.read(gValue);           // Todo: need more checks?
     } catch (e) {
-      if (typeof inputArea != 'undefined') { 
-         inputArea.setAttribute("class", "codeLineInput error");
+      if (typeof inA1.value != 'undefined') { 
+         inA1.setAttribute("class", "codeLineInput error");
       }
       throw e;
     }
@@ -77,10 +81,10 @@ function drawRelationGraph (dot) {
 }
 
 //////////////////////////////////////////////////////////////////////
-//// set in inputArea -> binary matrix in matrixArea (via context)
+//// set in inputArea.value -> binary matrix in matrixArea (via context)
 //////////////////////////////////////////////////////////////////////
-function showMatrix (relType) {
-    var gValue = inputArea.value;
+function showMatrix (gValue,relType) {
+    var _result ="";
     var gArray = Array.from(stringToSet(gValue,""));   //  ToDo: do Quotes always work?
     var objs = new Set();
     var attrs = new Set();
@@ -101,17 +105,18 @@ function showMatrix (relType) {
     var contextList = [];                              // context as array
     if (relType == 'auto') {                           // autorelation
 	contextList = contextArray(objUnionAttList,objUnionAttList,context);
-	matrixArea.innerHTML=displayTableHTML(objUnionAttList,objUnionAttList,contextList);
+	_result = displayTableHTML(objUnionAttList,objUnionAttList,contextList);
     } else {                                           // non-autorelation
 	contextList = contextArray(objsList,attrsList,context);
-	matrixArea.innerHTML = displayTableHTML(objsList,attrsList,contextList);
+	_result = displayTableHTML(objsList,attrsList,contextList);
     }
+    return _result;
 }
 
 //////////////////////////////////////////////////////////////////////
 //// set in setArray -> graph in <svg> <g> within <div id="venn">  
 //////////////////////////////////////////////////////////////////////
-function drawVennDiagram() {
+function drawVennDiagram(setArr,intersArr) {
 
 // example of the structure
 //    sets1 = [ {sets: ['A'], size: 12},{sets: ['B'], size: 12},{sets: ['C'], size: 12},
@@ -119,9 +124,9 @@ function drawVennDiagram() {
 //	      {sets: ['B','C'], size: 2}, {sets: ['A','B','C'], size: 2}];
 
     d3.selectAll("g").remove();
-    d3.select("#venn").datum(setArray).call(venn.VennDiagram());
+    d3.select("#venn").datum(setArr).call(venn.VennDiagram());
 
-    for(let elem of intersectionArray) {
+    for(let elem of intersArr) {
 	d3.selectAll(".venn-area[data-venn-sets="+elem+"]").attr("stroke-width", 3);
 	d3.selectAll(".venn-area[data-venn-sets="+elem+"]").attr("stroke", "red");
     }
@@ -164,7 +169,7 @@ function combinArray(size1,size2,kind1,kind2) {
 //// array and form parameters -> produce string for count
 //////////////////////////////////////////////////////////////////////
 
-function displayComArray (myArray,size,bool) {
+function displayComArray (myArray,size,bool,outA2) {
     var _tempString = "";
     var _tempStr2 = "";
     for (let i = 0; i < size; i++) {                             // calculate the count
@@ -177,10 +182,11 @@ function displayComArray (myArray,size,bool) {
     _tempString = " = " + _tempString.slice(0,-1);
     if (bool == false) { 
 	_tempString = ""; 
-        pascal.innerHTML ="Pascal-Dreieck:<br><img src='pascal.jpg'>";
-    } else { pascal.innerHTML =""; }
+        outA2.innerHTML ="Pascal-Dreieck:<br><img src='pascal.jpg'>";
+    } else { outA2.innerHTML =""; }
     _tempString = "<h3>" + myArray[size-1].length + _tempString + "</h3>";
-    for (let val of myArray[formFirst.value-1]) {   // process array of last level
+//    for (let val of myArray[formFirst.value-1]) {   // process array of last level
+    for (let val of myArray[size-1]) {   // process array of last level
 	_tempStr2 = val.substring(1);
         _tempStr2 = Array.from(_tempStr2).join(', ');
         if (bool == true) { _tempString += "["+_tempStr2+"] "; }
@@ -190,17 +196,17 @@ function displayComArray (myArray,size,bool) {
 }
 
 //////////////////////////////////////////////////////////////////////
-//// setlx in inNew -> boolean notation in in
+//// convert setlx to boolean notation (eg inNew -> in)
 //////////////////////////////////////////////////////////////////////
 
-function setlxToBool () { 
-    var formul = document.getElementById('inNew').value.replace(/ /g,'');
-    formul = formul.replace(/!/g,'~');
-    formul = formul.replace(/&&/g,'&');
-    formul = formul.replace(/\|\|/g,'v');
-    formul = formul.replace(/<==>/g,'<>');
-    formul = formul.replace(/=>/g,'>');
-    document.getElementById('in').value = formul;
+function setlxToBool (inString) { 
+    var _formul = inString.value.replace(/ /g,'');
+    _formul = _formul.replace(/!/g,'~');
+    _formul = _formul.replace(/&&/g,'&');
+    _formul = _formul.replace(/\|\|/g,'v');
+    _formul = _formul.replace(/<==>/g,'<>');
+    _formul = _formul.replace(/=>/g,'>');
+    return _formul;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -287,7 +293,7 @@ function contextArray (myObjs, myAttrs, myContext) {
 }
 
 //////////////////////////////////////////////////////////////////////
-//// HTML display of a context with lists of objs, attrs and context
+//// returns HTML formatting of a context with lists of objs, attrs and context
 //////////////////////////////////////////////////////////////////////
 function displayTableHTML(myObjs, myAttrs, myArray) {
     var _result = "<table class='matrix'>";

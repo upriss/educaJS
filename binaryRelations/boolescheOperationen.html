@@ -20,7 +20,7 @@ var intersectionArray = [];
 <div id="ttinput">
   <input type="text" id="inNew" size="40" value="a && b">
   <input type="hidden" id="in" size="40" value="">
-  <input type="button" value="Ansehen" onclick="setlxToBool(); construct(); drawVennDiagram();">
+  <input type="button" value="Ansehen" onclick="document.getElementById('in').value =setlxToBool(document.getElementById('inNew')); construct(); drawVennDiagram(setArray,intersectionArray);">
 </div>
 
 <div id="tt"></div>
@@ -34,7 +34,7 @@ Folgende Symbole verwenden (Klammern werden ben&ouml;tigt):
 && f&uuml;r AND und Durchschnitt<br>
 || f&uuml;r OR und Vereinigung<br><br>
 => f&uuml;r Subjunktion und Teilmenge<br>
-<==> f&uuml;r Bijektion<br>
+<==> f&uuml;r Bijunktion<br>
 <p>
 (Achtung: die Software ist nicht perfekt. Die Venn-Diagramme sind nicht 
 immer richtig, insbesondere nicht f&uuml;r mehr als 3 Mengen. Meistens, aber nicht immer,

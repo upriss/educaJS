@@ -20,7 +20,7 @@ var intersectionArray = [];
 <div id="ttinput">
   <input type="text" id="inNew" size="40" value="a && b">
   <input type="hidden" id="in" size="40" value="">
-  <input type="button" value="generate" onclick="setlxToBool(); construct(); drawVennDiagram();">
+  <input type="button" value="generate" onclick="document.getElementById('in').value =setlxToBool(document.getElementById('inNew')); construct(); drawVennDiagram(setArray,intersectionArray);">
 </div>
 <div id="tt"></div>
 <div id="venn"></div>
@@ -31,7 +31,7 @@ Negation: !<br>
 And: &&<br>
 OR: ||<br>
 Conditional: =><br>
-Bijection: <==><br>
+Biconditional: <==><br>
 Operator precedence ist not automatically provided (brackets are needed).
 </p>
 (The software is not perfect. Venn diagrams for more than 3 sets do not

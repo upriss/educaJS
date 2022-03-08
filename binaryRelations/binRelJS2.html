@@ -6,12 +6,12 @@
 <script src="educa.js"></script>
 <link rel="stylesheet" type="text/css" href="educaJS.css" />
 
-<body onLoad="drawRelationGraph(); showMatrix('');">
+<body onLoad="drawRelationGraph('binRel',inputArea,oldInputAreaValue); outArea2.innerHTML = showMatrix(inputArea.value,'');">
 
 <h2>Enter a binary relation:</h2>
 
 <form>
-<textarea class="codeLineInput" id="inputArea" rows="3" onKeyUp="drawRelationGraph(); showMatrix('');">
+<textarea class="codeLineInput" id="inputArea" rows="3" onKeyUp="drawRelationGraph('binRel',inputArea,oldInputAreaValue); outArea2.innerHTML=showMatrix(inputArea.value,'')">
 {[1,2], [0,1], [5,5]}
 </textarea>
 </form>
@@ -22,11 +22,11 @@
 
 <h2>Matrix:</h2>
 
-<div id="matrixArea"></div>
+<div id="outArea2"></div>
 
 <script>
-var inputArea = document.querySelector("#inputArea");    // global variables
-var matrixArea = document.querySelector("#matrixArea");
+var outArea2 = document.querySelector("#outArea2");
+var inputArea = document.querySelector("#inputArea");
 var oldInputAreaValue;
 
 setUpZoomSupport();

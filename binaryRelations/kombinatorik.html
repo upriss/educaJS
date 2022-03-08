@@ -6,51 +6,50 @@
 <script src="educa.js"></script>
 <link rel="stylesheet" type="text/css" href="educaJS.css" />
 
-<body>
+<body onLoad="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);">
 
 <h2>Kombinatorik</h2>
 
+<div id ="inArea1">
 <form>
-
-<input type="text" class="smallInp" name="first" value="3"> Elemente aus
-<input type="text" class="smallInp" name="second" value="4"> Elementen ausw&auml;hlen.
+<input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
+type="text" class="smallInp" name="first" value="3"> Elemente aus
+<input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
+type="text" class="smallInp" name="second" value="4"> Elementen ausw&auml;hlen.
 <p>
 (Nur kleine Zahlenwerte eingeben!)
 <p>
 Mit Zur&uuml;cklegen:
-<input type="radio" name="back" checked>Ja
-<input type="radio" name="back" >Nein
+<input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
+type="radio" name="back" checked>Ja
+<input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
+type="radio" name="back" >Nein
 <p>
 Reihenfolge:
-<input type="radio" name="sequence" checked>Beachten
-<input type="radio" name="sequence" >Nicht beachten
-<p>
-<input type="button" value="Ansehen" onclick="drawRelationGraph(1);"> 
+<input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
+type="radio" name="sequence" checked>Beachten
+<input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
+type="radio" name="sequence" > Nicht beachten
 <p>
 </form>
+</div>
 
 <h2>Anzahl der M&ouml;glichkeiten</h2> 
-<div id="resultLength"></div>
+<div id="outArea1"></div>
 <p></p>
 <div style="float:left"> <svg width=400 height=800>  <g/> </svg></div>
-<div style="float:right" id="pascal"></div>
-
-<!--<h2>Matrix:</h2>
-
-<div id="matrixArea"></div>-->
-
+<div style="float:right" id="outArea3"></div>
 
 <script>
-var formFirst = document.querySelector('input[name="first"]');    // global variables
+var formFirst = document.querySelector('input[name="first"]');
 var formSecond = document.querySelector('input[name="second"]');
 var formBack = document.querySelector('input[name="back"]');
 var formSequence = document.querySelector('input[name="sequence"]');
+var outArea1 = document.querySelector("#outArea1");
+var outArea3 = document.querySelector("#outArea3");
 
-var resultLength = document.querySelector("#resultLength");
-var pascal = document.querySelector("#pascal");
-var matrixArea = document.querySelector("#matrixArea");
-var inputArea = "none";
-var oldInputAreaValue = "none";
+var inputArea = [formFirst,formSecond,formBack,formSequence];
+var oldInputArea = "none";                        // oldInputAreaValue
 
 setUpZoomSupport();
 </script>
