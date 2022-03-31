@@ -465,6 +465,9 @@ function getHeader(tbl, position) {
 		row[rowcount++] = tbl[leftbracket];
 	}
 	row[rowcount++] = tbl[position];
+	if (tbl[rightbracket] == '~') {
+		rightbracket++;
+	}
 	if (tbl[rightbracket] == '(') {	// c2
 		rightbracket++;
 		bracketcounter++;
