@@ -6,7 +6,7 @@
 <script src="fcalibs.js"></script>
 <script src="educa.js"></script>
 <link rel="stylesheet" type="text/css" href="educaJS.css" />
-
+<noscript>This webpage needs Javascript!</noscript>
 <body onLoad="binRel(glob_taskType,glob_inputArea,glob_oldInputAreaValue,glob_outArea2,glob_relType);">
 
 <h2 id='header1'>Enter a binary relation:</h2>
@@ -73,8 +73,14 @@ if (params.get('ttype') == 'binRel') {
    document.querySelector("#header3").innerHTML='Formal Context:';
    document.querySelector("#header1").style.display = 'none';
    document.querySelector("#inputArea").style.display = 'none';
-   document.querySelector("#text1").innerHTML='<div class="style_container"><p>&nbsp;</p><p>The lattice display can be moved and scrolled. Clicking on the 0s and 1s of the context changes the values. The names in the context can be edited. Rows and columns that contain only 0s are removed from the context.</p></div>';
+   document.querySelector("svg").setAttribute('height',400);
+   document.querySelector("#text1").innerHTML='<div class="style_container"><p>&nbsp;</p><p><details><summary>How to use this page:</summary>The lattice display can be moved and scrolled. Clicking on the 0s and 1s of the context changes the values. The names in the context can be edited. Rows and columns that contain only 0s are removed from the context.</details></p></div>';
 }
 </script>
+<p><hr><p>
+<center>
+Copyright 2022. <a href="https://www.upriss.org.uk">Uta Priss</a>, URL:
+<a href="https://upriss.github.io/educaJS/">upriss.github.io/educaJS/</a>
+</center>
 </body>
 </html>

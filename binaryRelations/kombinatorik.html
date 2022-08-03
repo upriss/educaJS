@@ -6,7 +6,7 @@
 <script src="combin.js"></script>
 <script src="educa.js"></script>
 <link rel="stylesheet" type="text/css" href="educaJS.css" />
-
+<noscript>This webpage needs Javascript!</noscript> 
 <body onLoad="combin('combin',inputArea,oldInputArea,outArea1,outArea3);">
 
 <h2>Kombinatorik</h2>
@@ -17,7 +17,6 @@
 type="text" class="smallInp" name="first" value="3"> Elemente aus
 <input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
 type="text" class="smallInp" name="second" value="4"> Elementen ausw&auml;hlen.
-<p>
 (Nur kleine Zahlenwerte eingeben!)
 <p>
 Mit Zur&uuml;cklegen:
@@ -25,7 +24,7 @@ Mit Zur&uuml;cklegen:
 type="radio" name="back" checked>Ja
 <input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
 type="radio" name="back" >Nein
-<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Reihenfolge:
 <input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
 type="radio" name="sequence" checked>Beachten
@@ -40,6 +39,12 @@ type="radio" name="sequence" > Nicht beachten
 <p></p>
 <div style="float:left"> <svg width=400 height=800>  <g/> </svg></div>
 <div style="float:right" id="outArea3"></div>
+<p class='clear'><hr><br>
+<center>
+Copyright 2022. <a href="https://www.upriss.org.uk">Uta Priss</a>, URL:
+<a href="https://upriss.github.io/educaJS/">upriss.github.io/educaJS/</a>
+</center>
+</p>
 
 <script>
 var formFirst = document.querySelector('input[name="first"]');
