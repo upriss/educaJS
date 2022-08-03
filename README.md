@@ -5,14 +5,14 @@ HTML/Javascript pages for educational purposes
 
 <a href="https://upriss.github.io/educaJS/whiteboard/drawing.html">Whiteboard</a>
 
-<a href="https://upriss.github.io/educaJS/binaryRelations/binRelJS.html">
+<a href="https://upriss.github.io/educaJS/binaryRelations/binRel.html">
 Binary Relations</a>
 
-<a href="https://upriss.github.io/educaJS/binaryRelations/Wahrheitstafel.html">
-Truthtables (in German)</a>
+<a href="https://upriss.github.io/educaJS/binaryRelations/booleanOps.html">
+Truthtables</a>
 
-<a href="https://upriss.github.io/educaJS/binaryRelations/boolescheOperationen.html">
-Truthtables and Venn Diagrams (in German)</a>
+<a href="https://upriss.github.io/educaJS/binaryRelations/booleanOps.html?plusVenn=yes">
+Truthtables and Venn Diagrams</a>
 
 <a href="https://upriss.github.io/educaJS/binaryRelations/kombinatorik.html">
 Basic Combinatorics (in German)</a>
