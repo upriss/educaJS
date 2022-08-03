@@ -1,5 +1,9 @@
+body { font-family: Arial, Helvetica, sans-serif; } 
+
+h2 { font-size: 1em; }
+
 svg { border: 1px solid #999;  overflow: hidden; }
-1;95;0c.node { white-space: nowrap; }
+.node { white-space: nowrap; }
 .node rect,
 .node circle,
 .node ellipse { stroke: #333;  fill: #fff;  stroke-width: 1.5px; }

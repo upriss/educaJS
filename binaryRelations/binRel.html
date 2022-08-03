@@ -27,9 +27,9 @@
 <h2 id='header3'>Matrix:</h2>
 
 <div class='style_container'>
-<button onclick="addColumn()">Add column</button>
+<button id='buttCol' onclick="addColumn()">Add column</button>
 <div style="float: right;">&nbsp;</div>
-<button onclick="addRow()">Add row</button>
+<button id='buttRow' onclick="addRow()">Add row</button>
 </div>
 
 <div id="outArea2"></div>
@@ -55,6 +55,8 @@ if (params.get('graph')) {                 // read data from URL
 if (params.get('lang') == 'de') {
    document.querySelector("#header1").innerHTML='Geben Sie eine bin&auml;re Relation ein:';
    document.querySelector("#header2").innerHTML='Graph der Relation:';
+   document.querySelector("#buttRow").innerHTML='neue Zeile';
+   document.querySelector("#buttCol").innerHTML='neue Spalte';
 }
 if (params.get('ttype') == 'binRel') {  
    if (params.get('rtype') == 'auto') {  glob_relType = 'auto'; }
