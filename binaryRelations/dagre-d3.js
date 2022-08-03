@@ -1011,10 +1011,10 @@ function render() {
 }
 
 var NODE_DEFAULT_ATTRS = {
-  paddingLeft: 10,
-  paddingRight: 10,
-  paddingTop: 10,
-  paddingBottom: 10,
+  paddingLeft: 4,
+  paddingRight: 4,
+  paddingTop: 4,
+  paddingBottom: 4,
   rx: 0,
   ry: 0,
   shape: "rect"
@@ -1022,7 +1022,7 @@ var NODE_DEFAULT_ATTRS = {
 
 var EDGE_DEFAULT_ATTRS = {
   arrowhead: "normal",
-  curve: d3.curveLinear
+  curve: d3.curveBasis
 };
 
 function preProcessGraph(g) {

@@ -461,6 +461,9 @@ function getHeader(tbl, position) {
 		}
 		leftbracket++;
 	}
+        if (tbl[leftbracket-1] == '~') {
+                leftbracket--;
+        }
 	for (leftbracket; leftbracket < position; leftbracket++) {
 		row[rowcount++] = tbl[leftbracket];
 	}

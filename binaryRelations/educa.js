@@ -1,3 +1,10 @@
+const param = {taskType:"", 
+               inputArea:"", 
+               outputArea1:"",
+               outputArea2:"",
+	       oldInputAreaValue:"",
+	       relType:""}; 
+
 //////////////////////////////////////////////////////////////////////
 //// for zoom in an svg g tag
 //////////////////////////////////////////////////////////////////////
@@ -10,11 +17,86 @@ function setUpZoomSupport () {
 }
 
 //////////////////////////////////////////////////////////////////////
+//// create link for data from input area, store in console.log
+//////////////////////////////////////////////////////////////////////
+
+function createURL() {
+  var elems = [window.location.protocol, '//', window.location.host,
+               window.location.pathname, '?'];
+  const qparams = new URLSearchParams(window.location.search);
+  var queryParams = [];
+  if (qparams.get('lang')) { queryParams.push('lang=' + qparams.get('lang')); }  
+  if (qparams.get('ttype')) { queryParams.push('ttype=' + qparams.get('ttype')); }  
+  if (qparams.get('plusVenn')) { queryParams.push('plusVenn=' + qparams.get('plusVenn')); }
+  if (qparams.get('rtype')) { queryParams.push('rtype=' + qparams.get('rtype')); }  
+  queryParams.push('graph=' + encodeURIComponent(param.inputArea.value));
+  elems.push(queryParams.join('&'));
+  console.log(elems.join(''));
+}
+
+//////////////////////////////////////////////////////////////////////
+//// start function, calls drawRelationGraph/VennDiagram and showMatrix
+//////////////////////////////////////////////////////////////////////
+
+function truth_venn (choice,inArea,oldIn,out1) {
+   param.taskType = "bool";
+   param.inputArea = inArea;
+   param.oldInputAreaValue = oldIn;
+   param.outputArea1 = out1;
+   createURL();                                           // write current URL to console
+   param.outputArea1.value = setlxToBool(param.inputArea);
+   construct(); 
+   if (choice == "yes") {
+      param.taskType = "boolVenn";
+      drawVennDiagram(setArray,intersectionArray);     // uses global variables
+   }
+}
+
+function combin (taskType,inArea,oldIn,out1,out2) {
+    param.taskType = taskType;
+    param.inputArea = inArea;
+    param.oldInputAreaValue = oldIn;
+    param.outputArea1 = out1;
+    param.outputArea2 = out2;
+    createURL();                                           // write current URL to console
+    drawRelationGraph();
+}
+
+function binRel (taskType,inArea,oldIn,outArea,relType) {
+    param.taskType = taskType;
+    param.inputArea = inArea;
+    param.oldInputAreaValue = oldIn;
+    param.outputArea = outArea;
+    param.relType = relType; 
+    createURL();                                           // write current URL to console
+    if (param.taskType == "binRel") {
+        param.outputArea.innerHTML = showMatrix()[0];
+        drawRelationGraph(); 
+    } else if (taskType == "lattice") {                       // uses fcalibs
+        var _array = showMatrix();
+        param.outputArea.innerHTML = _array[0];
+        var oList = _array[1];
+        var aList = _array[2];
+        var ctxtList = _array[3];
+        _array = ganter(ctxtList,oList.length,aList.length); 
+        var intList = _array[0]
+        var extList = _array[1]
+        _array = createRel(intList);
+        var subsuper = _array[1];
+        var ret_string = gammaMu(extList,intList,ctxtList,oList,aList);
+        drawRelationGraph("digraph {" + ret_string + Array.from(subsuper).join('') + "}"); 
+    }
+}
+
+//////////////////////////////////////////////////////////////////////
 //// set in inputArea -> graph in <svg> <g> (via dot format)
 //////////////////////////////////////////////////////////////////////
-function drawRelationGraph (taskType,inA1,oldIn,outA1,outA2) {
+//function drawRelationGraph (taskType,inA1,oldIn,outA1,outA2,data) {
+function drawRelationGraph (data) {
+  var taskType = param.taskType;
+  var inA1 = param.inputArea;
+  var oldIn = param.oldInputAreaValue;
   var gValue = "";
-
   if (oldIn !== inA1.value) {
     if (taskType == "binRel") {
        inA1.setAttribute("class", "codeLineInput");      // in order to distngsh from error
@@ -22,7 +104,13 @@ function drawRelationGraph (taskType,inA1,oldIn,outA1,outA2) {
        var gSet = stringToSet(gValue,"toDot");           // convert into set of "a -> b"
        gValue = "digraph {" + Array.from(gSet).join('') + "}";
        oldIn = gValue;
-    } else if (taskType == "combin") {                          // for combinatorics
+    } else if (taskType == "lattice") {                  // for FCA
+       inA1.setAttribute("class", "codeLineInput");      // in order to distngsh from error
+       gValue = data;
+       oldIn = gValue;
+    } else if (taskType == "combin") {                   // for combinatorics
+       var outA1 = param.outputArea1;
+       var outA2 = param.outputArea2;
        var fm1 = inA1[0];
        var fm2 = inA1[1];
        var fmBck = inA1[2];
@@ -80,10 +168,51 @@ function drawRelationGraph (taskType,inA1,oldIn,outA1,outA2) {
   }
 }
 
+
+//////////////////////////////////////////////////////////////////////
+//// changes in the context matrix -> change inputArea, then call binrel
+//////////////////////////////////////////////////////////////////////
+
+function ctxtNewCellVal(id,obj,attr) {
+   if (document.getElementById(id).innerHTML == 0) {
+      document.getElementById(id).innerHTML = 1;
+      if (param.inputArea.value.match(/\{\}/)) {
+	  param.inputArea.value = '{['+obj+','+attr+']}'; 
+      } else {
+        param.inputArea.value=param.inputArea.value.replace(/\]\}/,'], ['+obj+','+attr+']}');
+      }
+   } else {
+      document.getElementById(id).innerHTML = 0;
+      let replstring = "\\[\\s*" + obj + "\\s*,\\s*" + attr  + "\\s*\\]\\s*";
+      let re1 = new RegExp(replstring,"g");
+      param.inputArea.value = param.inputArea.value.replace(re1,'');
+      param.inputArea.value = param.inputArea.value.replace(/,\s*,/,',');
+      param.inputArea.value = param.inputArea.value.replace(/,\s*}/,'}');
+      param.inputArea.value = param.inputArea.value.replace(/{\s*,\s*/,'{');
+   }
+   binRel(param.taskType,param.inputArea,param.oldInputAreaValue,param.outputArea,param.relType);
+};
+
+function ctxtNewObjVal(val,obj) {
+   val = val.replace(/ /g,'_');
+   let re1 = new RegExp("\\[" + obj + ",",'g');
+   param.inputArea.value = param.inputArea.value.replace(re1,'[' + val + ',');
+   binRel(param.taskType,param.inputArea,param.oldInputAreaValue,param.outputArea,param.relType);
+};
+
+function ctxtNewAttrVal(val,attr) {
+   val = val.replace(/ /g,'_');
+   let re1 = new RegExp("," + attr + "\\]",'g');
+   param.inputArea.value = param.inputArea.value.replace(re1,',' + val + ']');
+   binRel(param.taskType,param.inputArea,param.oldInputAreaValue,param.outputArea,param.relType);
+};
+
 //////////////////////////////////////////////////////////////////////
 //// set in inputArea.value -> binary matrix in matrixArea (via context)
 //////////////////////////////////////////////////////////////////////
-function showMatrix (gValue,relType) {
+function showMatrix () {
+    var gValue = param.inputArea.value;
+    var relType = param.relType;
     var _result ="";
     var gArray = Array.from(stringToSet(gValue,""));   //  ToDo: do Quotes always work?
     var objs = new Set();
@@ -110,7 +239,7 @@ function showMatrix (gValue,relType) {
 	contextList = contextArray(objsList,attrsList,context);
 	_result = displayTableHTML(objsList,attrsList,contextList);
     }
-    return _result;
+    return [_result,objsList,attrsList,contextList];
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -130,69 +259,6 @@ function drawVennDiagram(setArr,intersArr) {
 	d3.selectAll(".venn-area[data-venn-sets="+elem+"]").attr("stroke-width", 3);
 	d3.selectAll(".venn-area[data-venn-sets="+elem+"]").attr("stroke", "red");
     }
-}
-
-//////////////////////////////////////////////////////////////////////
-//// form parameters -> array of possible combinations 
-//////////////////////////////////////////////////////////////////////
-
-function combinArray(size1,size2,kind1,kind2) {
-    var _tempArray = [];
-    for (let i = 0; i < size1; i++) {
-        _tempArray[i] = [];
-        for (let j = 0; j < size2; j++) {
-            if (i == 0) { _tempArray[i].push("a"+j.toString()); }
-            if (i > 0) {
-               for (let k = 0; k < size2; k++) {
-                   for (let val of _tempArray[i-1]) {
-		       if (val.slice(-1) == j ) {
-                           if (kind1 == true && kind2 == true) { // replacm and seqnce
- 			     _tempArray[i].push(val+k.toString()); 
-			   } else if (kind1 == false && kind2 == false) {
-			     if (j < k) {_tempArray[i].push(val+k.toString());}
-                           } else if (kind1 == false && kind2 == true) { // no repl.
- 			     if (!val.includes(k)) {_tempArray[i].push(val+k.toString());}
-                           } else if (kind1 == true && kind2 == false) {
-			     if (j <= k) {_tempArray[i].push(val+k.toString());}
-                           }
-		       }
-		   }
-
-               }
-            }
-        } 
-    }
-    return _tempArray;
-}
-
-//////////////////////////////////////////////////////////////////////
-//// array and form parameters -> produce string for count
-//////////////////////////////////////////////////////////////////////
-
-function displayComArray (myArray,size,bool,outA2) {
-    var _tempString = "";
-    var _tempStr2 = "";
-    for (let i = 0; i < size; i++) {                             // calculate the count
-       if (i == 0) { 
-          _tempString += myArray[i].length.toString() + "*";
-       } else {
-          _tempString += myArray[i].length/myArray[i-1].length.toString() + "*";
-       }
-    }
-    _tempString = " = " + _tempString.slice(0,-1);
-    if (bool == false) { 
-	_tempString = ""; 
-        outA2.innerHTML ="Pascal-Dreieck:<br><img src='pascal.jpg'>";
-    } else { outA2.innerHTML =""; }
-    _tempString = "<h3>" + myArray[size-1].length + _tempString + "</h3>";
-//    for (let val of myArray[formFirst.value-1]) {   // process array of last level
-    for (let val of myArray[size-1]) {   // process array of last level
-	_tempStr2 = val.substring(1);
-        _tempStr2 = Array.from(_tempStr2).join(', ');
-        if (bool == true) { _tempString += "["+_tempStr2+"] "; }
-        else { _tempString += "{"+_tempStr2+"} "; }
-    }
-    return _tempString;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -296,20 +362,46 @@ function contextArray (myObjs, myAttrs, myContext) {
 //// returns HTML formatting of a context with lists of objs, attrs and context
 //////////////////////////////////////////////////////////////////////
 function displayTableHTML(myObjs, myAttrs, myArray) {
+
     var _result = "<table class='matrix'>";
     _result += "<tr><th class='row column'></th>";
     for(var j=0; j<myAttrs.length; j++){
-        _result += "<th class='column'>" + myAttrs[j] + "</th>";
+        _result += "<th class='column' >";
+        _result += "<input type='text' id='c_at_"+j+"' size='3' value='" + myAttrs[j] +"'";
+        _result += "onchange=\"ctxtNewAttrVal(this.value,'" + myAttrs[j] + "');\"";
+        _result += " style='cursor: pointer;'></input></th>";
     }
     _result += "</tr>";
     for(var i=0; i<myArray.length; i++) {
         _result += "<tr>";
-        _result += "<th class='row'>" + myObjs[i] + "</th>";
+        _result += "<th class='row'>";
+	_result += "<input type='text' id='c_ob_"+i+"' size='3' value='" + myObjs[i] +"'";
+        _result += "onchange=\"ctxtNewObjVal(this.value,'" + myObjs[i] + "');\"";
+        _result += " style='cursor: pointer;'></input></th>";
         for(var j=0; j<myArray[i].length; j++){
-            _result += "<td>" + myArray[i][j] + "</td>";
+            _result += "<td id='cell_"+i+"_" + j;
+            _result += "' onclick=\"ctxtNewCellVal(this.id,'";
+            _result += myObjs[i] + "','" + myAttrs[j] + "');\"";
+            _result += " style='cursor: pointer;' >" + myArray[i][j] + "</td>";
         }
         _result += "</tr>";
     }
     _result += "</table>";
     return _result;
+}
+
+//////////////////////////////////////////////////////////////////////
+//// adds column/row to matrix by entering elements to inputArea
+//////////////////////////////////////////////////////////////////////
+
+function addColumn() {
+   let re1 = new RegExp("\\[(.*?),(.*?)\\]\s*}");
+   param.inputArea.value = param.inputArea.value.replace(re1,'[$1,$2], [$1,newAttr]}');
+   binRel(param.taskType,param.inputArea,param.oldInputAreaValue,param.outputArea,param.relType);
+}
+
+function addRow() {
+   let re1 = new RegExp("\\[(.*?),(.*?)\\]\s*}");
+   param.inputArea.value = param.inputArea.value.replace(re1,'[$1,$2], [newObj,$2]}');
+   binRel(param.taskType,param.inputArea,param.oldInputAreaValue,param.outputArea,param.relType);
 }
