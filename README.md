@@ -22,5 +22,10 @@ Basic Combinatorics (in German)</a><br>
 The software uses several other Javascript libraries (d3, dagre-d3, TruthTableGenerator,
 venn.js) as detailed in the 
 <a href="https://upriss.github.io/educaJS/LICENSE.txt">License file</a>
-
+<p>
 Thanks to Jerome B. for changing the formatting of the truthtables.
+<p>
+Please, don't hotlink to copies of the Javascript files from this website, but instead
+download them or link to them on CDN jsDelivr. For example:
+
+https://cdn.jsdelivr.net/gh/upriss/educaJS@master/binaryRelations/educa.js
