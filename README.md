@@ -26,7 +26,7 @@ venn.js) as detailed in the
 <p>
 Thanks to Jerome B. for changing the formatting of the truthtables.
 <p>
-Please, don't hotlink to copies of the Javascript files from this website, but instead
+Please, don't hotlink to copies of the files from this website, but instead
 download them or link to them on CDN jsDelivr. For example:
 
 https://cdn.jsdelivr.net/gh/upriss/educaJS@master/binaryRelations/educa.js
