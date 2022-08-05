@@ -29,4 +29,4 @@ Thanks to Jerome B. for changing the formatting of the truthtables.
 Please, don't hotlink to copies of the files from this website, but instead
 download them or link to them on CDN jsDelivr. For example:
 
-https://cdn.jsdelivr.net/gh/upriss/educaJS@master/binaryRelations/educa.js
+https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educa.js
