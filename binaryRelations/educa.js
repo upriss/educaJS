@@ -158,8 +158,8 @@ function drawRelationGraph (data) {
     }
     if (!grapharea.graph().hasOwnProperty("marginx") &&  // Set margins, if not present
         !grapharea.graph().hasOwnProperty("marginy")) {
-      grapharea.graph().marginx = 20;
-      grapharea.graph().marginy = 20;
+      grapharea.graph().marginx = 5;
+      grapharea.graph().marginy = 5;
     }
     grapharea.graph().transition = function(selection) {
       return selection.transition().duration(500);
