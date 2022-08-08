@@ -169,7 +169,8 @@ function gammaMu (extList,intList,cxtList,oList,aList) {
         if (temp.length > 15) {
            temp = "<div title='" + temp + "'>" + temp.substring(0,15) + "...</div>";
         }
-        cptlabels =  cptlabels.replace(reg,temp + "|");
+        if (temp == "") { cptlabels = cptlabels.replace(reg,"&nbsp;|"); }
+        else { cptlabels =  cptlabels.replace(reg,temp + "|"); }
 	temp = "";
         for (let k = 0; k < cxtList.length; k++) {
             if (cxtList[k].join('') === intList[i].join('') ) {
@@ -180,7 +181,8 @@ function gammaMu (extList,intList,cxtList,oList,aList) {
         if (temp.length > 15) {
            temp = "<div title='" + temp + "'>" + temp.substring(0,15) + "...</div>";
         }
-        cptlabels =  cptlabels.replace(reg,"<hr>" + temp);
+        if (temp == "") { cptlabels =  cptlabels.replace(reg,"<hr>&nbsp;"); }
+        else { cptlabels =  cptlabels.replace(reg,"<hr>" + temp); }
     }                                          
     cptlabels = cptlabels.replace(/\s+</g,"<");                  // remove space
     cptlabels = cptlabels.replace(/\s+"/g,"\"");                 // remove space
