@@ -10,28 +10,52 @@ svg { border: 1px solid #999;  overflow: hidden; }
 .cluster rect { stroke: #333;  fill: #000;  fill-opacity: 0.1;  stroke-width: 1.5px;}
 .edgePath path.path { stroke: #333;  stroke-width: 1.5px;  fill: none;}
 
-textarea.codeLineInput { width: 90%; display: block}
+textarea.codeLineInput { width: 70%; display: block}
 label { margin-top: 1em;  display: block; }
-.error { color: red; }
+.error { color: red; } 
 
-.smallInp {width : 30px}
+input.setInput { width: 25%; }
+input.smallInp { width : 30px }
 
 table.matrix th.row{ border-right: 4px solid black; padding: 5px}
 table.matrix th.column{ border-bottom: 4px solid black; padding: 5px}
 table.matrix td{ padding: 5px}
 table.matrix { border-collapse: collapse; }
 
-table.truth {  border-collapse:collapse;  margin-left:auto;  margin-right:auto;
-  margin-top:10px;  margin-bottom:10px;}
-table.truth th {  border-bottom:1px solid black;  text-align: center;
-  padding:.2em;  font-weight: normal;}
-table.truth td {  border:0;  padding:.2em;}
-table.truth .dv {  border-right:1px solid black;}
-table.truth .mc {  color:red; }
+table.truth { border-collapse:collapse;  margin-left:auto;  margin-right:auto;
+              margin-top:10px;  margin-bottom:10px; }
+table.truth th { border-bottom:1px solid black;  text-align: center;
+                 padding:.2em;  font-weight: normal; }
+table.truth td { border:0;  padding:.2em; }
+table.truth .dv { border-right:1px solid black; }
+table.truth .mc { color:red; }
 
-button {float: inline-end;}
-div.style_container {width:90%;}
+button { cursor: pointer; margin-left: 5px; margin-top: 5px; }
+button.floating { float: inline-end; }
+
+button.tooltip:hover { position: relative; }
+button.tooltip span { display: none; }
+button.tooltip:hover span { border: #666 2px solid; padding: 5px 20px 5px 5px;
+  display: block; z-index: 100; background: #e3e3e3; right: 0px; margin: 15px;
+  width: 500px; position: absolute; top: 15px; text-align: left;}
+
+div.style_container { width:90%; }
+span.small_container { width:20%; float: inline-end; }
+span.answer_container { width:20px; display: inline-block }
+
+div.tooltip {text-align: center;text-decoration: underline;}
+div.tooltip:hover { position: relative; }
+div.tooltip div { display: none; }
+div.tooltip:hover div { border: #666 2px solid; padding: 5px 20px 5px 5px;
+  display: block; z-index: 100; background: #e3e3e3; left: 100px; margin: 0px;
+  width: 800px; position: absolute; bottom: -5px; text-align: left;}
 
 summary {cursor: pointer;}
-
 p.clear { clear: left; }
+
+/* a.button { 
+  text-decoration: none; background-color: #EEEEEE; color: #333333;
+  padding: 2px 6px 2px 6px; border-radius: 50%;
+  border-top: 1px solid #CCCCCC; border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333; border-left: 1px solid #CCCCCC;
+} */

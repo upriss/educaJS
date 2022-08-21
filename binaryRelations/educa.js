@@ -1,9 +1,17 @@
-const param = {taskType:"", 
-               inputArea:"", 
-               outputArea1:"",
-               outputArea2:"",
-	       oldInputAreaValue:"",
-	       relType:""}; 
+const param = {taskType: "",    // bool, boolVenn, binRel, lattice, combin
+               inputArea: "", 
+               outputArea1: "",
+               outputArea2: "",
+	       oldInputAreaValue: "",
+               leftset: "",
+               rightset: "",
+	       relType: "",     // auto
+	       csv: ""};    
+
+const main = {objArray: [],
+                  attrArray: [],
+                  matrixArray: []};
+
 
 //////////////////////////////////////////////////////////////////////
 //// for zoom in an svg g tag
@@ -29,6 +37,7 @@ function createURL() {
   if (qparams.get('ttype')) { queryParams.push('ttype=' + qparams.get('ttype')); }  
   if (qparams.get('plusVenn')) { queryParams.push('plusVenn=' + qparams.get('plusVenn')); }
   if (qparams.get('rtype')) { queryParams.push('rtype=' + qparams.get('rtype')); }  
+  if (qparams.get('csv')) { queryParams.push('csv=' + qparams.get('csv')); }  
   queryParams.push('graph=' + encodeURIComponent(param.inputArea.value));
   elems.push(queryParams.join('&'));
   console.log(elems.join(''));
@@ -43,12 +52,33 @@ function truth_venn (choice,inArea,oldIn,out1) {
    param.inputArea = inArea;
    param.oldInputAreaValue = oldIn;
    param.outputArea1 = out1;
-   createURL();                                           // write current URL to console
+   createURL();                                         // write current URL to console
    param.outputArea1.value = setlxToBool(param.inputArea);
    construct(); 
-   if (choice == "yes") {
+   if (choice == "euler") {
       param.taskType = "boolVenn";
-      drawVennDiagram(setArray,intersectionArray);     // uses global variables
+      drawVennDiagram(setArray,intersectionArray);      // uses global variables
+   } else if (choice == "venn") {
+      param.taskType = "boolVenn";                      // uses global variables
+      d3.selectAll("svg").remove(); 
+      d3.select("#venn").append("svg").attr("width", 500).attr("height", 500);
+      const svg = d3.select("svg");
+      const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+      const width = svg.attr("width") - margin.left - margin.right;
+      const height = svg.attr("height") - margin.top - margin.bottom;
+      var g =svg.append("g").attr("transform","translate("+margin.left+","+margin.top+")");
+      if (setArray[setArray.length-1].sets.length <= 3) {
+          g.append("rect").attr('id','backgr').attr('x',0).attr('y', 0)
+           .attr('width', svg.attr("width") - margin.left - margin.right)
+           .attr('height', svg.attr("height") - margin.top - margin.bottom)
+           .attr('translate',"translate(-"+margin.left+","+margin.top+")");
+          vennDir(setArray[setArray.length-1].sets,intersectionArray,
+              setArray[setArray.length-1].sets.length,g);
+      } else {
+         d3.selectAll("g").selectAll("*").remove();
+         g.append("text").text("This display is only available for 2 or 3 sets")
+          .attr("x", xPoints[0]-130).attr("y", yPoints[0]-20);
+      }
    }
 }
 
@@ -58,26 +88,35 @@ function combin (taskType,inArea,oldIn,out1,out2) {
     param.oldInputAreaValue = oldIn;
     param.outputArea1 = out1;
     param.outputArea2 = out2;
-    createURL();                                           // write current URL to console
+    createURL();                                         // write current URL to console
     drawRelationGraph();
 }
 
-function binRel (taskType,inArea,oldIn,outArea,relType) {
-    param.taskType = taskType;
-    param.inputArea = inArea;
-    param.oldInputAreaValue = oldIn;
-    param.outputArea = outArea;
-    param.relType = relType; 
-    createURL();                                           // write current URL to console
+function binRel (taskType,inArea,oldIn,outArea,relType,lset,rset,csv) {
+    if (param.inputArea == "") {
+        param.taskType = taskType;
+        param.inputArea = inArea;
+        param.oldInputAreaValue = oldIn;
+        param.outputArea = outArea;
+        param.relType = relType; 
+        param.leftset = lset;
+        param.rightset = rset;
+        param.csv = csv;
+    }
+    createURL();                                         // write current URL to console
+    param.outputArea.innerHTML = showMatrix();
+    var oList = main.objArray;
+    var aList = main.attrArray;
+    if (param.relType == "auto") {                       // display the two sets
+       param.leftset.value = "{" + oList.join(", ") + ", " + aList.join(", ") + "}";
+    } else {
+       param.leftset.value = "{" + oList.join(", ") + "}";
+       param.rightset.value = "{" + aList.join(", ") + "}";
+    }
     if (param.taskType == "binRel") {
-        param.outputArea.innerHTML = showMatrix()[0];
         drawRelationGraph(); 
-    } else if (taskType == "lattice") {                       // uses fcalibs
-        var _array = showMatrix();
-        param.outputArea.innerHTML = _array[0];
-        var oList = _array[1];
-        var aList = _array[2];
-        var ctxtList = _array[3];
+    } else if (param.taskType == "lattice") {            // uses fcalibs
+        var ctxtList = main.matrixArray;
         _array = ganter(ctxtList,oList.length,aList.length); 
         var intList = _array[0]
         var extList = _array[1]
@@ -91,7 +130,6 @@ function binRel (taskType,inArea,oldIn,outArea,relType) {
 //////////////////////////////////////////////////////////////////////
 //// set in inputArea -> graph in <svg> <g> (via dot format)
 //////////////////////////////////////////////////////////////////////
-//function drawRelationGraph (taskType,inA1,oldIn,outA1,outA2,data) {
 function drawRelationGraph (data) {
   var taskType = param.taskType;
   var inA1 = param.inputArea;
@@ -122,34 +160,34 @@ function drawRelationGraph (data) {
           gValue = "digraph { \"W&auml;hlen Sie bittere kleinere Zahlenwerte.\"}"; 
           outA1.innerHTML = "W&auml;hlen Sie bittere kleinere Zahlenwerte.";
        } else {
-          var tempArray = [];                               // create data structure
+          var tempArray = [];                            // create data structure
           tempArray = combinArray(fm1.value,fm2.value,fmBck.checked,fmSeq.checked);
-          outA1.innerHTML =                                 // display count and content
+          outA1.innerHTML =                              // display count and content
               displayComArray(tempArray,fm1.value,fmSeq.checked,outA2);
-          var tempString = "";                              // convert array to dot
+          var tempString = "";                           // convert array to dot
           var tempString2 = "";
-          for (let val of tempArray[fm1.value-1]) {   // process first level
+          for (let val of tempArray[fm1.value-1]) {      // process first level
                 tempString += "node" + "1" + val.substring(1,2)
                            +" [label=\"" + val.substring(1,2) + "\"];";
           }
-          for (let val of tempArray[fm1.value-1]) {   // process array of last level
+          for (let val of tempArray[fm1.value-1]) {      // process array of last level
              for(let i = 2; i < Array.from(val).length; i++) {   // create edges
                 tempString2 = "node"+ (i-1).toString() + val.substring(1,i)
                               + "->node" + i.toString() + val.substring(1,i+1) + ";";
-//                let reg = new RegExp(tempString2);          // avoid duplicate edges
-//                if (tempString.search(reg) < 0) {           // not needed with strict
+//                let reg = new RegExp(tempString2);     // avoid duplicate edges
+//                if (tempString.search(reg) < 0) {      // not needed with strict
 		tempString += tempString2;
 //                }
                 tempString2 = "node"+ i.toString() + val.substring(1,i+1) +  // node labels
                           " [label=\"" + val.substring(i,i+1).toString() + "\"];";
-                tempString += tempString2;                  // ToDo: avoid duplicates
+                tempString += tempString2;               // ToDo: avoid duplicates
              }
           }
           gValue = "strict digraph {rankdir=LR;" + tempString + "}";
        }
     }
     try {
-      grapharea = graphlibDot.read(gValue);           // Todo: need more checks?
+      grapharea = graphlibDot.read(gValue);              // Todo: need more checks?
     } catch (e) {
       if (typeof inA1.value != 'undefined') { 
          inA1.setAttribute("class", "codeLineInput error");
@@ -168,12 +206,11 @@ function drawRelationGraph (data) {
   }
 }
 
-
 //////////////////////////////////////////////////////////////////////
-//// changes in the context matrix -> change inputArea, then call binrel
+//// events/buttons somewhere -> change inputArea, then call binRel
 //////////////////////////////////////////////////////////////////////
 
-function ctxtNewCellVal(id,obj,attr) {
+function ctxtNewCellVal(id,obj,attr) {               // click on value in matrix
    if (document.getElementById(id).innerHTML == 0) {
       document.getElementById(id).innerHTML = 1;
       if (param.inputArea.value.match(/\{\}/)) {
@@ -190,22 +227,51 @@ function ctxtNewCellVal(id,obj,attr) {
       param.inputArea.value = param.inputArea.value.replace(/,\s*}/,'}');
       param.inputArea.value = param.inputArea.value.replace(/{\s*,\s*/,'{');
    }
-   binRel(param.taskType,param.inputArea,param.oldInputAreaValue,param.outputArea,param.relType);
+   binRel();
 };
 
-function ctxtNewObjVal(val,obj) {
+function ctxtNewObjVal(val,obj) {                    // change name of object in matrix
    val = val.replace(/ /g,'_');
    let re1 = new RegExp("\\[" + obj + ",",'g');
    param.inputArea.value = param.inputArea.value.replace(re1,'[' + val + ',');
-   binRel(param.taskType,param.inputArea,param.oldInputAreaValue,param.outputArea,param.relType);
+   binRel();
 };
 
-function ctxtNewAttrVal(val,attr) {
+function ctxtNewAttrVal(val,attr) {                  // change name of attribute in matrix
    val = val.replace(/ /g,'_');
    let re1 = new RegExp("," + attr + "\\]",'g');
    param.inputArea.value = param.inputArea.value.replace(re1,',' + val + ']');
-   binRel(param.taskType,param.inputArea,param.oldInputAreaValue,param.outputArea,param.relType);
+   binRel();
 };
+
+function addColumn() {                               // button next to matrix
+   let re1 = new RegExp("\\[(.*?),(.*?)\\]");
+   let rannr = Math.floor(Math.random() * 1000);
+   param.inputArea.value = param.inputArea.value.replace(re1,'[$1,$2], [$1,new'+rannr+']');
+   binRel();
+}
+
+function addRow() {                                  // button next to matrix
+   let re1 = new RegExp("\\[(.*?),(.*?)\\]");
+   let rannr = Math.floor(Math.random() * 1000);
+   param.inputArea.value = param.inputArea.value.replace(re1,'[$1,$2], [new'+rannr+',$2]');
+   binRel();
+}
+
+function examine(property) {
+   var answer = "<font size=5 color='green'>&#10004;</font>";
+   if (property == 'function') {
+     for(let elem of main.matrixArray) {
+        if ((elem.join("").match(/1/g) || []).length > 1 ) {
+           answer = "<font size=5 color='red'>&#10008;</font>";
+           break;
+        }
+     }
+   } else if (property == 'injective') {
+     answer = "todo";
+   }
+   document.querySelector("#answer_" + property).innerHTML=answer;
+}
 
 //////////////////////////////////////////////////////////////////////
 //// set in inputArea.value -> binary matrix in matrixArea (via context)
@@ -239,7 +305,11 @@ function showMatrix () {
 	contextList = contextArray(objsList,attrsList,context);
 	_result = displayTableHTML(objsList,attrsList,contextList);
     }
-    return [_result,objsList,attrsList,contextList];
+    main.objArray = objsList;                          // assign return values
+    main.attrArray = attrsList;
+    main.matrixArray = contextList;
+    return [_result];
+//    return [_result,objsList,attrsList,contextList];
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -282,16 +352,22 @@ function stringToSet (myString,myType) {
     var _Set = new Set();
     var _Set2 = new Set();
     myString = myString.trim();
-    myString = myString.replace(/\]\s*,/g, '] ?&&?');    // separate the elements
-    myString = myString.replace(/[{}]/g,'');             // delete brackets {}
+    if (param.csv == 'yes') {
+       myString = myString.replace(/\n/g,']?&&?[');      // separate the lines
+       myString = myString.replace(/(.*)/,'[$1]');       // change to [..|..] ?&&? [..|..]
+    } else {
+       myString = myString.replace(/\]\s*,/g, '] ?&&?'); // separate the elements
+       myString = myString.replace(/[{}]/g,'');          // delete brackets {}
+       myString = myString.replace(/,/g,'|');            // replace , with |
+    }
     if (myType == "toDot") {                             // convert into dot format
-	myString = myString.replace(/\[(.*?),(.*?)\]/g, '$1 -> $2;');
+	myString = myString.replace(/\[(.*?)\|(.*?)\]/g, '$1 -> $2;');
         _Set = new Set(myString.split('?&&?')); 
     } else {
         _Set = new Set(myString.split('?&&?'));
         for (let elem of _Set) {                         // turn string [..,..] into array
             elem = elem.replace(/[\[\]{}\s]/g,'');
-            _Set2.add(elem.split(','));
+            _Set2.add(elem.split('|'));
         }
         _Set = _Set2;
 }
@@ -390,18 +466,3 @@ function displayTableHTML(myObjs, myAttrs, myArray) {
     return _result;
 }
 
-//////////////////////////////////////////////////////////////////////
-//// adds column/row to matrix by entering elements to inputArea
-//////////////////////////////////////////////////////////////////////
-
-function addColumn() {
-   let re1 = new RegExp("\\[(.*?),(.*?)\\]\s*}");
-   param.inputArea.value = param.inputArea.value.replace(re1,'[$1,$2], [$1,newAttr]}');
-   binRel(param.taskType,param.inputArea,param.oldInputAreaValue,param.outputArea,param.relType);
-}
-
-function addRow() {
-   let re1 = new RegExp("\\[(.*?),(.*?)\\]\s*}");
-   param.inputArea.value = param.inputArea.value.replace(re1,'[$1,$2], [newObj,$2]}');
-   binRel(param.taskType,param.inputArea,param.oldInputAreaValue,param.outputArea,param.relType);
-}

@@ -5,8 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Boolean Operations</title>
 <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/truthtable.JB.js' type="text/javascript"></script>
-<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/d3.v4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/venn.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/d3.v4.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/venn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/vennDiagram.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/material.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educa.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educaJS.css" />
 <noscript>This webpage needs Javascript!</noscript>
@@ -41,22 +43,8 @@ var intersectionArray = [];             // used in venn.min.js
 <p>&nbsp;</p>
 <hr>
 
-<p id="text1">
-Operator precedence ist not automatically provided (brackets are needed).
-</p>
-<table>
-<tr><td>! <td> Negation
-<tr><td>&& <td> AND
-<tr><td>|| <td> OR
-<tr><td>=> <td> <div id="text2">Conditional</div>
-<tr><td><==> <td> <div id="text3">Biconditional</div>
-<tr><td>0 <td> for example: x && !x
-<tr><td>1 <td> for example: x || !x
-</table>
-<p id="text4">
-(The software is not perfect. Venn diagrams for more than 3 sets do not
-work consistently.)
-</p>
+<div id="help_text"></div>
+
 <input style="display:none" type="radio" name="tvstyle" value="tf" checked>
 <input type="hidden" name="tvstyle" value="tb">
 <input type="hidden" name="tvstyle" value="oz">
@@ -71,20 +59,24 @@ work consistently.)
 <input type="hidden" name="style" id="latex">
 
 <script>
-// call this with lang=en or lang=de and plusVenn=yes
+// query parameters: lang=en or lang=de and plusVenn=euler or venn
 const params = new URLSearchParams(window.location.search);     // read the query string
 
 if (params.get('graph')) {                 // read data from URL
    document.querySelector('#inNew').value = decodeURIComponent(params.get('graph'));
 }
 
-if (params.get('plusVenn') != 'yes') {
+if (params.get('plusVenn') != 'euler' && params.get('plusVenn') != 'venn') {
    if (params.get('lang') == 'de') {
       document.querySelector("#text0").innerHTML='Wahrheitstafel';
    } else {
       document.querySelector("#text0").innerHTML='Truth Table';
    }
-   document.querySelector("#text4").style.display = 'none';
+  document.querySelector("#help_text").innerHTML = html_helptext_truthtable
+        + html_helptext_truthtable2;
+} else {
+  document.querySelector("#help_text").innerHTML = html_helptext_truthtable
+        + html_helptext_vennEuler;
 } 
 if (params.get('lang') == 'de') {
     document.querySelector("#text1").innerHTML='In dem Ausdruck m&uuml;ssen alle Klammern gesetzt werden.<br>F&uuml;r die logischen Operatoren stehen folgende Symbole zur Verf&uuml;gung:';

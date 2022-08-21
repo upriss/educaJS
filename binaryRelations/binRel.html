@@ -1,82 +1,114 @@
+<!DOCTYPE html>
 <html>
-<meta charset="utf-8">
-<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/d3.v4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/graphlib-dot.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/dagre_d3.min.js"></script>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/d3.v4.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/graphlib-dot.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/dagre-d3-n.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/fcalibs.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/material.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educa.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educaJS.css" />
 <noscript>This webpage needs Javascript!</noscript>
-<body onLoad="binRel(glob_taskType,glob_inputArea,glob_oldInputAreaValue,glob_outArea2,glob_relType);">
+</head>
+<body onLoad="binRel(glob_taskType,glob_inputArea,glob_oldInputAreaValue,glob_outArea2,glob_relType,glob_leftset,glob_rightset,glob_csv);">
 
 <h2 id='header1'>Enter a binary relation:</h2>
 
 <!--{[1,2], [0,1], [5,5]}-->
 
+<div class='style_container'>
+<span class='small_container' id='container1'></span>
 <form>
-
-<textarea class="codeLineInput" id="inputArea" rows="3" onKeyUp="binRel(glob_taskType,glob_inputArea,glob_oldInputAreaValue,glob_outArea2,glob_relType);">
+<textarea class="codeLineInput" id="inputArea" rows="3" onKeyUp="binRel(glob_taskType,glob_inputArea,glob_oldInputAreaValue,glob_outArea2,glob_relType,glob_leftset,glob_rightset);">
 {[1,a], [1,b], [1,d], [2,b], [2,c], [3,a], [3,c], [3,d], [3,e], [4,b], [4,d]} 
 </textarea>
 </form>
+</div>
 
 <h2 id='header2'>Relation graph:</h2>
 
 <svg width=90% height=300>  <g/> </svg>
 
+<p>
+<span id="lsetlabel">First set:</span>
+<input type="text" class="setInput" id="leftset" rows="1">&nbsp;
+<span id="rsetlabel">Second set:</span>
+<input type="text" class="setInput" id="rightset" rows="1">
+</p>
+
 <h2 id='header3'>Matrix:</h2>
 
 <div class='style_container'>
-<button id='buttCol' onclick="addColumn()">Add column</button>
-<div style="float: right;">&nbsp;</div>
-<button id='buttRow' onclick="addRow()">Add row</button>
+<button class='floating' id='buttCol' onclick="addColumn()">Add column</button>
+<div style="float: right;"></div>
+<button class='floating' id='buttRow' onclick="addRow()">Add row</button>
 </div>
 
 <div id="outArea2"></div>
 
-<div id="text1"></div>
+<div id="help_text"></div>
 
 <script>
-// call this lang=en&ttype=lattice, lang=en&ttype=binRel, lang=en&ttype=binRel$rtype=auto
-// same with lang=de   also possible graph=...
-const params = new URLSearchParams(window.location.search);     // read the query string
+// query parameters: lang=en or lang=de  
+//                   ttype=binRel or ttype=lattice or ttype=fca   -> changes taskType
+//                   rtype=auto or rtype=fca (only for lattice)   -> sets relType for auto 
+//                   graph
+//                   csv=yes
+// undef is lang=en, ttype=binRel, rtype="", graph="", csv=""
 
-//var glob_taskType = 'binRel';
-var glob_taskType = 'lattice';
+const params = new URLSearchParams(window.location.search);     // read the query string
+var glob_taskType = 'binRel';
 var glob_outArea2 = document.querySelector("#outArea2");
 var glob_inputArea = document.querySelector("#inputArea");
 var glob_oldInputAreaValue;
 var glob_relType = '';
+var glob_leftset = document.querySelector("#leftset");
+var glob_rightset = document.querySelector("#rightset");
+var glob_csv = '';
 setUpZoomSupport();
 
-if (params.get('graph')) {                 // read data from URL
+if (params.get('graph')) {                                      // read data from URL
    glob_inputArea.value = decodeURIComponent(params.get('graph'));
 }
-if (params.get('lang') == 'de') {
+if (params.get('csv') == 'yes') {                               // input csv (with |, \n)
+   glob_csv = 'yes';
+}
+document.querySelector("#help_text").innerHTML= html_helptext_binRel;
+if (params.get('lang') == 'de') {                               // German language
    document.querySelector("#header1").innerHTML='Geben Sie eine bin&auml;re Relation ein:';
    document.querySelector("#header2").innerHTML='Graph der Relation:';
    document.querySelector("#buttRow").innerHTML='neue Zeile';
    document.querySelector("#buttCol").innerHTML='neue Spalte';
+   document.querySelector("#help_text").innerHTML= html_helptext_binRel_de;
 }
-if (params.get('ttype') == 'binRel') {  
-   if (params.get('rtype') == 'auto') {  glob_relType = 'auto'; }
+if (params.get('ttype') == 'binRel') {     
    glob_taskType = 'binRel'; 
-} else if (params.get('ttype') == 'lattice') {  
+   if (params.get('rtype') == 'auto') {                         // binRel and auto
+      glob_relType = 'auto'; 
+      document.querySelector("#lsetlabel").innerHTML='Set:';
+      document.querySelector("#rsetlabel").style.display = 'none';
+      document.querySelector("#rightset").style.display = 'none';
+   } else {                                                     // binRel, but not auto
+      document.querySelector("#container1").innerHTML = html_function;
+   }
+} else if (params.get('ttype') == 'lattice') {                  // lattice, but not fca
    glob_relType = '';
    glob_taskType = 'lattice'; 
    document.querySelector("#header2").innerHTML='Lattice:';
    if (params.get('lang') == 'de') {
       document.querySelector("#header2").innerHTML='Verband:';
    }
-} else if (params.get('ttype') == 'fca') {  
-   glob_relType = '';
-   glob_taskType = 'lattice'; 
-   document.querySelector("#header2").innerHTML='Lattice:';
-   document.querySelector("#header3").innerHTML='Formal Context:';
-   document.querySelector("#header1").style.display = 'none';
-   document.querySelector("#inputArea").style.display = 'none';
-   document.querySelector("svg").setAttribute('height',400);
-   document.querySelector("#text1").innerHTML='<div class="style_container"><p>&nbsp;</p><p><details><summary>How to use this page:</summary>The lattice display can be moved and scrolled. Clicking on the 0s and 1s of the context changes the values. The names in the context can be edited. Rows and columns that contain only 0s are removed from the context.</details></p></div>';
+   if (params.get('rtype') == 'fca') {                          // fca, only in English
+      document.querySelector("#header3").innerHTML='Formal Context:';
+      document.querySelector("#header1").style.display = 'none';
+      document.querySelector("#inputArea").style.display = 'none';
+      document.querySelector("#container1").style.display = 'none';
+      document.querySelector("svg").setAttribute('height',400);
+      document.querySelector("#lsetlabel").innerHTML='Objects:';
+      document.querySelector("#rsetlabel").innerHTML='Attributes:';
+      document.querySelector("#help_text").innerHTML= html_helptext_lattice;
+   }
 }
 </script>
 <p><hr><p>
