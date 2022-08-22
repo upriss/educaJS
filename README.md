@@ -12,7 +12,7 @@ Binary Relations</a><br>
 <a href="https://upriss.github.io/educaJS/binaryRelations/booleanOps.html">
 Truthtables</a><br>
 
-<a href="https://upriss.github.io/educaJS/binaryRelations/booleanOps.html?plusVenn=yes">
+<a href="https://upriss.github.io/educaJS/binaryRelations/booleanOps.html?plusVenn=venn">
 Truthtables and Venn Diagrams</a><br>
 
 <a href="https://upriss.github.io/educaJS/binaryRelations/kombinatorik.html">
