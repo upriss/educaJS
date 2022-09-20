@@ -43,16 +43,30 @@ werden aus der Relation gelöscht.\
 
 var html_helptext_truthtable = '<div class="tooltip"><p></p><p>\
 How to use this page<div>\
-Operator precedence ist not automatically provided (brackets are needed). <br>\
+Operator precedence is not automatically provided (brackets are needed). <br>\
 For negation enter !, &nbsp; for OR: ||, &nbsp; for AND: &&, &nbsp;\
 for conditional: =>, &nbsp; for biconditional: <==> <br>\
 for 0 enter: x && !x, &nbsp; for 1 enter: x || !x';
 
 var html_helptext_truthtable_de = '<div class="tooltip"><p></p><p>\
-Benutzungshinweise<div>';
+Benutzungshinweise<div>\
+Alle Klammern m&uuml;ssen gesetzt werden. <br>\
+F&uuml;r Negation verwenden Sie !, &nbsp; f&uuml;r OR: ||, &nbsp; f&uuml;r AND: &&, &nbsp;\
+f&uuml;r Subjunktion: =>, &nbsp; f&uuml;r Bijunktion: <==> <br>\
+f&uuml;r 0: x && !x, &nbsp; f&uuml;r 1: x || !x';
+
 
 var html_helptext_truthtable2 = '</div></div>';
 
 var html_helptext_vennEuler = '\
 <p>(The software is not perfect. Venn diagrams for more than 3 sets do not \
 work consistently.)</p></div></div>';
+
+var html_helptext_vennEuler_de = '\
+<p>(Achtung: die Software ist nicht perfekt. Die Venn-Diagramme sind nicht immer richtig, \
+insbesondere nicht f&uuml;r mehr als 3 Mengen. Meistens, aber nicht immer, kommt dann \
+eine Warnung "WARNING: area ... not represented on screen".))</p></div></div>';
+
+var html_credits = '<p><hr><p><center>\
+Copyright 2022. <a href="https://www.upriss.org.uk">Uta Priss</a>, URL:\
+<a href="https://upriss.github.io/educaJS/">upriss.github.io/educaJS/</a></center>';

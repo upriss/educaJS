@@ -58,6 +58,8 @@ var intersectionArray = [];             // used in venn.min.js
 <input type="hidden" name="style" id="text">
 <input type="hidden" name="style" id="latex">
 
+<div id="credits"></div>
+
 <script>
 // query parameters: lang=en or lang=de and plusVenn=euler or venn
 const params = new URLSearchParams(window.location.search);     // read the query string
@@ -69,27 +71,25 @@ if (params.get('graph')) {                 // read data from URL
 if (params.get('plusVenn') != 'euler' && params.get('plusVenn') != 'venn') {
    if (params.get('lang') == 'de') {
       document.querySelector("#text0").innerHTML='Wahrheitstafel';
+      document.querySelector("#help_text").innerHTML = html_helptext_truthtable_de
+        + html_helptext_truthtable2;
    } else {
       document.querySelector("#text0").innerHTML='Truth Table';
-   }
-  document.querySelector("#help_text").innerHTML = html_helptext_truthtable
+      document.querySelector("#help_text").innerHTML = html_helptext_truthtable
         + html_helptext_truthtable2;
+      document.querySelector("#credits").innerHTML = html_credits;
+   }
 } else {
-  document.querySelector("#help_text").innerHTML = html_helptext_truthtable
+   if (params.get('lang') == 'de') {
+      document.querySelector("#help_text").innerHTML = html_helptext_truthtable_de
+        + html_helptext_vennEuler_de;
+   } else {
+      document.querySelector("#help_text").innerHTML = html_helptext_truthtable
         + html_helptext_vennEuler;
+      document.querySelector("#credits").innerHTML = html_credits;
+   }
 } 
-if (params.get('lang') == 'de') {
-    document.querySelector("#text1").innerHTML='In dem Ausdruck m&uuml;ssen alle Klammern gesetzt werden.<br>F&uuml;r die logischen Operatoren stehen folgende Symbole zur Verf&uuml;gung:';
-    document.querySelector("#text2").innerHTML='Subjunktion';
-    document.querySelector("#text3").innerHTML='Bijunktion';
-    document.querySelector("#text4").innerHTML='(Achtung: die Software ist nicht perfekt. Die Venn-Diagramme sind nicht immer richtig, insbesondere nicht f&uuml;r mehr als 3 Mengen. Meistens, aber nicht immer, kommt dann eine Warnung "WARNING: area ... not represented on screen".)';
-}
 </script>
 
-<p><hr><p>
-<center>
-Copyright 2022. <a href="https://www.upriss.org.uk">Uta Priss</a>, URL:
-<a href="https://upriss.github.io/educaJS/">upriss.github.io/educaJS/</a>
-</center>
 </body>
 </html>
