@@ -54,6 +54,7 @@ function truth_venn (choice,inArea,oldIn,out1) {
    param.outputArea1 = out1;
    createURL();                                         // write current URL to console
    param.outputArea1.value = setlxToBool(param.inputArea);
+   constructJB(); 
    construct(); 
    if (choice == "euler") {
       param.taskType = "boolVenn";
@@ -67,13 +68,18 @@ function truth_venn (choice,inArea,oldIn,out1) {
       const width = svg.attr("width") - margin.left - margin.right;
       const height = svg.attr("height") - margin.top - margin.bottom;
       var g =svg.append("g").attr("transform","translate("+margin.left+","+margin.top+")");
-      if (setArray[setArray.length-1].sets.length <= 3) {
+      let temSet = new Set();
+      for(let el = 0; el < setArray.length; el++) {   // union of all elements
+         temSet = union (temSet,setArray[el].sets);
+      }
+      temSet.delete("U");
+      let temArr = Array.from(temSet);
+      if (temArr.length <= 3) {
           g.append("rect").attr('id','backgr').attr('x',0).attr('y', 0)
            .attr('width', svg.attr("width") - margin.left - margin.right)
            .attr('height', svg.attr("height") - margin.top - margin.bottom)
            .attr('translate',"translate(-"+margin.left+","+margin.top+")");
-          vennDir(setArray[setArray.length-1].sets,intersectionArray,
-              setArray[setArray.length-1].sets.length,g);
+          vennDir(temArr,intersectionArray,temArr.length,g);
       } else {
          d3.selectAll("g").selectAll("*").remove();
          g.append("text").text("This display is only available for 2 or 3 sets")

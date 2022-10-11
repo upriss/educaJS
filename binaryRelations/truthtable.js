@@ -220,6 +220,8 @@ function htmlTable(table,trees,flag,tv,cs) {
 	}
 
 	function mkTDrow(tbl,r) {
+//console.log(JSON.stringify(tbl));
+//console.log(JSON.stringify(mcs));
 		var rw = '<tr>';
 		for(var i=0;i<tbl.length;i++) { // i = table segment
 			for(var j=0;j<tbl[i][r].length;j++) { // r = row, j = cell

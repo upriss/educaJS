@@ -135,7 +135,7 @@ function latexchar(c,tv,cs) {
 /*************************************************************************************/
 
 // main construction function
-function construct() {
+function constructJB() {
 	var formulas = document.getElementById('in').value.replace(/ /g,'');// remove whitespace // already done?
 	if(formulas=='') {return alert("You have to enter a formula.");};	// Leere Formel eingeben
 
@@ -195,7 +195,7 @@ function construct() {
 	}
 
 	var table = mkTable(formulas,trees);
-
+//        originaltable = table;                       // added UP
 	if(full || main) {
 		/** Begin Edit
 		 * 
@@ -213,15 +213,15 @@ function construct() {
 		/**
 		 * End Edit
 		 */
-		document.getElementById('tt').innerHTML = htmltable;
+		document.getElementById('ttJB').innerHTML = htmltable;
 	}
 	else if(text) {
 		var texttable = textTable(table,tv,cs);
-		document.getElementById('tt').innerHTML = '<div class="center"><pre>'+texttable+'</pre></div>';
+		document.getElementById('ttJB').innerHTML = '<div class="center"><pre>'+texttable+'</pre></div>';
 	}
 	else if(latex) {
 		var latextable = latexTable(table,trees,tv,cs);
-		document.getElementById('tt').innerHTML = '<pre>'+latextable+'</pre>';
+		document.getElementById('ttJB').innerHTML = '<pre>'+latextable+'</pre>';
 	}
 }
 
@@ -243,7 +243,7 @@ function htmlTable(table,trees,flag,tv,cs) {
         setArray.push({sets: ['U',table[0][0][i]], size: 12});
         setArray.push({sets: [table[0][0][i]], size: 12});
 //        setArray[i] = {sets: [table[0][0][i]], size: 12};
-    }
+   }
 
 // end of changed code
 
@@ -286,8 +286,9 @@ function htmlTable(table,trees,flag,tv,cs) {
 				/**
 				 * End Edit
 				 */
-
-					rw += '<td class="mc">'+htmlchar(tbl[i][r][j],tv,cs)+'</td>';
+					rw += '<td>'+htmlchar(tbl[i][r][j],tv,cs)+'</td>';
+// UP: coloring red does not work anymore after adding columns for "~"
+//					rw += '<td class="mc">'+htmlchar(tbl[i][r][j],tv,cs)+'</td>';
 
 // following code changed (UP)
    if(tbl[i][r][j] == true){
@@ -334,6 +335,7 @@ function htmlTable(table,trees,flag,tv,cs) {
  * @author JeromB
  */
 var resultColumn = [];
+//var originaltable = [];            // added UP
 
 /**
  * Transforms a truth table provided by mkTable() into a truth table
@@ -343,6 +345,7 @@ var resultColumn = [];
  * @author JeromB
  */
 function transTable(tbl) {
+//console.log(JSON.stringify(tbl));
 	var tblout = [];
 	tblout.push(tbl[0]);	// Appending atmoic values
 	var oppos = getOppos(tbl);	// getting operands with position and priority for every formular entered
@@ -350,6 +353,7 @@ function transTable(tbl) {
 	for (var i = 0; i < oppos.length; i++) {	// Iterating through all formulas
 		while (oppos[i].length != 0) {	// repeat until no operand is left
 			var nextOp = getNextOperand(i, oppos);	// gets the position of the next operand with highest priority
+
 			tblout.push(copyColumn(oppos, i, nextOp, tbl));	// copy part of the table belonging to selected operand
 			oppos[i].splice(nextOp, 1);	// delete entry from oppos
 		}
@@ -369,11 +373,12 @@ function transTable(tbl) {
  */
 function getOppos(tbl) {
 	var oppos = [];
-	// Searching for all operators in Formular
+	// Searching for all operators in Formula
 	for (var i = 1; i < tbl.length; i++) {	// iterations for diffrent formulas
 		var prio = 0;
 		var oArr = [];
-		for (var j = 1; j < tbl[i][0].length; j++) {	// iteration through formular
+//		for (var j = 1; j < tbl[i][0].length; j++) {	// iteration through formula
+		for (var j = 0; j < tbl[i][0].length; j++) {	// changed UP
 			switch(tbl[i][0][j]) {
 				case '(':
 					prio++;
@@ -382,6 +387,7 @@ function getOppos(tbl) {
 					prio--;
 					break;
 				case '&':
+				case '~':                      // UP: was missing
 				case 'v':
 				case '>':
 				case '<>':
@@ -437,13 +443,14 @@ function getNextOperand(i,oppos) {
  * @author JeromB
  */
 function getHeader(tbl, position) {
+
 	var row = [];
 	var rowcount = 0;
 	row[rowcount++] = '';
 	var leftbracket = position - 1;
 	var rightbracket = position + 1;
 	var bracketcounter = 0;
-	if (tbl[leftbracket] == ')') {	// c1
+	if (tbl[leftbracket] == ')') {	// c1, determines how much to include on the left
 		leftbracket--;
 		bracketcounter++;
 		while (bracketcounter != 0) {
@@ -461,14 +468,17 @@ function getHeader(tbl, position) {
 		}
 		leftbracket++;
 	}
-        if (tbl[leftbracket-1] == '~') {
+        while (tbl[leftbracket-1] == '~') {            // UP: because more than 1 possible
                 leftbracket--;
+        }
+        if (tbl[position] == '~') {                    // added UP, nothing left of ~ to include
+                leftbracket++;
         }
 	for (leftbracket; leftbracket < position; leftbracket++) {
 		row[rowcount++] = tbl[leftbracket];
 	}
 	row[rowcount++] = tbl[position];
-	if (tbl[rightbracket] == '~') {
+	while (tbl[rightbracket] == '~') {
 		rightbracket++;
 	}
 	if (tbl[rightbracket] == '(') {	// c2
