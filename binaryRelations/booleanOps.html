@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Boolean Operations</title>
 <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/truthtable.JB.js' type="text/javascript"></script>
+<script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/truthtable.js' type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/d3.v4.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/venn.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/vennDiagram.js"></script>
@@ -38,15 +39,11 @@ var intersectionArray = [];             // used in venn.min.js
 <input type="hidden" id="vFlip" checked="">
 </form>
 </div>
+<div id="ttJB"></div>
 <div id="tt"></div>
 <div id="venn"></div>
 <p>&nbsp;</p>
 <hr>
-
-Leider gibt es im Moment einen Bug, falls ganz links ein ! steht. In dem Fall können Sie
-diesen 
-<a href="https://upriss.github.io/educaJS/binaryRelations/booleanOpsTemp.html?lang=de">Link</a>
-verwenden. Die Tabelle wird dort allerdings etwas anders dargestellt.
 
 <div id="help_text"></div>
 
@@ -67,6 +64,7 @@ verwenden. Die Tabelle wird dort allerdings etwas anders dargestellt.
 
 <script>
 // query parameters: lang=en or lang=de and plusVenn=euler or venn
+document.querySelector("#tt").style.display = 'none';
 const params = new URLSearchParams(window.location.search);     // read the query string
 
 if (params.get('graph')) {                 // read data from URL
