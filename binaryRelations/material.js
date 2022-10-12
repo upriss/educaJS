@@ -63,9 +63,7 @@ var html_helptext_vennEuler = '\
 work consistently.)</p></div></div>';
 
 var html_helptext_vennEuler_de = '\
-<p>(Achtung: die Software ist nicht perfekt. Die Venn-Diagramme sind nicht immer richtig, \
-insbesondere nicht f&uuml;r mehr als 3 Mengen. Meistens, aber nicht immer, kommt dann \
-eine Warnung "WARNING: area ... not represented on screen".))</p></div></div>';
+<p>(Achtung: die Software ist nicht perfekt. Darstellungen von mehr als 3 Mengen funktionieren nicht.))</p></div></div>';
 
 var html_credits = '<p><hr><p><center>\
 Copyright 2022. <a href="https://www.upriss.org.uk">Uta Priss</a>, URL:\
