@@ -5,8 +5,11 @@ const startpnt = 150;
 //const colrs =["#87cefa", "#f5f75c", "#f04f41", "#90ee90", "#c265b4", "#fcad23", 
 //              "#d18956", "#eeffFF", "#777777"];
 
-const colrs = ["#b3dff2", "#faf7a7", "#fab9a7", "#d7ebd5", "#d7cce5", "#f7dd94",
-                "#e7dca5", "#eeCCCC", "#464646"];
+//const colrs = ["#b3dff2", "#faf7a7", "#fab9a7", "#d7ebd5", "#d7cce5", "#f7dd94",
+//                "#e7dca5", "#eeCCCC", "#464646"];
+
+const colrs = ["#eeeeaa", "#eeeeaa", "#eeeeaa", "#eeeeaa", "#eeeeaa", "#eeeeaa", 
+                "#eeeeaa", "#eeeeaa", "#464646"];
 
 function drawCircle(radius,xcenter,ycenter,g) {
         return circle = g.append("circle").attr("r", radius).attr("stroke","black")

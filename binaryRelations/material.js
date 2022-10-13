@@ -63,7 +63,7 @@ var html_helptext_vennEuler = '\
 work consistently.)</p></div></div>';
 
 var html_helptext_vennEuler_de = '\
-<p>(Achtung: die Software ist nicht perfekt. Darstellungen von mehr als 3 Mengen funktionieren nicht.))</p></div></div>';
+<p>Es k&ouml;nnen auch die SetlX-Mengenoperatoren &lt;=, ==, + und * verwendet werden. (Achtung: die Software ist nicht perfekt. Darstellungen von mehr als 3 Mengen funktionieren nicht.)</p></div></div>';
 
 var html_credits = '<p><hr><p><center>\
 Copyright 2022. <a href="https://www.upriss.org.uk">Uta Priss</a>, URL:\

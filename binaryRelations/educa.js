@@ -342,12 +342,16 @@ function drawVennDiagram(setArr,intersArr) {
 //////////////////////////////////////////////////////////////////////
 
 function setlxToBool (inString) { 
-    var _formul = inString.value.replace(/ /g,'');
+    var _formul = inString.value.replace(/ /g,'');   // logical operators
     _formul = _formul.replace(/!/g,'~');
     _formul = _formul.replace(/&&/g,'&');
     _formul = _formul.replace(/\|\|/g,'v');
     _formul = _formul.replace(/<==>/g,'<>');
     _formul = _formul.replace(/=>/g,'>');
+    _formul = _formul.replace(/\*/g,'&');            // set operators
+    _formul = _formul.replace(/\+/g,'v');
+    _formul = _formul.replace(/==/g,'<>');
+    _formul = _formul.replace(/<=/g,'>');
     return _formul;
 }
 
