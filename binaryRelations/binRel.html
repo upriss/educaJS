@@ -80,6 +80,8 @@ if (params.get('lang') == 'de') {                               // German langua
    document.querySelector("#header2").innerHTML='Graph der Relation:';
    document.querySelector("#buttRow").innerHTML='neue Zeile';
    document.querySelector("#buttCol").innerHTML='neue Spalte';
+   document.querySelector("#lsetlabel").innerHTML='Definitionsbereich:';
+   document.querySelector("#rsetlabel").innerHTML='Wertebereich:';
    document.querySelector("#help_text").innerHTML= html_helptext_binRel_de;
 }
 if (params.get('ttype') == 'binRel') {     
@@ -87,6 +89,9 @@ if (params.get('ttype') == 'binRel') {
    if (params.get('rtype') == 'auto') {                         // binRel and auto
       glob_relType = 'auto'; 
       document.querySelector("#lsetlabel").innerHTML='Set:';
+      if (params.get('lang') == 'de') {
+         document.querySelector("#lsetlabel").innerHTML='Menge:';
+      }
       document.querySelector("#rsetlabel").style.display = 'none';
       document.querySelector("#rightset").style.display = 'none';
    } else {                                                     // binRel, but not auto

@@ -10,7 +10,8 @@ const param = {taskType: "",    // bool, boolVenn, binRel, lattice, combin
 
 const main = {objArray: [],
                   attrArray: [],
-                  matrixArray: []};
+                  matrixArray: [],
+	          transMatrixArray: []};
 
 
 //////////////////////////////////////////////////////////////////////
@@ -99,6 +100,10 @@ function combin (taskType,inArea,oldIn,out1,out2) {
 }
 
 function binRel (taskType,inArea,oldIn,outArea,relType,lset,rset,csv) {
+    var tempArray = document.querySelectorAll(".answer_container");  // delete answers
+    for (let elem of tempArray) {
+         elem.innerHTML = "";
+    }
     if (param.inputArea == "") {
         param.taskType = taskType;
         param.inputArea = inArea;
@@ -268,13 +273,25 @@ function examine(property) {
    var answer = "<font size=5 color='green'>&#10004;</font>";
    if (property == 'function') {
      for(let elem of main.matrixArray) {
-        if ((elem.join("").match(/1/g) || []).length > 1 ) {
+        if ((elem.join("").match(/1/g) || []).length != 1)  {
            answer = "<font size=5 color='red'>&#10008;</font>";
            break;
         }
      }
    } else if (property == 'injective') {
-     answer = "todo";
+     for(let elem of main.transMatrixArray) {
+        if ((elem.join("").match(/1/g) || []).length > 1 ) {
+           answer = "<font size=5 color='red'>&#10008;</font>";
+           break;
+        }
+     }
+   } else if (property == 'surjective') {
+     for(let elem of main.transMatrixArray) {
+        if ((elem.join("").match(/1/g) || []).length == 0 ) {
+           answer = "<font size=5 color='red'>&#10008;</font>";
+           break;
+        }
+     }
    }
    document.querySelector("#answer_" + property).innerHTML=answer;
 }
@@ -314,6 +331,8 @@ function showMatrix () {
     main.objArray = objsList;                          // assign return values
     main.attrArray = attrsList;
     main.matrixArray = contextList;
+    main.transMatrixArray = 
+         contextList[0].map((_, colIndex) => contextList.map(row => row[colIndex]));
     return [_result];
 //    return [_result,objsList,attrsList,contextList];
 }

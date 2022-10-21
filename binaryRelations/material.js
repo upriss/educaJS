@@ -14,13 +14,18 @@ can be edited. Rows and columns that contain only 0s are removed from the contex
 
 var html_function= 
 '<button onclick="examine(\'function\');" class="tooltip">Funktion? \
-<span>Für jedes Element des Definitionsbereichs gibt es genau ein Element \
-des Wertebereichs.<br>In der Matrix steht in jeder Zeile maximal eine 1.</span></button> \
+<span>Funktion: Für jedes Element des Definitionsbereichs gibt es genau ein Element \
+des Wertebereichs.<br>In der Matrix steht in jeder Zeile genau eine 1.</span></button> \
 <span class="answer_container" id="answer_function"></span><br> \
 <button onclick="examine(\'injective\');" class="tooltip">injektiv? \
-<span>Verschiedene Elemente des Definitionsbereichs werden auf verschiedene Elemente des \
-Wertebereichs abgebildet.<br>In der Matrix steht in jeder Spalte maximal eine 1.</span></button> \
-<span class="answer_container" id="answer_injective"></span>';
+<span>Injektiv: Verschiedene Elemente des Definitionsbereichs dürfen nicht auf das \
+gleiche Element des Wertebereichs abgebildet werden.<br>In der Matrix steht in jeder \
+Spalte maximal eine 1.</span></button> \
+<span class="answer_container" id="answer_injective"></span><br> \
+<button onclick="examine(\'surjective\');" class="tooltip">surjektiv? \
+<span>Surjektiv: Für jedes Element des Wertebereichs muss es eins im Definitionsbereich \
+geben.<br>In der Matrix steht in jeder Spalte mindestens eine 1.</span></button> \
+<span class="answer_container" id="answer_surjective"></span>';
 
 var html_helptext_lattice = '<div class="tooltip"><p></p><p>\
 How to use this page<div>The lattice display can be moved and scrolled. \
