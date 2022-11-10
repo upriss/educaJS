@@ -1,5 +1,13 @@
 body { font-family: Arial, Helvetica, sans-serif; } 
 
+@media (prefers-color-scheme: dark) { 
+  body{color: white; background: #272727 }
+  hr{color: #B3B3B3}
+  svg{color: black; background: #BBBBBB }
+  textarea{background: #BBBBBB }
+  input{background: #BBBBBB }
+}
+
 h2 { font-size: 1em; }
 
 svg { border: 1px solid #999;  overflow: hidden; }
@@ -22,6 +30,11 @@ table.matrix th.column{ border-bottom: 4px solid black; padding: 5px}
 table.matrix td{ padding: 5px}
 table.matrix { border-collapse: collapse; }
 
+@media (prefers-color-scheme: dark) { 
+      table.matrix th.row { border-right:4px solid white }
+      table.matrix th.column { border-bottom:4px solid white; }
+}
+
 table.truth { border-collapse:collapse;  margin-left:auto;  margin-right:auto;
               margin-top:10px;  margin-bottom:10px; }
 table.truth th { border-bottom:1px solid black;  text-align: center;
@@ -29,6 +42,11 @@ table.truth th { border-bottom:1px solid black;  text-align: center;
 table.truth td { border:0;  padding:.2em; }
 table.truth .dv { border-right:1px solid black; }
 table.truth .mc { color:red; }
+
+@media (prefers-color-scheme: dark) { 
+      table.truth th { border-bottom:1px solid white }
+      table.truth .dv { border-right:1px solid white; }
+}
 
 button { cursor: pointer; margin-left: 5px; margin-top: 5px; }
 button.floating { float: inline-end; }
@@ -49,6 +67,8 @@ div.tooltip div { display: none; }
 div.tooltip:hover div { border: #666 2px solid; padding: 5px 20px 5px 5px;
   display: block; z-index: 100; background: #e3e3e3; left: 100px; margin: 0px;
   width: 800px; position: absolute; bottom: -5px; text-align: left;}
+
+@media (prefers-color-scheme: dark) { div.tooltip:hover div {background: #404040;} }
 
 summary {cursor: pointer;}
 p.clear { clear: left; }
