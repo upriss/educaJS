@@ -1,63 +1,88 @@
+<!DOCTYPE html>
 <html>
 <meta charset="utf-8">
-<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/d3.v4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/graphlib-dot.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/dagre-d3-n.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/combin.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educa.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educaJS.css" />
+<script>
+(function() { 
+    var production = 1;
+    if (production == 0) {
+       document.write('<script src="material.js"><\/script><script src="d3.v4.js"><\/script><script src="graphlib-dot.js"><\/script><script src="dagre-d3-n.js"><\/script><script src="combin.js"><\/script><script src="educa.js"><\/script><link rel="stylesheet" type="text/css" href="educaJS.css" \/>');
+    } else {
+       document.write('<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/material.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/d3.v4.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/graphlib-dot.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/dagre-d3-n.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/combin.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educa.js"><\/script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educaJS.css" \/>');
+    }
+})();
+</script>
+
 <noscript>This webpage needs Javascript!</noscript> 
 <body onLoad="combin('combin',inputArea,oldInputArea,outArea1,outArea3);">
 
-<h2>Kombinatorik</h2>
+<h2 id='header1'>Combinatorics</h2>
 
 <div id ="inArea1">
 <form>
 <input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
-type="text" class="smallInp" name="first" value="3"> Elemente aus
+type="text" class="smallInp" name="first" value="3"> <span id='text1'>elements selected out of</span>
 <input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
-type="text" class="smallInp" name="second" value="4"> Elementen ausw&auml;hlen.
-(Nur kleine Zahlenwerte eingeben!)
-<p>
-Mit Zur&uuml;cklegen:
+type="text" class="smallInp" name="second" value="4"> <span id='text2'>elements. 
+(Only for small values!)
+<p></p>
+With replacement:</span>
 <input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
-type="radio" name="back" checked>Ja
+type="radio" name="back" checked><span id='text3'>yes</span>
 <input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
-type="radio" name="back" >Nein
+type="radio" name="back" ><span id='text4'>no
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Reihenfolge:
+Sequence:</span>
 <input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
-type="radio" name="sequence" checked>Beachten
+type="radio" name="sequence" checked><span id='text5'>matters</span>
 <input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
-type="radio" name="sequence" > Nicht beachten
+type="radio" name="sequence" > <span id='text6'>does not matter</span>
 <p>
 </form>
 </div>
 
-<h2>Anzahl der M&ouml;glichkeiten</h2> 
+<h2 id='header2'>Number of Possibilties</h2> 
 <div id="outArea1"></div>
 <p></p>
 <div style="float:left"> <svg width=400 height=800>  <g/> </svg></div>
 <div style="float:right" id="outArea3"></div>
-<p class='clear'><hr><br>
-<center>
-Copyright 2022. <a href="https://www.upriss.org.uk">Uta Priss</a>, URL:
-<a href="https://upriss.github.io/educaJS/">upriss.github.io/educaJS/</a>
-</center>
-</p>
+<p class='clear'></p>
+
+<div id="credits"></div>
 
 <script>
+const params = new URLSearchParams(window.location.search);     // read the query string
+
 var formFirst = document.querySelector('input[name="first"]');
 var formSecond = document.querySelector('input[name="second"]');
 var formBack = document.querySelector('input[name="back"]');
 var formSequence = document.querySelector('input[name="sequence"]');
 var outArea1 = document.querySelector("#outArea1");
 var outArea3 = document.querySelector("#outArea3");
-
 var inputArea = [formFirst,formSecond,formBack,formSequence];
 var oldInputArea = "none";                        // oldInputAreaValue
-
 setUpZoomSupport();
+
+let choice_lang = params.get('lang');           // en or de
+if (!choice_lang) {choice_lang = 'en';}         // default value: en
+//if (params.get('graph')) {                      // read data from URL
+//   glob_inputArea.value = decodeURIComponent(params.get('graph'));
+//}
+
+if (choice_lang == 'de') {
+  document.querySelector("#header1").innerHTML='Kombinatorik';
+  document.querySelector("#header2").innerHTML='Anzahl der Möglichkeiten';
+  document.querySelector("#text1").innerHTML='Elemente aus';
+  document.querySelector("#text2").innerHTML='Elementen ausw&auml;hlen. (Nur kleine Zahlenwerte eingeben!) <p></p> Mit Zur&uuml;cklegen:</span>';
+  document.querySelector("#text3").innerHTML='Ja';
+  document.querySelector("#text4").innerHTML='Nein&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reihenfolge:</span>';
+  document.querySelector("#text5").innerHTML='Beachten';
+  document.querySelector("#text6").innerHTML='Nicht beachten';
+}
+
+if (choice_lang != 'de') {
+   document.querySelector("#credits").innerHTML = html_credits;
+}
+
 </script>
 </body>
 </html>

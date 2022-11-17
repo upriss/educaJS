@@ -1,16 +1,16 @@
-var html_function_old = 
-'<button id="buttFunc" onclick="examine(\'function\');">Funktion?</button> \
-<a href="help_texts.html?Funktion" target="_blank" class="button">i</a> \
-<span class="answer_container" id="answer_function"></span><br> \
-<button id="buttFunc" onclick="examine(\'injective\');">injektiv?</button> \
-<a href="help_texts.html?injektiv" target="_blank" class="button">i</a> \
-<span class="answer_container" id="answer_injective"></span>';
+// var html_function_old = 
+// '<button id="buttFunc" onclick="examine(\'function\');">Funktion?</button> \
+// <a href="help_texts.html?Funktion" target="_blank" class="button">i</a> \
+// <span class="answer_container" id="answer_function"></span><br> \
+// <button id="buttFunc" onclick="examine(\'injective\');">injektiv?</button> \
+// <a href="help_texts.html?injektiv" target="_blank" class="button">i</a> \
+// <span class="answer_container" id="answer_injective"></span>';
 
-var html_helptext1_old = '<div class="style_container"><p>&nbsp;</p><p><details> \
-<summary>How to use this page:</summary>The lattice display can be moved and scrolled. \
-Clicking on the 0s and 1s of the context changes the values. The names in the context \
-can be edited. Rows and columns that contain only 0s are removed from the context.  \
-</details></p></div>';
+// var html_helptext1_old = '<div class="style_container"><p>&nbsp;</p><p><details> \
+// <summary>How to use this page:</summary>The lattice display can be moved and scrolled. \
+// Clicking on the 0s and 1s of the context changes the values. The names in the context \
+// can be edited. Rows and columns that contain only 0s are removed from the context.  \
+// </details></p></div>';
 
 var html_function= 
 '<button onclick="examine(\'function\');" class="tooltip">Funktion? \
