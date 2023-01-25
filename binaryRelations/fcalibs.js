@@ -90,7 +90,6 @@ function ganter (crosstable,anzM,anzG) {
 }
 
 function createRel (intArray) {
-
     var anzCpt = intArray.length;
     var rank = [];
     var temp = [];

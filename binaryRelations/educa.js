@@ -54,7 +54,7 @@ function truth_venn (choice,inArea,oldIn,out1) {
    param.oldInputAreaValue = oldIn;
    param.outputArea1 = out1;
    createURL();                                         // write current URL to console
-   param.outputArea1.value = setlxToBool(param.inputArea);
+   param.outputArea1.value = setlxToBool(param.inputArea.value);
    constructJB(); 
    construct(); 
    if (choice == "euler") {
@@ -71,7 +71,7 @@ function truth_venn (choice,inArea,oldIn,out1) {
       var g =svg.append("g").attr("transform","translate("+margin.left+","+margin.top+")");
       let temSet = new Set();
       for(let el = 0; el < setArray.length; el++) {   // union of all elements
-         temSet = union (temSet,setArray[el].sets);
+         temSet = unionSet (temSet,setArray[el].sets);
       }
       temSet.delete("U");
       let temArr = Array.from(temSet);
@@ -114,6 +114,7 @@ function binRel (taskType,inArea,oldIn,outArea,relType,lset,rset,csv) {
         param.rightset = rset;
         param.csv = csv;
     }
+
     createURL();                                         // write current URL to console
     param.outputArea.innerHTML = showMatrix();
     var oList = main.objArray;
@@ -218,56 +219,8 @@ function drawRelationGraph (data) {
 }
 
 //////////////////////////////////////////////////////////////////////
-//// events/buttons somewhere -> change inputArea, then call binRel
+//// examine -> set answer
 //////////////////////////////////////////////////////////////////////
-
-function ctxtNewCellVal(id,obj,attr) {               // click on value in matrix
-   if (document.getElementById(id).innerHTML == 0) {
-      document.getElementById(id).innerHTML = 1;
-      if (param.inputArea.value.match(/\{\}/)) {
-	  param.inputArea.value = '{['+obj+','+attr+']}'; 
-      } else {
-        param.inputArea.value=param.inputArea.value.replace(/\]\}/,'], ['+obj+','+attr+']}');
-      }
-   } else {
-      document.getElementById(id).innerHTML = 0;
-      let replstring = "\\[\\s*" + obj + "\\s*,\\s*" + attr  + "\\s*\\]\\s*";
-      let re1 = new RegExp(replstring,"g");
-      param.inputArea.value = param.inputArea.value.replace(re1,'');
-      param.inputArea.value = param.inputArea.value.replace(/,\s*,/,',');
-      param.inputArea.value = param.inputArea.value.replace(/,\s*}/,'}');
-      param.inputArea.value = param.inputArea.value.replace(/{\s*,\s*/,'{');
-   }
-   binRel();
-};
-
-function ctxtNewObjVal(val,obj) {                    // change name of object in matrix
-   val = val.replace(/ /g,'_');
-   let re1 = new RegExp("\\[" + obj + ",",'g');
-   param.inputArea.value = param.inputArea.value.replace(re1,'[' + val + ',');
-   binRel();
-};
-
-function ctxtNewAttrVal(val,attr) {                  // change name of attribute in matrix
-   val = val.replace(/ /g,'_');
-   let re1 = new RegExp("," + attr + "\\]",'g');
-   param.inputArea.value = param.inputArea.value.replace(re1,',' + val + ']');
-   binRel();
-};
-
-function addColumn() {                               // button next to matrix
-   let re1 = new RegExp("\\[(.*?),(.*?)\\]");
-   let rannr = Math.floor(Math.random() * 1000);
-   param.inputArea.value = param.inputArea.value.replace(re1,'[$1,$2], [$1,new'+rannr+']');
-   binRel();
-}
-
-function addRow() {                                  // button next to matrix
-   let re1 = new RegExp("\\[(.*?),(.*?)\\]");
-   let rannr = Math.floor(Math.random() * 1000);
-   param.inputArea.value = param.inputArea.value.replace(re1,'[$1,$2], [new'+rannr+',$2]');
-   binRel();
-}
 
 function examine(property) {
    var answer = "<font size=5 color='green'>&#10004;</font>";
@@ -315,7 +268,7 @@ function showMatrix () {
     objsList.sort();
     attrsList.sort();
 
-    var objUnionAtt = union(objs,attrs);               // union of objects and attributes
+    var objUnionAtt = unionSet(objs,attrs);            // union of objects and attributes
     var objUnionAttList = Array.from(objUnionAtt);
     objUnionAttList.sort();
 
@@ -361,7 +314,7 @@ function drawVennDiagram(setArr,intersArr) {
 //////////////////////////////////////////////////////////////////////
 
 function setlxToBool (inString) { 
-    var _formul = inString.value.replace(/ /g,'');   // logical operators
+    var _formul = inString.replace(/ /g,'');         // logical operators
     _formul = _formul.replace(/!/g,'~');
     _formul = _formul.replace(/&&/g,'&');
     _formul = _formul.replace(/\|\|/g,'v');
@@ -404,35 +357,6 @@ function stringToSet (myString,myType) {
 }
 
 //////////////////////////////////////////////////////////////////////
-//// set operation
-//////////////////////////////////////////////////////////////////////
-function eqSet (setA, setB) {
-    if (setA.size !== setB.size) return false;
-    for (let a of setA) if (!setB.has(a)) return false;
-    return true;
-}
-
-//////////////////////////////////////////////////////////////////////
-//// set operation
-//////////////////////////////////////////////////////////////////////
-function union (setA, setB) {
-    let _union = new Set(setA);
-    for (let elem of setB) { _union.add(elem) }
-    return _union;
-}
-
-//////////////////////////////////////////////////////////////////////
-//// set operation
-//////////////////////////////////////////////////////////////////////
-function intersection (setA, setB) {
-    let _intersection = new Set();
-    for (let elem of setB) {
-        if (setA.has(elem)) { _intersection.add(elem) }
-    }
-    return _intersection;
-}
-
-//////////////////////////////////////////////////////////////////////
 //// create context as an object
 //////////////////////////////////////////////////////////////////////
 function contextJSObject (myList1, myList2) {
@@ -461,37 +385,5 @@ function contextArray (myObjs, myAttrs, myContext) {
 	}
     }
     return _ctxtList;
-}
-
-//////////////////////////////////////////////////////////////////////
-//// returns HTML formatting of a context with lists of objs, attrs and context
-//////////////////////////////////////////////////////////////////////
-function displayTableHTML(myObjs, myAttrs, myArray) {
-
-    var _result = "<table class='matrix'>";
-    _result += "<tr><th class='row column'></th>";
-    for(var j=0; j<myAttrs.length; j++){
-        _result += "<th class='column' >";
-        _result += "<input type='text' id='c_at_"+j+"' size='3' value='" + myAttrs[j] +"'";
-        _result += "onchange=\"ctxtNewAttrVal(this.value,'" + myAttrs[j] + "');\"";
-        _result += " style='cursor: pointer;'></input></th>";
-    }
-    _result += "</tr>";
-    for(var i=0; i<myArray.length; i++) {
-        _result += "<tr>";
-        _result += "<th class='row'>";
-	_result += "<input type='text' id='c_ob_"+i+"' size='3' value='" + myObjs[i] +"'";
-        _result += "onchange=\"ctxtNewObjVal(this.value,'" + myObjs[i] + "');\"";
-        _result += " style='cursor: pointer;'></input></th>";
-        for(var j=0; j<myArray[i].length; j++){
-            _result += "<td id='cell_"+i+"_" + j;
-            _result += "' onclick=\"ctxtNewCellVal(this.id,'";
-            _result += myObjs[i] + "','" + myAttrs[j] + "');\"";
-            _result += " style='cursor: pointer;' >" + myArray[i][j] + "</td>";
-        }
-        _result += "</tr>";
-    }
-    _result += "</table>";
-    return _result;
 }
 

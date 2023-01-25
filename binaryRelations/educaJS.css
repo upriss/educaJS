@@ -24,6 +24,9 @@ label { margin-top: 1em;  display: block; }
 
 input.setInput { width: 25%; }
 input.smallInp { width : 30px }
+input.attrHeader { width : 75px; cursor: pointer; }   /* HTML table */
+input.objHeader { width : 75px; cursor: pointer;  }   /* HTML table */
+td.tableCell { cursor: pointer;  }                    /* HTML table */
 
 table.matrix th.row{ border-right: 4px solid black; padding: 5px}
 table.matrix th.column{ border-bottom: 4px solid black; padding: 5px}
