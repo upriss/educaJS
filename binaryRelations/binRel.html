@@ -2,13 +2,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/d3.v4.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/graphlib-dot.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/dagre-d3-n.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/fcalibs.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/material.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educa.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educaJS.css" />
+<script>
+(function() { 
+    var production = 1;
+    if (production == 0) {
+       document.write('<script src="material.js"><\/script><script src="d3.v4.js"><\/script><script src="graphlib-dot.js"><\/script><script src="dagre-d3-n.js"><\/script><script src="setAndMatrixlibs.js"><\/script><script src="fcalibs.js"><\/script><script src="educa.js"><\/script><link rel="stylesheet" type="text/css" href="educaJS.css" \/>');
+    } else {
+       document.write('<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/material.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/d3.v4.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/graphlib-dot.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/dagre-d3-n.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/setAndMatrixlibs.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/fcalibs.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educa.js"><\/script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educaJS.css" \/>');
+    }
+})();
+</script>
+
 <noscript>This webpage needs Javascript!</noscript>
 </head>
 <body onLoad="binRel(glob_taskType,glob_inputArea,glob_oldInputAreaValue,glob_outArea2,glob_relType,glob_leftset,glob_rightset,glob_csv);">
@@ -39,12 +43,6 @@
 
 <h2 id='header3'>Matrix:</h2>
 
-<div class='style_container'>
-<button class='floating' id='buttCol' onclick="addRowCol('col')">Add column</button>
-<div style="float: right;"></div>
-<button class='floating' id='buttRow' onclick="addRowCol('row')">Add row</button>
-</div>
-
 <div id="outArea2"></div>
 
 <div id="help_text"></div>
@@ -52,32 +50,27 @@
 <div id="credits"></div>
 
 <script>
-// query parameters: lang=en or lang=de  
-//                   ttype=binRel or ttype=lattice or ttype=fca   -> changes taskType
-//                   rtype=auto or rtype=fca (only for lattice)   -> sets relType for auto 
-//                   graph
-//                   csv=yes
-// undef is lang=en, ttype=binRel, rtype="", graph="", csv=""
-
 const params = new URLSearchParams(window.location.search);     // read the query string
-var glob_taskType = 'binRel';
 var glob_outArea2 = document.querySelector("#outArea2");
 var glob_inputArea = document.querySelector("#inputArea");
 var glob_oldInputAreaValue;
-var glob_relType = '';
 var glob_leftset = document.querySelector("#leftset");
 var glob_rightset = document.querySelector("#rightset");
-var glob_csv = '';
 setUpZoomSupport();
 
-if (params.get('graph')) {                                      // read data from URL
+let choice_lang = params.get('lang');           // en or de  
+if (!choice_lang) {choice_lang = 'en';}         // default value: en
+var glob_csv = params.get('csv');               // null or yes, input csv (with |, \n)
+var glob_taskType = params.get('ttype');        // binRel or lattice -> changes taskType
+if (!glob_taskType) {glob_taskType = 'binRel';} // default value: binRel
+var glob_relType = params.get('rtype'); // auto (passed on) or fca (only for html/lattice)
+
+if (params.get('graph')) {                      // read data from URL
    glob_inputArea.value = decodeURIComponent(params.get('graph'));
 }
-if (params.get('csv') == 'yes') {                               // input csv (with |, \n)
-   glob_csv = 'yes';
-}
+
 document.querySelector("#help_text").innerHTML= html_helptext_binRel;
-if (params.get('lang') == 'de') {                               // German language
+if (choice_lang == 'de') {                                      // German language
    document.querySelector("#header1").innerHTML='Geben Sie eine bin&auml;re Relation ein:';
    document.querySelector("#header2").innerHTML='Graph der Relation:';
    document.querySelector("#buttRow").innerHTML='neue Zeile';
@@ -86,27 +79,24 @@ if (params.get('lang') == 'de') {                               // German langua
    document.querySelector("#rsetlabel").innerHTML='Wertebereich:';
    document.querySelector("#help_text").innerHTML= html_helptext_binRel_de;
 }
-if (params.get('ttype') == 'binRel') {     
-   glob_taskType = 'binRel'; 
-   if (params.get('rtype') == 'auto') {                         // binRel and auto
-      glob_relType = 'auto'; 
+if (glob_taskType == 'binRel') {     
+   if (glob_relType == 'auto') {                                // binRel and auto
       document.querySelector("#lsetlabel").innerHTML='Set:';
-      if (params.get('lang') == 'de') {
+      if (choice_lang == 'de') {
          document.querySelector("#lsetlabel").innerHTML='Menge:';
       }
       document.querySelector("#rsetlabel").style.display = 'none';
       document.querySelector("#rightset").style.display = 'none';
    } else {                                                     // binRel, but not auto
+      glob_relType = ''; 
       document.querySelector("#container1").innerHTML = html_function;
    }
-} else if (params.get('ttype') == 'lattice') {                  // lattice, but not fca
-   glob_relType = '';
-   glob_taskType = 'lattice'; 
+} else if (glob_taskType == 'lattice') {                        // lattice, but not fca
    document.querySelector("#header2").innerHTML='Lattice:';
-   if (params.get('lang') == 'de') {
+   if (choice_lang == 'de') {
       document.querySelector("#header2").innerHTML='Verband:';
    }
-   if (params.get('rtype') == 'fca') {                          // fca, only in English
+   if (glob_relType == 'fca') {                                 // fca, only in English
       document.querySelector("#header3").innerHTML='Formal Context:';
       document.querySelector("#header1").style.display = 'none';
       document.querySelector("#inputArea").style.display = 'none';
@@ -116,8 +106,9 @@ if (params.get('ttype') == 'binRel') {
       document.querySelector("#rsetlabel").innerHTML='Attributes:';
       document.querySelector("#help_text").innerHTML= html_helptext_lattice;
    }
+   glob_relType = '';
 }
-if (params.get('lang') != 'de') {
+if (choice_lang != 'de') {
    document.querySelector("#credits").innerHTML = html_credits;
 }
 </script>
