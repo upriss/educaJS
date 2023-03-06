@@ -49,16 +49,16 @@ werden aus der Relation gelöscht.\
 var html_helptext_truthtable = '<div class="tooltip"><p></p><p>\
 How to use this page<div>\
 Operator precedence is not automatically provided (brackets are needed). <br>\
-For negation enter !, &nbsp; for OR: ||, &nbsp; for AND: &&, &nbsp;\
-for conditional: =>, &nbsp; for biconditional: <==> <br>\
-for 0 enter: x && !x, &nbsp; for 1 enter: x || !x';
+For negation enter: not, &nbsp; for OR: or, &nbsp; for AND: and, &nbsp;\
+for conditional: -s>>, &nbsp; for biconditional: == <br>\
+for 0 enter: x and not x, &nbsp; for 1 enter: x or not x';
 
 var html_helptext_truthtable_de = '<div class="tooltip"><p></p><p>\
 Benutzungshinweise<div>\
 Alle Klammern m&uuml;ssen gesetzt werden. <br>\
-F&uuml;r Negation verwenden Sie !, &nbsp; f&uuml;r OR: ||, &nbsp; f&uuml;r AND: &&, &nbsp;\
-f&uuml;r Subjunktion: =>, &nbsp; f&uuml;r Bijunktion: <==> <br>\
-f&uuml;r 0: x && !x, &nbsp; f&uuml;r 1: x || !x';
+F&uuml;r Negation verwenden Sie: not, &nbsp; f&uuml;r OR: or, &nbsp; f&uuml;r AND: and, &nbsp;\
+f&uuml;r Subjunktion: -s>>, &nbsp; f&uuml;r Bijunktion: == <br>\
+f&uuml;r 0: x and not x, &nbsp; f&uuml;r 1: x or not x';
 
 
 var html_helptext_truthtable2 = '</div></div>';
