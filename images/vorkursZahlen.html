@@ -1,0 +1,58 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Questions</title>
+<script src="examin.js" type="text/javascript"></script>
+<noscript>This webpage needs Javascript!</noscript></head>
+<body>
+
+<script>var solutions ={'vorkursZahlen_1_0': 'cmF0aW9uYWxlIFphaGxlbg==', 'vorkursZahlen_1_1': 'cmVlbGxlIFphaGxlbg==', 'vorkursZahlen_1_2': 'bmF0w7xybGljaGUgWmFobGVu', 'vorkursZahlen_1_3': 'Z2FuemUgWmFobGVu', 'vorkursZahlen_1_4': 'a29tcGxleGUgWmFobGVu'}</script>
+
+<form id = "vorkursZahlen_1"><strong>Symbole</strong><br>
+ Ordnen Sie diesen Symbole ihre Bedeutungen zu
+<p>ℚ &nbsp;&nbsp;
+<select id="vorkursZahlen_1_0">
+<option disabled selected value> -- auswählen -- </option>
+<option value="ganze Zahlen">ganze Zahlen</option>
+<option value="rationale Zahlen">rationale Zahlen</option>
+<option value="reelle Zahlen">reelle Zahlen</option>
+<option value="natürliche Zahlen">natürliche Zahlen</option>
+<option value="komplexe Zahlen">komplexe Zahlen</option></select>&nbsp;<span id="vorkursZahlen_1_0_ans"></span><p>
+ℝ &nbsp;&nbsp;
+<select id="vorkursZahlen_1_1">
+<option disabled selected value> -- auswählen -- </option>
+<option value="ganze Zahlen">ganze Zahlen</option>
+<option value="rationale Zahlen">rationale Zahlen</option>
+<option value="reelle Zahlen">reelle Zahlen</option>
+<option value="natürliche Zahlen">natürliche Zahlen</option>
+<option value="komplexe Zahlen">komplexe Zahlen</option></select>&nbsp;<span id="vorkursZahlen_1_1_ans"></span><p>
+ℕ &nbsp;&nbsp;
+<select id="vorkursZahlen_1_2">
+<option disabled selected value> -- auswählen -- </option>
+<option value="ganze Zahlen">ganze Zahlen</option>
+<option value="rationale Zahlen">rationale Zahlen</option>
+<option value="reelle Zahlen">reelle Zahlen</option>
+<option value="natürliche Zahlen">natürliche Zahlen</option>
+<option value="komplexe Zahlen">komplexe Zahlen</option></select>&nbsp;<span id="vorkursZahlen_1_2_ans"></span><p>
+ℤ &nbsp;&nbsp;
+<select id="vorkursZahlen_1_3">
+<option disabled selected value> -- auswählen -- </option>
+<option value="ganze Zahlen">ganze Zahlen</option>
+<option value="rationale Zahlen">rationale Zahlen</option>
+<option value="reelle Zahlen">reelle Zahlen</option>
+<option value="natürliche Zahlen">natürliche Zahlen</option>
+<option value="komplexe Zahlen">komplexe Zahlen</option></select>&nbsp;<span id="vorkursZahlen_1_3_ans"></span><p>
+ℂ &nbsp;&nbsp;
+<select id="vorkursZahlen_1_4">
+<option disabled selected value> -- auswählen -- </option>
+<option value="ganze Zahlen">ganze Zahlen</option>
+<option value="rationale Zahlen">rationale Zahlen</option>
+<option value="reelle Zahlen">reelle Zahlen</option>
+<option value="natürliche Zahlen">natürliche Zahlen</option>
+<option value="komplexe Zahlen">komplexe Zahlen</option></select>&nbsp;<span id="vorkursZahlen_1_4_ans"></span><p>
+<p><input type="button" value="check" onclick="examine('vorkursZahlen_1')"></form><script>document.getElementById("vorkursZahlen_1").reset();</script><script>
+const params = new URLSearchParams(window.location.search);
+let choice = params.get('choice');
+forms = document.getElementsByTagName("form");
+for (i = 0; i < forms.length ;i++) {
+   if (choice && forms[i].id != "vorkursZahlen_" + choice) {document.querySelector('#'+forms[i].id).style.display = 'none';}}</script>
+</body></html> 
