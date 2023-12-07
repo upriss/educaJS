@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabulator Example</title>
+    <link href="utils/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="utils/tabulator.min.js"></script>
+                                             
+<style>
+.tabulator { font-size: 5vw; }   /* responsive font */
+button {font-size: 5vw; }
+body { font-size: 5vw; }
+</style>
+</head>
+
+<body>
+<div id="groupSet1"></div>
+<button id="checkClosed">Abgeschlossen</button><span id="closed"></span>
+<button id="checkNeutr">Neutrales Element</button><span id="neutr"></span>
+<button id="checkInverse">Inverse Elemente</button><span id="inverse"></span>
+<button id="checkCommut">Kommutativ</button><span id="commutative"></span>
+<p></p>
+<center><div id="grouptable1"></div></center>
+
+    <script type="text/javascript">
+      var Grundmenge = new Set();
+      const TrueSymbol = "<font size=7vw color='green'>&#10004;</font>";
+      const FalseSymbol = "<font size=7vw color='red'>&#10008;</font>";
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('example') == "1") {    
+        var tabledata1 = [{
+            id: 1,  elements: "a", a: "a",  b: "b", c: "c", d: "d" }, 
+	  { id: 2,  elements: "b", a: "b",  b: "c", c: "d", d: "e" }, 
+	  { id: 3,  elements: "c", a: "c",  b: "d", c: "e", d: "b" }, 
+	  { id: 4,  elements: "d", a: "d",  b: "e", c: "b", d: "c" }, 
+        ];
+      } else if (params.get('example') == "2") {
+        var tabledata1 = [{
+            id: 1,  elements: "a", a: "a",  b: "a", c: "a", d: "a" }, 
+	  { id: 2,  elements: "b", a: "b",  b: "c", c: "d", d: "a" }, 
+	  { id: 3,  elements: "c", a: "c",  b: "d", c: "a", d: "b" }, 
+	  { id: 4,  elements: "d", a: "d",  b: "a", c: "b", d: "c" }, 
+        ];
+      } else if (params.get('example') == "3") {
+        var tabledata1 = [{
+            id: 1,  elements: "a", a: "a",  b: "b", c: "c", d: "d" }, 
+	  { id: 2,  elements: "b", a: "b",  b: "c", c: "d", d: "a" }, 
+	  { id: 3,  elements: "c", a: "c",  b: "d", c: "d", d: "b" }, 
+	  { id: 4,  elements: "d", a: "d",  b: "d", c: "b", d: "c" }, 
+        ];
+      } else if (params.get('example') == "4") {
+        var tabledata1 = [{
+            id:1, elements:"a", a:"a",  b:"b", c:"c", d:"d", e:"e", f:"f" }, 
+	  { id:2, elements:"b", a:"b",  b:"c", c:"a", d:"f", e:"d", f:"e" }, 
+	  { id:3, elements:"c", a:"c",  b:"a", c:"b", d:"e", e:"f", f:"d" }, 
+	  { id:4, elements:"d", a:"d",  b:"e", c:"f", d:"a", e:"b", f:"c" }, 
+	  { id:5, elements:"e", a:"e",  b:"f", c:"d", d:"c", e:"a", f:"b" }, 
+	  { id:6, elements:"f", a:"f",  b:"d", c:"e", d:"b", e:"c", f:"a" }, 
+        ];
+      } 
+
+    var table1 = new Tabulator("#grouptable1", {
+      data: tabledata1, layout: "fitDataTable", movableColumns: true,
+      movableRows: true, resizableColumnFit:true, 
+      columns: [{
+       title: "+", field: "elements", editor: "input", frozen:true
+        }, {
+       title: "a", field: "a", headerSort: false, hozAlign: "center", 
+       editor: "list", editorParams:{
+       values:{"a": "a","b": "b","c": "c","d": "d", "e": "e", "f": "f"}}
+        }, {
+       title: "b", field: "b", headerSort: false, hozAlign: "center", 
+       editor: "list", editorParams:{
+       values:{"a": "a","b": "b","c": "c","d": "d", "e": "e", "f": "f"}}
+        }, {
+       title: "c", field: "c", headerSort: false, hozAlign: "center", 
+       editor: "list", editorParams:{
+       values:{"a": "a","b": "b","c": "c","d": "d", "e": "e", "f": "f"}}
+        }, {
+       title: "d", field: "d", headerSort: false, hozAlign: "center", 
+       editor: "list", editorParams:{
+       values:{"a": "a","b": "b","c": "c","d": "d", "e": "e", "f": "f"}}
+        }]
+     })
+
+    if (params.get('example') == "4") {
+    var table1 = new Tabulator("#grouptable1", {
+      data: tabledata1, layout: "fitDataTable", movableColumns: true,
+      movableRows: true, resizableColumnFit:true, 
+      columns: [{
+       title: "+", field: "elements", editor: "input", frozen:true
+        }, {
+       title: "a", field: "a", headerSort: false, hozAlign: "center", 
+       editor: "list", editorParams:{
+       values:{"a": "a","b": "b","c": "c","d": "d", "e": "e", "f": "f"}}
+        }, {
+       title: "b", field: "b", headerSort: false, hozAlign: "center", 
+       editor: "list", editorParams:{
+       values:{"a": "a","b": "b","c": "c","d": "d", "e": "e", "f": "f"}}
+        }, {
+       title: "c", field: "c", headerSort: false, hozAlign: "center", 
+       editor: "list", editorParams:{
+       values:{"a": "a","b": "b","c": "c","d": "d", "e": "e", "f": "f"}}
+        }, {
+       title: "d", field: "d", headerSort: false, hozAlign: "center", 
+       editor: "list", editorParams:{
+       values:{"a": "a","b": "b","c": "c","d": "d", "e": "e", "f": "f"}}
+        }, {
+       title: "e", field: "e", headerSort: false, hozAlign: "center", 
+       editor: "list", editorParams:{
+       values:{"a": "a","b": "b","c": "c","d": "d", "e": "e", "f": "f"}}
+        }, {
+       title: "f", field: "f", headerSort: false, hozAlign: "center", 
+       editor: "list", editorParams:{
+       values:{"a": "a","b": "b","c": "c","d": "d", "e": "e", "f": "f"}}
+        }]
+     })
+    }
+
+    table1.on("tableBuilt", function(){
+       for (let c_row of table1.getData()){
+          Grundmenge.add(c_row.elements);
+       }
+       document.getElementById("groupSet1").innerHTML = 
+         "Menge: {" + Array.from(Grundmenge) + "}";
+    });
+
+    document.getElementById("checkClosed").addEventListener("click", function(){
+       let flag = TrueSymbol;
+       for (let c_row of table1.getData()){
+          for (let c_col of table1.getColumnDefinitions()) {   // for each column
+             if (c_col.field != 'elements') {                  // but not the first
+                 if (typeof c_row[c_col.field]!=='undefined' && 
+                     !(Grundmenge.has(c_row[c_col.field]))){   // element not in set
+                     flag = FalseSymbol;
+                 }
+             }
+          }
+       }
+       document.getElementById("closed").innerHTML = flag;
+    });
+
+    function extractData (tabledata,tablecols) {
+        let resultSet = new Set();
+        for (let c_row of tabledata){                   // for each row
+            for (let c_col of tablecols) {              // for each column
+                if (c_col.field != 'elements') { 
+                    resultSet.add(c_row.elements+","+c_col.field+","+c_row[c_col.field]);
+                }
+            }
+        }
+        return resultSet
+    }
+
+    document.getElementById("checkNeutr").addEventListener("click", function(){
+       let n_elem = prompt("Geben Sie das neutrale Element ein:")
+       let tempSet = new Set();
+       let flag = TrueSymbol;
+       tempSet = extractData (table1.getData(),table1.getColumnDefinitions());
+       for (let elem of Grundmenge) {
+          if (!(tempSet.has(elem+","+n_elem+","+elem))) { flag = FalseSymbol; }
+          if (!(tempSet.has(n_elem+","+elem+","+elem))) {  flag = FalseSymbol; }
+       }
+       document.getElementById("neutr").innerHTML = flag;
+    });
+
+    document.getElementById("checkInverse").addEventListener("click", function(){
+       let n_elem = prompt("Geben Sie das neutrale Element ein:")
+       let tempFlag;
+       let flag = TrueSymbol;
+       tempSet = extractData (table1.getData(),table1.getColumnDefinitions());
+       for (let elem1 of Grundmenge) {
+           tempFlag = 0;
+           for (let elem2 of Grundmenge) {
+               if (tempSet.has(elem1+","+elem2+","+n_elem)) { tempFlag += 1; }
+           }
+           if (tempFlag == 0 || tempFlag > 1) { flag = FalseSymbol; }
+       }
+       for (let elem1 of Grundmenge) {
+           tempFlag = 0;
+           for (let elem2 of Grundmenge) {
+               if (tempSet.has(elem2+","+elem1+","+n_elem)) { tempFlag += 1; }
+           }
+           if (tempFlag == 0 || tempFlag > 1) { flag = FalseSymbol; }
+       }
+       document.getElementById("inverse").innerHTML = flag;
+    });
+
+    document.getElementById("checkCommut").addEventListener("click", function(){
+       let tempString;
+       let flag = TrueSymbol;
+       tempSet = extractData (table1.getData(),table1.getColumnDefinitions());
+       for (let elem1 of tempSet) {
+          tempString = elem1.split(",");
+          if (!(tempSet.has(tempString[1]+","+tempString[0]+","+tempString[2]))) {
+              flag = FalseSymbol;
+          }
+       }
+       document.getElementById("commutative").innerHTML = flag;
+    });
+    </script>
+</body>
+</html>
+

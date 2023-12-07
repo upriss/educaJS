@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Gruppen</title>
+<link href="utils/impressPresentation.css" rel="stylesheet" />
+</head>
+<body class="impress-not-supported">
+<div class="fallback-message">
+<p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+<p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser with Javascript turned on.</p>
+</div>
+
+<!-- Some images that are fixed to background in the css 
+<img id="image1" class="bg" src="images/6296334551_b3d5c27823_b.png">
+<img id="image2" class="bg" src="images/35535918670_f1d12627ff_o.png">
+<img id="image3" class="bg" src="images/6636957665_5e7c4a79de_o.png">
+-->
+
+<div id="impress" data-transition-duration="1000">
+
+<div title="Themen"
+     id="contents" class="step" data-rel-x="0" data-rel-y="1200" data-scale="1">
+
+<h1>Algebraische Strukturen</h1>
+
+Klausurrelevante Themen:
+<ul>
+<li>Gruppeneigenschaften kennen und identifizieren können
+<li>Gruppentafeln lesen und vervollständigen können
+</ul>
+</div>
+
+<div title="Gruppeneigenschaften" id="topleft" class="step" data-x="2000" data-y="2000"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="contents middleleft contents topmiddle">
+
+<h1>Gruppeneigenschaften</h1>
+
+<p>
+Eine Menge mit einer binären Operation, die die folgenden Eigenschaften erfüllt
+
+<ul>
+<li><b>abgeschlossen</b>
+<li><b>assoziativ</b>
+<li><b>neutrales Element</b>
+<li><b>inverse Elemente</b>
+</ul>
+
+ist eine Gruppe.</p>
+
+<p>Wenn die Gruppe außerdem noch <b>kommutativ</b> ist, wird sie
+<b>kommutative</b> oder <b>abelsche</b> Gruppe genannt.</p>
+
+</div>
+
+<div title="Abgeschlossen" id="middleleft" class="step" data-rel-x="0" data-rel-y="1200"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="topleft bottomleft topright middlemiddle">
+
+<h1>Abgeschlossen</h1>
+
+<p>Eine Menge G mit einer Operation ⋆ ist <b>abgeschlossen</b>, wenn<br>
+für alle Elemente a, b ∈ G gilt: a ⋆ b ∈ G.</p>
+
+<iframe src="../binaryRelations/group1.html?example=1" width='100%' height='90%'></iframe>
+
+</div>
+
+<div title="Assoziativ" id="bottomleft" class="step" data-rel-x="0" data-rel-y="1200"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="middleleft topmiddle middleright bottommiddle">
+
+<h1>Assoziativ</h1>
+
+<p>Eine Menge G mit einer Operation ⋆ ist <b>assoziativ</b>, wenn<br>
+für alle a, b, c ∈ G gilt: a⋆(b⋆c) = (a⋆b)⋆c.</p>
+
+<p>&nbsp;</p>
+
+<p>Das kann man nicht an der Gruppetafel sehen. Man muss alle Tripel
+überprüfen. Allerdings folgt aus der Assoziativität die Sudoku-Eigenschaft
+(jedes Element steht genau einmal in jeder Spalte/Zeile).</p>
+</div>
+
+<div title="Neutrales Element" id="topmiddle" class="step" data-x="3500" data-y="2000"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="bottomleft middlemiddle topleft topright">
+
+<h1>Neutrales Element</h1>
+
+<p>Eine Menge G mit einer Operation ⋆ hat ein <b>neutrales Element n</b>, wenn
+für alle a ∈ G gilt: a⋆n = n⋆a = a.</p>
+
+<iframe src="../binaryRelations/group1.html?example=2"  width='900' height='600'></iframe>
+</div>
+
+<div title="Inverse Elemente" id="middlemiddle" class="step" data-rel-x="0" data-rel-y="1200"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="topmiddle bottommiddle middleleft middleright">
+
+<h1>Inverse Elemente</h1>
+<p>Eine Menge G mit einer Operation ⋆ hat <b>inverse Elemente </b>, wenn
+es für alle a ∈ G ein a<sup>-1</sup> gibt mit a⋆a<sup>-1</sup> = a<sup>-1</sup>⋆a = n
+<br>(wobei n das neutrale Element ist).</p>
+
+<iframe src="../binaryRelations/group1.html?example=3"  width='900' height='600'></iframe>
+</div>
+
+<div title="Kommutativ" id="bottommiddle" class="step" data-rel-x="0" data-rel-y="1200"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="middlemiddle topright bottomleft bottomright">
+
+<h1>Kommutativ</h1>
+
+<p>Eine Gruppe G mit einer Operation ⋆ heißt <b>kommutativ</b> (oder 
+<b>abelsch</b>), wenn
+für alle a,b ∈ G gilt: a⋆b = b⋆a.</p>
+
+<iframe src="../binaryRelations/group1.html?example=4"  width='900' height='600'></iframe>
+
+</div>
+
+<!--<div title="7" id="topright" class="step" data-x="5000" data-y="2000"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="bottommiddle middleright topmiddle middleleft">
+
+<h1>S 7</h1>
+
+</div>
+
+<div title="8" id="middleright" class="step" data-rel-x="0" data-rel-y="1200"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="topright bottomright middlemiddle bottomleft">
+
+<h1>S 8</h1>
+</div>
+
+<div title="9" id="bottomright" class="step" data-rel-x="0" data-rel-y="1200"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="middleright conclusion bottommiddle conclusion">
+
+<h1>S 9</h1>
+
+</div>-->
+
+<div title="Schluss" id="conclusion" class="step" data-rel-x="1200" data-rel-y="1200">
+
+<h1>Wozu braucht man Gruppen?</h1>
+<p>Wenn man weiß, dass eine Menge mit einer Operation eine Gruppe bildet,
+dann weiß man, welche Rechenregeln gelten.</p>
+
+<p>"Gruppe" ist eine <b>algebraische Struktur</b>.
+
+<p>In der Mathematik reicht es oft zu wissen, mit welcher Struktur man es
+zu tun hat, damit man weiß, wie man damit rechnen kann.</p>
+</div>
+
+<div title="Übersicht" 
+     id="overview" class="step" data-x="3000" data-y="3000" data-scale="4" 
+     style="pointer-events: none;">
+</div>
+</div>  <!-- closes id="impress" -->
+
+<div id="impress-toolbar"></div>
+<div class="impress-progressbar"><div></div></div>
+<div class="impress-progress"></div>
+
+<script type="text/javascript" src="utils/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>
