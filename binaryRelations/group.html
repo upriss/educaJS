@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Groups</title>
+<script>
+(function() {
+    var production = 0;
+    if (production == 0) {
+       document.write('<script src="material.js"><\/script>\
+                       <script src="utils/tabulator.min.js"><\/script>\
+                       <script src="tbltor.js"><\/script>\
+                       <script src="educa.js"><\/script>\
+                       <link rel="stylesheet" type="text/css" href="utils/tabulator.min.css" \/>\
+                       <link rel="stylesheet" type="text/css" href="educaJS.css" \/>');
+    } else {
+       document.write('<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/material.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/utils/tabulator.min.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/tbltor.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educa.js"><\/script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/utils/tabulator.min.css" \/><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educaJS.css" \/>');
+    }
+})();
+</script>
+
+<!--<style>
+.tabulator { font-size: 5vw; }   /* responsive font */
+button {font-size: 5vw; }
+body { font-size: 5vw; }
+</style>-->
+
+<style>
+.tabulator { font-size: 120%; }
+button {font-size: 120%; }
+body { font-size: 150%; }
+</style>
+
+<noscript>This webpage needs Javascript!</noscript>
+</head>
+
+<body onload="groups(glob_taskType,glob_inputArea,glob_oldInputAreaValue,
+glob_outArea1,glob_outArea2,glob_embed)">
+
+<h2 id='header1'>Algebraic Groups</h2>
+
+<form>
+<textarea class="codeLineInput" id="inputArea" rows="4" 
+onKeyUp="groups(glob_taskType,glob_inputArea,glob_oldInputAreaValue,
+glob_outArea1,glob_outArea2,glob_embed);">
+["a", "b", "c", "d"];
+["a", "b", "c", "d"];
+[["a","b","c","d"],["b","c","d","e"],["c","d","e","b"],["d","e","b","c"]];
+</textarea>
+</form>
+
+<p><span id="setlabel">Set: </span><span id="outArea1"></span></p>
+
+<div class='style_container'>
+<span class='small_container' id='container1'></span>
+<center><div id="outArea2"></div></center>
+</div>
+
+<div id="help_text"></div>
+
+<div id="credits"></div>
+
+<script>
+const params = new URLSearchParams(window.location.search); // read the query string
+var glob_outArea1 = document.querySelector("#outArea1");
+var glob_outArea2 = "#outArea2";                            // must be element, not value
+var glob_inputArea = document.querySelector("#inputArea");
+var glob_oldInputAreaValue;
+
+let glob_embed = params.get('embed');                       // yes or no, affects font size
+let choice_lang = params.get('lang');                       // en or de
+if (!choice_lang) {choice_lang = 'en';}                     // default value: en
+var glob_taskType = params.get('ttype'); 
+if (!glob_taskType) {glob_taskType = 'group1';}             // default value: group1
+
+if (params.get('graph')) {                                  // read data from URL
+   glob_inputArea.value = decodeURIComponent(params.get('graph'));
+}
+document.querySelector("#inputArea").style.display = 'none';    // always hidden
+document.querySelector("#container1").innerHTML = html_groupProps;
+if (choice_lang == 'de') {                                      // German language
+   document.querySelector("#header1").innerHTML='Gruppentafel';
+   document.querySelector("#setlabel").innerHTML='Menge: ';
+   document.querySelector("#container1").innerHTML = html_groupProps_de;
+}
+
+if (choice_lang != 'de') {
+   document.querySelector("#credits").innerHTML = html_credits;
+}
+if (glob_embed == "yes") {
+   document.querySelector("#header1").style.display = 'none';
+}
+</script>
+
+</body>
+</html>
+
+

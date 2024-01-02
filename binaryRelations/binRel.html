@@ -2,13 +2,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Binary Relation</title>
 <script>
 (function() { 
     var production = 1;
     if (production == 0) {
-       document.write('<script src="material.js"><\/script><script src="d3.v4.js"><\/script><script src="graphlib-dot.js"><\/script><script src="dagre-d3-n.js"><\/script><script src="setAndMatrixlibs.js"><\/script><script src="fcalibs.js"><\/script><script src="educa.js"><\/script><link rel="stylesheet" type="text/css" href="educaJS.css" \/>');
+       document.write('<script src="material.js"><\/script>\
+                       <script src="utils/d3.v4.js"><\/script>\
+                       <script src="utils/graphlib-dot.js"><\/script>\
+                       <script src="utils/dagre-d3-n.js"><\/script>\
+                       <script src="setAndMatrixlibs.js"><\/script>\
+                       <script src="fcalibs.js"><\/script>\
+                       <script src="educa.js"><\/script>\
+                       <link rel="stylesheet" type="text/css" href="educaJS.css" \/>');
     } else {
-       document.write('<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/material.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/d3.v4.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/graphlib-dot.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/dagre-d3-n.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/setAndMatrixlibs.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/fcalibs.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educa.js"><\/script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educaJS.css" \/>');
+       document.write('<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/material.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/utils/d3.v4.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/utils/graphlib-dot.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/utils/dagre-d3-n.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/setAndMatrixlibs.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/fcalibs.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educa.js"><\/script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educaJS.css" \/>');
     }
 })();
 </script>
@@ -73,8 +81,8 @@ document.querySelector("#help_text").innerHTML= html_helptext_binRel;
 if (choice_lang == 'de') {                                      // German language
    document.querySelector("#header1").innerHTML='Geben Sie eine bin&auml;re Relation ein:';
    document.querySelector("#header2").innerHTML='Graph der Relation:';
-   document.querySelector("#buttRow").innerHTML='neue Zeile';
-   document.querySelector("#buttCol").innerHTML='neue Spalte';
+//   document.querySelector("#buttRow").innerHTML='neue Zeile';
+//   document.querySelector("#buttCol").innerHTML='neue Spalte';
    document.querySelector("#lsetlabel").innerHTML='Definitionsbereich:';
    document.querySelector("#rsetlabel").innerHTML='Wertebereich:';
    document.querySelector("#help_text").innerHTML= html_helptext_binRel_de;
@@ -89,7 +97,10 @@ if (glob_taskType == 'binRel') {
       document.querySelector("#rightset").style.display = 'none';
    } else {                                                     // binRel, but not auto
       glob_relType = ''; 
-      document.querySelector("#container1").innerHTML = html_function;
+      document.querySelector("#container1").innerHTML = html_functionProps;
+      if (choice_lang == 'de') {
+         document.querySelector("#container1").innerHTML = html_functionProps_de;
+      }
    }
 } else if (glob_taskType == 'lattice') {                        // lattice, but not fca
    document.querySelector("#header2").innerHTML='Lattice:';

@@ -58,11 +58,13 @@ button.tooltip:hover { position: relative; }
 button.tooltip span { display: none; }
 button.tooltip:hover span { border: #666 2px solid; padding: 5px 20px 5px 5px;
   display: block; z-index: 100; background: #e3e3e3; right: 0px; margin: 15px;
-  width: 500px; position: absolute; top: 15px; text-align: left;}
+  width: 500px; position: absolute; top: 150%; text-align: left;}
 
 div.style_container { width:90%; }
-span.small_container { width:20%; float: inline-end; }
-span.answer_container { width:20px; display: inline-block }
+/*span.small_container { width:25%; float: inline-end; }*/
+span.small_container {  margin-right: 5%;float: right }
+/* span.answer_container { width:20px; display: inline-block }*/
+span.answer_container { float: right}
 
 div.tooltip {text-align: center;text-decoration: underline;}
 div.tooltip:hover { position: relative; }
@@ -74,7 +76,7 @@ div.tooltip:hover div { border: #666 2px solid; padding: 5px 20px 5px 5px;
 @media (prefers-color-scheme: dark) { div.tooltip:hover div {background: #404040;} }
 
 summary {cursor: pointer;}
-p.clear { clear: left; }
+p.clear { clear: left; }     /* moved below floating elements before it */
 
 /* a.button { 
   text-decoration: none; background-color: #EEEEEE; color: #333333;

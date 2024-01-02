@@ -1,4 +1,4 @@
-const param = {taskType: "",    // bool, boolVenn, binRel, lattice, combin
+const param = {taskType: "",    // bool, boolVenn, binRel, lattice, combin, group1
                inputArea: "", 
                outputArea1: "",
                outputArea2: "",
@@ -6,43 +6,16 @@ const param = {taskType: "",    // bool, boolVenn, binRel, lattice, combin
                leftset: "",
                rightset: "",
 	       relType: "",     // auto
-	       csv: ""};    
+	       csv: "",
+	       embed: ""};    
 
 const main = {objArray: [],
-                  attrArray: [],
-                  matrixArray: [],
-	          transMatrixArray: []};
+              attrArray: [],
+              matrixArray: [],
+	      transMatrixArray: []};
 
-
-//////////////////////////////////////////////////////////////////////
-//// for zoom in an svg g tag
-//////////////////////////////////////////////////////////////////////
-function setUpZoomSupport () {                        
-    var svg = d3.select("svg"),
-	zoom = d3.zoom().on("zoom", function() {
-	    d3.select("svg g").attr("transform", d3.event.transform);
-	});
-    svg.call(zoom);
-}
-
-//////////////////////////////////////////////////////////////////////
-//// create link for data from input area, store in console.log
-//////////////////////////////////////////////////////////////////////
-
-function createURL() {
-  var elems = [window.location.protocol, '//', window.location.host,
-               window.location.pathname, '?'];
-  const qparams = new URLSearchParams(window.location.search);
-  var queryParams = [];
-  if (qparams.get('lang')) { queryParams.push('lang=' + qparams.get('lang')); }  
-  if (qparams.get('ttype')) { queryParams.push('ttype=' + qparams.get('ttype')); }  
-  if (qparams.get('plusVenn')) { queryParams.push('plusVenn=' + qparams.get('plusVenn')); }
-  if (qparams.get('rtype')) { queryParams.push('rtype=' + qparams.get('rtype')); }  
-  if (qparams.get('csv')) { queryParams.push('csv=' + qparams.get('csv')); }  
-  queryParams.push('graph=' + encodeURIComponent(param.inputArea.value));
-  elems.push(queryParams.join('&'));
-  console.log(elems.join(''));
-}
+const algGrp = {universe: new Set(),      // only for group theory
+                neutralElem : ""}
 
 //////////////////////////////////////////////////////////////////////
 //// start function, calls drawRelationGraph/VennDiagram and showMatrix
@@ -53,7 +26,7 @@ function truth_venn (choice,inArea,oldIn,out1) {
    param.inputArea = inArea;
    param.oldInputAreaValue = oldIn;
    param.outputArea1 = out1;
-   createURL();                                         // write current URL to console
+   createURL(param.inputArea.value);            // write current URL to console
    param.outputArea1.value = setlxToBool(param.inputArea.value);
    constructJB(); 
    construct(); 
@@ -95,7 +68,7 @@ function combin (taskType,inArea,oldIn,out1,out2) {
     param.oldInputAreaValue = oldIn;
     param.outputArea1 = out1;
     param.outputArea2 = out2;
-    createURL();                                         // write current URL to console
+    createURL(param.inputArea.value);            // write current URL to console
     drawRelationGraph();
 }
 
@@ -115,7 +88,7 @@ function binRel (taskType,inArea,oldIn,outArea,relType,lset,rset,csv) {
         param.csv = csv;
     }
 
-    createURL();                                         // write current URL to console
+    createURL(param.inputArea.value);                    // write current URL to console
     param.outputArea.innerHTML = showMatrix();
     var oList = main.objArray;
     var aList = main.attrArray;
@@ -137,6 +110,26 @@ function binRel (taskType,inArea,oldIn,outArea,relType,lset,rset,csv) {
         var ret_string = gammaMu(extList,intList,ctxtList,oList,aList);
         drawRelationGraph("digraph {" + ret_string + Array.from(subsuper).join('') + "}"); 
     }
+}
+
+function groups(taskType,inArea,oldIn,out1,out2,emb) {
+    param.taskType = "group1";                           // not used at the moment
+    param.inputArea = inArea;
+    param.outputArea1 = out1;
+    param.outputArea2 = out2;
+    param.oldInputAreaValue = oldIn;
+    param.embed = emb;
+    createURL(param.inputArea.value);                    // write current URL to console
+    algGrp.universe = new Set ();
+    var tempArray = [];
+    tempArray = inArea.value.split(";")                  // read from inArea
+    main.objArray = JSON.parse(tempArray[0].trim());
+    main.attrArray = JSON.parse(tempArray[1].trim());
+    main.matrixArray = JSON.parse(tempArray[2].trim());
+    tbldata = matrixToTable (main.objArray,main.attrArray,main.matrixArray);
+    createGroupTable(tbldata,main.attrArray);
+    for (let elem of main.objArray){ algGrp.universe.add(elem); }
+    for (let elem of main.attrArray){ algGrp.universe.add(elem); }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -216,37 +209,6 @@ function drawRelationGraph (data) {
     };
     d3.select("svg g").call(dagreD3.render(), grapharea); // Render the graph into svg g
   }
-}
-
-//////////////////////////////////////////////////////////////////////
-//// examine -> set answer
-//////////////////////////////////////////////////////////////////////
-
-function examine(property) {
-   var answer = "<font size=5 color='green'>&#10004;</font>";
-   if (property == 'function') {
-     for(let elem of main.matrixArray) {
-        if ((elem.join("").match(/1/g) || []).length != 1)  {
-           answer = "<font size=5 color='red'>&#10008;</font>";
-           break;
-        }
-     }
-   } else if (property == 'injective') {
-     for(let elem of main.transMatrixArray) {
-        if ((elem.join("").match(/1/g) || []).length > 1 ) {
-           answer = "<font size=5 color='red'>&#10008;</font>";
-           break;
-        }
-     }
-   } else if (property == 'surjective') {
-     for(let elem of main.transMatrixArray) {
-        if ((elem.join("").match(/1/g) || []).length == 0 ) {
-           answer = "<font size=5 color='red'>&#10008;</font>";
-           break;
-        }
-     }
-   }
-   document.querySelector("#answer_" + property).innerHTML=answer;
 }
 
 //////////////////////////////////////////////////////////////////////

@@ -5,9 +5,15 @@
 (function() { 
     var production = 1;
     if (production == 0) {
-       document.write('<script src="material.js"><\/script><script src="d3.v4.js"><\/script><script src="graphlib-dot.js"><\/script><script src="dagre-d3-n.js"><\/script><script src="combin.js"><\/script><script src="educa.js"><\/script><link rel="stylesheet" type="text/css" href="educaJS.css" \/>');
+       document.write('<script src="material.js"><\/script>\
+                       <script src="utils/d3.v4.js"><\/script>\
+                       <script src="utils/graphlib-dot.js"><\/script>\
+                       <script src="utils/dagre-d3-n.js"><\/script>\
+                       <script src="combin.js"><\/script>\
+                       <script src="educa.js"><\/script>\
+                       <link rel="stylesheet" type="text/css" href="educaJS.css" \/>');
     } else {
-       document.write('<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/material.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/d3.v4.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/graphlib-dot.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/dagre-d3-n.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/combin.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educa.js"><\/script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educaJS.css" \/>');
+       document.write('<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/material.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/utils/d3.v4.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/utils/graphlib-dot.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/utils/dagre-d3-n.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/combin.js"><\/script><script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educa.js"><\/script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/upriss/educaJS/binaryRelations/educaJS.css" \/>');
     }
 })();
 </script>
@@ -19,16 +25,16 @@
 
 <div id ="inArea1">
 <form>
-<input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
+<input onChange="combin('combin',inputArea,oldInputArea,outArea1,outArea3);" 
 type="text" class="smallInp" name="first" value="3"> <span id='text1'>elements selected out of</span>
-<input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
+<input onChange="combin('combin',inputArea,oldInputArea,outArea1,outArea3);" 
 type="text" class="smallInp" name="second" value="4"> <span id='text2'>elements. 
 (Only for small values!)
 <p></p>
 With replacement:</span>
-<input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
+<input onChange="combin('combin',inputArea,oldInputArea,outArea1,outArea3);" 
 type="radio" name="back" checked><span id='text3'>yes</span>
-<input onChange="drawRelationGraph('combin',inputArea,oldInputArea,outArea1,outArea3);" 
+<input onChange="combin('combin',inputArea,oldInputArea,outArea1,outArea3);" 
 type="radio" name="back" ><span id='text4'>no
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Sequence:</span>
