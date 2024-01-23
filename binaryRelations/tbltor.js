@@ -1,3 +1,7 @@
+//////////////////////////////////////////////////////////////////////
+/// convert to Tabulator format
+//////////////////////////////////////////////////////////////////////
+
 function matrixToTable (oArray,aArray,mArray) {
     let tempstring = '['; 
     for (let cnt1 = 0; cnt1 < oArray.length; cnt1++) {
@@ -13,7 +17,11 @@ function matrixToTable (oArray,aArray,mArray) {
     return (JSON.parse(tempstring));
 }
 
-function tableToMatrix (tabledata) {            // read as HTML, updates main...variables
+//////////////////////////////////////////////////////////////////////
+/// converts from Tabulator format, updates main...variables
+//////////////////////////////////////////////////////////////////////
+
+function tableToMatrix (tabledata) {            // read as HTML
    main.objArray = [];
    main.matrixArray = [];
    tabledata = tabledata.replace(/<\/tr><\/tbody><\/table>/,"");
@@ -37,11 +45,19 @@ function tableToMatrix (tabledata) {            // read as HTML, updates main...
    }
 }
 
+//////////////////////////////////////////////////////////////////////
+/// returns the element that is in row x and column y
+//////////////////////////////////////////////////////////////////////
+
 function grOp(x,y) {
    let oIndex = main.objArray.indexOf(x);
    let aIndex = main.attrArray.indexOf(y);
    return main.matrixArray[oIndex][aIndex];
 }
+
+//////////////////////////////////////////////////////////////////////
+/// recalculates the universe and neutral element
+//////////////////////////////////////////////////////////////////////
 
 function updateGroupProps () {
     param.outputArea1.innerHTML = "{" + Array.from(algGrp.universe) + "}";
@@ -61,6 +77,10 @@ function updateGroupProps () {
 	}
     }
 }
+
+//////////////////////////////////////////////////////////////////////
+/// sets up Tabulator
+//////////////////////////////////////////////////////////////////////
 
 function createGroupTable(tbldata,aArray) {
     var table1;
