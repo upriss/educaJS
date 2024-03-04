@@ -170,6 +170,7 @@ function construct() {
 		var latextable = latexTable(table,trees,tv,cs);
 		document.getElementById('tt').innerHTML = '<pre>'+latextable+'</pre>';
 	}
+    return [intersectionArray,setArray]  // code changed (UP)
 }
 
 // (Table,[Tree],Boolean) -> String

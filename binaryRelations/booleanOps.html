@@ -27,8 +27,8 @@
 
 <body>
 <script>
-var setArray =[];                       // global variables
-var intersectionArray = [];             // used in venn.min.js
+//var setArray =[];                       // global variables
+//var intersectionArray = [];             // used in venn.min.js
 </script>
 
 <h2 id="text0"></h2>
@@ -36,7 +36,6 @@ var intersectionArray = [];             // used in venn.min.js
 <div id="ttinput">
   <input type="text" id="inNew" size="40" value="a or b">
   <input type="hidden" id="in" size="40" value="">
-<!--  <input type="button" value="start" onclick="document.getElementById('in').value =setlxToBool(document.getElementById('inNew')); construct(); drawVennDiagram(setArray,intersectionArray);">-->
 
 <input type="button" value="start" onclick="truth_venn(params.get('plusVenn'),document.querySelector('#inNew'),'',document.querySelector('#in'));">
 

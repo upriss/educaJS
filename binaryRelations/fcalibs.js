@@ -6,6 +6,13 @@ function cloneArray (a) {
     return b;
 }
 
+function clone2dimArray (a) {
+    var b = [];
+    for (let k = 0 ; k < a.length; k++) {
+       b[k] = [...a[k]];
+    }
+    return b;
+}
 
 function ganter (crosstable,anzM,anzG) {
     // This is an implementation of an algorithm described by Bernhard Ganter
@@ -188,4 +195,142 @@ function gammaMu (extList,intList,cxtList,oList,aList) {
     cptlabels = cptlabels.replace(/\"/g,"\"");                   // escape "
     return cptlabels;
 }
+
+////////////////////////////////////////////////////////////////
+
+function attachObjs(mtArray,obArray) {
+    for (let i = 0; i < mtArray.length; i++) {  // join objects into first column
+	mtArray[i].unshift(obArray[i]);
+    }
+    return mtArray;
+}
+
+function detachObjs(tmArray) {
+    let obArray = [];
+    for (let i = 0; i < tmArray.length; i++) {  // join objects into first column
+	obArray[i] = tmArray[i].shift();
+    }
+    return [obArray,tmArray];
+}
+
+function attachAttrs(mtArray,atArray) {
+    mtArray.unshift(atArray);
+    return mtArray;
+}
+
+function detachAttrs(tmArray) {
+    return [tmArray.shift(),tmArray]
+}
+
+function sortSize(a, b) {                 // by number of crosses, inverse
+    let tmp1 = 0;
+    let tmp2 = 0;
+    for (i = 0; i < a.length; i++) {
+	if (a[i] == "1") { tmp1++ } 
+	if (b[i] == "1") { tmp2++ } 
+    }
+    if (tmp1 == tmp2) {
+        return 0;
+    } else {
+        if (tmp1 < tmp2) { return 1 }
+        else { return -1 }
+    }
+}
+
+function sortColsBySize (curarray,atArray) {
+    let tmpArr1 = attachAttrs(curarray,atArray);
+    let tmpArr2 = tmpArr1[0].map((_, colIndex) => tmpArr1.map(row => row[colIndex]));
+    tmpArr2.sort(sortSize);
+    return tmpArr2[0].map((_, colIndex) => tmpArr2.map(row => row[colIndex]));
+}
+
+////////////////////////////////////////////////////////////////
+
+function linearise (curarray) {
+    function sortFirstCols(a, b) {      // sorts '0,0' < '0,1' < '1,1' < '1,0'
+	let temp1 = a.slice(1,3).join();
+	let temp2 = b.slice(1,3).join();
+	if (temp1 === temp2) {
+            return 0;
+	} else {
+	    if (temp1 == '1,1' && temp2 == '1,0') { return -1 } 
+	    else if (temp2 == '1,1' && temp1 == '1,0') { return 1 }
+	    else if (temp1 < temp2) { return -1 }
+	    else { return 1 }
+	}
+    }
+    function sortF2(a, b) {                 // ascending if flag = 0 or 2, else descending
+//console.log(a,b,a[colIdx],b[colIdx])
+	if (a[colIdx] === b[colIdx]) {
+            return 0;
+	} else {
+	    if (a[colIdx] < b[colIdx]) { 
+		if (flag == 1) { return 1 } else { return -1 } 
+	    } else { 
+		if (flag == 1) { return -1 } else { return 1 } 
+	    }
+	}
+    }
+    let tmparray = [];
+    let tmp1;
+    let tmp2;
+    let rIdx;
+    let flag;
+    curarray.sort(sortFirstCols);                  // sort according to second 2 columns
+    for (colIdx = 3; colIdx < curarray[0].length; colIdx++) {   // sort next columns
+	rIdx = 0;
+	flag = 0;
+	while (rIdx < curarray.length) {
+	    tmparray = [curarray[rIdx]];
+	    let rIdx2 = rIdx+1;
+	    tmp1 = curarray[rIdx].slice(1,colIdx).join();
+	    while (rIdx2 < curarray.length) {            //put equal rows into tmparray
+		tmp2 = curarray[rIdx2].slice(1,colIdx).join();
+		if (tmp1 == tmp2) {tmparray.push(curarray[rIdx2])}
+		else { break; }
+		rIdx2++;
+	    }
+//console.log(JSON.stringify(tmparray))
+	    tmparray.sort(sortF2);                         // sort tmparray
+	    for (let j = 0 ; j < tmparray.length; j++) {   // cp tmparray back to curarray
+		curarray[rIdx+j] = tmparray[j];
+	    }
+//console.log(JSON.stringify(curarray));
+//console.log(colIdx,rIdx,flag);
+	    if (flag == 0) {                               // if last one is 1 change flag
+		if (tmparray[tmparray.length-1][colIdx] == 1) { flag = 1 }
+	    } else if (flag == 1) {
+		if (tmparray[tmparray.length-1][colIdx] == 0) { flag = 2 }
+	    } else if (flag == 2) {
+		if (tmparray[tmparray.length-1][colIdx] == 1) { // must not be a 1 after 0 
+		    flag = 3;
+		    return [colIdx,curarray];              // colIdx: where error occurs
+		} 
+	    }
+	    rIdx = rIdx+tmparray.length;                   // skip processed rows
+	}
+    }
+    return [0,curarray];      // error code and array
+}
+
+
+function eulerProc () {
+    let errcode;
+    let tempArray2 = sortColsBySize(clone2dimArray(main.matrixArray),main.attrArray);
+    [main.attrArray,main.matrixArray] = detachAttrs(tempArray2);
+    tempArray2 = attachObjs(clone2dimArray(main.matrixArray),main.objArray);
+    [errcode,tempArray2] = linearise(tempArray2);
+    [main.objArray,main.matrixArray] = detachObjs(tempArray2);
+    main.transMatrixArray = 
+        main.matrixArray[0].map((_, colIndex)=>main.matrixArray.map(row => row[colIndex]));
+    param.outputArea.innerHTML = 
+        displayTableHTML(main.objArray,main.attrArray,main.matrixArray);
+
+console.log(errcode);
+//for (let i = 0; i < tempArray2.length; i++) {    // for debugging
+//    console.log(JSON.stringify(tempArray2[i]));
+//}
+
+}
+
 

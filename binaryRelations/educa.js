@@ -11,11 +11,34 @@ const param = {taskType: "",    // bool, boolVenn, binRel, lattice, combin, grou
 
 const main = {objArray: [],
               attrArray: [],
+	      intensionArray: [],  // only euler/venn
+	      zoneArray: [],   // only euler/venn
               matrixArray: [],
 	      transMatrixArray: []};
 
 const algGrp = {universe: new Set(),      // only for group theory
                 neutralElem : ""}
+
+const debug = 1;
+
+//////////////////////////////////////////////////////////////////////
+//// debug mode: show values of main variables
+//////////////////////////////////////////////////////////////////////
+
+function show_values_for_debug () {
+    console.log ("taskType: " + param.taskType);
+    console.log ("relType: " + param.relType);
+    console.log ("inputArea.value: " + param.inputArea.value);
+    console.log ("outputArea1 "); 
+    console.log(param.outputArea1);
+    console.log ("outputArea2: " + param.outputArea2);
+    console.log ("objArray: " + main.objArray ); 
+    console.log ("attrArray: " + main.attrArray ); 
+    console.log ("zoneArray: " + JSON.stringify(main.zoneArray)); 
+    console.log ("intensionArray: "+ JSON.stringify(main.intensionArray)); 
+    console.log ("matrixArray: "+ JSON.stringify(main.matrixArray ));
+}
+
 
 //////////////////////////////////////////////////////////////////////
 //// start function, calls drawRelationGraph/VennDiagram and showMatrix
@@ -29,37 +52,40 @@ function truth_venn (choice,inArea,oldIn,out1) {
    createURL(param.inputArea.value);            // write current URL to console
    param.outputArea1.value = setlxToBool(param.inputArea.value);
    constructJB(); 
-   construct(); 
+   let temArray = construct(); 
+   main.intensionArray = temArray[0];
+   main.zoneArray = temArray[1];
    if (choice == "euler") {
       param.taskType = "boolVenn";
-      drawVennDiagram(setArray,intersectionArray);      // uses global variables
+      drawVennDiagram(main.zoneArray,main.intensionArray);
    } else if (choice == "venn") {
-      param.taskType = "boolVenn";                      // uses global variables
+      param.taskType = "boolVenn";
       d3.selectAll("svg").remove(); 
-      d3.select("#venn").append("svg").attr("width", 500).attr("height", 500);
+      d3.select("#venn").append("svg").attr("width", 490).attr("height", 490);
       const svg = d3.select("svg");
-      const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+      const margin = { top: 0, right: 0, bottom: 0, left: 0 };
       const width = svg.attr("width") - margin.left - margin.right;
       const height = svg.attr("height") - margin.top - margin.bottom;
       var g =svg.append("g").attr("transform","translate("+margin.left+","+margin.top+")");
       let temSet = new Set();
-      for(let el = 0; el < setArray.length; el++) {   // union of all elements
-         temSet = unionSet (temSet,setArray[el].sets);
+      for(let el = 0; el < main.zoneArray.length; el++) {   // union of all elements
+         temSet = unionSet (temSet,main.zoneArray[el].sets);
       }
       temSet.delete("U");
-      let temArr = Array.from(temSet);
-      if (temArr.length <= 3) {
+      main.attrArray = Array.from(temSet);
+      if (main.attrArray.length <= 3) {
           g.append("rect").attr('id','backgr').attr('x',0).attr('y', 0)
            .attr('width', svg.attr("width") - margin.left - margin.right)
            .attr('height', svg.attr("height") - margin.top - margin.bottom)
            .attr('translate',"translate(-"+margin.left+","+margin.top+")");
-          vennDir(temArr,intersectionArray,temArr.length,g);
+          vennDir(main.attrArray,main.intensionArray,main.attrArray.length,g);
       } else {
          d3.selectAll("g").selectAll("*").remove();
          g.append("text").text("This display is only available for 2 or 3 sets")
           .attr("x", xPoints[0]-130).attr("y", yPoints[0]-20);
       }
    }
+   if (debug == 1) {show_values_for_debug()} 
 }
 
 function combin (taskType,inArea,oldIn,out1,out2) {
@@ -70,10 +96,11 @@ function combin (taskType,inArea,oldIn,out1,out2) {
     param.outputArea2 = out2;
     createURL(param.inputArea.value);            // write current URL to console
     drawRelationGraph();
+    if (debug == 1) {show_values_for_debug()} 
 }
 
 function binRel (taskType,inArea,oldIn,outArea,relType,lset,rset,csv) {
-    var tempArray = document.querySelectorAll(".answer_container");  // delete answers
+    let tempArray = document.querySelectorAll(".answer_container");  // delete answers
     for (let elem of tempArray) {
          elem.innerHTML = "";
     }
@@ -110,6 +137,7 @@ function binRel (taskType,inArea,oldIn,outArea,relType,lset,rset,csv) {
         var ret_string = gammaMu(extList,intList,ctxtList,oList,aList);
         drawRelationGraph("digraph {" + ret_string + Array.from(subsuper).join('') + "}"); 
     }
+    if (debug == 1) {show_values_for_debug()} 
 }
 
 function groups(taskType,inArea,oldIn,out1,out2,emb) {
@@ -121,7 +149,7 @@ function groups(taskType,inArea,oldIn,out1,out2,emb) {
     param.embed = emb;
     createURL(param.inputArea.value);                    // write current URL to console
     algGrp.universe = new Set ();
-    var tempArray = [];
+    let tempArray = [];
     tempArray = inArea.value.split(";")                  // read from inArea
     main.objArray = JSON.parse(tempArray[0].trim());
     main.attrArray = JSON.parse(tempArray[1].trim());
@@ -130,6 +158,7 @@ function groups(taskType,inArea,oldIn,out1,out2,emb) {
     createGroupTable(tbldata,main.attrArray);
     for (let elem of main.objArray){ algGrp.universe.add(elem); }
     for (let elem of main.attrArray){ algGrp.universe.add(elem); }
+    if (debug == 1) {show_values_for_debug()} 
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -165,7 +194,7 @@ function drawRelationGraph (data) {
           gValue = "digraph { \"W&auml;hlen Sie bittere kleinere Zahlenwerte.\"}"; 
           outA1.innerHTML = "W&auml;hlen Sie bittere kleinere Zahlenwerte.";
        } else {
-          var tempArray = [];                            // create data structure
+          let tempArray = [];                            // create data structure
           tempArray = combinArray(fm1.value,fm2.value,fmBck.checked,fmSeq.checked);
           outA1.innerHTML =                              // display count and content
               displayComArray(tempArray,fm1.value,fmSeq.checked,outA2);
@@ -253,7 +282,7 @@ function showMatrix () {
 }
 
 //////////////////////////////////////////////////////////////////////
-//// set in setArray -> graph in <svg> <g> within <div id="venn">  
+//// set in zoneArray -> graph in <svg> <g> within <div id="venn">  
 //////////////////////////////////////////////////////////////////////
 function drawVennDiagram(setArr,intersArr) {
 

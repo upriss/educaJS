@@ -1,129 +1,61 @@
-const circleRad = 100;
-const offsetFactor = 1.2;
-const offset = offsetFactor * circleRad;
-const startpnt = 150;
+// Todo 4th set
+
+const lgth = 120;            // length of grid element
+const dist = 5;              // dislocation
+const mm = 15;               // margin
+const mm2 = lgth+mm;
+const mm3 = 2*lgth+mm;
+const mm4 = 3*lgth+mm;
+const mmd = 15 + dist;
+const mmd2 = lgth+mm + dist;
+const mmd3 = 2*lgth+mm + dist;
+const mmd4 = 3*lgth+mm + dist;
+
+const cells = ["0 "+mm,  lgth+" "+mm,  2*lgth+" "+mmd,  3*lgth+" "+mmd,
+	       "0 "+mm2, lgth+" "+mm2, 2*lgth+" "+mmd2, 3*lgth+" "+mmd2,
+	       "0 "+mm3, lgth+" "+mm3, 2*lgth+" "+mmd3, 3*lgth+" "+mmd3,
+	       "0 "+mm4, lgth+" "+mm4, 2*lgth+" "+mmd4, 3*lgth+" "+mmd4];
 //const colrs =["#87cefa", "#f5f75c", "#f04f41", "#90ee90", "#c265b4", "#fcad23", 
 //              "#d18956", "#eeffFF", "#777777"];
 
-//const colrs = ["#b3dff2", "#faf7a7", "#fab9a7", "#d7ebd5", "#d7cce5", "#f7dd94",
-//                "#e7dca5", "#eeCCCC", "#464646"];
+const colrs = ["#b3dff2", "#faf7a7", "#fab9a7", "#d7ebd5", "#d7cce5", "#f7dd94",
+                "#e7dca5", "#eeCCCC", "#000000"]; // "#464646"];
 
-const colrs = ["#eeeeaa", "#eeeeaa", "#eeeeaa", "#eeeeaa", "#eeeeaa", "#eeeeaa", 
-                "#eeeeaa", "#eeeeaa", "#464646"];
+//const colrs = ["#eeeeaa", "#eeeeaa", "#eeeeaa", "#eeeeaa", "#eeeeaa", "#eeeeaa", 
+//                "#eeeeaa", "#eeeeaa", "#464646"];
 
-function drawCircle(radius,xcenter,ycenter,g) {
-        return circle = g.append("circle").attr("r", radius).attr("stroke","black")
-                  .attr('transform', "translate(" + xcenter + "," + ycenter + ")");
+function drawCurve(xcrd,ycrd,width,height,g,color) {
+//    shape = "M "+xcrd+" "+ycrd+" v "+height+" h "+width+" v -"+height+" z";
+//    g.append("path").attr("d", shape).attr("stroke",color).attr("opacity", 1)
+//    .attr("fill","none").attr("stroke-width","5")
+    g.append("rect").attr("x",xcrd).attr("y",ycrd).attr("rx",5)
+      .attr("width",width).attr("height",height).attr("stroke",color).attr("opacity", 1)
+      .attr("fill","none").attr("stroke-width","7");
 }
 
-function computePoints (x_cent,y_cent,radius,offst) {
-   // drawing of the Venn diagram follows Calder M. Myers
-   // medium.com/@cmmyers/how-i-made-an-interactive-venn-diagram-with-d3-fa723c55a148
-   const triHeight = Math.sqrt(radius ** 2  -  (offst / 2) ** 2)
-   const xPoints = []                          //outer intersection of Circles 1 and 2
-   const yPoints = []
-   xPoints[0] = x_cent[2]
-   yPoints[0] = y_cent[0] - triHeight
-   xPoints[3] = x_cent[2]                      //inner intersection of Circles 1 and 2
-   yPoints[3] = y_cent[0] + triHeight
-   
-   //treat "triHeight" as the hypoteneuse of a 30.60.90 triangle.
-   //shift from the midpoint of a leg of the triangle to the point of intersection
-   const xDelta = triHeight * Math.sqrt(3) / 2
-   const yDelta = triHeight / 2
-   
-   const xMidpointC1C3 = (x_cent[0] + x_cent[2]) / 2
-   const xMidpointC2C3 = (x_cent[1] + x_cent[2]) / 2
-   const yMidpointBoth = (y_cent[0] + y_cent[2]) / 2
-   
-   xPoints[1] = xMidpointC1C3 - xDelta         //find rest of the points of intersection
-   yPoints[1] = yMidpointBoth + yDelta
-   xPoints[2] = xMidpointC2C3 + xDelta
-   yPoints[2] = yMidpointBoth + yDelta
-   xPoints[4] = xMidpointC1C3 + xDelta
-   yPoints[4] = yMidpointBoth - yDelta
-   xPoints[5] = xMidpointC2C3 - xDelta
-   yPoints[5] = yMidpointBoth - yDelta
-   return [xPoints,yPoints]
-}
-
-const makeShapes = ([x1, x2, x3, y1, y2, y3], v1, v2, v3) => {
-  path = `M ${x1} ${y1}
-             A ${circleRad} ${circleRad} 0 0 ${v1} ${x2} ${y2}
-             A ${circleRad} ${circleRad} 0 0 ${v2} ${x3} ${y3}
-             A ${circleRad} ${circleRad} 0 ${v3} 1 ${x1} ${y1}`
-  return path
-}
-
-function drawPath(ids,points,type,color,g){
-   let v1 = 0;
-   let v2 = 0;
-   let v3 = 0;
-   if (type == "two") { v1 = 1; } 
-   else if (type == "one") { v3 = 1; } 
-   else { v1 = 1; v2 = 1; }
-   const ptCycle = points.map(i => xPoints[i]).concat(   // find coord for each point
-     points.map(i => yPoints[i])
-   )
-   const shape = makeShapes(ptCycle,v1,v2,v3)
-
-   g.append("path").attr("d", shape).attr("class", "segment").attr("fill", color)
-//       .attr("opacity", 0.4)
-       .attr("id",ids).attr("opacity", 1)
-}
-
-function colouring (numbr,g) {                            // not used
-   const zones = [];
-   if (numbr == 2) {
-      zones[0] = [0, 5, 3];                 // a
-      zones[1] = [3, 4, 0];                 // b
-      zones[2] = [0, 3, 3];                 // ab
-      drawPath("zn0", zones[0], "one", colrs[0],g);
-      drawPath("zn1", zones[1], "one", colrs[1],g)
-      drawPath("zn3", zones[2], "two", colrs[3],g);
-   } else {
-      zones[0] = [0, 5, 1];                 // a
-      zones[1] = [2, 4, 0];                 // b
-      zones[2] = [1, 3, 2];                 // c
-      zones[3] = [0, 4, 5];                 // ab
-      zones[4] = [1, 5, 3];                 // ac
-      zones[5] = [2, 3, 4];                 // bc
-      zones[6] = [4, 3, 5];                 // abc
-      drawPath("zn0", zones[0], "one", colrs[0],g);
-      drawPath("zn1", zones[1], "one", colrs[1],g);
-      drawPath("zn2", zones[2], "one", colrs[2],g);
-      drawPath("zn3", zones[3], "two", colrs[3],g);
-      drawPath("zn4", zones[4], "two", colrs[4],g);
-      drawPath("zn5", zones[5], "two", colrs[5],g);
-      drawPath("zn6", zones[6], "three", colrs[6],g);
-   }
+function drawPath(ids,cell,type,color,width,height,g){
+    shape = "M " + cell + " v "+height+" h "+width+" v -"+height+" z";
+    g.append("path").attr("d", shape).attr("class", "segment").attr("fill", color)
+       .attr("id",ids).attr("opacity", 1);
 }
 
 function shading (numbr,g) {
    d3.select("#backgr").attr("fill",colrs[8]);
    const zones = [];
-   if (numbr == 2) {
-      zones[0] = [0, 5, 3];                 // a
-      zones[1] = [3, 4, 0];                 // b
-      zones[2] = [0, 3, 3];                 // ab
-      drawPath("zn0", zones[0], "one", colrs[8],g);
-      drawPath("zn1", zones[1], "one", colrs[8],g)
-      drawPath("zn3", zones[2], "two", colrs[8],g);
+   if (numbr == 1) {
+      drawPath("zna", cells[1], "one", colrs[8],lgth,lgth,g);
+   } else if (numbr == 2) {
+      drawPath("zna", cells[1], "one", colrs[8],lgth,2*lgth,g);
+      drawPath("znb", cells[3], "one", colrs[8],lgth,2*lgth,g);
+      drawPath("znab", cells[2], "two", colrs[8],lgth,2*lgth,g);
    } else {
-      zones[0] = [0, 5, 1];                 // a
-      zones[1] = [2, 4, 0];                 // b
-      zones[2] = [1, 3, 2];                 // c
-      zones[3] = [0, 4, 5];                 // ab
-      zones[4] = [1, 5, 3];                 // ac
-      zones[5] = [2, 3, 4];                 // bc
-      zones[6] = [4, 3, 5];                 // abc
-      drawPath("zn0", zones[0], "one", colrs[8],g);
-      drawPath("zn1", zones[1], "one", colrs[8],g);
-      drawPath("zn2", zones[2], "one", colrs[8],g);
-      drawPath("zn3", zones[3], "two", colrs[8],g);
-      drawPath("zn4", zones[4], "two", colrs[8],g);
-      drawPath("zn5", zones[5], "two", colrs[8],g);
-      drawPath("zn6", zones[6], "three", colrs[8],g);
+      drawPath("zna", cells[1], "one", colrs[8],lgth,lgth,g);
+      drawPath("znb", cells[3], "one", colrs[8],lgth,lgth,g);
+      drawPath("znc", cells[4], "one", colrs[8],lgth,lgth,g);
+      drawPath("znab", cells[2], "two", colrs[8],lgth,lgth,g);
+      drawPath("znac", cells[5], "two", colrs[8],lgth,lgth,g);
+      drawPath("znbc", cells[7], "two", colrs[8],lgth,lgth,g);
+      drawPath("znabc", cells[6], "three", colrs[8],lgth,lgth,g);
    }
 }
 
@@ -139,54 +71,65 @@ function mouseOvers (g) {                                  // not used
        })
 }
 
-function showLabels ([textA, textB, textC], numbr,g) {
-   g.append("text").text(textA).attr("x", xPoints[0]-130).attr("y", yPoints[0]-20);
-   g.append("text").text(textB).attr("x", xPoints[0]+130).attr("y", yPoints[0]-20);
-   if (numbr == 3) {
-      g.append("text").text(textC).attr("x", xPoints[3]).attr("y", yPoints[3]+150);
-   }
+function showLabels (text, numbr,g,xPoint,yPoint,color) {
+   g.append("text").text(text).attr("x", xPoint).attr("y", yPoint-5)
+	.attr("stroke",color).attr("fill",color);
 }
 
-function vennDir (textArray, shadedZones, numbr,g) {
-                                                // x-y coordinates of the 3 circles
-   const xCenter = [startpnt, startpnt + offset, startpnt + offset / 2];
-   const yCenter = [startpnt, startpnt, startpnt + Math.sqrt(3) * offset / 2];
-   
-   drawCircle(circleRad,xCenter[0],yCenter[0],g);
-   drawCircle(circleRad,xCenter[1],yCenter[1],g);
-   if (numbr == 3) { drawCircle(circleRad,xCenter[2],yCenter[2],g); }
-   
-   const _array = computePoints(xCenter,yCenter,circleRad,offset)
-   xPoints = _array[0]
-   yPoints = _array[1]
-   
-//   colouring(numbr,g);
-     shading(numbr,g);   
+////////////////////////////////////////////////////////////////////////////////
+//  textArray: labels of sets, selectedZones: a_b_c, etc, numbr: 1,2 or 3
+////////////////////////////////////////////////////////////////////////////////
+function vennDir (textArray, selectedZones, numbr,g) {
+                                                
+// x/y coordinates of upper left corner of rectangles, (0,0) is upper left corner
+   const xCorner = [0,120,240,360];
+   const yCorner = [15,135,255,375];
+
+     shading(numbr,g);                        // all are shaded, each has an id "zn.."
 //   mouseOvers(g);
 
-//   for (let i = 0; i < xPoints.length; i++) {       // for debugging: show xyPoints
-//      g.append("text").text(i).attr("x", xPoints[i]).attr("y", yPoints[i])
-//   }
-   showLabels(textArray, numbr,g);
-   for (let i = 0; i < shadedZones.length; i++) {    // figure out which zones are shaded
-     if (shadedZones[i] == "U") { 
+   for (let i = 0; i < selectedZones.length; i++) {    // which zones are selected
+     if (selectedZones[i] == "U") { 
         d3.select("#backgr").attr("fill",colrs[7]);        
-     } else if (shadedZones[i] == textArray[0]) {
-        d3.select("#zn0").attr("fill",colrs[0]);
-     } else if (shadedZones[i] == textArray[1]) {
-        d3.select("#zn1").attr("fill",colrs[1]);
-     } else if (shadedZones[i] == textArray[2]) {
-        d3.select("#zn2").attr("fill",colrs[2]);
-     } else if (shadedZones[i] == textArray[0] + "_"+ textArray[1]) {
-        d3.select("#zn3").attr("fill",colrs[3]);
-     } else if (shadedZones[i] == textArray[0] + "_"+ textArray[2]) {
-        d3.select("#zn4").attr("fill",colrs[4]);
-     } else if (shadedZones[i] == textArray[1] + "_"+ textArray[2]) {
-        d3.select("#zn5").attr("fill",colrs[5]);
-     } else if (shadedZones[i] == textArray[0] + "_"+ textArray[1] +"_"+ textArray[2]) {
-        d3.select("#zn6").attr("fill",colrs[6]);
+     } else if (selectedZones[i] == textArray[0]) {
+        d3.select("#zna").attr("fill",colrs[0]);
+     } else if (selectedZones[i] == textArray[1]) {
+        d3.select("#znb").attr("fill",colrs[1]);
+     } else if (selectedZones[i] == textArray[2]) {
+        d3.select("#znc").attr("fill",colrs[2]);
+     } else if (selectedZones[i] == textArray[0] + "_"+ textArray[1]) {
+        d3.select("#znab").attr("fill",colrs[3]);
+     } else if (selectedZones[i] == textArray[0] + "_"+ textArray[2]) {
+        d3.select("#znac").attr("fill",colrs[4]);
+     } else if (selectedZones[i] == textArray[1] + "_"+ textArray[2]) {
+        d3.select("#znbc").attr("fill",colrs[5]);
+     } else if (selectedZones[i] == textArray[0] + "_"+ textArray[1] +"_"+ textArray[2]) {
+        d3.select("#znabc").attr("fill",colrs[6]);
      }
    }
+
+    if (numbr == 1) {
+	drawCurve(xCorner[1],yCorner[0],lgth,lgth,g,colrs[0])
+	showLabels(textArray[0],numbr,g,xCorner[1],yCorner[0],colrs[0]);
+    } else if (numbr == 2) {
+	drawCurve(xCorner[1],yCorner[0],2*lgth,2*lgth,g,colrs[0])
+	drawCurve(xCorner[2],yCorner[0]+dist,2*lgth,2*lgth,g,colrs[1])
+	showLabels(textArray[0],numbr,g,xCorner[1],yCorner[0],colrs[0]);
+	showLabels(textArray[1],numbr,g,xCorner[2]+2*lgth-20,yCorner[0],colrs[1]);
+    } else if (numbr == 3) {
+	drawCurve(xCorner[1],yCorner[0],2*lgth,2*lgth,g,colrs[0])
+	drawCurve(xCorner[2],yCorner[0]+dist,2*lgth,2*lgth,g,colrs[1])
+	drawCurve(xCorner[0],yCorner[1],4*lgth,lgth,g,colrs[2])
+	showLabels(textArray[0],numbr,g,xCorner[1],yCorner[0],colrs[0]);
+	showLabels(textArray[1],numbr,g,xCorner[2]+2*lgth-20,yCorner[0],colrs[1]);
+	showLabels(textArray[2],numbr,g,xCorner[0],yCorner[1],colrs[2]);
+    } else if (numbr == 4) {
+	drawCurve(xCorner[1],yCorner[0],2*lgth,3*lgth,g,colrs[0])
+	drawCurve(xCorner[2],yCorner[0]+dist,2*lgth,3*lgth,g,colrs[1])
+	drawCurve(xCorner[0],yCorner[1],4*lgth,2*lgth,g,colrs[2])
+	drawCurve(xCorner[0]+dist,yCorner[2],4*lgth,2*lgth,g)
+    }
+
 }
       
    
