@@ -44,11 +44,12 @@ function show_values_for_debug () {
 //// start function, calls drawRelationGraph/VennDiagram and showMatrix
 //////////////////////////////////////////////////////////////////////
 
-function truth_venn (choice,inArea,oldIn,out1) {
+function truth_venn (choice,inArea,oldIn,out1,emb) {
    param.taskType = "bool";
    param.inputArea = inArea;
    param.oldInputAreaValue = oldIn;
    param.outputArea1 = out1;
+   param.embed = emb;
    createURL(param.inputArea.value);            // write current URL to console
    param.outputArea1.value = setlxToBool(param.inputArea.value);
    constructJB(); 

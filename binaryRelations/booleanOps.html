@@ -25,7 +25,7 @@
 <noscript>This webpage needs Javascript!</noscript>
 </head>
 
-<body onLoad="truth_venn(params.get('plusVenn'),document.querySelector('#inNew'),'',document.querySelector('#in'));">
+<body onLoad="truth_venn(params.get('plusVenn'),document.querySelector('#inNew'),'',document.querySelector('#in'),glob_embed)">
 <script>
 //var setArray =[];                       // global variables
 //var intersectionArray = [];             // used in venn.min.js
@@ -37,7 +37,7 @@
   <input type="text" id="inNew" size="40" value="a or b">
   <input type="hidden" id="in" size="40" value="">
 
-<input type="button" value="start" onclick="truth_venn(params.get('plusVenn'),document.querySelector('#inNew'),'',document.querySelector('#in'));">
+<input type="button" value="start" onclick="truth_venn(params.get('plusVenn'),document.querySelector('#inNew'),'',document.querySelector('#in'),glob_embed)">
 
 <form class="form-inline">
 <input type="hidden" id="tvstyle1" name="tv" value="tb">
@@ -76,6 +76,7 @@
 // query parameters: lang=en or lang=de and plusVenn=euler or venn
 document.querySelector("#tt").style.display = 'none';
 const params = new URLSearchParams(window.location.search);     // read the query string
+let glob_embed = params.get('embed');
 
 if (params.get('graph')) {                 // read data from URL
    document.querySelector('#inNew').value = decodeURIComponent(params.get('graph'));
@@ -102,6 +103,10 @@ if (params.get('plusVenn') != 'euler' && params.get('plusVenn') != 'venn') {
       document.querySelector("#credits").innerHTML = html_credits;
    }
 } 
+if (glob_embed == "yes") {
+   document.querySelector("#help_text").style.display = 'none';
+   document.querySelector("#credits").style.display = 'none';
+}
 </script>
 
 </body>
