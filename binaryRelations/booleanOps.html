@@ -25,7 +25,7 @@
 <noscript>This webpage needs Javascript!</noscript>
 </head>
 
-<body>
+<body onLoad="truth_venn(params.get('plusVenn'),document.querySelector('#inNew'),'',document.querySelector('#in'));">
 <script>
 //var setArray =[];                       // global variables
 //var intersectionArray = [];             // used in venn.min.js
@@ -50,6 +50,7 @@
 </div>
 <div id="ttJB"></div>
 <div id="tt"></div>
+<p>&nbsp;</p>
 <div id="venn"></div>
 <p>&nbsp;</p>
 <hr>

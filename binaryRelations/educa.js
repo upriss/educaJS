@@ -19,7 +19,7 @@ const main = {objArray: [],
 const algGrp = {universe: new Set(),      // only for group theory
                 neutralElem : ""}
 
-const debug = 1;
+const debug = 0;
 
 //////////////////////////////////////////////////////////////////////
 //// debug mode: show values of main variables
@@ -60,29 +60,34 @@ function truth_venn (choice,inArea,oldIn,out1) {
       drawVennDiagram(main.zoneArray,main.intensionArray);
    } else if (choice == "venn") {
       param.taskType = "boolVenn";
-      d3.selectAll("svg").remove(); 
-      d3.select("#venn").append("svg").attr("width", 490).attr("height", 490);
-      const svg = d3.select("svg");
-      const margin = { top: 0, right: 0, bottom: 0, left: 0 };
-      const width = svg.attr("width") - margin.left - margin.right;
-      const height = svg.attr("height") - margin.top - margin.bottom;
-      var g =svg.append("g").attr("transform","translate("+margin.left+","+margin.top+")");
       let temSet = new Set();
       for(let el = 0; el < main.zoneArray.length; el++) {   // union of all elements
          temSet = unionSet (temSet,main.zoneArray[el].sets);
       }
       temSet.delete("U");
       main.attrArray = Array.from(temSet);
+      let wdth = 490;                         // size of boundary and background
+      let hgt = 490;
+      if (main.attrArray.length == 1) {       // adjust for number of sets
+	  hgt = (hgt/2)/2 + 15; 
+	  wdth = wdth/2 + 10;
+      } else if (main.attrArray.length < 4) { hgt = hgt/2 + 15; }
+      d3.selectAll("svg").remove(); 
+      d3.select("#venn").append("svg").attr("width", wdth).attr("height", hgt);
+      const svg = d3.select("svg");
+      const margin = { top: 0, right: 0, bottom: 0, left: 0 };
+      var g =svg.append("g").attr("transform","translate("+margin.left+","+margin.top+")");
       if (main.attrArray.length <= 3) {
-          g.append("rect").attr('id','backgr').attr('x',0).attr('y', 0)
+           g.append("rect").attr('id','backgr').attr('x',0).attr('y', 0)
            .attr('width', svg.attr("width") - margin.left - margin.right)
            .attr('height', svg.attr("height") - margin.top - margin.bottom)
            .attr('translate',"translate(-"+margin.left+","+margin.top+")");
           vennDir(main.attrArray,main.intensionArray,main.attrArray.length,g);
       } else {
-         d3.selectAll("g").selectAll("*").remove();
-         g.append("text").text("This display is only available for 2 or 3 sets")
-          .attr("x", xPoints[0]-130).attr("y", yPoints[0]-20);
+         d3.selectAll("svg").remove();
+//         d3.selectAll("g").selectAll("*").remove();
+//         g.append("text").text("This display is only available for 2 or 3 sets")
+//          .attr("x", 10).attr("y", 10);
       }
    }
    if (debug == 1) {show_values_for_debug()} 
