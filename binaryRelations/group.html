@@ -20,16 +20,9 @@
 })();
 </script>
 
-<!--<style>
-.tabulator { font-size: 5vw; }   /* responsive font */
-button {font-size: 5vw; }
-body { font-size: 5vw; }
-</style>-->
-
 <style>
-.tabulator { font-size: 120%; }
-button {font-size: 120%; }
-body { font-size: 150%; }
+/* .tabulator { font-size: 5vw; }   /* responsive font */
+.tabulator { font-size: 120%;}
 </style>
 
 <noscript>This webpage needs Javascript!</noscript>
@@ -89,11 +82,16 @@ if (choice_lang != 'de') {
    document.querySelector("#credits").innerHTML = html_credits;
 }
 if (glob_embed == "yes") {
+   document.querySelector("#credits").style.display = 'none';
    document.querySelector("#header1").style.display = 'none';
+   document.querySelector("body").style.fontSize = '150%';
+   let tlist = document.querySelectorAll("button");
+   for (let tidx = 0; tidx < tlist.length; ++tidx) {
+       tlist[tidx].style.fontSize = '120%';
+   }
 }
 </script>
 
 </body>
 </html>
-
 
