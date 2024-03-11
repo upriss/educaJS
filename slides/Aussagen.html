@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Aussagenlogik</title>
+<link href="utils/impressPresentation.css" rel="stylesheet" />
+</head>
+<body class="impress-not-supported">
+<div class="fallback-message">
+<p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+<p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser with Javascript turned on.</p>
+</div>
+
+<div id="impress" data-transition-duration="1000">
+
+<div title="Themen"
+     id="contents" class="step" data-rel-x="0" data-rel-y="1200" data-scale="1">
+
+<h1>Aussagenlogik</h1>
+
+Klausurrelevante Themen:
+<ul>
+<li>logische Operatoren
+<li>Wahrheitstabellen erstellen können
+<li>sprachliche Sätze modellieren und negieren können
+</ul>
+</div>
+
+<div title="Negation" id="topleft" class="step" data-x="2000" data-y="2000"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="contents middleleft contents topmiddle">
+
+<h1>Negation<br>&#172; a<br>(Verneinung)</h1>
+
+<iframe src="../binaryRelations/booleanOps.html?plusVenn=venn&lang=de&embed=yes&graph=not%20a" 
+width='100%' height='90%'></iframe>
+
+</div>
+
+<div title="Konjunktion" id="middleleft" class="step" data-rel-x="0" data-rel-y="1200"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="topleft bottomleft topright middlemiddle">
+
+<h1>Konjunktion<br>a &and; b<br>(Logisches Und)</h1>
+
+<iframe src="../binaryRelations/booleanOps.html?plusVenn=venn&lang=de&embed=yes&graph=a%20and%20b" 
+width='100%' height='90%'></iframe>
+
+</div>
+
+<div title="Disjunktion" id="bottomleft" class="step" data-rel-x="0" data-rel-y="1200"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="middleleft topmiddle middleright bottommiddle">
+
+<h1>Disjunktion<br>a &or; b<br>(Logisches Oder)</h1>
+
+<iframe src="../binaryRelations/booleanOps.html?plusVenn=venn&lang=de&embed=yes&graph=a%20or%20b" 
+width='100%' height='90%'></iframe>
+
+</div>
+
+<div title="Subjunktion" id="topmiddle" class="step" data-x="3500" data-y="2000"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="bottomleft middlemiddle topleft topright">
+
+<h1>Subjunktion<br>a &rarr; b<br>(Wenn ... dann ...)</h1>
+
+<iframe src="../binaryRelations/booleanOps.html?plusVenn=venn&lang=de&embed=yes&graph=a%20-s%3E%3E%20b" 
+width='100%' height='90%'></iframe>
+
+</div>
+
+<div title="Bijunktion" id="middlemiddle" class="step" data-rel-x="0" data-rel-y="1200"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="topmiddle bottommiddle middleleft middleright">
+
+<h1>Bijunktion<br>a &harr; b<br>(Genau dann ... wenn ...)</h1>
+
+<iframe src="../binaryRelations/booleanOps.html?plusVenn=venn&lang=de&embed=yes&graph=a%20%3D%3D%20b" 
+width='100%' height='90%'></iframe>
+
+</div>
+
+<div title="Alternation" id="bottommiddle" class="step" data-rel-x="0" data-rel-y="1200"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="middlemiddle topright bottomleft bottomright">
+
+<h1>Alternation<br>a &nharr; b<br>(Entweder ... oder ...)</h1>
+
+<iframe src="../binaryRelations/booleanOps.html?plusVenn=venn&lang=de&embed=yes&graph=not%20(a%20%3D%3D%20b)" 
+width='100%' height='90%'></iframe>
+
+</div>
+
+<div title="Umformung der Subjunktion" id="topright" class="step" data-x="5000" data-y="2000"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="bottommiddle middleright topmiddle middleleft">
+
+<h1>Subjunktion<br>a &rarr; b = &#172; a &or; b<br>Nicht ... Oder ...</h1>
+
+<iframe src="../binaryRelations/booleanOps.html?plusVenn=venn&lang=de&embed=yes&graph=not%20a%20or%20b" 
+width='100%' height='90%'></iframe>
+
+</div>
+
+<div title="Umformung der Subjunktion" id="middleright" class="step" data-rel-x="0" data-rel-y="1200"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="topright bottomright middlemiddle bottomleft">
+
+<h1>Kontraposition<br>a &rarr; b = &#172 b &rarr; &#172 a</h1>
+<iframe src="../binaryRelations/booleanOps.html?plusVenn=venn&lang=de&embed=yes&graph=not%20b%20-s%3E%3E%20not%20a" 
+width='100%' height='90%'></iframe>
+
+</div>
+
+<div title="Umformung der Bijunktion" id="bottomright" class="step" data-rel-x="0" data-rel-y="1200"
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="middleright conclusion bottommiddle conclusion">
+
+<h1>Zerlegung der Bijunktion in 2 Subjunktionen</h1>
+<iframe src="../binaryRelations/booleanOps.html?plusVenn=venn&lang=de&embed=yes&graph=(a%20-s%3E%3E%20b)%20and%20(b%20-s%3E%3E%20a)" 
+width='100%' height='90%'></iframe>
+
+</div>
+
+<div title="Schluss" id="conclusion" class="step" data-rel-x="1200" data-rel-y="1200">
+
+<h1>Diese Zusammenhänge sollten Sie auswendig wissen</h1>
+
+&#172; (&#172; a) = a<br>
+&#172; (a &and; b) = (&#172; a &or; &#172; b)<br>
+&#172; (a &or; b) = (&#172; a &and; &#172; b)<br>
+a &rarr; b = (&#172; a &or; b)<br>
+a &rarr; b = (&#172; b &rarr; &#172; a)<br>
+a &harr; b = ((a &rarr; b) &and; (b &rarr; a))
+</div>
+
+<div title="Übersicht" 
+     id="overview" class="step" data-x="3000" data-y="3000" data-scale="4" 
+     style="pointer-events: none;">
+</div>
+</div>  <!-- closes id="impress" -->
+
+<div id="impress-toolbar"></div>
+<div class="impress-progressbar"><div></div></div>
+<div class="impress-progress"></div>
+
+<script type="text/javascript" src="utils/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>
