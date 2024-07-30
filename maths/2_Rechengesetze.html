@@ -117,12 +117,25 @@ darf.</p>
 <input type='reset' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea12' class='answer'>&gt;</span>
 </form></p>
+
+Bei nicht kommutativen Operationen gibt es 2 mögliche Distributivgesetze,
+die nicht unbedingt beide gelten:
+
 <p><form onreset="document.getElementById('outputArea13').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea13' value='(3 * 5)**4 == 3**4 * 5**4'>
 <input type='button' value='&#8253;' onclick="compute('#inputArea13','outputArea13');">
 <input type='reset' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea13' class='answer'>&gt;</span>
 </form></p>
+<p><form onreset="document.getElementById('outputArea14').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea14' value='3 ** (4 * 5) == 3 ** 4 * 3 ** 5'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea14','outputArea14');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea14' class='answer'>&gt;</span>
+</form></p>
+
+(Bei der letzten Gleichung müssen Sie ein Zeichen ändern, so dass true
+herauskommt. Aber dann ist es kein Distributivgesetzt mehr.)
 
 <a name="Binomische Formeln">
 <h2>Binomische Formeln</h2>
