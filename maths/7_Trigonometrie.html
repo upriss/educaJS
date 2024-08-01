@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
+  <title>Trigonometrie</title>
+  <script src='jsCAS.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathjs12.4.2_math.js'></script>
+  <link rel='stylesheet' type='text/css' href='jsCAS.css'>
+</head>
+<body><noscript>This webpage needs Javascript!</noscript>
+<h2>Trigonometrie</h2>
+
+<p>In der Trigonometrie werden die Beziehungen zwischen Seiten und Winkeln von Dreiecken 
+untersucht, welche man zum Beispiel für die Berechnung von Entfernungen, Navigation, 
+Winkeln und Schrägen benötigt. Für trigonometrische Funktionen gibt es außerdem 
+Anwendungen bei der Modellierung von Wellen (Schallwellen, elektromagnetischen Wellen, 
+Radiowellen, Herzrhythmen usw.).</p>
+
+<h2>Grad- und Bogenmaß</h2>
+
+<p>Winkel kann man in <b>Grad</b> messen oder auch als Länge eines Kreis<b>bogen</b>s. Aus 
+der Geometrie ist bekannt, dass der Umfang eines Kreises 2&pi;r beträgt, wobei r der 
+Radius ist. Somit gilt im <b>Einheitskreis</b> (d.h. bei einem Kreis mit Radius 1), dass 
+der Umfang 2&pi; beträgt. Ein 90&deg; Winkel teilt einen Kreis in 4 Viertel, welches 
+im Einheitskreis einem Bogenmaß von 
+<sup>2&pi;</sup>/<sub>4</sub>=<sup>&pi;</sup>/<sub>2</sub>
+entspricht. Das 
+folgende Bild zeigt weitere Beispiele von Winkeln und deren Grad- und Bogenmaß im 
+Einheitskreis.</p>
+
+<img class="center" src="https://upriss.github.io/educaJS/images/trigon.jpg" width="300">
+
+<h2>Beziehungen in rechtwinkligen Dreiecken</h2>
+
+<p>Trigonometrie beruht darauf, dass es in einem <b>rechtwinkligen Dreieck</b> feste 
+Beziehungen zwischen Längen und Winkeln gibt. In einem rechtwinkligen Dreieck wird 
+die Seite, die gegenüber dem rechten Winkel liegt, als <b>Hypotenuse</b> bezeichnet. 
+Die anderen beiden Seiten heißen <b>Katheten</b>. Die Kathete gegenüber einem betrachteten 
+Winkel &alpha; heißt <b>Gegenkathete</b>, die andere <b>Ankathete</b>. (Da die 
+Trigonometrie schon vor mehr als 2000 Jahren erfunden wurde, sind die Bezeichnungen 
+griechisch).</p>
+
+<img class="center" src="https://upriss.github.io/educaJS/images/trigon1.png" width="300">
+
+<p>In einem rechtwinkligen Dreieck gelten für den Winkel &alpha; mit den Bezeichnungen 
+wie im obigen Bild die Beziehungen:</p>
+
+<center>
+Sinus von &alpha; = sin (&alpha;)  = <sup>g</sup>/<sub>h</sub><br>
+Kosinus von &alpha; = cos (&alpha;)  = <sup>a</sup>/<sub>h</sub><br>
+Tangens von &alpha; = tan (&alpha;)  = <sup>g</sup>/<sub>a</sub>
+</center>
+    
+<h3>Aufgabe</h3>
+
+<p>Zeigen Sie, dass sin(&alpha;)/cos(&alpha;) = tan(&alpha;) gilt.</p>
+
+<h2>Sinus und Kosinus-Werte</h2>
+
+<p>Man kann ein rechtwinkliges Dreieck so in einen Einheitskreis zeichnen, dass die 
+Hypothenuse dem Radius entspricht (d.h. Länge 1 hat). Dabei gibt es die Extremfälle 
+für &alpha; = 0&deg;, &alpha; = 90&deg;, &alpha; = 180&deg; und &alpha; = 360&deg;, 
+bei denen die 
+drei Seiten des Dreiecks aufeinander fallen. In den Extremfällen ist dann jeweils einer 
+der Werte (cos oder sin) gleich 0 und der andere gleich 1 oder -1. Ansonsten sind die 
+Werte von cos und sin zwischen -1 und 1.</p>
+
+<img class="center" src="https://upriss.github.io/educaJS/images/trigon2.png" width="500">
+
+<h3>Aufgabe</h3>
+
+<p>1. Überlegen Sie sich anhand des Bilds, welche Werte sin und cos abhängig von &alpha; 
+ungefähr annehmen.</p>
+
+<p>Die Werte für einige Winkel (im Bogenmaß und Gradmaß) stehen in dieser Tabelle:</p>
+
+<table class="centerTable">
+    <tr><th>&alpha; <th>0 <th> &pi;/6 <th>&pi;/4
+        <th>&pi;/3<th>&pi;/2</tr>
+    <tr><th> <th>0&deg;<th>30&deg;<th>45&deg;
+        <th>60&deg;<th>90&deg;</th>
+<tr><td>sin(&alpha;) <td>0 <td> <sup>1</sup>/<sub>2</sub> 
+<td><sup>&radic;2</sup>/<sub>2</sub>
+    <td><sup>&radic;3</sup>/<sub>2</sub><td>1</td></tr>
+<tr><td>cos(&alpha;) <td>1 <td> <sup>&radic;3</sup>/<sub>2</sub> 
+    <td><sup>&radic;2</sup>/<sub>2</sub><td><sup>1</sup>/<sub>2</sub><td>0</td></tr>
+<tr><td>tan(&alpha;)<td>0 <td> <sup>&radic;3</sup>/<sub>3</sub>
+    <td>1<td>&radic;3<td>-</td></tr>
+</table>
+
+<h3>Aufgaben</h3>
+
+<p>1. Überprüfen Sie die Tangenswerte aus der Tabelle anhand der Formel 
+sin(&alpha;)/cos(&alpha;) = tan(&alpha;).</p>
+
+<p>2. Wenn Sie sich noch an Geometrie aus der Schule erinnern, können Sie die Werte für 
+30&deg; und 60&deg; bestimmen, indem Sie das Dreieck zu einem gleichseitigen 
+Dreieck ergänzen und dann den Satz des Pythagoras anwenden.</p>
+
+<p>3. Was passiert bei Winkeln größer als 360&deg; oder kleiner als 0&deg;?</p>
+
+<p>4. Wieso ist der Tangens von 90&deg; nicht definiert?</p>
+
+<h2>Kotangens</h2>
+
+<p>Der Kehrwert des Tangens wird als Kotangens bezeichnet: 
+cot(&alpha;) = 1/tan(&alpha;). Man kann den Tangens und Kotangens auch am 
+Einheitskreis visualisieren. Um genau zu verstehen, warum das folgende Bild richtig ist, 
+müssen Sie aber aus der Geometrie wissen, wie man ähnliche Dreiecke erkennt (d.h. mit 
+gleichen Winkeln und gleichen Seitenverhältnissen). Die trigonometrischen Werte sind 
+in ähnlichen Dreiecken gleich.</p>
+
+<img class="center" src="https://upriss.github.io/educaJS/images/trigon3.png" width="200">
+
+<h3>Aufgaben</h3>
+
+<p>1. Überlegen Sie nochmal anhand des Bilds, wieso der Tangens von &alpha; = 90&deg; 
+nicht definiert ist.</p>
+
+<p>2. Welcher Kotangenswert ist nicht definiert?</p> 
+
+<p>3. Was passiert mit den Werten von Tangens und Kotangens, wenn der Winkel &alpha; 
+größer oder kleiner wird?</p>
+
+<h2>Werte mit dem Computer berechnen</h2>
+
+<p>Um sin, cos und tan in Python zu berechnen, müssen Sie die Werte im Bogenmaß angeben:
+</p>
+
+<p><form onreset="document.getElementById('outputArea1').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea1' value='sin(0)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea1' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea2').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea2' value='sin(pi/6)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea2' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea3').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea3' value='sin(pi/4)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea3' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea4').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea4' value='sqrt(2)/2'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea4' class='answer'>&gt;</span>
+</form></p>
+
+<p>Werte im Gradmaß können Sie mit radians in Bogenmaß umwandeln. Werte im Bogenmaß können 
+Sie mit degrees in Gradmaß umwandeln.</p>
+
+<p><form onreset="document.getElementById('outputArea5').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea5' value='radians(30)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea5','outputArea5');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea5' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea6').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea6' value='pi/6'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea6','outputArea6');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea6' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea7').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea7' value='degrees(pi/6)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea7','outputArea7');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea7' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea8').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea8' value='sin(pi/6)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea8','outputArea8');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea8' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea9').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea9' value='sin(radians(30))'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea9','outputArea9');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea9' class='answer'>&gt;</span>
+</form></p>
+
+<p>Die Funktionen lassen sich auch alle umkehren und heißen dann asin, acos und atan 
+(ausgesprochen als Arkussinus usw.). Wenn Sie also einen Wert für sin, cos oder tan 
+kennen, können Sie das jeweilige Bogen- oder Gradmaß berechnen:</p>
+
+<p><form onreset="document.getElementById('outputArea10').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea10' value='asin(0.5)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea10','outputArea10');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea10' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea11').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea11' value='pi/6'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea11','outputArea11');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea11' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea12').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea12' value='asin(1)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea12','outputArea12');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea12' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea13').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea13' value='pi/2'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea13','outputArea13');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea13' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea14').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea14' value='atan(1)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea14','outputArea14');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea14' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea15').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea15' value='pi/4'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea15','outputArea15');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea15' class='answer'>&gt;</span>
+</form></p>
+
+<p>Für die Kehrwerte des Sinus und Kosinus gibt es auch Bezeichnungen, die aber selten 
+verwendet werden. Außerdem gibt es noch einige Formeln und Rechenregeln, die Sie 
+nachschlagen können, falls Sie sie brauchen und die hier nicht weiter erläutert werden.
+</p>
+
+<h2>Testen Sie Ihr Wissen zur Trigonometrie</h2>
+
+<p>1. Für welche Winkel ist der Sinus/Kosinus jeweils positiv oder negativ? Welche Werte 
+kann der Tangens annehmen (ist der auch zwischen -1 und 1)?</p>
+
+<p>2. Wieso gilt (sin(&alpha;))<sup>2</sup> + (cos(&alpha;))<sup>2</sup> = 1?<br> 
+Zumindest im Einheitskreis 
+ist das leicht mithilfe des Satz des Pythagoras zu sehen. Zeigen Sie, dass die Gleichung 
+auch dann gilt, wenn die Hypotenuse nicht gleich 1 ist, indem Sie die Formeln, mit denen 
+sin und cos definiert sind, in den Satz des Pythagoras einsetzen.</p>
+
+<p>3. Berechnen Sie, in welchem Winkel zum Dach Sie Photovoltaik-Module auf dem 
+abgebildeten Dach anbringen müssen, wenn die Module einen Neigungswinkel von 
+48&deg; haben sollen (also etwas flacher geneigt als das gezeigte Dach). Rechnen Sie 
+geometrisch und trigonometrisch und überprüfen Sie dann mit einem Winkelmesser (den Sie 
+vermutlich aus Ihrer Schulzeit noch haben).</p>
+
+<img class="center" src="https://upriss.github.io/educaJS/images/dach.png" width="200">
+
+</body>
+</html>

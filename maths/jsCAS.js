@@ -37,60 +37,31 @@ function zeichnen(n,pl) {
 }
 function zeichnenReset() { traces = []; Plotly.newPlot(plotArea, traces); }
 
-function displaySet(s) {
-    let tempstr = "";
-    let tempstr2 = "";
-    let tempset = new Set ([]);
-    s.forEach (function(value) {
-       if (value instanceof Set) {
-          tempstr2 = JSON.stringify([...value]);
-	  if (!(tempset.has(tempstr2))) {    // eliminate duplicates
-	      tempset.add(tempstr2); 
-	      tempstr += displaySet(value)
-          }
-	} else {
-          tempstr += value;
-	}
-	tempstr += ", ";
-    })
-  tempstr = "{" + tempstr + "}";
-  tempstr = tempstr.replace(/, ,/g,",");    // delete last ", "
-  tempstr = tempstr.replace(/, }/g,"}");
-  return tempstr
-}
-
-let structure = new Set([new Set(["1", "42"]), new Set(["42"]), new Set(["1", "42"]) ]);
-console.log(displaySet(structure));
-
 function compute(inA,outA,inA2){
    let result = "";
+   let result2 = "";
    let inputArea = document.querySelector(inA);
    let inp = inputArea.value;
    inp = inp.replaceAll("pi","Math.PI");
    inp = inp.replace(/simplify\((.*)\)/g,"simplify('$1')"); // because Javascr needs quotes
    inp = inp.replace(/solve\((.*)\)/g,"solve('$1')");       // only works for X
-   inp = inp.replace(/prOnly\((.*)\)/g,"'$1'");          // print only 
-   if (typeof inA2 != 'undefined') {                     // inA2 for comparison with hidden
+   inp = inp.replace(/prOnly\((.*)\)/g,"'$1'");             // print only 
+   if (inp.match(/{/)) {                                    // for set operations
+       result = setOps(inp);
+   } else if (typeof inA2 != 'undefined') {           // inA2 for comparison with hidden
        let inputHArea = document.querySelector(inA2);
        let inp2 = inputHArea.value;
        inp2 = inp2.replaceAll("pi","Math.PI");
-       try { result = eval(inp == inp2); }
+       try { 
+	   result = eval(inp);
+	   result2 = eval(inp2);
+	   result = (result == result2) }
        catch(err) { result = err }
    } else {
        try { result = eval(inp); }
        catch(err) { result = err }
    }
+
    document.getElementById(outA).innerHTML=result;
 }
-
-
-//https://www.matheretter.de/rechner/bruchweit
-//https://nerdamer.com/
-//http://algebra.js.org/
-//http://algebrite.org/
-//https://mathjs.org   math.simplify
-
-//letters = new Set(["a","b","c"]); 
-//letters.add("d");
-//letters
 

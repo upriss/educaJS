@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
+  <title>Funktionen</title>
+  <script src='jsCAS.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathjs12.4.2_math.js'></script>
+  <link rel='stylesheet' type='text/css' href='jsCAS.css'>
+</head>
+<body><noscript>This webpage needs Javascript!</noscript>
+<h2>Funktionen</h2>
+
+<p>Bei Gleichungen ist es oft so, dass genau 2 Variablen x und 
+y verwendet werden, die in einer festen Beziehung zueinander 
+stehen, so dass man, wenn man x kennt, dadurch einen Wert für 
+y berechnen kann. Zum Beispiel:</p>
+
+y = x<sup>2</sup><br>
+
+y = x + 2<br>
+
+y = sin(x)
+
+<p>Anstatt y kann man in solchen Fällen auch f(x) schreiben:</p>
+
+f(x) = x<sup>2</sup><br>
+
+f(x) = x + 2<br>
+
+f(x) = sin(x)
+
+<p>Man nennt einen Prozess, der jedes Element x einer Menge D (die 
+sogenannte Definitionsmenge) eindeutig in ein Element f(x) einer 
+Menge W (die sogenannte Wertemenge) transformiert auch <b>Funktion</b>
+und schreibt f: D &rarr; W</p>
+
+<p>In Python sind viele Funktionen schon vordefiniert. Beschreiben Sie
+für die folgenden Funktionen, was deren Zweck wohl ist.</p>
+
+<p><form onreset="document.getElementById('outputArea1').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea1' value='len("Hello")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea1' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea2').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea2' value='sin(1)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea2' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea3').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea3' value='sqrt(4)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea3' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea4').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea4' value='simplify(2*m + 3*n - 6*m)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea4' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea5').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea5' value='factorial(4)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea5','outputArea5');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea5' class='answer'>&gt;</span>
+</form></p>
+
+<h3>Aufgaben</h3>
+
+<p>1. Bestimmen Sie für die obigen Python-Funktionen die Definitionsmengen 
+(d.h. auf was für Elemente kann man die Funktionen anwenden) und die Wertemengen 
+(d.h. was für Elemente kommen jeweils heraus)? Zum Beispiel darf man die 
+Wurzelfunktion nur auf positive Zahlen anwenden und es kommen auch nur 
+positive Zahlen heraus. </p>
+
+<p>2. Wenn man Funktionen auf Elemente anwendet, die nicht in der 
+Definitionsmenge liegen, produzieren Programmiersprachen einen Fehler. Überlegen Sie für 
+die nächsten Beispiele erst, welche Funktionsaufrufe wohl einen Fehler 
+produzieren werden und ersetzen Sie die "-4" in den Fällen, in denen 
+sie nicht in der Definitionsmenge liegt, durch ein Element, das in der 
+jeweiligen Definitionsmenge liegt, so dass keine Fehler mehr produziert werden.</p>
+
+<p><form onreset="document.getElementById('outputArea6').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea6' value='sqrt(-4)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea6','outputArea6');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea6' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea7').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea7' value='sin(-4)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea7','outputArea7');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea7' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea8').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea8' value='len(-4)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea8','outputArea8');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea8' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea9').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea9' value='simplify(-4)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea9','outputArea9');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea9' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea10').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea10' value='factorial(-4)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea10','outputArea10');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea10' class='answer'>&gt;</span>
+</form></p>
+
+<h2>Verschiedene Arten von Funktionen</h2>
+
+<p>Funktionen kommen in sehr unterschiedlichen Formen vor. Es muss nur 
+immer die Bedingung erfüllt sein, dass jedem Element x einer Menge D 
+eindeutig in ein Element f(x) einer Menge W zugeordnet ist. </p>
+
+<p>Zum Beispiel wird in dieser Tabelle jedem Monat genau 1 Temperatur 
+zugeordnet. Anders herum wird jeder Temperatur genau 1 Monat zugeordnet. </p>
+f<sub>1</sub>: Monat<sub>3</sub> &rarr; Temperatur <br>
+f<sub>2</sub>: Temperatur &rarr; Monat<sub>3</sub> <br>
+
+<p>Man spricht in diesem Fall auch von <b>Bijunktion</b> oder 
+<b>1-zu-1 Zuordnung</b>, da es sich um eine Funktion in beide Richtungen handelt.</p>
+<table class='centerTable'>
+    <tr><th>Monat<sub>3</sub><th>Temperatur
+    <tr><td>Jan<td>1            
+    <tr><td>Feb<td>2
+    <tr><td>Mar<td>5
+    <tr><td>Apr<td>10           
+    <tr><td>Mai<td>14
+    <tr><td>Jun<td>17
+    <tr><td>Jul<td>19           
+    <tr><td>Aug<td>20
+    <tr><td>Sep<td>15
+    <tr><td>Okt<td>11         
+    <tr><td>Nov<td>6
+    <tr><td>Dez<td>3
+</table>
+
+<p>In der folgenden Tabelle kann man weder für jeden Monat eine Temperatur 
+bestimmen (weil es z.B. für den Monat J drei verschiedene Temperaturen gibt), 
+noch kann man jeder Temperatur einen Monat zuordnen, weil es zu der 
+Temperatur 3 zwei verschiedene Monate gibt (F und D). Man sagt für 
+die Beziehung zwischen Monat<sub>1</sub> und Temperatur in dieser Tabelle, 
+dass es sich um eine <b>Relation</b>, aber keine Funktion handelt.</p>
+    
+<table class='centerTable'>
+    <tr><th>Monat<sub>1</sub><th>Temperatur
+    <tr><td>J<td>1            
+    <tr><td>F<td>3
+    <tr><td>M<td>5
+    <tr><td>A<td>10           
+    <tr><td>M<td>14
+    <tr><td>J<td>17
+    <tr><td>J<td>19           
+    <tr><td>A<td>20
+    <tr><td>S<td>15
+    <tr><td>O<td>11         
+    <tr><td>N<td>6
+    <tr><td>D<td>3
+</table>
+
+<h2>Testen Sie Ihr Wissen zu Funktionen</h2>
+
+<p>Die Lösungen zu Aufgaben 1. und 2. stehen weiter unten. Überlegen 
+Sie aber erst, bevor Sie sich die Lösungen anschauen.</p>
+
+<p>1. Bestimmen Sie für die folgenden Graphen (A-F), ob es sich um 
+Funktionen handelt, wenn die Elemente im linken Kreis die Definitionsmenge 
+darstellen und die Elemente im rechten Kreis die Wertemenge.</p>
+
+<center>
+<img src="https://upriss.github.io/educaJS/images/funkt1.jpg" width="400">
+</center>
+
+<p>2. Bestimmen Sie für die folgenden Graphen, ob es sich um Funktionen 
+handelt, wenn die waagerechte Achse die Definitionsmenge darstellt und 
+die senkrechte Achse die Wertemenge.</p>
+
+<center>
+<img src="https://upriss.github.io/educaJS/images/funkt2.jpg" width="400">
+</center>
+
+<p>3. Vergleichen Sie nochmal, welche verschiedenen Arten von Funktionen 
+Sie in diesem Kurs gesehen haben (mit reellen Zahlen, Python-Funktionen, 
+Tabellen, Graphen). Wie kann man die Bedingung, dass jedem Element 
+x einer Menge D eindeutig in ein Element f(x) einer Menge W zugeordnet ist, 
+jeweils überprüfen? </p>
+
+<p>Historisch gesehen hat es Jahrhunderte gedauert, bis Funktionen als das 
+mathematische Prinzip erkannt wurden, das diese verschiedenen 
+Darstellungsweisen verbindet. Verzweifeln Sie also nicht, wenn auch Sie 
+etwas Zeit brauchen, bis Sie mit dem Funktionsbegriff in allen Varianten 
+vertraut sind. </p>
+
+<h2>Lösungen</h2>
+
+<p>1. A) keine Funktion, weil keine eindeutige Zuordnung für Element d. 
+B) ist Funktion. C) keine Funktion, weil keine Zuordnung für Element c. 
+D) ist Funktion und sogar eine Bijunktion. E) keine Funktion, weil 
+keine Zuordnungen. F) keine Funktion, weil keine eindeutige Zuordnung 
+für Elemente d und c.</p>
+
+<p>2. Erste Reihe von links: ist Funktion, ist Funktion (sogar Bijunktion), 
+keine Funktion, weil rechts den Werten der waagerechten Achse jeweils 
+2 Werte der senkrechten Achse zugeordnet sind. Zweite Reihe von links: 
+keine Funktion, ist Funktion, keine Funktion.</p>
+
+</body>
+</html>

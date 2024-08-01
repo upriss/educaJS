@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
+  <title>Gleichungen</title>
+  <script src='jsCAS.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathjs12.4.2_math.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/nerdamerPrime.min.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/plotly.min.js'></script>
+  <link rel='stylesheet' type='text/css' href='jsCAS.css'>
+</head>
+<body><noscript>This webpage needs Javascript!</noscript>
+<h2>Gleichungen</h2>
+
+<p>Es gibt viele Anwendungsfälle, bei denen Sachverhalte mit Variablen modelliert werden. 
+Dafür werden oft Gleichungen verwendet. Zum Beispiel könnte man an Quadraten interessiert 
+sein, die eine Grundfläche von 100 m<sup>2</sup> haben und dies durch eine Gleichung 
+x<sup>2</sup> = 100 
+modellieren. Oder man möchte einen Prozess modellieren, bei dem man für jedes x immer den 
+doppelten y-Wert erhält, d.h. als Gleichung geschrieben: y = 2x. Bevor der Erfindung 
+von Computern musste man Verfahren lernen, mit denen man solche Gleichungen von Hand 
+umformen kann, zum Beispiel um herauszufinden, für welche Werte  die Gleichung erfüllbar 
+ist. Heutzutage braucht man solche Umformungen eigentlich nicht mehr von Hand auszuführen, 
+da es dafür Computerprogramme gibt. Aber man muss immer noch verstehen, wie man 
+Sachverhalte durch Gleichungen modelliert, welche Umformungsmöglichkeiten es gibt 
+und wie man Ergebnisse des Computers überprüfen kann.</p>
+
+<p>In einem CAS sind verschiedene Algorithmen zur Lösung verschiedener Typen von
+Gleichungen implementiert. Insbesondere in Python gibt es dafür gute Bibliotheken. 
+In diesem Beispiel
+müssen Gleichungen so umgeformt werden, dass auf einer Seite 0 steht. 
+D.h. x<sup>2</sup> = 100 muss zu x<sup>2</sup> - 100 = 0 umgeformt werden 
+und y = 2x zu y - 2x = 0. Dann kann die Gleichung mit dem "solve"-Befehl
+nach X aufgelöst werden (verwenden Sie dabei als 
+Variablen in diesem Kurs nur die Großbuchstaben X, Y oder Z):</p>
+
+<p><form onreset="document.getElementById('outputArea1').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea1' value='solve(X**2 - 100)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea1' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea2').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea2' value='solve(Y - 2*X)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea2' class='answer'>&gt;</span>
+</form></p>
+
+<p>In diesem Fall gibt es für die erste Gleichung zwei Lösungen (-10 und 10), von denen 
+im oben genannten Anwendungsfall nur der Wert 10 relevant ist. Für die zweite Gleichung 
+gibt es keinen einzelnen Lösungswert, sondern ein Verhältnis zwischen den Variablen 
+nämlich, das ein x genau <sup>y</sup>/<sub>2</sub> entspricht. 
+(Widerspricht das dem oben modellierten Prozess, 
+der für ein x den doppelten y-Wert liefern soll? Das kommt darauf an, was man genau mit 
+"liefern" meint. Schauen Sie sich die graphische Darstellung im nächsten Abschnitt an 
+und entscheiden Sie selbst, ob die Modellierung passt oder nicht.)</p>
+
+<h3>Aufgaben</h3>
+
+<p>Formen Sie die folgenden Gleichungen so um, dass Sie darauf solve anwenden können, 
+d.h. auf einer Seite muss 0 stehen. Zum Beispiel:</p>
+
+<p>15x<sup>2</sup> - 10 = 50</p>
+<p>15x<sup>2</sup> - 10 - 50 = 50 - 50 | auf beiden Seiten 50 abziehen</p>
+<p>15x<sup>2</sup> - 60 = 0</p>
+
+<p><form onreset="document.getElementById('outputArea3').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea3' value='solve(15 * X**2 - 60)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea3' class='answer'>&gt;</span>
+</form></p>
+
+<p>Überprüfen Sie dann das Ergebnis, das Sie mit Python erhalten, indem Sie es in 
+die ursprüngliche Gleichung einsetzen:</p>
+
+<p><form onreset="document.getElementById('outputArea4').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea4' value='15 * (-2)**2 - 10 == 50'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea4' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea5').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea5' value='15 * 2**2 - 10 == 50'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea5','outputArea5');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea5' class='answer'>&gt;</span>
+</form></p>
+
+<p>Lösen Sie die folgenden Gleichungen auf die gleiche Art mit Python:</p>
+    
+<p>X<sup>2</sup> - 5X = 7</p>
+<p><form onreset="document.getElementById('outputArea6').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea6' value='solve(...)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea6','outputArea6');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea6' class='answer'>&gt;</span>
+</form></p>
+<p>X + 3(X - 5) = X - 2(X + 5)</p>
+<p><form onreset="document.getElementById('outputArea7').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea7' value='solve(...)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea7','outputArea7');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea7' class='answer'>&gt;</span>
+</form></p>
+<p>X<sup>3</sup> + 2X = 3X<sup>2</sup></p>
+<p><form onreset="document.getElementById('outputArea8').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea8' value='solve(...)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea8','outputArea8');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea8' class='answer'>&gt;</span>
+</form></p>
+<p>2<sup>X</sup> = 64</p>
+<p><form onreset="document.getElementById('outputArea9').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea9' value='solve(...)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea9','outputArea9');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea9' class='answer'>&gt;</span>
+</form></p>
+<p>10<sup>(1-X)</sup> = <sup>1</sup>/<sub>100</sub></p>
+<p><form onreset="document.getElementById('outputArea10').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea10' value='solve(...)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea10','outputArea10');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea10' class='answer'>&gt;</span>
+</form></p>
+
+<h2>Graphische Darstellung</h2>
+
+<p>Für die graphische Darstellung von Gleichungen mit 2 Variablen gibt es in 
+diesem Kurs den Befehl "zeichnen". In Python gibt es dafür andere, aber ähnliche
+Befehle. Sie können dafür auch 
+<a href="https://www.geogebra.org/graphing" target="_blank">Geogebra</a> verwenden.
+Verwenden Sie hier die Kleinbuchstaben x und y. Zum Beispiel:</p>
+
+y = 2*x
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea11' value='zeichnen("2*x","plot1")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea11','outputArea11');">
+&nbsp;<span id='outputArea11' class='answer'></span>
+</form></p>
+
+<div id="plot1" class="plotArea"></div>
+
+<p>Überlegen Sie jetzt, ob diese Darstellung einen Prozess modelliert, bei 
+dem man für jedes x immer 2y erhält. Dies entspricht der Gleichung y = 2x 
+und dazu äquivalent x = <sup>y</sup>/<sub>2</sub>. Es ist immer wichtig, dass man am Ende 
+einer Rechnung noch mal schaut, ob ein Ergebnis überhaupt stimmen kann.</p>
+
+<h3>Lineare Gleichungen</h3>
+
+<p>D.h. Gleichungen, bei denen die Variablen den 
+Exponenten 1 haben. Ihre Graphen sind Geraden. Schauen Sie sich die Graphen
+  dieser Gleichungen mit dem CAS an:</p>
+
+<div id="plot2" class="plotArea"></div>
+
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea12' value='zeichnen("x","plot2")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea12','outputArea12');">
+&nbsp;<span id='outputArea12' class='answer'></span>
+</form></p>
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea13' value='zeichnen("-x","plot2")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea13','outputArea13');">
+&nbsp;<span id='outputArea13' class='answer'></span>
+</form></p>
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea14' value='zeichnen("x + 2","plot2")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea14','outputArea14');">
+&nbsp;<span id='outputArea14' class='answer'></span>
+</form></p>
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea15' value='zeichnen("x - 2","plot2")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea15','outputArea15');">
+&nbsp;<span id='outputArea15' class='answer'></span>
+</form></p>
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea16' value='zeichnen("3 * x","plot2")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea16','outputArea16');">
+&nbsp;<span id='outputArea16' class='answer'></span>
+</form></p>
+
+<p>Was fällt Ihnen auf? Wann ist die Gerade steiler, flacher, steigt oder 
+fällt? Wann verschiebt sich die Gerade entlang der X-Achse?</p>
+
+<h3>Polynom-Gleichungen</h3>
+
+<p>Variable können auch höhere Exponenten haben. 
+Zum Beispiel y = x<sup>6</sup> + 15x<sup>4</sup> + x<sup>2</sup> + x - 3 
+oder y = x<sup>2</sup> + x - 3. Dabei ist 
+die letztere eine <b>quadratische Gleichung</b>, da der höchste Exponent 2 
+ist. 
+
+<div id="plot3" class="plotArea"></div>
+
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea17' value='zeichnen("x","plot3")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea17','outputArea17');">
+&nbsp;<span id='outputArea17' class='answer'></span>
+</form></p>
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea18' value='zeichnen("x ** 2","plot3")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea18','outputArea18');">
+&nbsp;<span id='outputArea18' class='answer'></span>
+</form></p>
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea19' value='zeichnen("x ** 3","plot3")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea19','outputArea19');">
+&nbsp;<span id='outputArea19' class='answer'></span>
+</form></p>
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea20' value='zeichnen("x ** 4","plot3")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea20','outputArea20');">
+&nbsp;<span id='outputArea20' class='answer'></span>
+</form></p>
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea21' value='zeichnen("x ** 5","plot3")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea21','outputArea21');">
+&nbsp;<span id='outputArea21' class='answer'></span>
+</form></p>
+Berechnen Sie die y-Werte für x = 2 und x = -2 und schauen Sie, zu welchem Graph die jeweils 
+gehören. Was passiert mit den Graphen, wenn die Exponenten höher werden? Für 
+welche Exponenten können negative y-Werte herauskommen?</p>
+
+<h3>Wurzelgleichungen</h3>
+
+<p>Schauen Sie sich Sie 
+Graphen der folgenden Gleichungen an:<br>
+
+<div id="plot4" class="plotArea"></div>
+
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea22' value='zeichnen("x","plot4")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea22','outputArea22');">
+&nbsp;<span id='outputArea22' class='answer'></span>
+</form></p>
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea23' value='zeichnen("x ** (0.9)","plot4")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea23','outputArea23');">
+&nbsp;<span id='outputArea23' class='answer'></span>
+</form></p>
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea24' value='zeichnen("x ** (0.5)","plot4")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea24','outputArea24');">
+&nbsp;<span id='outputArea24' class='answer'></span>
+</form></p>
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea25' value='zeichnen("x ** (0.2)","plot4")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea25','outputArea25');">
+&nbsp;<span id='outputArea25' class='answer'></span>
+</form></p>
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea26' value='zeichnen("x ** 0","plot4")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea26','outputArea26');">
+&nbsp;<span id='outputArea26' class='answer'></span>
+</form></p>
+Zur Erinnerung: x<sup><sup>1</sup>/<sub>2</sub></sup> = &radic;x. Es handelt sich also um Wurzeln. 
+Nicht alle Wurzeln negativer Zahlen sind reelle Zahlen. Daher sind die Graphen 
+nur für positive x-Werte gezeichnet. Wie sehen die Graphen also aus, wenn die 
+Exponenten zwischen 0 und 1 liegen?</p>
+
+<h3>Gleichungen mit negativen Exponenten</h3>
+
+<div id="plot5" class="plotArea"></div>
+
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea27' value='zeichnen("x ** (-1)","plot5")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea27','outputArea27');">
+&nbsp;<span id='outputArea27' class='answer'></span>
+</form></p>
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea28' value='zeichnen("x ** (-2)","plot5")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea28','outputArea28');">
+&nbsp;<span id='outputArea28' class='answer'></span>
+</form></p>
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea29' value='zeichnen("x ** (-3)","plot5")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea29','outputArea29');">
+&nbsp;<span id='outputArea29' class='answer'></span>
+</form></p>
+
+<p>Zur Erinnerung: x<sup>-z</sup> = <sup>1</sup>/<sub>x<sup>z</sup></sub>.
+Wie sehen die Graphen also aus, wenn die Exponenten 
+kleiner als -1 sind? Stimmen die Graphen mit Ihrer Intuition bezüglich 
+Brüchen überein: wann ist ein Bruch der Form <sup>1</sup>/<sub>x</sub> größer als 1, 
+zwischen 1 und -1 oder kleiner als -1?
+</p>
+
+<h3>Exponential-Gleichungen</h3>
+
+<p>D.h. Gleichungen, bei denen die Variable 
+im Exponenten auftaucht. Vergleichen Sie
+die Graphen für y = 2<sup>x</sup> und y = x<sup>2</sup>.</p>
+
+<div id="plot6" class="plotArea"></div>
+
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea30' value='zeichnen("x ** 2","plot6")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea30','outputArea30');">
+&nbsp;<span id='outputArea30' class='answer'></span>
+</form></p>
+<p><form class="zeichnen">
+<input type='text' class='setInput' id='inputArea31' value='zeichnen("2 ** x","plot6")'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea31','outputArea31');">
+&nbsp;<span id='outputArea31' class='answer'></span>
+</form></p>
+
+<h2>Gleichungen umformen</h2>
+
+<p>Wenn man Gleichungen nicht per Computer sondern von Hand bearbeiten möchte, 
+gibt es für jeden Typ von Gleichungen Lösungsverfahren, die man anwenden kann. 
+Für alle Gleichungen gilt, dass man bei Umformungen immer auf beiden Seiten 
+des Gleichheitszeichens das Gleiche tun muss, damit die Gleichheit erhalten 
+bleibt. Nicht alle Umformungen sind erlaubt, zum Beispiel darf man nicht mit 
+0 multiplizieren oder durch 0 teilen. Hier eine Übersicht über die 
+Lösungsverfahren:</p>
+<ul>
+<li><b>Lineare Gleichungen</b>: so umformen, dass eine Variable isoliert wird.
+<li><b>Quadratische Gleichungen</b>: muss man zunächst in die Form 
+x<sup>2</sup> + px - q = 0 bringen und kann dann die Lösungsformel: 
+x<sub>1,2</sub> = -<sup>p</sup>/<sub>2</sub> &plusmn; 
+&radic;(<sup>p<sup>2</sup></sup>/<sub>4</sub> - q) anwenden.
+<li><b>Polynom-Gleichungen</b>: falls der größte Exponent &lt; 4 ist, gibt 
+es Lösungsformeln, die man anwenden kann.
+<li><b>Bruchgleichungen</b>: wenn Brüche vorkommen multipliziert man die 
+Gleichung auf beiden Seiten solange mit Teilern der Nenner, bis die Brüche 
+verschwunden sind. Dabei muss man aber aufpassen, dass man nicht mit 0 
+multipliziert. Wenn man z.B. mit (x - 1) multipliziert, dann muss man 
+x = 1 aus der Lösungsmenge ausschließen.
+<li><b>Wurzelgleichungen</b>: Wurzel auf einer Seite isolieren und mit 
+dem Wurzelexponenten potenzieren. Das solange wiederholen, bis alle 
+Wurzeln verschwunden sind. Achtung: da es negative und positive Wurzeln 
+gibt, muss man beim Potenzieren Fälle unterscheiden.
+<li><b>Exponentialgleichungen</b>: kann man durch Logarithmieren lösen.
+</ul>   
+
+<p>Die Liste ist nicht vollständig. Es gibt auch Gleichungen mit 
+trigonometrischen Funktionen, Integralen, Ableitungen und so weiter.</p>
+
+<h3>Aufgaben</h3>
+
+<p>Man kann viel Zeit mit dem Üben der verschiedenen Verfahren verbringen. 
+Allerdings sind vermutlich nicht alle gleich wichtig. Lineare Gleichungen 
+sind tendenziell am Wichtigsten. Die <b>wichtigen Fähigkeiten</b>, die 
+man für Umformungen benötigt (sowohl für Gleichungen als auch für andere 
+mathematische Probleme) sind: 1. ein Gefühl dafür zu entwickeln, <b>welches 
+Verfahren wann sinnvoll ist</b> und 2. beim Umformen komplexer Ausdrücke 
+alle <b>Rechenregeln richtig anzuwenden</b>, d.h. auch nichts zu übersehen, 
+keine Vorzeichen zu vertauschen, richtig zu klammern usw. Falls Sie 
+insbesondere in der 2. Fähigkeit nicht sicher sind, sollten Sie weitere 
+Übungsaufgaben zum Umformen von Gleichungen bearbeiten (zum Beispiel in 
+dem empfohlenen Buch "Vorkurs Mathematik"). Vermutlich brauchen Sie dafür 
+mehr Zeit, als Sie in diesem Vorkurs haben. Das sollten Sie also auch in 
+Zukunft noch weiter trainieren.</p>
+
+<p>Hier ist ein Beispiel, bei dem alle Umformungen <b>falsch</b> sind. 
+Finden Sie jeweils den Fehler:</p>
+
+10x + 11 = 16 &nbsp; | 6 abziehen<br>
+&nbsp;&nbsp;&nbsp;4x + 5 = 10 &nbsp;| durch 5 teilen<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4x + 1 = 2 &nbsp;&nbsp;| 1 abziehen<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4x = 3 &nbsp;| mit 3/4 multiplizieren<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = 9
+
+<p>Das CAS zeigt, dass die Umformungen falsch sind, weil sich bei 
+richtigen Umformungen das Ergebnis nicht ändern darf:
+</p>
+
+<p><form onreset="document.getElementById('outputArea32').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea32' value='solve(10*X +11 - 16)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea32','outputArea32');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea32' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea33').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea33' value='solve(4*X + 5 - 10)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea33','outputArea33');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea33' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea34').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea34' value='solve(4*X +1 -2)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea34','outputArea34');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea34' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea35').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea35' value='solve(4*X - 3)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea35','outputArea35');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea35' class='answer'>&gt;</span>
+</form></p>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
+  <title>FolgenUndReihen</title>
+  <script src='jsCAS.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathjs12.4.2_math.js'></script>
+  <script async src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathJax3_tex-svg.js'></script>
+  <script>MathJax={tex:{inlineMath:[['$', '$']]},svg:{fontCache:'global'}};</script>
+  <link rel='stylesheet' type='text/css' href='jsCAS.css'>
+</head>
+<body><noscript>This webpage needs Javascript!</noscript>
+<h2>Folgen und Reihen</h2>
+
+<p>In der Mathematik behandelt man gelegentlich Konstrukte, die nach 
+einer Regel strukturiert sind und in einer Reihenfolge aufgelistet, 
+summiert, multipliziert oder anders verarbeitet werden. Wenn man die 
+Elemente auflistet nennt man das eine <b>Folge</b>, wenn man die Elemente 
+dabei noch addiert, nennt man das eine <b>Reihe</b>. Zum Beispiel:</p>
+
+Folge der geraden Zahlen: 2, 4, 6, 8, 10, ...<br>
+Folge der Primzahlen: 2, 3, 5, 7, 11, ...<br>
+eine Reihe: 1 + 2 + 3 + 4 + ...<br>
+noch eine Reihe: 2 + 3 + 5 + 7 + 11 + ...
+
+<p>Falls Sie schon programmieren können, würden Sie so etwas mit einer 
+For-Schleife programmieren. Allerdings müssen Schleifen in der 
+Programmierung immer nach endlich vielen Schritten aufhören, in der 
+Mathematik können sie auch unendlich sein. Folgende Schreibweisen gibt es:</p>
+
+<p>$\sum_{i=1}^{10} i^2$ bedeutet, dass von i=1 bis i=10 die Zahlen $i^2$ 
+  aufsummiert werden, also: </p>
+
+$\sum_{i=1}^{10} i^2 = 1 + 4 + 9 + 16 + 25 + 36 + 49 + 64 + 81 + 100$
+
+<h2>Eine Gauss-Anekdote</h2>
+
+<p>Manchmal gibt es Formeln, mit denen man Reihen berechnen kann, ohne alle 
+einzelnen Werte zu addieren. Der berühmte Braunschweiger Mathematiker Carl 
+Friedrich Gauss hat diese Formel angeblich schon als Schulkind entdeckt:</p>
+
+$\sum_{i=1}^{n} i =  1 + 2 + 3 + ... + n = \frac{n(n + 1)}{2}$
+
+<p>Die Gauss-Anekdote besagt, dass der Lehrer seine Ruhe haben wollte und 
+daher den Schulkindern die Aufgabe gab, die Zahlen von 1 bis 100 zu addieren. 
+Der kleine Gauss war damit schon nach ein paar Minuten fertig, da er sich 
+überlegte, dass man die Zahlen so anordnen kann, dass man die erste mit der 
+letzten addiert, die zweite mit der vorletzten und so weiter:</p>
+
+$1 + 2 + 3 + \ldots + (n-2) + (n-1)  + n = $<br>$
+(1 + n) + (2 + (n-1)) + (3 + (n-2)) + \ldots  = $<br>$ 
+(1 + n) + (1 + n) + (1 + n) + \ldots = \frac{n}{2}(1 + n)$
+
+<p>Alternativ kann man das auch geometrisch beweisen:</p>
+
+<center>
+<img width=220 src='https://upriss.github.io/educaJS/images/visual2.png'>
+</center>
+
+<p>Und hier ist noch eine weitere Reihe, für die es eine Formel
+  und einen geometrischen Beweis gibt:</p>
+
+$\sum_{i=1}^{n}2i +1 = n^2$ 
+
+<center>
+<img width=220 src='https://upriss.github.io/educaJS/images/visual1.png'>
+</center>
+
+<h3>Aufgaben</h3>
+
+<p>1. Schreiben Sie $\sum_{i=1}^{10} 2i+1$ als Summe aus, also ohne 
+das Summenzeichen. (Das müsste Ihnen helfen, den geometrischen Beweis 
+zu verstehen.)</p>
+<p>2. Schreiben Sie $x_1 + x_2 + x_3 + x_4$ mit Summenzeichen.</p>
+
+<h2>Produkte</h2>
+
+<p>Statt addieren kann man auch wiederholt multiplizieren:</p>
+
+$\prod_{i=1}^{10} i^2 = 1 * 4 * 9 * 16 * 25 * 36 * 49 * 64 * 81 * 100$
+
+<p>Wenn es sich dabei um ein Produkt der ersten n natürlichen Zahlen handelt, 
+so wird das auch als Fakultät bezeichnet und als n! geschrieben:</p>
+
+$n! = 1 * 2 * 3 * 4 * ... * n = \prod_{i=1}^{n} i$ 
+
+<p>In Python erhält man $n!$ als "factorial(n)". Hier sehen Sie 
+ein paar Beispiele. Wie Sie sehen, wachsen die Werte sehr schnell an.</p>
+
+<p><form onreset="document.getElementById('outputArea1').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea1' value='factorial(0)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea1' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea2').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea2' value='factorial(1)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea2' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea3').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea3' value='factorial(2)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea3' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea4').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea4' value='factorial(3)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea4' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea5').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea5' value='factorial(4)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea5','outputArea5');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea5' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea6').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea6' value='factorial(20)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea6','outputArea6');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea6' class='answer'>&gt;</span>
+</form></p>
+
+<h2>Binomialkoeffizient</h2>
+
+<p>Die Fakultät wird auch zur Definition des Binomialkoeffizienten benötigt:</p>
+
+$\left(\begin{array}{c}n\\k\\\end{array}\right) = \frac{n!}{k!(n-k)!}$
+
+<p>Der Koeffizient wird in der Statistik verwendet und als "n über k" 
+ausgesprochen. In Python kann man den Koeffizienten mit $comb(n,k)$ berechnen.</p>
+
+<h3>Aufgabe</h3>
+
+Berechnen Sie
+
+$\left(\begin{array}{c}20\\18\\\end{array}\right)$, 
+$\left(\begin{array}{c}20\\2\\\end{array}\right)$, 
+$\left(\begin{array}{c}9\\3\\\end{array}\right)$, 
+$\left(\begin{array}{c}9\\6\\\end{array}\right)$,
+$\left(\begin{array}{c}17\\16\\\end{array}\right)$,
+$\left(\begin{array}{c}17\\1\\\end{array}\right)$ und
+$\left(\begin{array}{c}17\\17\\\end{array}\right)$
+
+<p>von Hand durch Kürzen der Brüche. Überprüfen Sie Ihre Ergebnisse anschließend 
+mit dem CAS. Welche Regeln für das Rechnen mit Binomialkoeffizienten 
+können Sie formulieren?</p>
+
+<p><form onreset="document.getElementById('outputArea7').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea7' value='comb(20,18)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea7','outputArea7');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea7' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea8').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea8' value='comb(20,2)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea8','outputArea8');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea8' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea9').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea9' value='comb(9,3)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea9','outputArea9');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea9' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea10').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea10' value='comb(9,6)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea10','outputArea10');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea10' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea11').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea11' value='comb(17,16)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea11','outputArea11');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea11' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea12').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea12' value='comb(17,1)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea12','outputArea12');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea12' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea13').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea13' value='comb(17,17)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea13','outputArea13');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea13' class='answer'>&gt;</span>
+</form></p>
+
+</body>
+</html>

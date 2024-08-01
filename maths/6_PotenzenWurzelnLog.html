@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
+  <title>PotenzenWurzelnLog</title>
+  <script src='jsCAS.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathjs12.4.2_math.js'></script>
+  <script async src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathJax3_tex-svg.js'></script>
+  <script>MathJax={tex:{inlineMath:[['$', '$']]},svg:{fontCache:'global'}};</script>
+  <link rel='stylesheet' type='text/css' href='jsCAS.css'>
+</head>
+<body><noscript>This webpage needs Javascript!</noscript>
+<h2>Testen Sie Ihre Vorkenntnisse</h2>
+
+<p>Hier ist ein Quiz,
+mit dem Sie Kenntnisse in diesem Gebiet überprüfen können. Sie 
+sollten die Aufgaben ohne Taschenrechner durch Anwenden von 
+Rechenregeln lösen können.</p>
+
+<iframe src="vorkursPotenzen.html" width=60% height=350></iframe>
+
+<a name="PotenzenUndWurzeln">
+<h2>Potenzen und Wurzeln</h2>
+
+<p>Hier nochmal die Bezeichnungen für Potenzen und Wurzeln:</p>
+
+<center>
+<img src="https://upriss.github.io/educaJS/images/potenz.png" width="500"> 
+</center>
+
+<p>Potenz-, Wurzel- und Logarithmenrechnung stehen in einem engen Zusammenhang, 
+da es sich um 3 Sichtweisen der gleichen Beziehung handelt:</p>
+
+<center>
+<img src="https://upriss.github.io/educaJS/images/potenz2.png" width="400">
+</center>
+
+<p>Zum Beispiel: $4^3 = 64$ &nbsp; &nbsp; $\sqrt[3]{64} = 4$ 
+&nbsp; &nbsp; $64^{1/3} = 4$ &nbsp; &nbsp;$log_4(64) = 3$.</p> 
+
+<h2>Regeln für Potenzen und Wurzeln</h2>
+
+<p>Anstatt $\sqrt[n]{b}$ kann man auch $b^\frac{1}{n}$ schreiben. Daher 
+lassen sich die Regeln für Wurzeln direkt aus den Regeln für Potenzrechnung 
+herleiten.</p>
+
+<table class='centerTable'>
+    <tr><td>$\mbox{Potenzen}$<td>$\mbox{Wurzeln}$</tr>
+    <tr><td>$a^n * b^n = (ab)^n$ <td>$\sqrt[n]{a}\sqrt[n]{b}=\sqrt[n]{ab}$</tr>
+    <tr><td>$a^n / b^n = (a/b)^n$ <td>$\sqrt[n]{a}$ / $\sqrt[n]{b}=\sqrt[n]{a/b}$</tr>
+    <tr><td>$a^n * a^m = a^{n + m}$<td>$\sqrt[n]{a}\sqrt[m]{a}=a^{\frac{1}{n} + \frac{1}{m}}$</tr>
+    <tr><td>$a^n / a^m = a^{n - m}$<td>$\sqrt[n]{a}$ / $\sqrt[m]{a}=a^{\frac{1}{n} - \frac{1}{m}}$</tr>
+    <tr><td>$(a^n)^m = a^{n*m}$<td>$\sqrt[m]{\sqrt[n]{a}} = \sqrt[nm]{a}$</tr>
+</table>
+
+
+<p>Man kann sich die Regeln veranschaulichen, wenn man sich klar macht,
+dass der Exponent die Anzahl der Faktoren zählt. Dabei kann man die
+Faktoren umsortieren und anders zählen. Statt a und b sind die Variablen
+hier als Smileys dargestellt:</p>
+
+<center>
+<p>&#x1F600;&#x1F600;&#x1F600; * &#x1F608;&#x1F608;&#x1F608; = 
+(&#x1F600;&#x1F608;)* (&#x1F600;&#x1F608;)*(&#x1F600;&#x1F608;)</p>
+
+<p>
+&#x1F600;&#x1F600;&#x1F600; * &#x1F600;&#x1F600; = 
+&#x1F600;&#x1F600;&#x1F600;&#x1F600;&#x1F600;</p>
+
+<p>(&#x1F600;&#x1F600;&#x1F600;)<sup>2</sup> = &#x1F600;&#x1F600;&#x1F600; * 
+&#x1F600;&#x1F600;&#x1F600; = (&#x1F600;&#x1F600;)<sup>3</sup></p>
+</center>
+
+<p>Welche der 5 Regeln sind durch die Smileys dargestellt?</p>
+
+<h3>Aufgaben</h3>
+
+<p>Die Regeln lassen sich durch Umformungen erklären. Überlegen Sie sich, 
+was jeweils dort stehen muss oder erklärt werden muss, wo in den folgenden 
+Zeilen das Wort "Umformung" steht. Falls es Ihnen nicht klar ist, setzen 
+Sie Werte für  $n$ und $m$ ein und schreiben Sie die Formeln dafür hin.</p>
+
+<p>$a^n * b^n = a * \ldots * a * b * \ldots * b =$ Umformung $= (ab)^n $</p>
+
+<p>$a^n * a^m =$ Umformung $= a^{n + m}$</p>
+
+<p>$(a^n)^m =$ Umformung $= a^{n*m}$</p>
+
+<p>$\sqrt{a}\sqrt{a}=$ Umformung $=a$</p>
+    
+<h3>Weitere Aufgaben</h3>
+
+<p>In Python ist die Schreibweise für Exponenten **, z.B. $4^3$ wird 
+als 4**3 geschrieben. Es gibt in Python eine Funktion für Quadratwurzeln 
+(sqrt(), da Wurzel auf Englisch square root heißt). Für n-te Wurzeln kann 
+man mit **(1/n) zu rechnen. Python nähert die Werte dann aber eventuell 
+nur an. Rechnen Sie erst auf Papier durch Anwendung von Regeln und in 
+mathematischer Schreibweise, bevor Sie sich die Lösungen ansehen.</p>
+
+<p><form onreset="document.getElementById('outputArea1').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea1' value='3**2 * 3**(-1)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea1' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea2').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea2' value='3**20 / 3**18'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea2' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea3').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea3' value='30**3 / 15**3'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea3' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea4').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea4' value='1**200'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea4' class='answer'>&gt;</span>
+</form></p>
+
+<p>Für welche Werte von $n$ gilt $(-1)^n = 1$ und für welche gilt $(-1)^n = -1$?</p>
+
+<p><form onreset="document.getElementById('outputArea5').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea5' value='(-1)**1'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea5','outputArea5');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea5' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea6').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea6' value='(-1)**2'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea6','outputArea6');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea6' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea7').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea7' value='(-1)**3'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea7','outputArea7');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea7' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea8').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea8' value='(-1)**4'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea8','outputArea8');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea8' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea9').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea9' value='(-3)**2'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea9','outputArea9');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea9' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea10').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea10' value='(-3)**3'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea10','outputArea10');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea10' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea11').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea11' value='-(3**2)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea11','outputArea11');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea11' class='answer'>&gt;</span>
+</form></p>
+
+<p>Mit Variablen rechnen:</p>
+
+<p><form onreset="document.getElementById('outputArea12').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea12' value='simplify(m**2 * m**3)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea12','outputArea12');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea12' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea13').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea13' value='simplify(m**n * m**n)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea13','outputArea13');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea13' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea14').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea14' value='simplify(m**n / m**n)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea14','outputArea14');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea14' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea15').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea15' value='simplify(m**n + m**n)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea15','outputArea15');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea15' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea16').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea16' value='simplify(m**n - m**n)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea16','outputArea16');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea16' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea17').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea17' value='simplify((m**3)**4)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea17','outputArea17');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea17' class='answer'>&gt;</span>
+</form></p>
+
+<p>Wurzeln:</p>
+
+<p><form onreset="document.getElementById('outputArea18').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea18' value='sqrt(49 * 25)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea18','outputArea18');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea18' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea19').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea19' value='(49 * 25)**(1/2)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea19','outputArea19');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea19' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea20').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea20' value='sqrt(25 / 4)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea20','outputArea20');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea20' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea21').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea21' value='(25 / 4)**(1/2)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea21','outputArea21');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea21' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea22').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea22' value='(17**(1/4))**4'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea22','outputArea22');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea22' class='answer'>&gt;</span>
+</form></p>
+
+<a name="WurzelnAusNegativen">
+<h2>Wurzeln aus negativen Zahlen</h2>
+
+<p>sqrt(49) liefert im CAS nur ein Ergebnis, obwohl sowohl $7^2 = 49$ 
+als auch $(-7)^2 = 49$. Quadratwurzeln aus negativen Zahlen ergeben 
+<b>komplexe Zahlen</b>, die in diesem Vorkurs nicht weiter behandelt 
+werden. Für eine ungerade Zahl $n$ ist die n-te Wurzel aus einer negativen 
+Zahl eine reelle Zahl, z.B. $\sqrt[3]{-27} = -3$, d.h., das können Sie 
+berechnen, aber nicht unbedingt mit einem CAS (NaN bedeutet: not a number). 
+</p>
+
+<p><form onreset="document.getElementById('outputArea23').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea23' value='sqrt(49)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea23','outputArea23');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea23' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea24').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea24' value='7**2'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea24','outputArea24');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea24' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea25').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea25' value='(-7)**2'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea25','outputArea25');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea25' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea26').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea26' value='(27)**(1/3)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea26','outputArea26');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea26' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea27').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea27' value='(-3)**3'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea27','outputArea27');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea27' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea28').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea28' value='(-27)**(1/3)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea28','outputArea28');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea28' class='answer'>&gt;</span>
+</form></p>
+
+<h2>Potenzrechnung statt Bruchrechnung</h2>
+
+<p>Man kann auf die Bruchrechnung komplett verzichten, wenn man mit negativen 
+Potenzen rechnet. Anstatt $\frac{1}{n}$ kann man nämlich auch $n^{-1}$ schreiben.</p>
+
+<h3>Aufgaben</h3>
+
+<p>1. Erklären Sie das Ergebnis für $3^0$ mit Hilfe der Rechenregeln für 
+$3^{2-2}$ und indem Sie $3^{-2}$ als $\frac{1}{3^2}$ schreiben:</p>
+
+<p><form onreset="document.getElementById('outputArea29').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea29' value='3**0'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea29','outputArea29');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea29' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea30').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea30' value='3**(2-2)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea30','outputArea30');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea30' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea31').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea31' value='3**(-2)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea31','outputArea31');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea31' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea32').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea32' value='1/9'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea32','outputArea32');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea32' class='answer'>&gt;</span>
+</form></p>
+
+<p>2.  Schreiben Sie diese Beispiele ohne Potenzen als reine Bruchrechnung 
+und erklären Sie die Regeln der Bruchrechnung mit den Regeln der Potenzrechnung:</p>
+
+<ul>
+    <li><b>Kürzen und erweitern:</b><br> 
+$\frac{3}{4} = 3 * 4^{-1} = 3 * 1 * 4^{-1} = 3 * 6 * 6^{-1} * 4^{-1}$ 
+$= 18 * 24^{-1}$</li>
+    <li><b>Addieren und subtrahieren</b>:<br> 
+$\frac{3}{4} + \frac{7}{5} = 3 * 4^{-1} + 7 * 5^{-1} = 3 * 5 * 5^{-1} * 4^{-1} + 7 * 4 * 4^{-1}  * 5^{-1}$<br>
+$ = 15 * 20^{-1} + 28 * 20^{-1} =(15 + 28) * 20^{-1} = 43 * 20^{-1}$
+    <li><b>Multiplizieren</b><br> 
+$\frac{3}{4} * \frac{7}{5} = 3 * 4^{-1} * 7 * 5^{-1} = 3 * 7 * 4^{-1} * 5^{-1} = 21 * 20^{-1}$
+    <li><b>Dividieren</b>:<br> 
+$\frac{3}{4} / \frac{7}{5} = (3 * 4^{-1}) / (7 * 5^{-1}) = 3 * 4^{-1} * 7^{-1} * (5^{-1})^{-1}$<br>
+$  = 3 * (4 * 7)^{-1} * 5 = 3 * 5 * 28^{-1} = 15 * 28^{-1}$
+        </ul>
+        
+<p>Falls Sie sich nicht sicher sind, überprüfen Sie einzelne Schritte mit dem CAS.</p>
+
+<p><form onreset="document.getElementById('outputArea33').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea33' value='3*4**(-1)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea33','outputArea33');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea33' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea34').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea34' value='18*24**(-1)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea34','outputArea34');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea34' class='answer'>&gt;</span>
+</form></p>
+
+<a name="Logarithmen">
+<h2>Logarithmen</h2>
+
+<p>Bei Logarithmen kennt man die Basis und das Ergebnis und sucht den Exponenten. 
+Wenn Sie zum Beispiel die Potenzen von 2 betrachten (1, 2, 4, 8, 16, ...), können 
+Sie durch Ausprobieren den Exponenten bestimmen, den man braucht um 256 zu 
+erhalten. Die Zahl 2 wird dabei als <b>Basis</b> bezeichnet, die Zahl 256 als 
+<b>Argument</b> oder <b>Numerus</b> bezeichnet.</p>
+
+<p><form onreset="document.getElementById('outputArea35').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea35' value='2**3'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea35','outputArea35');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea35' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea36').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea36' value='2**4'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea36','outputArea36');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea36' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea37').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea37' value='2**5'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea37','outputArea37');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea37' class='answer'>&gt;</span>
+</form></p>
+
+
+<p>Das Argument 64 können Sie sogar als Potenz verschiedener Basen darstellen:</p>
+
+<p><form onreset="document.getElementById('outputArea38').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea38' value='2**6'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea38','outputArea38');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea38' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea39').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea39' value='4**3'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea39','outputArea39');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea39' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea40').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea40' value='8**2'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea40','outputArea40');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea40' class='answer'>&gt;</span>
+</form></p>
+
+<p>Man bezeichnet das Finden des Exponenten als <b>Logarithmieren</b>. In Python 
+verwendet man dafür $log(a,b)$, wobei $a$ das Argument ist und $b$ die Basis. </p>
+
+<p><form onreset="document.getElementById('outputArea41').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea41' value='log(256,2)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea41','outputArea41');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea41' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea42').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea42' value='log(64,2)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea42','outputArea42');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea42' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea43').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea43' value='log(64,4)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea43','outputArea43');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea43' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea44').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea44' value='log(64,8)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea44','outputArea44');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea44' class='answer'>&gt;</span>
+</form></p>
+
+<p>Dabei müssen a und b reelle Zahlen sein, die größer als 0 sind und b darf 
+auch nicht 1 sein. Aufgabe: überlegen Sie sich, warum b nicht 1 sein darf.</p>
+
+<p>Berechnen Sie die folgenden Werte. Rechnen Sie wieder erst, bevor Sie sich
+die Lösungen ansehen:</p>
+
+<p><form onreset="document.getElementById('outputArea45').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea45' value='log(9,3)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea45','outputArea45');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea45' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea46').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea46' value='log(144,12)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea46','outputArea46');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea46' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea47').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea47' value='log(1/9,3)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea47','outputArea47');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea47' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea48').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea48' value='log(1,6)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea48','outputArea48');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea48' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea49').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea49' value='log(4**5,4)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea49','outputArea49');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea49' class='answer'>&gt;</span>
+</form></p>
+
+<p>Die Regeln für das Rechnen mit Logarithmen ergeben sich aus den Rechenregeln 
+für Potenzen.</p>
+
+<table class='centerTable'>
+    <tr><td>$\mbox{Potenzen}$<td>$\mbox{Logarithmen}$</tr>
+    <tr><td><td> $b^{log_b(k)} = k$
+    <tr><td>$b^n * b^m = b^{n + m}$<td>$log_b(nm) = log_b(m) + log_b(n)$</tr>
+    <tr><td>$b^n / b^m = b^{n - m}$<td>$log_b(n/m) = log_b(n) - log_b(m)$</tr>
+    <tr><td>$(b^n)^m = b^{n*m}$<td>$log_b(m^k) = k * log_b(m)$</tr>
+<tr><td>$b^0=1$ <td> $log_b(1) = 0$
+<tr><td>$b^1=b$  <td> $log_b(b) = 1$
+<tr><td>$b^k=b^k$  <td> $log_b(b^k) = k$
+</table>
+
+<p>Zum Beispiel gilt die zweite Zeile, da $nm=b^{log_b(nm)}=
+    b^{log_b(m)+log_b(n)} =   b^{log_b(n)} * b^{log_b(m)} = nm$.<br>
+  Die Gültigkeit der letzten drei Zeilen sollten Sie erklären können.</p>
+    
+<p>Bevor es Computer gab, war das Rechnen mit Logarithmen extrem wichtig, weil man 
+damit zum Beispiel Berechnungen für große Zahlen durchführen und Wurzeln ziehen 
+konnte. Das Rechnen mit Logarithmen war aber auch sehr mühsam, weil man viele 
+Schritte von Hand ausführen musste und dabei Werte in speziellen Logarithmentafeln 
+ablesen musste. Dafür mussten man auch Logarithmen auf die jeweils gewünschte Basis 
+umrechnen. Die Formel für die Umrechnung von einer Basis $b$ auf eine Basis $c$ ist:
+  <center>$log_c(m) = \frac{log_b(m)}{log_b(c)}$</center></p>
+        
+<p>Für Logarithmen gibt es viele Anwendungen, da es technische und natürliche 
+Prozesse gibt, die sich gut damit beschreiben lassen. Für die wichtigsten 
+Basen kann man Logarithmen in Python noch einfacher schreiben: log10(n) ist 
+der Logarithmus zur Basis 10, also das Gleiche wie log(n,10) und log2(n) ist 
+der Logarithmus zur Basis 2. Außerdem ist log(n) ohne Angabe einer Basis der 
+Logarithmus zur Basis e. Die Zahl e wird aber in diesem Vorkurs nicht weiter 
+behandelt.</p>
+
+<p><form onreset="document.getElementById('outputArea50').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea50' value='log2(8)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea50','outputArea50');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea50' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea51').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea51' value='log(8,2)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea51','outputArea51');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea51' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea52').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea52' value='log10(100)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea52','outputArea52');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea52' class='answer'>&gt;</span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea53').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea53' value='log10(100000)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea53','outputArea53');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea53' class='answer'>&gt;</span>
+</form></p>
+
+<p>Dabei sehen Sie, dass log10 angibt, wie oft der Faktor 10 im Argument 
+steckt. Man kann damit feststellen, wie viele Stellen eine Zahl hat (nämlich 
+log10 abgerundet + 1). Wie viele Stellen hat zum Beispiel die Zahl 
+122243242525043503:</p>
+
+<p><form onreset="document.getElementById('outputArea54').innerHTML='>';">
+<input type='text' class='setInput' id='inputArea54' value='log10(122243242525043503)'>
+<input type='button' value='&#8253;' onclick="compute('#inputArea54','outputArea54');">
+<input type='reset' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea54' class='answer'>&gt;</span>
+</form></p>
+
+</body>
+</html>

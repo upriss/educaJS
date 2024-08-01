@@ -4,8 +4,8 @@
   <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
   <title>Bruchrechnung</title>
   <script src='jsCAS.js'></script>
-  <script src='utils/mathjs12.4.2_math.js'></script>
-  <script async src='utils/mathJax3_tex-svg.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathjs12.4.2_math.js'></script>
+  <script async src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathJax3_tex-svg.js'></script>
   <script>MathJax={tex:{inlineMath:[['$', '$']]},svg:{fontCache:'global'}};</script>
   <link rel='stylesheet' type='text/css' href='jsCAS.css'>
 </head>
@@ -93,33 +93,28 @@ Berechnen Sie auf Papier und überprüfen Sie Ihre Ergebnisse dann im CAS.</p>
 &nbsp;<span id='outputArea4' class='answer'>&gt;</span>
 </form></p>
 
-<p>Vereinfachen Sie die folgenden Brüche:</p>
+<p>Vereinfachen Sie die folgenden Brüche.
+Die Knöpfe zeigen die Lösungen an. Rechnen Sie erst auf Papier!</p>
 
 <p>$\frac{m^2-n^2}{o^2-p^2}:\frac{m-n}{o+p}$</p>
-
-<p>$(m-n)(\frac{1}{n}-\frac{1}{m})$</p>
-
-<p>$\frac{m}{no} + \frac{n}{mo} + \frac{o}{mn}$</p>
-
-<p>$\frac{1+\frac{1}{m+1}}{2 -\frac{m-2}{m}}$</p>
-
-<p>Die folgenden Knöpfe zeigen die Lösungen an. Rechnen Sie erst auf Papier!</p>
-
 <p><form class="inputhide" onreset="document.getElementById('outputArea5').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea5' value='prOnly((-m-n) / (-o+p))'>
 <input type='button' value='&#8253;' onclick="compute('#inputArea5','outputArea5');">
 &nbsp;<span id='outputArea5' class='answer'>&gt;</span>
 </form></p>
+<p>$(m-n)(\frac{1}{n}-\frac{1}{m})$</p>
 <p><form class="inputhide" onreset="document.getElementById('outputArea6').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea6' value='prOnly((m-n)&sup2; / mn)'>
 <input type='button' value='&#8253;' onclick="compute('#inputArea6','outputArea6');">
 &nbsp;<span id='outputArea6' class='answer'>&gt;</span>
 </form></p>
+<p>$\frac{m}{no} + \frac{n}{mo} + \frac{o}{mn}$</p>
 <p><form class="inputhide" onreset="document.getElementById('outputArea7').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea7' value='prOnly((m&sup2; + n&sup2; + o&sup2;) / mno)'>
 <input type='button' value='&#8253;' onclick="compute('#inputArea7','outputArea7');">
 &nbsp;<span id='outputArea7' class='answer'>&gt;</span>
 </form></p>
+<p>$\frac{1+\frac{1}{m+1}}{2 -\frac{m-2}{m}}$</p>
 <p><form class="inputhide" onreset="document.getElementById('outputArea8').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea8' value='prOnly(m / (m+1))'>
 <input type='button' value='&#8253;' onclick="compute('#inputArea8','outputArea8');">
