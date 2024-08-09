@@ -40,6 +40,7 @@ function zeichnenReset() { traces = []; Plotly.newPlot(plotArea, traces); }
 function compute(inA,outA,inA2){
    let result = "";
    let result2 = "";
+   let tempstring = "";
    let inputArea = document.querySelector(inA);
    let inp = inputArea.value;
    inp = inp.replaceAll("pi","Math.PI");
@@ -55,8 +56,12 @@ function compute(inA,outA,inA2){
        try { 
 	   result = eval(inp);
 	   result2 = eval(inp2);
-	   result = (result == result2) }
-       catch(err) { result = err }
+	   tempstring = (result == result2).toString();
+           if (tempstring == "true") { tempstring = "richtig" }
+           else { tempstring = "falsch" }
+	   result = "Ihre Eingabe ergibt: " + result2.toString() 
+	       + "&nbsp; Das ist " + tempstring + ". ";
+       } catch(err) { result = err }
    } else {
        try { result = eval(inp); }
        catch(err) { result = err }
