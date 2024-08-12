@@ -4,6 +4,16 @@
 <meta charset="utf-8" />
 <title>Aussagenlogik</title>
 <link href="utils/impressPresentation.css" rel="stylesheet" />
+<style>
+.impress-enabled div#impress-toolbar {
+    position: fixed; left: 1px; top: 20px; opacity: 0.6;
+    z-index: 10;       /* make sure it is on top so that buttons work */
+}
+.impress-progress {
+    position: fixed; left: 1px; top: 45px; opacity: 0.6;
+}
+.impress-autoplay {display:none}
+</style>
 </head>
 <body class="impress-not-supported">
 <div class="fallback-message">
@@ -11,10 +21,9 @@
 <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser with Javascript turned on.</p>
 </div>
 
-<div id="impress" data-transition-duration="1000">
+<div id="impress" data-transition-duration="500">
 
-<div title="Themen"
-     id="contents" class="step" data-rel-x="0" data-rel-y="1200" data-scale="1">
+<div title="Themen" id="contents" class="step" data-x="1200" data-y="1200" data-scale="1">
 
 <h1>Aussagenlogik</h1>
 
@@ -26,9 +35,7 @@ Klausurrelevante Themen:
 </ul>
 </div>
 
-<div title="Negation" id="topleft" class="step" data-x="2000" data-y="2000"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="contents middleleft contents topmiddle">
+<div title="Negation" id="slide1" class="step" data-x="2000" data-y="2000">
 
 <h1>Negation<br>&#172; a<br>(Verneinung)</h1>
 
@@ -37,9 +44,7 @@ width='100%' height='90%'></iframe>
 
 </div>
 
-<div title="Konjunktion" id="middleleft" class="step" data-rel-x="0" data-rel-y="1200"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="topleft bottomleft topright middlemiddle">
+<div title="Konjunktion" id="slide2" class="step" data-rel-x="1200" data-rel-y="0">
 
 <h1>Konjunktion<br>a &and; b<br>(Logisches Und)</h1>
 
@@ -48,9 +53,7 @@ width='100%' height='90%'></iframe>
 
 </div>
 
-<div title="Disjunktion" id="bottomleft" class="step" data-rel-x="0" data-rel-y="1200"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="middleleft topmiddle middleright bottommiddle">
+<div title="Disjunktion" id="slide3" class="step" data-rel-x="1200" data-rel-y="0">
 
 <h1>Disjunktion<br>a &or; b<br>(Logisches Oder)</h1>
 
@@ -59,9 +62,7 @@ width='100%' height='90%'></iframe>
 
 </div>
 
-<div title="Subjunktion" id="topmiddle" class="step" data-x="3500" data-y="2000"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="bottomleft middlemiddle topleft topright">
+<div title="Subjunktion" id="slide4" class="step" data-x="2000" data-y="3000">
 
 <h1>Subjunktion<br>a &rarr; b<br>(Wenn ... dann ...)</h1>
 
@@ -70,9 +71,7 @@ width='100%' height='90%'></iframe>
 
 </div>
 
-<div title="Bijunktion" id="middlemiddle" class="step" data-rel-x="0" data-rel-y="1200"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="topmiddle bottommiddle middleleft middleright">
+<div title="Bijunktion" id="slide5" class="step" data-rel-x="1200" data-rel-y="0">
 
 <h1>Bijunktion<br>a &harr; b<br>(Genau dann ... wenn ...)</h1>
 
@@ -81,9 +80,7 @@ width='100%' height='90%'></iframe>
 
 </div>
 
-<div title="Alternation" id="bottommiddle" class="step" data-rel-x="0" data-rel-y="1200"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="middlemiddle topright bottomleft bottomright">
+<div title="Alternation" id="slide6" class="step" data-rel-x="1200" data-rel-y="0">
 
 <h1>Alternation<br>a &nharr; b<br>(Entweder ... oder ...)</h1>
 
@@ -92,9 +89,7 @@ width='100%' height='90%'></iframe>
 
 </div>
 
-<div title="Umformung der Subjunktion" id="topright" class="step" data-x="5000" data-y="2000"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="bottommiddle middleright topmiddle middleleft">
+<div title="Umformung der Subjunktion" id="slide7" class="step" data-x="2000" data-y="4000">
 
 <h1>Subjunktion<br>a &rarr; b = &#172; a &or; b<br>Nicht ... Oder ...</h1>
 
@@ -103,9 +98,7 @@ width='100%' height='90%'></iframe>
 
 </div>
 
-<div title="Umformung der Subjunktion" id="middleright" class="step" data-rel-x="0" data-rel-y="1200"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="topright bottomright middlemiddle bottomleft">
+<div title="Umformung der Subjunktion" id="slide8" class="step" data-rel-x="1200" data-rel-y="0">
 
 <h1>Kontraposition<br>a &rarr; b = &#172 b &rarr; &#172 a</h1>
 <iframe src="../binaryRelations/booleanOps.html?plusVenn=venn&lang=de&embed=yes&graph=not%20b%20-s%3E%3E%20not%20a" 
@@ -113,9 +106,7 @@ width='100%' height='90%'></iframe>
 
 </div>
 
-<div title="Umformung der Bijunktion" id="bottomright" class="step" data-rel-x="0" data-rel-y="1200"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="middleright conclusion bottommiddle conclusion">
+<div title="Umformung der Bijunktion" id="slide9" class="step" data-rel-x="1200" data-rel-y="0">
 
 <h1>Zerlegung der Bijunktion in 2 Subjunktionen</h1>
 <iframe src="../binaryRelations/booleanOps.html?plusVenn=venn&lang=de&embed=yes&graph=(a%20-s%3E%3E%20b)%20and%20(b%20-s%3E%3E%20a)" 
@@ -135,14 +126,13 @@ a &rarr; b = (&#172; b &rarr; &#172; a)<br>
 a &harr; b = ((a &rarr; b) &and; (b &rarr; a))
 </div>
 
-<div title="Übersicht" 
-     id="overview" class="step" data-x="3000" data-y="3000" data-scale="4" 
-     style="pointer-events: none;">
+<div title="Übersicht" id="overview" class="step" data-x="3000" data-y="3000" 
+     data-scale="4" style="pointer-events: none;">
 </div>
 </div>  <!-- closes id="impress" -->
 
 <div id="impress-toolbar"></div>
-<div class="impress-progressbar"><div></div></div>
+<!--<div class="impress-progressbar"><div></div></div>-->
 <div class="impress-progress"></div>
 
 <script type="text/javascript" src="utils/impress.js"></script>

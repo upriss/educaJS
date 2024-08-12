@@ -4,6 +4,16 @@
 <meta charset="utf-8" />
 <title>Mengenlehre</title>
 <link href="utils/impressPresentation.css" rel="stylesheet" />
+<style>
+.impress-enabled div#impress-toolbar {
+    position: fixed; left: 1px; top: 20px; opacity: 0.6;
+    z-index: 10;       /* make sure it is on top so that buttons work */
+}
+.impress-progress {
+    position: fixed; left: 1px; top: 45px; opacity: 0.6;
+}
+.impress-autoplay {display:none}
+</style>
 </head>
 <body class="impress-not-supported">
 <div class="fallback-message">
@@ -11,10 +21,9 @@
 <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser with Javascript turned on.</p>
 </div>
 
-<div id="impress" data-transition-duration="1000">
+<div id="impress" data-transition-duration="500">
 
-<div title="Themen"
-     id="contents" class="step" data-rel-x="0" data-rel-y="1200" data-scale="1">
+<div title="Themen" id="contents" class="step" data-x="1200" data-y="1200" data-scale="1">
 
 <h1>Mengen</h1>
 
@@ -27,9 +36,7 @@ Klausurrelevante Themen:
 </ul>
 </div>
 
-<div title="Menge" id="topleft" class="step" data-x="2000" data-y="2000"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="contents middleleft contents topmiddle">
+<div title="Menge" id="slide1" class="step" data-x="2000" data-y="2000">
 
 <h1>Menge<br>a</h1>
 
@@ -38,9 +45,7 @@ width='100%' height='90%'></iframe>
 
 </div>
 
-<div title="Komplement" id="middleleft" class="step" data-rel-x="0" data-rel-y="1200"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="topleft bottomleft topright middlemiddle">
+<div title="Komplement" id="slide2" class="step" data-rel-x="1200" data-rel-y="0">
 
 <h1>Komplement<br>&amacr;</h1>
 
@@ -49,9 +54,7 @@ width='100%' height='90%'></iframe>
 
 </div>
 
-<div title="Schnitt" id="bottomleft" class="step" data-rel-x="0" data-rel-y="1200"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="middleleft topmiddle middleright bottommiddle">
+<div title="Schnitt" id="slide3" class="step" data-rel-x="1200" data-rel-y="0">
 
 <h1>Schnitt<br>a &cap; b</h1>
 
@@ -60,9 +63,7 @@ width='100%' height='90%'></iframe>
 
 </div>
 
-<div title="Vereinigung" id="topmiddle" class="step" data-x="3500" data-y="2000"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="bottomleft middlemiddle topleft topright">
+<div title="Vereinigung" id="slide4" class="step" data-x="2000" data-y="3000">
 
 <h1>Vereinigung<br>a &cup; b</h1>
 
@@ -71,9 +72,7 @@ width='100%' height='90%'></iframe>
 
 </div>
 
-<div title="Teilmenge" id="middlemiddle" class="step" data-rel-x="0" data-rel-y="1200"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="topmiddle bottommiddle middleleft middleright">
+<div title="Teilmenge" id="slide5" class="step" data-rel-x="1200" data-rel-y="0">
 
 <h1>Teilmenge<br>a &subseteq; b</h1>
 
@@ -82,9 +81,7 @@ width='100%' height='90%'></iframe>
 
 </div>
 
-<div title="Gleichheit" id="bottommiddle" class="step" data-rel-x="0" data-rel-y="1200"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="middlemiddle topright bottomleft bottomright">
+<div title="Gleichheit" id="slide6" class="step" data-rel-x="1200" data-rel-y="0">
 
 <h1>Gleichheit<br>a = b</h1>
 
@@ -93,9 +90,7 @@ width='100%' height='90%'></iframe>
 
 </div>
 
-<div title="Umformung Teilmenge" id="topright" class="step" data-x="5000" data-y="2000"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="bottommiddle middleright topmiddle middleleft">
+<div title="Umformung Teilmenge" id="slide7" class="step" data-x="2000" data-y="4000">
 
 <h1>Umformung Teilmenge<br>a &subseteq; b &hArr; <span style="text-decoration:overline">b</span> &subseteq; &amacr;</h1>
 
@@ -104,9 +99,7 @@ width='100%' height='90%'></iframe>
 
 </div>
 
-<div title="Zerlegung der Gleichheit" id="middleright" class="step" data-rel-x="0" data-rel-y="1200"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="topright bottomright middlemiddle bottomleft">
+<div title="Zerlegung der Gleichheit" id="slide8" class="step" data-rel-x="1200" data-rel-y="0">
 
 <h1>Zerlegung der Gleichheit<br> a = b &hArr; a &subseteq; b und b &subseteq; a </h1>
 <iframe src="../binaryRelations/booleanOps.html?plusVenn=venn&lang=de&embed=yes&graph=(a%20<=%20b)%20and%20(b%20<=%20a)" 
@@ -114,9 +107,7 @@ width='100%' height='90%'></iframe>
 
 </div>
 
-<div title="De Morgan" id="bottomright" class="step" data-rel-x="0" data-rel-y="1200"
-data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
-data-goto-next-list="middleright conclusion bottommiddle conclusion">
+<div title="De Morgan" id="slide9" class="step" data-rel-x="1200" data-rel-y="0">
 
 <h1>De Morgan<br><span style="text-decoration:overline">a &cap; b</span> =
 &amacr; &cup;<span style="text-decoration:overline">b</span>
@@ -136,14 +127,13 @@ Daher wird es komplizierter.</p>
 
 </div>
 
-<div title="Übersicht" 
-     id="overview" class="step" data-x="3000" data-y="3000" data-scale="4" 
-     style="pointer-events: none;">
+<div title="Übersicht" id="overview" class="step" data-x="3000" data-y="3000" 
+     data-scale="3" style="pointer-events: none;">
 </div>
 </div>  <!-- closes id="impress" -->
 
 <div id="impress-toolbar"></div>
-<div class="impress-progressbar"><div></div></div>
+<!--<div class="impress-progressbar"><div></div></div>-->
 <div class="impress-progress"></div>
 
 <script type="text/javascript" src="utils/impress.js"></script>
