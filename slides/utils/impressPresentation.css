@@ -6,6 +6,10 @@
     the fallback-message style is hidden.
 */
 
+svg {
+    position: absolute; left: 0; top: 0; z-index: -1;
+}
+
 .fallback-message {
     font-family: sans-serif;
     line-height: 1.3;
@@ -142,6 +146,8 @@ small {
 img {
     width: 300px
 }
+
+img.taskicon { width: 120px; float: right; padding: 30px; }
 
 /****************** Background images **********************************************/
 
