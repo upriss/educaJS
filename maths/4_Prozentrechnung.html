@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
   <title>Prozentrechnung</title>
-  <script src='jsCAS.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/jsCAS.js'></script>
   <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathjs12.4.2_math.js'></script>
   <link rel='stylesheet' type='text/css' href='jsCAS.css'>
 </head>
@@ -36,19 +36,19 @@ in das erste Feld.</p>
 Berechnen Sie 5 Prozent Von 13 = <p><form class="inputhide" onreset="document.getElementById('outputArea1').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea1' value='0.05 * 13'>
 <input type='text' class='setInput' id='inputHArea1' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea1','outputArea1','#inputHArea1');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea1','outputArea1','#inputHArea1');">
 &nbsp;<span id='outputArea1' class='answer'>&gt;</span>
 </form></p>
 Berechnen Sie 6 Prozent Von 80 = <p><form class="inputhide" onreset="document.getElementById('outputArea2').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea2' value='0.06 * 80'>
 <input type='text' class='setInput' id='inputHArea2' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea2','outputArea2','#inputHArea2');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea2','outputArea2','#inputHArea2');">
 &nbsp;<span id='outputArea2' class='answer'>&gt;</span>
 </form></p>
 Berechnen Sie 32 Prozent Von 17 = <p><form class="inputhide" onreset="document.getElementById('outputArea3').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea3' value='0.32 * 17'>
 <input type='text' class='setInput' id='inputHArea3' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea3','outputArea3','#inputHArea3');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea3','outputArea3','#inputHArea3');">
 &nbsp;<span id='outputArea3' class='answer'>&gt;</span>
 </form></p>
 
@@ -66,19 +66,19 @@ Mehrwertsteuer dazu kommt.</p>
 Preis 15 Euro plus Mehrwertsteuer = <p><form class="inputhide" onreset="document.getElementById('outputArea4').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea4' value='15 * 1.19'>
 <input type='text' class='setInput' id='inputHArea4' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea4','outputArea4','#inputHArea4');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea4','outputArea4','#inputHArea4');">
 &nbsp;<span id='outputArea4' class='answer'>&gt;</span>
 </form></p>
 Preis 1 Euro plus Mehrwertsteuer = <p><form class="inputhide" onreset="document.getElementById('outputArea5').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea5' value='1 * 1.19'>
 <input type='text' class='setInput' id='inputHArea5' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea5','outputArea5','#inputHArea5');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea5','outputArea5','#inputHArea5');">
 &nbsp;<span id='outputArea5' class='answer'>&gt;</span>
 </form></p>
 Preis 1000 Euro plus Mehrwertsteuer = <p><form class="inputhide" onreset="document.getElementById('outputArea6').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea6' value='1000 * 1.19'>
 <input type='text' class='setInput' id='inputHArea6' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea6','outputArea6','#inputHArea6');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea6','outputArea6','#inputHArea6');">
 &nbsp;<span id='outputArea6' class='answer'>&gt;</span>
 </form></p>
 
@@ -89,19 +89,19 @@ damit</b>. Wenn man zum Beispiel 3 Prozent von 50 Euro Schulden abgezahlt hat, m
 Betrag von 50 Euro nach 3 Prozent Abzahlung = <p><form class="inputhide" onreset="document.getElementById('outputArea7').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea7' value='50 * 0.97'>
 <input type='text' class='setInput' id='inputHArea7' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea7','outputArea7','#inputHArea7');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea7','outputArea7','#inputHArea7');">
 &nbsp;<span id='outputArea7' class='answer'>&gt;</span>
 </form></p>
 Betrag von 50 Euro nach 7 Prozent Abzahlung = <p><form class="inputhide" onreset="document.getElementById('outputArea8').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea8' value='50 * 0.93'>
 <input type='text' class='setInput' id='inputHArea8' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea8','outputArea8','#inputHArea8');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea8','outputArea8','#inputHArea8');">
 &nbsp;<span id='outputArea8' class='answer'>&gt;</span>
 </form></p>
 Betrag von 1000 Euro nach 10 Prozent Abzahlung = <p><form class="inputhide" onreset="document.getElementById('outputArea9').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea9' value='1000 * 0.90'>
 <input type='text' class='setInput' id='inputHArea9' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea9','outputArea9','#inputHArea9');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea9','outputArea9','#inputHArea9');">
 &nbsp;<span id='outputArea9' class='answer'>&gt;</span>
 </form></p>
 
@@ -113,19 +113,19 @@ oder 200% steigt und ursprünglich 7000 Menschen beträgt:</p>
 bei 50 Prozent Wachstum = <p><form class="inputhide" onreset="document.getElementById('outputArea10').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea10' value='7000 * 1.50'>
 <input type='text' class='setInput' id='inputHArea10' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea10','outputArea10','#inputHArea10');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea10','outputArea10','#inputHArea10');">
 &nbsp;<span id='outputArea10' class='answer'>&gt;</span>
 </form></p>
 bei 100 Prozent Wachstum = <p><form class="inputhide" onreset="document.getElementById('outputArea11').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea11' value='7000 * 2'>
 <input type='text' class='setInput' id='inputHArea11' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea11','outputArea11','#inputHArea11');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea11','outputArea11','#inputHArea11');">
 &nbsp;<span id='outputArea11' class='answer'>&gt;</span>
 </form></p>
 bei 200 Prozent Wachstum = <p><form class="inputhide" onreset="document.getElementById('outputArea12').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea12' value='7000 * 3'>
 <input type='text' class='setInput' id='inputHArea12' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea12','outputArea12','#inputHArea12');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea12','outputArea12','#inputHArea12');">
 &nbsp;<span id='outputArea12' class='answer'>&gt;</span>
 </form></p>
 
@@ -143,31 +143,31 @@ Gleiche wie 40/20 = 2. </p>
 Durch dies teilen entspricht 5 Prozent = <p><form class="inputhide" onreset="document.getElementById('outputArea13').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea13' value='20'>
 <input type='text' class='setInput' id='inputHArea13' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea13','outputArea13','#inputHArea13');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea13','outputArea13','#inputHArea13');">
 &nbsp;<span id='outputArea13' class='answer'>&gt;</span>
 </form></p>
 Durch dies teilen entspricht 33 Prozent = <p><form class="inputhide" onreset="document.getElementById('outputArea14').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea14' value='3'>
 <input type='text' class='setInput' id='inputHArea14' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea14','outputArea14','#inputHArea14');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea14','outputArea14','#inputHArea14');">
 &nbsp;<span id='outputArea14' class='answer'>&gt;</span>
 </form></p>
 Durch dies teilen entspricht 20 Prozent = <p><form class="inputhide" onreset="document.getElementById('outputArea15').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea15' value='5'>
 <input type='text' class='setInput' id='inputHArea15' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea15','outputArea15','#inputHArea15');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea15','outputArea15','#inputHArea15');">
 &nbsp;<span id='outputArea15' class='answer'>&gt;</span>
 </form></p>
 Durch dies teilen entspricht 50 Prozent = <p><form class="inputhide" onreset="document.getElementById('outputArea16').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea16' value='2'>
 <input type='text' class='setInput' id='inputHArea16' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea16','outputArea16','#inputHArea16');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea16','outputArea16','#inputHArea16');">
 &nbsp;<span id='outputArea16' class='answer'>&gt;</span>
 </form></p>
 Durch dies teilen entspricht 2 Prozent = <p><form class="inputhide" onreset="document.getElementById('outputArea17').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea17' value='50'>
 <input type='text' class='setInput' id='inputHArea17' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea17','outputArea17','#inputHArea17');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea17','outputArea17','#inputHArea17');">
 &nbsp;<span id='outputArea17' class='answer'>&gt;</span>
 </form></p>
 
@@ -214,28 +214,28 @@ der Mehrwertsteuer ist in diesem Fall also 50/1.19 = 42.02.</p>
 <p>19% von 50 abziehen:</p>
 <p><form onreset="document.getElementById('outputArea18').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea18' value='50 - 50 * 0.19'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea18','outputArea18');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea18','outputArea18');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea18' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea19').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea19' value='50 * 0.81'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea19','outputArea19');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea19','outputArea19');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea19' class='answer'>&gt;</span>
 </form></p>
 <p>den Nettopreis für 50 Euro berechnen:</p>
 <p><form onreset="document.getElementById('outputArea20').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea20' value='50 / 1.19'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea20','outputArea20');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea20','outputArea20');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea20' class='answer'>&gt;</span>
 </form></p>
 <p>den Bruttopreis für 42.02 Euro berechnen:</p>
 <p><form onreset="document.getElementById('outputArea21').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea21' value='42.02 * 1.19'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea21','outputArea21');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea21','outputArea21');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea21' class='answer'>&gt;</span>
 </form></p>
 
@@ -247,7 +247,7 @@ Nettogehalt:</p>
 Nettogehalt = <p><form class="inputhide" onreset="document.getElementById('outputArea22').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea22' value='3000 * 0.88'>
 <input type='text' class='setInput' id='inputHArea22' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea22','outputArea22','#inputHArea22');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea22','outputArea22','#inputHArea22');">
 &nbsp;<span id='outputArea22' class='answer'>&gt;</span>
 </form></p>
 
@@ -257,7 +257,7 @@ ist dann das Bruttogehalt:</p>
 Bruttogehalt = <p><form class="inputhide" onreset="document.getElementById('outputArea23').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea23' value='2600 / 0.88'>
 <input type='text' class='setInput' id='inputHArea23' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea23','outputArea23','#inputHArea23');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea23','outputArea23','#inputHArea23');">
 &nbsp;<span id='outputArea23' class='answer'>&gt;</span>
 </form></p>
 
@@ -291,7 +291,7 @@ gekauft haben, nach 3 Jahren:</p>
 Aktie_Nach_3_Jahren = <p><form class="inputhide" onreset="document.getElementById('outputArea24').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea24' value='100 * 0.75 * 1.30 * 0.75 * 1.30 * 0.75 * 1.30'>
 <input type='text' class='setInput' id='inputHArea24' value=''>
-<input type='button' value='&#8253;' onclick="compute('#inputArea24','outputArea24','#inputHArea24');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea24','outputArea24','#inputHArea24');">
 &nbsp;<span id='outputArea24' class='answer'>&gt;</span>
 </form></p>
 

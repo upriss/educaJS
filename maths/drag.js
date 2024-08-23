@@ -21,8 +21,10 @@ function pCheck(elemID) {
     let solution = "p0,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10";
     if (solution.includes(puzzleArray.join())) {
 	const para = document.createElement("span");
-	const node = document.createTextNode(" Richtig");
-	para.appendChild(node);
+	para.appendChild(document.createTextNode(" Richtig "))
+//      &#10003;
+//        para.appendChild("&#10003;");
+        para.classList.add('answerDrag');
 	document.getElementById(elemID).appendChild(para);
     };
 };

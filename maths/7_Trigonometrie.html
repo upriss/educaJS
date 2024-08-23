@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
   <title>Trigonometrie</title>
-  <script src='jsCAS.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/jsCAS.js'></script>
   <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathjs12.4.2_math.js'></script>
   <link rel='stylesheet' type='text/css' href='jsCAS.css'>
 </head>
@@ -129,26 +129,26 @@ größer oder kleiner wird?</p>
 
 <p><form onreset="document.getElementById('outputArea1').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea1' value='sin(0)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea1' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea2').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea2' value='sin(pi/6)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea2' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea3').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea3' value='sin(pi/4)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea3' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea4').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea4' value='sqrt(2)/2'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea4' class='answer'>&gt;</span>
 </form></p>
 
@@ -157,32 +157,32 @@ Sie mit degrees in Gradmaß umwandeln.</p>
 
 <p><form onreset="document.getElementById('outputArea5').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea5' value='radians(30)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea5','outputArea5');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea5','outputArea5');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea5' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea6').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea6' value='pi/6'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea6','outputArea6');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea6','outputArea6');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea6' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea7').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea7' value='degrees(pi/6)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea7','outputArea7');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea7','outputArea7');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea7' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea8').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea8' value='sin(pi/6)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea8','outputArea8');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea8','outputArea8');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea8' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea9').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea9' value='sin(radians(30))'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea9','outputArea9');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea9','outputArea9');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea9' class='answer'>&gt;</span>
 </form></p>
 
@@ -192,38 +192,38 @@ kennen, können Sie das jeweilige Bogen- oder Gradmaß berechnen:</p>
 
 <p><form onreset="document.getElementById('outputArea10').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea10' value='asin(0.5)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea10','outputArea10');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea10','outputArea10');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea10' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea11').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea11' value='pi/6'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea11','outputArea11');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea11','outputArea11');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea11' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea12').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea12' value='asin(1)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea12','outputArea12');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea12','outputArea12');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea12' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea13').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea13' value='pi/2'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea13','outputArea13');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea13','outputArea13');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea13' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea14').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea14' value='atan(1)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea14','outputArea14');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea14','outputArea14');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea14' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea15').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea15' value='pi/4'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea15','outputArea15');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea15','outputArea15');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea15' class='answer'>&gt;</span>
 </form></p>
 

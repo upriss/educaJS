@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
   <title>Gleichungen</title>
-  <script src='jsCAS.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/jsCAS.js'></script>
   <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathjs12.4.2_math.js'></script>
   <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/nerdamerPrime.min.js'></script>
   <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/plotly.min.js'></script>
@@ -36,14 +36,14 @@ Variablen in diesem Kurs nur die Großbuchstaben X, Y oder Z):</p>
 
 <p><form onreset="document.getElementById('outputArea1').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea1' value='solve(X**2 - 100)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea1' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea2').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea2' value='solve(Y - 2*X)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea2' class='answer'>&gt;</span>
 </form></p>
 
@@ -67,8 +67,8 @@ d.h. auf einer Seite muss 0 stehen. Zum Beispiel:</p>
 
 <p><form onreset="document.getElementById('outputArea3').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea3' value='solve(15 * X**2 - 60)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea3' class='answer'>&gt;</span>
 </form></p>
 
@@ -77,14 +77,14 @@ die ursprüngliche Gleichung einsetzen:</p>
 
 <p><form onreset="document.getElementById('outputArea4').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea4' value='15 * (-2)**2 - 10 == 50'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea4' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea5').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea5' value='15 * 2**2 - 10 == 50'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea5','outputArea5');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea5','outputArea5');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea5' class='answer'>&gt;</span>
 </form></p>
 
@@ -93,36 +93,36 @@ die ursprüngliche Gleichung einsetzen:</p>
 <p>X<sup>2</sup> - 5X = 7</p>
 <p><form onreset="document.getElementById('outputArea6').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea6' value='solve(...)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea6','outputArea6');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea6','outputArea6');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea6' class='answer'>&gt;</span>
 </form></p>
 <p>X + 3(X - 5) = X - 2(X + 5)</p>
 <p><form onreset="document.getElementById('outputArea7').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea7' value='solve(...)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea7','outputArea7');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea7','outputArea7');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea7' class='answer'>&gt;</span>
 </form></p>
 <p>X<sup>3</sup> + 2X = 3X<sup>2</sup></p>
 <p><form onreset="document.getElementById('outputArea8').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea8' value='solve(...)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea8','outputArea8');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea8','outputArea8');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea8' class='answer'>&gt;</span>
 </form></p>
 <p>2<sup>X</sup> = 64</p>
 <p><form onreset="document.getElementById('outputArea9').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea9' value='solve(...)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea9','outputArea9');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea9','outputArea9');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea9' class='answer'>&gt;</span>
 </form></p>
 <p>10<sup>(1-X)</sup> = <sup>1</sup>/<sub>100</sub></p>
 <p><form onreset="document.getElementById('outputArea10').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea10' value='solve(...)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea10','outputArea10');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea10','outputArea10');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea10' class='answer'>&gt;</span>
 </form></p>
 
@@ -137,7 +137,7 @@ Verwenden Sie hier die Kleinbuchstaben x und y. Zum Beispiel:</p>
 y = 2*x
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea11' value='zeichnen("2*x","plot1")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea11','outputArea11');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea11','outputArea11');">
 &nbsp;<span id='outputArea11' class='answer'></span>
 </form></p>
 
@@ -158,27 +158,27 @@ Exponenten 1 haben. Ihre Graphen sind Geraden. Schauen Sie sich die Graphen
 
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea12' value='zeichnen("x","plot2")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea12','outputArea12');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea12','outputArea12');">
 &nbsp;<span id='outputArea12' class='answer'></span>
 </form></p>
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea13' value='zeichnen("-x","plot2")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea13','outputArea13');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea13','outputArea13');">
 &nbsp;<span id='outputArea13' class='answer'></span>
 </form></p>
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea14' value='zeichnen("x + 2","plot2")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea14','outputArea14');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea14','outputArea14');">
 &nbsp;<span id='outputArea14' class='answer'></span>
 </form></p>
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea15' value='zeichnen("x - 2","plot2")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea15','outputArea15');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea15','outputArea15');">
 &nbsp;<span id='outputArea15' class='answer'></span>
 </form></p>
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea16' value='zeichnen("3 * x","plot2")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea16','outputArea16');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea16','outputArea16');">
 &nbsp;<span id='outputArea16' class='answer'></span>
 </form></p>
 
@@ -197,27 +197,27 @@ ist.
 
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea17' value='zeichnen("x","plot3")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea17','outputArea17');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea17','outputArea17');">
 &nbsp;<span id='outputArea17' class='answer'></span>
 </form></p>
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea18' value='zeichnen("x ** 2","plot3")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea18','outputArea18');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea18','outputArea18');">
 &nbsp;<span id='outputArea18' class='answer'></span>
 </form></p>
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea19' value='zeichnen("x ** 3","plot3")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea19','outputArea19');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea19','outputArea19');">
 &nbsp;<span id='outputArea19' class='answer'></span>
 </form></p>
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea20' value='zeichnen("x ** 4","plot3")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea20','outputArea20');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea20','outputArea20');">
 &nbsp;<span id='outputArea20' class='answer'></span>
 </form></p>
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea21' value='zeichnen("x ** 5","plot3")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea21','outputArea21');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea21','outputArea21');">
 &nbsp;<span id='outputArea21' class='answer'></span>
 </form></p>
 Berechnen Sie die y-Werte für x = 2 und x = -2 und schauen Sie, zu welchem Graph die jeweils 
@@ -233,27 +233,27 @@ Graphen der folgenden Gleichungen an:<br>
 
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea22' value='zeichnen("x","plot4")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea22','outputArea22');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea22','outputArea22');">
 &nbsp;<span id='outputArea22' class='answer'></span>
 </form></p>
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea23' value='zeichnen("x ** (0.9)","plot4")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea23','outputArea23');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea23','outputArea23');">
 &nbsp;<span id='outputArea23' class='answer'></span>
 </form></p>
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea24' value='zeichnen("x ** (0.5)","plot4")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea24','outputArea24');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea24','outputArea24');">
 &nbsp;<span id='outputArea24' class='answer'></span>
 </form></p>
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea25' value='zeichnen("x ** (0.2)","plot4")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea25','outputArea25');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea25','outputArea25');">
 &nbsp;<span id='outputArea25' class='answer'></span>
 </form></p>
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea26' value='zeichnen("x ** 0","plot4")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea26','outputArea26');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea26','outputArea26');">
 &nbsp;<span id='outputArea26' class='answer'></span>
 </form></p>
 Zur Erinnerung: x<sup><sup>1</sup>/<sub>2</sub></sup> = &radic;x. Es handelt sich also um Wurzeln. 
@@ -267,17 +267,17 @@ Exponenten zwischen 0 und 1 liegen?</p>
 
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea27' value='zeichnen("x ** (-1)","plot5")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea27','outputArea27');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea27','outputArea27');">
 &nbsp;<span id='outputArea27' class='answer'></span>
 </form></p>
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea28' value='zeichnen("x ** (-2)","plot5")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea28','outputArea28');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea28','outputArea28');">
 &nbsp;<span id='outputArea28' class='answer'></span>
 </form></p>
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea29' value='zeichnen("x ** (-3)","plot5")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea29','outputArea29');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea29','outputArea29');">
 &nbsp;<span id='outputArea29' class='answer'></span>
 </form></p>
 
@@ -298,12 +298,12 @@ die Graphen für y = 2<sup>x</sup> und y = x<sup>2</sup>.</p>
 
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea30' value='zeichnen("x ** 2","plot6")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea30','outputArea30');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea30','outputArea30');">
 &nbsp;<span id='outputArea30' class='answer'></span>
 </form></p>
 <p><form class="zeichnen">
 <input type='text' class='setInput' id='inputArea31' value='zeichnen("2 ** x","plot6")'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea31','outputArea31');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea31','outputArea31');">
 &nbsp;<span id='outputArea31' class='answer'></span>
 </form></p>
 
@@ -371,26 +371,26 @@ richtigen Umformungen das Ergebnis nicht ändern darf:
 
 <p><form onreset="document.getElementById('outputArea32').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea32' value='solve(10*X +11 - 16)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea32','outputArea32');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea32','outputArea32');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea32' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea33').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea33' value='solve(4*X + 5 - 10)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea33','outputArea33');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea33','outputArea33');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea33' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea34').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea34' value='solve(4*X +1 -2)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea34','outputArea34');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea34','outputArea34');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea34' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea35').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea35' value='solve(4*X - 3)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea35','outputArea35');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea35','outputArea35');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea35' class='answer'>&gt;</span>
 </form></p>
 

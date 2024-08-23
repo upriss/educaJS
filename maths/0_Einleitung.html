@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
   <title>Einleitung</title>
-  <script src='jsCAS.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/jsCAS.js'></script>
   <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathjs12.4.2_math.js'></script>
   <link rel='stylesheet' type='text/css' href='jsCAS.css'>
 </head>
@@ -110,8 +110,8 @@ das Eingabefeld auf den ursprünglichen Wert zurück. Probieren Sie es aus:</p>
 
 <p><form onreset="document.getElementById('outputArea1').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea1' value='3 + 2'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea1' class='answer'>&gt;</span>
 </form></p>
 
@@ -119,15 +119,15 @@ Im CAS wird für die Division / geschrieben anstatt ":".
 
 <p><form onreset="document.getElementById('outputArea2').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea2' value='3 / 2'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea2' class='answer'>&gt;</span>
 </form></p>
 
 <p><form onreset="document.getElementById('outputArea3').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea3' value='3 * 2'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea3' class='answer'>&gt;</span>
 </form></p>
 
@@ -153,8 +153,8 @@ diese Funktionen bedeuten.</p>
 
 <p><form onreset="document.getElementById('outputArea4').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea4' value='3 ** 2'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea4' class='answer'>&gt;</span>
 </form></p>
 

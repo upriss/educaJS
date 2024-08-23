@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
   <title>Grundlagen</title>
-  <script src='jsCAS.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/jsCAS.js'></script>
   <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathjs12.4.2_math.js'></script>
   <link rel='stylesheet' type='text/css' href='jsCAS.css'>
 </head>
@@ -27,20 +27,20 @@ Werte ungefähr sind.</p>
 
 <p><form onreset="document.getElementById('outputArea1').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea1' value='3/4 < 2 '>
-<input type='button' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea1' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea2').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea2' value='100 * 2 < 2 * 100 '>
-<input type='button' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea2' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea3').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea3' value='10000 + 17 < 2 * 500 '>
-<input type='button' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea3' class='answer'>&gt;</span>
 </form></p>
 
@@ -50,14 +50,14 @@ editieren.</p>
 
 <p><form onreset="document.getElementById('outputArea4').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea4' value='10000 + 17'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea4' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea5').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea5' value='2 * 500'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea5','outputArea5');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea5','outputArea5');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea5' class='answer'>&gt;</span>
 </form></p>
 
@@ -66,14 +66,14 @@ oder Nenner eines Bruchs größer wird, wird der Bruch dann größer oder kleine
 
 <p><form onreset="document.getElementById('outputArea6').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea6' value='10/15 < 11/15'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea6','outputArea6');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea6','outputArea6');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea6' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea7').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea7' value='10/20 < 10/21'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea7','outputArea7');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea7','outputArea7');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea7' class='answer'>&gt;</span>
 </form></p>
 
@@ -84,14 +84,14 @@ oder Nenner eines Bruchs größer wird, wird der Bruch dann größer oder kleine
 
 <p><form onreset="document.getElementById('outputArea8').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea8' value='100 - 100 * 2 - 2 < 0'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea8','outputArea8');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea8','outputArea8');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea8' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea9').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea9' value='(100 - 100) * (2 - 2) < 0'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea9','outputArea9');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea9','outputArea9');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea9' class='answer'>&gt;</span>
 </form></p>
 
@@ -105,38 +105,38 @@ Zahlen ergibt eine positive Zahl.</p>
 
 <p><form onreset="document.getElementById('outputArea10').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea10' value='-100 < -200'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea10','outputArea10');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea10','outputArea10');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea10' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea11').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea11' value='-(-200) < 100'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea11','outputArea11');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea11','outputArea11');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea11' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea12').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea12' value='(-1) * 100 < (-1) * 200'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea12','outputArea12');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea12','outputArea12');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea12' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea13').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea13' value='(-1) * (-1) < (-1) * (-2)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea13','outputArea13');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea13','outputArea13');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea13' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea14').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea14' value='(-1) * (-(-1)) * (-1) < 0'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea14','outputArea14');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea14','outputArea14');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea14' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea15').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea15' value='(-1) + (-1) < (-1)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea15','outputArea15');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea15','outputArea15');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea15' class='answer'>&gt;</span>
 </form></p>
 
@@ -148,32 +148,32 @@ oder 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2.</p>
 
 <p><form onreset="document.getElementById('outputArea16').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea16' value='3**2 < 2**3'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea16','outputArea16');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea16','outputArea16');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea16' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea17').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea17' value='400**2 < 1000'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea17','outputArea17');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea17','outputArea17');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea17' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea18').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea18' value='40**2 + 50**2 < 1000'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea18','outputArea18');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea18','outputArea18');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea18' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea19').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea19' value='2**10 < 1000'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea19','outputArea19');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea19','outputArea19');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea19' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea20').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea20' value='2**100 > 1000000000000000000'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea20','outputArea20');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea20','outputArea20');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea20' class='answer'>&gt;</span>
 </form></p>
 
@@ -190,8 +190,8 @@ und ** für Exponenten verwenden. Zum Beispiel:
 
 <p><form onreset="document.getElementById('outputArea21').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea21' value='(9 + 3 ** 3)/(-6)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea21','outputArea21');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea21','outputArea21');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea21' class='answer'>&gt;</span>
 </form></p> 
 
@@ -200,8 +200,8 @@ als in dieser Simulation.)
 
 <p><form onreset="document.getElementById('outputArea22').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea22' value='simplify(2*m**3*((-3)*m**3)**2/(3*m**9))'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea22','outputArea22');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea22','outputArea22');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea22' class='answer'>&gt;</span>
 </form></p>
 
@@ -219,38 +219,38 @@ Bildquelle: https://de.wikibooks.org/wiki/Datei:Zahlenmengen.svg</p>
 
 <p><form onreset="document.getElementById('outputArea23').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea23' value='3'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea23','outputArea23');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea23','outputArea23');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea23' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea24').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea24' value='3.0'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea24','outputArea24');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea24','outputArea24');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea24' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea25').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea25' value='1/3'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea25','outputArea25');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea25','outputArea25');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea25' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea26').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea26' value='-5'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea26','outputArea26');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea26','outputArea26');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea26' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea27').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea27' value='sqrt(2)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea27','outputArea27');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea27','outputArea27');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea27' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea28').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea28' value='pi'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea28','outputArea28');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea28','outputArea28');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea28' class='answer'>&gt;</span>
 </form></p>
 

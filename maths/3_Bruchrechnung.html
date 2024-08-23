@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
   <title>Bruchrechnung</title>
-  <script src='jsCAS.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/jsCAS.js'></script>
   <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathjs12.4.2_math.js'></script>
   <script async src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathJax3_tex-svg.js'></script>
   <script>MathJax={tex:{inlineMath:[['$', '$']]},svg:{fontCache:'global'}};</script>
@@ -54,14 +54,14 @@ Zum Beispiel:</p>
 
 <p><form onreset="document.getElementById('outputArea1').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea1' value='3/4 - 7/5'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea1' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea2').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea2' value='-13/20'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea2' class='answer'>&gt;</span>
 </form></p>
 
@@ -69,8 +69,8 @@ Dies ist mathematisch true, aber im Computer falsch:
 
 <p><form onreset="document.getElementById('outputArea3').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea3' value='3/4 - 7/5 == -13/20'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea3' class='answer'>&gt;</span>
 </form></p>
 
@@ -88,8 +88,8 @@ Berechnen Sie auf Papier und überprüfen Sie Ihre Ergebnisse dann im CAS.</p>
 
 <p><form onreset="document.getElementById('outputArea4').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea4' value='5/21 + 2/3'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea4' class='answer'>&gt;</span>
 </form></p>
 
@@ -99,25 +99,25 @@ Die Knöpfe zeigen die Lösungen an. Rechnen Sie erst auf Papier!</p>
 <p>$\frac{m^2-n^2}{o^2-p^2}:\frac{m-n}{o+p}$</p>
 <p><form class="inputhide" onreset="document.getElementById('outputArea5').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea5' value='prOnly((-m-n) / (-o+p))'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea5','outputArea5');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea5','outputArea5');">
 &nbsp;<span id='outputArea5' class='answer'>&gt;</span>
 </form></p>
 <p>$(m-n)(\frac{1}{n}-\frac{1}{m})$</p>
 <p><form class="inputhide" onreset="document.getElementById('outputArea6').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea6' value='prOnly((m-n)&sup2; / mn)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea6','outputArea6');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea6','outputArea6');">
 &nbsp;<span id='outputArea6' class='answer'>&gt;</span>
 </form></p>
 <p>$\frac{m}{no} + \frac{n}{mo} + \frac{o}{mn}$</p>
 <p><form class="inputhide" onreset="document.getElementById('outputArea7').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea7' value='prOnly((m&sup2; + n&sup2; + o&sup2;) / mno)'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea7','outputArea7');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea7','outputArea7');">
 &nbsp;<span id='outputArea7' class='answer'>&gt;</span>
 </form></p>
 <p>$\frac{1+\frac{1}{m+1}}{2 -\frac{m-2}{m}}$</p>
 <p><form class="inputhide" onreset="document.getElementById('outputArea8').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea8' value='prOnly(m / (m+1))'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea8','outputArea8');">
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea8','outputArea8');">
 &nbsp;<span id='outputArea8' class='answer'>&gt;</span>
 </form></p>
 
@@ -136,8 +136,8 @@ Schreibweise ein <b> Punkt statt einem Komma verwendet</b>, d.h. 0.75 anstatt 0,
 
 <p><form onreset="document.getElementById('outputArea9').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea9' value='3/4 == 0.75'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea9','outputArea9');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea9','outputArea9');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea9' class='answer'>&gt;</span>
 </form></p>
 
@@ -145,8 +145,8 @@ Dieses ist falsch:
 
 <p><form onreset="document.getElementById('outputArea10').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea10' value='3/4 == 0,75'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea10','outputArea10');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea10','outputArea10');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea10' class='answer'>&gt;</span>
 </form></p>
 
@@ -154,8 +154,8 @@ Dieses ist keine Dezimalzahl:
 
 <p><form onreset="document.getElementById('outputArea11').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea11' value='0,75'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea11','outputArea11');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea11','outputArea11');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea11' class='answer'>&gt;</span>
 </form></p>
 
@@ -167,26 +167,26 @@ $\frac{3}{4} + \frac{7}{5}$
 
 <p><form onreset="document.getElementById('outputArea12').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea12' value='3/4'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea12','outputArea12');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea12','outputArea12');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea12' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea13').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea13' value='7/5'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea13','outputArea13');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea13','outputArea13');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea13' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea14').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea14' value='0.75 + 1.4'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea14','outputArea14');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea14','outputArea14');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea14' class='answer'>&gt;</span>
 </form></p>
 <p><form onreset="document.getElementById('outputArea15').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea15' value='43/20'>
-<input type='button' value='&#8253;' onclick="compute('#inputArea15','outputArea15');">
-<input type='reset' value='&circlearrowleft;'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea15','outputArea15');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea15' class='answer'>&gt;</span>
 </form></p>
 
