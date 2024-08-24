@@ -29,7 +29,7 @@ body { font-family: 'Open Sans', Arial, sans-serif;
     height: 700px;
     margin: 20px auto;
     padding: 40px 60px;
-    font-size: xxx-large; }
+    font-size: xx-large; }
 
 .impress-enabled .step {    /*  inactive steps a little bit transparent  */
     margin: 0;
@@ -100,3 +100,13 @@ span.answerDrag { color: green; padding: 30px; font-size: 1em;}
 .inputhide {display: inline;}
 .plotArea { width:300; max-width:300;float: right;}
 .modebar-container { display:none }
+
+@media (prefers-color-scheme: dark) { 
+  body{color: white; background: #2F3F3F }
+  hr{color: #B3B3B3}
+  svg{color: black; background: #BBBBBB }
+  textarea{background: #BBBBBB }
+  input{background: #BBBBBB }
+  a { color: #FFDEAD }
+  tr:nth-child(even) { background-color: #708090 }
+}
