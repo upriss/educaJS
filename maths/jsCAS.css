@@ -1,12 +1,4 @@
-body { font-family: Arial, Helvetica, sans-serif; } 
-
-@media (prefers-color-scheme: dark) { 
-  body{color: white; background: #272727 }
-  hr{color: #B3B3B3}
-  svg{color: black; background: #BBBBBB }
-  textarea{background: #BBBBBB }
-  input{background: #BBBBBB }
-}
+body { font-family: Arial, Helvetica, sans-serif; font-size: large;} 
 
 h2 { font-size: 1.5em; }
 h3 { font-size: 1.2em; }
@@ -24,3 +16,14 @@ tr:nth-child(even) { background-color: #EEEEEE; }
 
 .plotArea { width:300; max-width:300;float: right;}
 .modebar-container { display:none }
+
+@media (prefers-color-scheme: dark) { 
+  body{color: white; background: #2F3F3F }
+  hr{color: #B3B3B3}
+  svg{color: black; background: #BBBBBB }
+  textarea{background: #BBBBBB }
+  input{background: #BBBBBB }
+  a { color: #DAA520 }
+  tr:nth-child(even) { background-color: #708090 }
+}
+
