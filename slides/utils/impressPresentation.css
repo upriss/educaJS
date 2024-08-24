@@ -109,4 +109,8 @@ span.answerDrag { color: green; padding: 30px; font-size: 1em;}
   input{background: #BBBBBB }
   a { color: #FFDEAD }
   tr:nth-child(even) { background-color: #708090 }
+  .setInput {background: white}
+  span.piece button { background-color: #FFEBCD }
+  button {background-color: white}
+  select {background-color: white}
 }
