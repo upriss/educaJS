@@ -23,7 +23,7 @@ tr:nth-child(even) { background-color: #EEEEEE; }
   svg{color: black; background: #BBBBBB }
   textarea{background: #BBBBBB }
   input{background: #BBBBBB }
-  a { color: #DAA520 }
+  a { color: #FFDEAD }
   tr:nth-child(even) { background-color: #708090 }
 }
 
