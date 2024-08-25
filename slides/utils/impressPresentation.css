@@ -50,37 +50,29 @@ body { font-family: 'Open Sans', Arial, sans-serif;
 
 h1, h2, h3 { margin-bottom: 0.5em; margin-top: 0.5em; text-align: center; }
 
-p { text-align: left; margin: 0.7em; }
+em { font-weight: bold; }
 
-li { margin: 0.2em; }
+/************************** not used  *******************************/
 
-/* Code: Highlight.js used for coloring pre > code blocks. */
+/* p { text-align: left; margin: 0.7em; } */
 
-pre > code { font-size: 14px; text-shadow: 0 0 0 rgba(0, 0, 0, 0); }
-code { font-family: "Cutive mono","Courier New", monospace; } /* Inline code, no Highlight */
+/* li { margin: 0.2em; } */
 
-a { color: inherit; text-decoration: none; padding: 0 0.1em;
+/* a { color: inherit; text-decoration: none; padding: 0 0.1em;
     background: rgba(200,200,200,0.3);
-    text-shadow: -1px 1px 2px rgba(100,100,100,0.9);
     border-radius: 0.2em;
     border-bottom: 1px solid rgba(100,100,100,0.4);
     border-left: 1px solid rgba(100,100,100,0.4);
     transition: 0.5s; }
 a:hover, a:focus {
-    background: rgba(200,200,200,1);
-    text-shadow: -1px 1px 2px rgba(100,100,100,0.5); }
+    background: rgba(200,200,200,1); */
 
-blockquote { font-family: 'PT Serif'; font-style: italic; font-weight: 400; }
-
-em { text-shadow: 0 2px 2px rgba(0, 0, 0, .3); }
-strong { text-shadow: -1px 1px 2px rgba(100,100,100,0.5); }
-
-q { font-family: 'PT Serif'; font-style: italic; font-weight: 400;    
-    text-shadow: 0 2px 2px rgba(0, 0, 0, .3); }
-
+/* blockquote { font-family: 'PT Serif'; font-style: italic; font-weight: 400; }
+q { font-family: 'PT Serif'; font-style: italic; font-weight: 400; }
 strike { opacity: 0.7; }
+small { font-size: 0.4em; } */
 
-small { font-size: 0.4em; }
+/********************************** specifics ******************************/
 
 img { width: 300px }
 
@@ -89,7 +81,7 @@ img.taskicon { width: 120px; float: right; padding: 30px; }
 div#slide0 svg { position: absolute; left: 0; top: 0; z-index: -1; } /* picture on slide0 */
 
 .setInput { font-size: xx-large; }               /* large input fields */
-input.setInput { width: 40%; }
+input.setInput { width: 35%; }
 
 input.medBut { font-size: xx-large; }
 span.piece button { font-size: xx-large; }
@@ -97,20 +89,22 @@ span.piece button:active { font-size: x-large;}  /* dragged gets smaller */
 span.over button { font-size: xxx-large; }       /* larger when over */
 span.answerDrag { color: green; padding: 30px; font-size: 1em;}
 
-.inputhide {display: inline;}
-.plotArea { width:300; max-width:300;float: right;}
+.inputhide { display: inline; } 
+.plotArea { width:300; max-width:300;float: right; }
 .modebar-container { display:none }
 
+/**************************** dark scheme overrides ***********************/
+
 @media (prefers-color-scheme: dark) { 
-  body{color: white; background: #2F3F3F }
-  hr{color: #B3B3B3}
-  svg{color: black; background: #BBBBBB }
-  textarea{background: #BBBBBB }
-  input{background: #BBBBBB }
+  body{ color: white; background: #2F3F3F }
+  hr{ color: #B3B3B3 }
+  svg{ color: black; background: #BBBBBB }
+  textarea{ background: #BBBBBB }
+  input{ background: #BBBBBB }
   a { color: #FFDEAD }
   tr:nth-child(even) { background-color: #708090 }
-  .setInput {background: white}
+  .setInput { background: white }
   span.piece button { background-color: #FFEBCD }
-  button {background-color: white}
-  select {background-color: white}
+  button { background-color: white }
+  select { background-color: white }
 }

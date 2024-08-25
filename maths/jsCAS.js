@@ -60,7 +60,7 @@ function compute(inA,outA,inA2){
            if (tempstring == "true") { 
 	       tempstring = "richtig. <font size=5 color='green'>&#10003;</font>"
            } else { tempstring = "falsch. <font size=5 color='red'>&#10007;</font>" }
-	   result = "Ihre Eingabe ergibt: " + result2.toString() 
+	   result = "Ihre Eingabe: " + result2.toString() 
 	       + "&nbsp; Das ist " + tempstring;
        } catch(err) { result = err }
    } else {
