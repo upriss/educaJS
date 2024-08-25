@@ -54,8 +54,14 @@ function compute(inA,outA,inA2){
        let inp2 = inputHArea.value;
        inp2 = inp2.replaceAll("pi","Math.PI");
        try { 
-	   result = eval(inp);
-	   result2 = eval(inp2);
+	   if (inp.match(/^str/)) {
+	       inp = inp.replace(/^str/,"");
+	       result = inp;
+	       result2 = inp2;
+	   } else {
+	       result = eval(inp);
+	       result2 = eval(inp2);
+	   }
 	   tempstring = (result == result2).toString();
            if (tempstring == "true") { 
 	       tempstring = "richtig. <font size=5 color='green'>&#10003;</font>"
