@@ -20,7 +20,7 @@ body { font-family: 'Open Sans', Arial, sans-serif;
     min-height: 740px;
     background: #eeeeff;
     color:  #333366; 
-    overscroll-behavior: none; touch-action: none;            // for phones
+//    overscroll-behavior: none; touch-action: none;            // for phones
 }
 
 /*************************** steps *******************/
@@ -100,7 +100,7 @@ span.answerDrag { color: green; padding: 30px; font-size: 1em;}
 /**************************** dark scheme overrides ***********************/
 
 @media (prefers-color-scheme: dark) { 
-//  body{ color: white; background: #2F3F3F }
+  body{ color: white; background: #2F3F3F }
   hr{ color: #B3B3B3 }
   svg{ color: black; background: #BBBBBB }
   textarea{ background: #BBBBBB }
