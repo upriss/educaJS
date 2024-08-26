@@ -20,17 +20,17 @@ body { font-family: 'Open Sans', Arial, sans-serif;
     min-height: 740px;
     background: #eeeeff;
     color:  #333366; 
-//    overscroll-behavior: none; touch-action: none;            // for phones
+/*    overscroll-behavior: none; touch-action: none;            /* for phones */
 }
 
 /*************************** steps *******************/
 
-.step { position: relative;
-    display: block;
-    width: 900px;
+.step { /* position: relative; */
+/*    display: block; */
+    width: 1000px;
     height: 700px;
-    margin: 20px auto;
-    padding: 40px 60px;
+/*    margin: 20px auto; */
+/*    padding: 40px 60px; */
     font-size: xx-large; }
 
 .impress-enabled .step {    /*  inactive steps a little bit transparent  */
@@ -50,7 +50,8 @@ body { font-family: 'Open Sans', Arial, sans-serif;
 
 /************************** normal tags *******************************/
 
-h1, h2, h3 { margin-bottom: 0.5em; margin-top: 0.5em; text-align: center; }
+h1, h2, h3 { margin-bottom: 0.5em; margin-top: 0.5em; 
+	     text-align: center; font-size: xxx-large;}
 
 em { font-weight: bold; }
 
@@ -80,7 +81,7 @@ sup { line-height: 0; }
 
 img { width: 300px }
 
-img.taskicon { width: 120px; float: right; padding: 30px; } 
+img.taskicon { width: 90px; float: right; padding: 30px; } 
 
 div#slide0 svg { position: absolute; left: 0; top: 0; z-index: -1; } /* picture on slide0 */
 

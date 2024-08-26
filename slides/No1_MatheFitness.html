@@ -17,9 +17,10 @@
 <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser with Javascript turned on.</p>
 </div>
 <div id='impress' data-transition-duration='500'>
-<div title='Es geht los' id='slide0' class='step' data-x='3200' data-y='3000'>
+<div title='Es geht los' id='slide0' class='step' data-x='3200' data-y='3000'
+data-goto-next="slide1" data-goto-prev="slide0">
 
-<h1>Willkommen beim Mathe-Fitness-Zirkeltraining!</h1>
+<h1>Willkommen beim Mathe-Fitness-Training!</h1>
 
 <svg height='100%' width='100%' xmlns='http://www.w3.org/2000/svg'>
   <circle r='20%' cx='50%' cy='50%' fill='lightblue' /></svg> <p>
@@ -46,7 +47,8 @@ klicken, gelangen Sie zur nächsten Station.</p>
 
 </div>
 
-<div title='Rechnen' id='slide1' class='step' data-x='2000' data-y='2000'>
+<div title='Rechnen' id='slide1' class='step' data-x='2000' data-y='2100'
+data-goto-next="slide2" data-goto-prev="slide0">
 
 <img class='taskicon' src='../images/imgCompute.png'>
 <h1>Rechnen</h1>
@@ -74,7 +76,8 @@ $\sqrt[3]{5}\sqrt[3]{\frac{8}{5}}$ =
 
 </div>
 
-<div title='Umformen' id='slide2' class='step' data-rel-x='1200' data-rel-y='0'>
+<div title='Umformen' id='slide2' class='step' data-x='3200' data-y='2100'
+data-goto-next="slide3" data-goto-prev="slide1">
 
 <img class='taskicon' src='../images/imgRearrange.png'>
 <h1>Umformen</h1>
@@ -86,15 +89,16 @@ unten stehenden Knöpfe, indem Sie auf Knöpfe klicken, diesen fest halten und
 &#x1F600; x &#x1F621; =
 
 <p><form id='shuffle4'>
-<span class='piece' draggable='true'> <button class='p1'>x</button></span>
 <span class='piece' draggable='true'> <button class='p2'>&#x1F600;</button></span>
 <span class='piece' draggable='true'> <button class='p0'>&#x1F621;</button></span>
+<span class='piece' draggable='true'> <button class='p1'>x</button></span>
 </form></p>
 
 
 </div>
 
-<div title='Entscheiden' id='slide3' class='step' data-rel-x='1200' data-rel-y='0'>
+<div title='Entscheiden' id='slide3' class='step' data-x='4400' data-y='2100'
+data-goto-next="slide4" data-goto-prev="slide2">
 
 <img class='taskicon' src='../images/imgEvaluate.png'>
 <h1>Entscheiden</h1>
@@ -142,7 +146,8 @@ Ersetzen Sie TODO, so dass true herauskommt:
 
 </div>
 
-<div title='Einsetzen' id='slide4' class='step' data-rel-x='0' data-rel-y='1000'>
+<div title='Einsetzen' id='slide4' class='step' data-x='4400' data-y='3000'
+data-goto-next="slide5" data-goto-prev="slide3">
 
 <img class='taskicon' src='../images/imgInsert.png'>
 <h1>Einsetzen</h1>
@@ -153,18 +158,20 @@ richtige Aussage über den jeweiligen linken Term stehen.
 Setzen Sie Werte für x ein, falls Sie sich nicht sicher sind.</p>
 
 <p><form id='shuffle10'>
-4+1/x &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>kann alle Werte annehmen</button></span>
+4+1/x &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'>kann genau einen Wert annehmen</button></span>
 <br>
 2(x<sup>3</sup>-5-x<sup>3</sup>) &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>kann alle Werte bis auf einen annehmen</button></span>
 <br>
-(4+1)x &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'>kann genau einen Wert annehmen</button></span>
+(4+1)x &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>kann alle Werte annehmen</button></span>
 <br>
 </form></p>
 
 
 </div>
 
-<div title='&Uuml;bersetzen' id='slide5' class='step' data-rel-x='0' data-rel-y='1000'>
+<div title='&Uuml;bersetzen' id='slide5' class='step' data-x='4400' data-y='3900'
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="slide4 slide6 slide6 slide6">
 
 <img class='taskicon' src='../images/imgTranslate.png'>
 <h1>Übersetzen</h1>
@@ -172,20 +179,22 @@ Setzen Sie Werte für x ein, falls Sie sich nicht sicher sind.</p>
 <p>Ordnen Sie zu</p>
 
 <p><form id='shuffle11'>
-ab = 0 &hArr; a = 0 oder b = 0 &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'> Bei der Multiplikation darf man die Reihenfolge der Faktoren ändern.</button></span>
+ab = 0 &hArr; a = 0 oder b = 0 &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p3'>Wenn 2 Summanden den gleichen Faktor enthalten&comma; kann man ihn ausklammern.</button></span>
 <br>
-ab = ba &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>Ein Produkt ist genau dann null&comma; wenn mindestens einer der Faktoren null ist.</button></span>
+ab = ba &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'> Bei der Multiplikation darf man die Reihenfolge der Faktoren ändern.</button></span>
 <br>
-a/b : c/d = a/b * d/c &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p3'>Wenn 2 Summanden den gleichen Faktor enthalten&comma; kann man ihn ausklammern.</button></span>
+a/b : c/d = a/b * d/c &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>Man dividiert durch einen Bruch&comma; indem man mit dem Kehrwert multipliziert.</button></span>
 <br>
-a(b+c) = ab + ac &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>Man dividiert durch einen Bruch&comma; indem man mit dem Kehrwert multipliziert.</button></span>
+a(b+c) = ab + ac &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>Ein Produkt ist genau dann null&comma; wenn mindestens einer der Faktoren null ist.</button></span>
 <br>
 </form></p>
 
 
 </div>
 
-<div title='Sehen' id='slide6' class='step' data-rel-x='-1200' data-rel-y='0'>
+<div title='Sehen' id='slide6' class='step' data-x='3200' data-y='3900'
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="slide5 slide7 slide7 slide7">
 
 <img class='taskicon' src='../images/imgVisualise.png'>
 <h1>Sehen</h1>
@@ -210,7 +219,9 @@ für Zahlen gilt: ab + ac = a(b+c). Welche dieser Zeilen enthält kein
 
 </div>
 
-<div title='Verstehen' id='slide7' class='step' data-rel-x='-1200' data-rel-y='0'>
+<div title='Verstehen' id='slide7' class='step' data-x='2000' data-y='3900'
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="slide8 slide8 slide6 slide8">
 
 <img class='taskicon' src='../images/imgUnderstand.png'>
 <h1>Verstehen</h1>
@@ -225,7 +236,7 @@ log<sub>a</sub>(uv) = log<sub>a</sub> u + log<sub>a</sub> v
 </p>
 
 <p>
-Schreiben Sie T für richtig (true) oder F für falsch.
+Geben Sie t für richtig (true) oder f für falsch ein.
 
 <p><form class="inputhide" onreset="document.getElementById('outputArea13').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea13' value='strT'>
@@ -236,7 +247,8 @@ Schreiben Sie T für richtig (true) oder F für falsch.
 
 </div>
 
-<div title='Modellieren' id='slide8' class='step' data-rel-x='0' data-rel-y='-1000'>
+<div title='Modellieren' id='slide8' class='step' data-x='2000' data-y='3000'
+data-goto-next="overview" data-goto-prev="slide7">
 
 <img class='taskicon' src='../images/imgModel.png'>
 <h1>Modellieren</h1>

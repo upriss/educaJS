@@ -56,8 +56,8 @@ function compute(inA,outA,inA2){
        try { 
 	   if (inp.match(/^str/)) {
 	       inp = inp.replace(/^str/,"");
-	       result = inp;
-	       result2 = inp2;
+	       result = inp.toLowerCase();
+	       result2 = inp2.toLowerCase();
 	   } else {
 	       result = eval(inp);
 	       result2 = eval(inp2);
@@ -66,8 +66,8 @@ function compute(inA,outA,inA2){
            if (tempstring == "true") { 
 	       tempstring = "richtig. <font size=5 color='green'>&#10003;</font>"
            } else { tempstring = "falsch. <font size=5 color='red'>&#10007;</font>" }
-	   result = "Ihre Eingabe: " + result2.toString() 
-	       + "&nbsp; Das ist " + tempstring;
+	   result = "Eingabe: " + result2.toString() 
+	       + "&nbsp; ist " + tempstring;
        } catch(err) { result = "Ihre Eingabe war falsch. (" + err + ")"}
    } else {
        try { result = eval(inp); }
