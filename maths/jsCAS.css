@@ -1,4 +1,6 @@
-body { font-family: Arial, Helvetica, sans-serif; font-size: large;} 
+body { font-family: Arial, Helvetica, sans-serif; font-size: large;
+       overscroll-behavior: none; touch-action: none;            // for phones
+} 
 
 h2 { font-size: 1.5em; }
 h3 { font-size: 1.2em; }

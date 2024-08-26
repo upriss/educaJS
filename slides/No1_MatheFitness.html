@@ -22,9 +22,8 @@
 
 <svg height='100%' width='100%' xmlns='http://www.w3.org/2000/svg'>
   <circle r='20%' cx='50%' cy='50%' fill='lightblue' /></svg> <p>
-<p>Verwenden Sie das Menü oben links zur Navigation.
-Die Eingabefelder funktionieren wie ein Taschenrechner. Verwenden Sie
-dabei / für Division, * für Multiplikation und ** für Exponenten.
+<p>Die Eingabefelder funktionieren wie ein Taschenrechner. Verwenden Sie
+dabei / für Division, * für Multiplikation und ** für Exponenten. 
 Z.B. 1*2<sup>2</sup> : 4</p>
 
 <p><form onreset="document.getElementById('outputArea1').innerHTML='>';">
@@ -34,12 +33,14 @@ Z.B. 1*2<sup>2</sup> : 4</p>
 &nbsp;<span id='outputArea1' class='answer'>&gt;</span>
 </form></p>
 
-<p>Der Knopf mit dem Fragezeichen [?] zeigt Ihnen das Ergebnis an. Mit dem Reset-Knopf
-[&circlearrowleft;] können Sie ein Eingabefeld zurücksetzen, wenn Sie es editiert hatten. 
-Bei einigen Aufgaben müssen Sie Knöpfe solange verschieben, bis "Richtig" erscheint.
+<p>Der Knopf mit dem &#8253;-Zeichen [&#8253;] zeigt Ihnen das Ergebnis an. Mit dem 
+Reset-Knopf [&circlearrowleft;] können Sie ein Eingabefeld zurücksetzen, wenn Sie es 
+editiert hatten. 
+</p>
 Alle weiteren Infos stehen im Moodle-Kurs.</p>
-<p>Klicken Sie jetzt also auf den Knopf oben links [>] um zur ersten
-Station zu gelangen.</p>
+<p>Verwenden Sie das Menü oben links zur Navigation. Wenn Sie auf
+der Knopf [>] oder die rechte Pfeiltaste auf Ihrer Tastatur
+klicken, gelangen Sie zur nächsten Station.</p>
 
 </div>
 
@@ -47,6 +48,9 @@ Station zu gelangen.</p>
 
 <img class='taskicon' src='../images/imgCompute.png'>
 <h1>Rechnen</h1>
+
+<p>Rechnen Sie erst auf einem Blatt Papier und tragen Sie dann Ihr Ergebnis ein
+um es zu prüfen.</p>
 
 <p>$\frac{8^7*33^5}{22^4*2^{17}*9^2}$ =</p>
 
@@ -73,15 +77,16 @@ $\sqrt[3]{5}\sqrt[3]{\frac{8}{5}}$ =
 <img class='taskicon' src='../images/imgRearrange.png'>
 <h1>Umformen</h1>
 
-<p>Wenden Sie das Kommutativgesetz an. Verschieben Sie die Knöpfe, so
-  dass die Gleichung stimmt.</p>
+<p>Stellen Sie das Kommutativgesetz dar. Ändern Sie die Reihenfolge der
+unten stehenden Knöpfe, indem Sie auf Knöpfe klicken, diesen fest halten und
+über einem anderen Knopf fallen lassen. Wenn "Richtig" erscheint, sind Sie fertig.</p>
 
 &#x1F600; x &#x1F621; =
 
 <p><form id='shuffle4'>
-<span class='piece' draggable='true'> <button class='p2'>&#x1F600;</button></span>
 <span class='piece' draggable='true'> <button class='p0'>&#x1F621;</button></span>
 <span class='piece' draggable='true'> <button class='p1'>x</button></span>
+<span class='piece' draggable='true'> <button class='p2'>&#x1F600;</button></span>
 </form></p>
 
 
@@ -94,8 +99,7 @@ $\sqrt[3]{5}\sqrt[3]{\frac{8}{5}}$ =
 
 <p>Eine Menge A heißt <em>Teilmenge</em> einer Menge B, wenn alle Elemente von
   A auch in B sind (notiert als A &sube; B oder im Computer als A <= B). 
-Prüfen Sie, ob es sich um Teilmengen 
-handelt.</p>
+Hier sind 3 Beispiele von Teilmengenbeziehungen.</p>
 
 <p><form onreset="document.getElementById('outputArea5').innerHTML='>';">
 <input type='text' class='setInput' id='inputArea5' value='{2,4,5} <= {1,2,3,4,5}'>
@@ -125,10 +129,10 @@ Ersetzen Sie TODO, so dass false herauskommt:
 &nbsp;<span id='outputArea8' class='answer'>&gt;</span>
 </form></p>
 
-Ersetzen Sie beide TODOs, so dass true herauskommt:
+Ersetzen Sie TODO, so dass true herauskommt:
 
 <p><form onreset="document.getElementById('outputArea9').innerHTML='>';">
-<input type='text' class='setInput' id='inputArea9' value='TODO <= TODO'>
+<input type='text' class='setInput' id='inputArea9' value='{2,5,17} <= TODO'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea9','outputArea9');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea9' class='answer'>&gt;</span>
@@ -141,7 +145,10 @@ Ersetzen Sie beide TODOs, so dass true herauskommt:
 <img class='taskicon' src='../images/imgInsert.png'>
 <h1>Einsetzen</h1>
 
-<p>Ordnen Sie zu. Setzen Sie Werte für x ein, falls Sie sich nicht sicher sind.</p>
+<p>Ordnen Sie zu. Verschieben Sie wieder die Knöpfe, indem Sie sie anklicken, 
+festhalten und an der richtigen Stelle fallen lassen. Rechts soll eine
+richtige Aussage über den jeweiligen linken Term stehen.
+Setzen Sie Werte für x ein, falls Sie sich nicht sicher sind.</p>
 
 <p><form id='shuffle10'>
 4+1/x &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>kann alle Werte annehmen</button></span>
@@ -163,11 +170,11 @@ Ersetzen Sie beide TODOs, so dass true herauskommt:
 <p>Ordnen Sie zu</p>
 
 <p><form id='shuffle11'>
-ab = 0 &hArr; a = 0 oder b = 0 &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>Man dividiert durch einen Bruch&comma; indem man mit dem Kehrwert multipliziert.</button></span>
+ab = 0 &hArr; a = 0 oder b = 0 &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>Ein Produkt ist genau dann null&comma; wenn mindestens einer der Faktoren null ist.</button></span>
 <br>
 ab = ba &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'> Bei der Multiplikation darf man die Reihenfolge der Faktoren ändern.</button></span>
 <br>
-a/b : c/d = a/b * d/c &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>Ein Produkt ist genau dann null&comma; wenn mindestens einer der Faktoren null ist.</button></span>
+a/b : c/d = a/b * d/c &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>Man dividiert durch einen Bruch&comma; indem man mit dem Kehrwert multipliziert.</button></span>
 <br>
 a(b+c) = ab + ac &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p3'>Wenn 2 Summanden den gleichen Faktor enthalten&comma; kann man ihn ausklammern.</button></span>
 <br>
@@ -216,7 +223,7 @@ log<sub>a</sub>(uv) = log<sub>a</sub> u + log<sub>a</sub> v
 </p>
 
 <p>
-Schreiben Sie T für richtig (true) und F für falsch.
+Schreiben Sie T für richtig (true) oder F für falsch.
 
 <p><form class="inputhide" onreset="document.getElementById('outputArea13').innerHTML='>';">
 <input type='hidden' class='setInput' id='inputArea13' value='strT'>

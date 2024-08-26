@@ -120,7 +120,7 @@ function setOps (s) {
 	    result = displaySet(result);
 	}
     }
-    catch(err) { result = err }
+    catch(err) { result = "Ihre Eingabe war falsch. (" + err + ")" }
     return result
 }
 

@@ -68,10 +68,10 @@ function compute(inA,outA,inA2){
            } else { tempstring = "falsch. <font size=5 color='red'>&#10007;</font>" }
 	   result = "Ihre Eingabe: " + result2.toString() 
 	       + "&nbsp; Das ist " + tempstring;
-       } catch(err) { result = err }
+       } catch(err) { result = "Ihre Eingabe war falsch. (" + err + ")"}
    } else {
        try { result = eval(inp); }
-       catch(err) { result = err }
+       catch(err) { result = "Ihre Eingabe war falsch. (" + err + ")" }
    }
 
    document.getElementById(outA).innerHTML=result;
