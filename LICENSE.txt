@@ -109,3 +109,26 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN 
 THE SOFTWARE.
+
+---------------------------------------------------------------------
+
+Some of the Code uses https://github.com/olifolkerd/tabulator
+which is licensed under the MIT License.
+
+Some of the Code uses https://github.com/impress/impress.js
+which is licensed under the MIT License.
+
+Some of the Code uses https://github.com/plotly/plotly.js
+which is licensed under the MIT License.
+
+Some of the Code uses https://github.com/mathjax
+which is licensed under the Apache2.0 License.
+
+Some of the Code uses https://github.com/josdejong/mathjs
+which is licensed under the Apache2.0 License.
+
+Some of the Code uses https://github.com/drag-drop-touch-js/dragdroptouch
+which is licensed under the MIT License.
+
+Some of the Code uses https://github.com/together-science/nerdamer-prime
+which is licensed under the MIT License.
