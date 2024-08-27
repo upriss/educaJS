@@ -44,7 +44,8 @@ body { font-family: 'Open Sans', Arial, sans-serif;
     position: fixed; left: 1px; top: 20px; opacity: 0.6;
     z-index: 10; }      /* make sure it is on top so that buttons work */
 
-.impress-progress { position: fixed; left: 1px; top: 45px; opacity: 0.6; }
+.impress-progress { display:none
+/* position: fixed; left: 1px; top: 45px; opacity: 0.6; */ }
 
 .impress-autoplay { display:none }
 

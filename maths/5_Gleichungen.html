@@ -34,13 +34,13 @@ und y = 2x zu y - 2x = 0. Dann kann die Gleichung mit dem "solve"-Befehl
 nach X aufgelöst werden (verwenden Sie dabei als 
 Variablen in diesem Kurs nur die Großbuchstaben X, Y oder Z):</p>
 
-<p><form onreset="document.getElementById('outputArea1').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea1').innerHTML='';">
 <input type='text' class='setInput' id='inputArea1' value='solve(X**2 - 100)'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea1' class='answer'></span>
 </form></p>
-<p><form onreset="document.getElementById('outputArea2').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea2').innerHTML='';">
 <input type='text' class='setInput' id='inputArea2' value='solve(Y - 2*X)'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
@@ -65,7 +65,7 @@ d.h. auf einer Seite muss 0 stehen. Zum Beispiel:</p>
 <p>15x<sup>2</sup> - 10 - 50 = 50 - 50 | auf beiden Seiten 50 abziehen</p>
 <p>15x<sup>2</sup> - 60 = 0</p>
 
-<p><form onreset="document.getElementById('outputArea3').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea3').innerHTML='';">
 <input type='text' class='setInput' id='inputArea3' value='solve(15 * X**2 - 60)'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
@@ -75,13 +75,13 @@ d.h. auf einer Seite muss 0 stehen. Zum Beispiel:</p>
 <p>Überprüfen Sie dann das Ergebnis, das Sie mit Python erhalten, indem Sie es in 
 die ursprüngliche Gleichung einsetzen:</p>
 
-<p><form onreset="document.getElementById('outputArea4').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea4').innerHTML='';">
 <input type='text' class='setInput' id='inputArea4' value='15 * (-2)**2 - 10 == 50'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea4' class='answer'></span>
 </form></p>
-<p><form onreset="document.getElementById('outputArea5').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea5').innerHTML='';">
 <input type='text' class='setInput' id='inputArea5' value='15 * 2**2 - 10 == 50'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea5','outputArea5');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
@@ -91,35 +91,35 @@ die ursprüngliche Gleichung einsetzen:</p>
 <p>Lösen Sie die folgenden Gleichungen auf die gleiche Art mit Python:</p>
     
 <p>X<sup>2</sup> - 5X = 7</p>
-<p><form onreset="document.getElementById('outputArea6').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea6').innerHTML='';">
 <input type='text' class='setInput' id='inputArea6' value='solve(...)'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea6','outputArea6');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea6' class='answer'></span>
 </form></p>
 <p>X + 3(X - 5) = X - 2(X + 5)</p>
-<p><form onreset="document.getElementById('outputArea7').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea7').innerHTML='';">
 <input type='text' class='setInput' id='inputArea7' value='solve(...)'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea7','outputArea7');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea7' class='answer'></span>
 </form></p>
 <p>X<sup>3</sup> + 2X = 3X<sup>2</sup></p>
-<p><form onreset="document.getElementById('outputArea8').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea8').innerHTML='';">
 <input type='text' class='setInput' id='inputArea8' value='solve(...)'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea8','outputArea8');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea8' class='answer'></span>
 </form></p>
 <p>2<sup>X</sup> = 64</p>
-<p><form onreset="document.getElementById('outputArea9').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea9').innerHTML='';">
 <input type='text' class='setInput' id='inputArea9' value='solve(...)'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea9','outputArea9');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea9' class='answer'></span>
 </form></p>
 <p>10<sup>(1-X)</sup> = <sup>1</sup>/<sub>100</sub></p>
-<p><form onreset="document.getElementById('outputArea10').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea10').innerHTML='';">
 <input type='text' class='setInput' id='inputArea10' value='solve(...)'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea10','outputArea10');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
@@ -369,25 +369,25 @@ Finden Sie jeweils den Fehler:</p>
 richtigen Umformungen das Ergebnis nicht ändern darf:
 </p>
 
-<p><form onreset="document.getElementById('outputArea32').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea32').innerHTML='';">
 <input type='text' class='setInput' id='inputArea32' value='solve(10*X +11 - 16)'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea32','outputArea32');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea32' class='answer'></span>
 </form></p>
-<p><form onreset="document.getElementById('outputArea33').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea33').innerHTML='';">
 <input type='text' class='setInput' id='inputArea33' value='solve(4*X + 5 - 10)'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea33','outputArea33');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea33' class='answer'></span>
 </form></p>
-<p><form onreset="document.getElementById('outputArea34').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea34').innerHTML='';">
 <input type='text' class='setInput' id='inputArea34' value='solve(4*X +1 -2)'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea34','outputArea34');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea34' class='answer'></span>
 </form></p>
-<p><form onreset="document.getElementById('outputArea35').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea35').innerHTML='';">
 <input type='text' class='setInput' id='inputArea35' value='solve(4*X - 3)'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea35','outputArea35');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>

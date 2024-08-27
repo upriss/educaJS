@@ -108,7 +108,7 @@ Eingabefeldern können Sie editieren. Klicken Sie auf das Fragezeichen, um die R
 auszuführen. Das Ergebnis steht dann rechts. Der Knopf mit dem runden Pfeil setzt 
 das Eingabefeld auf den ursprünglichen Wert zurück. Probieren Sie es aus:</p>
 
-<p><form onreset="document.getElementById('outputArea1').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea1').innerHTML='';">
 <input type='text' class='setInput' id='inputArea1' value='3 + 2'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
@@ -117,14 +117,14 @@ das Eingabefeld auf den ursprünglichen Wert zurück. Probieren Sie es aus:</p>
 
 Im CAS wird für die Division / geschrieben anstatt ":".
 
-<p><form onreset="document.getElementById('outputArea2').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea2').innerHTML='';">
 <input type='text' class='setInput' id='inputArea2' value='3 / 2'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
 &nbsp;<span id='outputArea2' class='answer'></span>
 </form></p>
 
-<p><form onreset="document.getElementById('outputArea3').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea3').innerHTML='';">
 <input type='text' class='setInput' id='inputArea3' value='3 * 2'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
@@ -151,7 +151,7 @@ Im CAS wird für die Division / geschrieben anstatt ":".
 Sie jeweils Zahlen einsetzen). Sie brauchen im Moment noch nicht zu wissen, was alle 
 diese Funktionen bedeuten.</p>
 
-<p><form onreset="document.getElementById('outputArea4').innerHTML='>';">
+<p><form onreset="document.getElementById('outputArea4').innerHTML='';">
 <input type='text' class='setInput' id='inputArea4' value='3 ** 2'>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
 <input type='reset' class='medBut' value='&circlearrowleft;'>
