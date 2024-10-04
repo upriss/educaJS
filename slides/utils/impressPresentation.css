@@ -99,6 +99,8 @@ span.answerDrag { color: green; padding: 30px; font-size: 1em;}
 .plotArea { width:300; max-width:300;float: right; }
 .modebar-container { display:none }
 
+.centerTable { margin-left: auto; margin-right: auto; }
+
 /**************************** dark scheme overrides ***********************/
 
 @media (prefers-color-scheme: dark) { 
