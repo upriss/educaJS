@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
+  <title>MatheFitness</title>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/jsCAS.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathjs12.4.2_math.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/jsSET.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/load-mathjax.js' async></script>
+  <link rel='stylesheet' type='text/css' href='jsCAS.css'>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/drag-drop-touch.esm.min.js?autoload' type='module'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/drag.js'></script>
+<link href='utils/impressPresentation.css' rel='stylesheet' />
+</head><body class='impress-not-supported' onload='addEventLstners()'><div class='fallback-message'>
+<p>Your browser <b>doesn't support the features required</b> by impress.js, so you are 
+presented with a simplified version of this presentation.</p>
+<p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or 
+<b>Firefox</b> browser with Javascript turned on.</p></div>
+<div id='impress' data-transition-duration='500'>
+<div title='Es geht los' id='slide0' class='step' data-x='3200' data-y='3000'
+data-goto-next="slide1" data-goto-prev="slide0">
+
+<h1>4. Runde des Mathe-Fitness-Training</h1>
+
+<svg height='100%' width='100%' xmlns='http://www.w3.org/2000/svg'>
+  <circle r='15%' cx='20%' cy='25%' fill='lightblue' />
+  <circle r='15%' cx='20%' cy='75%' fill='lightblue' />
+  <circle r='15%' cx='80%' cy='25%' fill='lightblue' />
+  <circle r='15%' cx='80%' cy='75%' fill='lightblue' /></svg> <p>
+<p>Schön, dass Sie weiter trainieren! </p>
+
+<p>Fun Fact: kleinere Potenzen von Zahlen, die nur Einsen enthalten, sind oft
+<i>Palindrome</i>, d.h. Zahlen, die vorwärts und rückwärts gelesen den gleichen
+Wert haben.</p>
+
+<p><form onreset="document.getElementById('outputArea1').innerHTML='';">
+<input type='text' class='setInput' id='inputArea1' value='11**3'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea1' class='answer'></span>
+</form></p>
+
+<p><form onreset="document.getElementById('outputArea2').innerHTML='';">
+<input type='text' class='setInput' id='inputArea2' value='11**4'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea2' class='answer'></span>
+</form></p>
+
+<p><form onreset="document.getElementById('outputArea3').innerHTML='';">
+<input type='text' class='setInput' id='inputArea3' value='11111111**2'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea3' class='answer'></span>
+</form></p>
+
+<p><form onreset="document.getElementById('outputArea4').innerHTML='';">
+<input type='text' class='setInput' id='inputArea4' value='1001**4'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea4' class='answer'></span>
+</form></p>
+
+<p>Verwenden Sie das Menü oben links zur Navigation. Klicken Sie jetzt auf
+[>] oder die rechte Pfeiltaste Ihrer Tastatur, um zur nächsten Station zu gelangen.</p>
+
+</div>
+
+<div title='Rechnen' id='slide1' class='step' data-x='2000' data-y='2100'
+data-goto-next="slide2" data-goto-prev="slide0">
+
+<img class='taskicon' src='../images/imgCompute.png'>
+<h1>Rechnen</h1>
+
+<p>Rechnen Sie erst auf einem Blatt Papier und tragen Sie dann Ihr Ergebnis ein
+um es zu prüfen.</p>
+
+Hier sind Tipps: </p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea5').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea5' value='prOnly(a% = a/100. log<sub>a</sub>(b) ist die Zahl x, für die a<sup>x</sup> = b gilt.)'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea5','outputArea5');">
+&nbsp;<span id='outputArea5' class='answer'></span>
+</form></p>
+
+<p>$15\% * 14 + 14\% * 15$</p>  
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea6').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea6' value='2*15*14/100'>
+<input type='text' class='setInput' id='inputHArea6' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea6','outputArea6','#inputHArea6');">
+&nbsp;<span id='outputArea6' class='answer'></span>
+</form></p>
+
+<p>log<sub>2</sub>(32) * log<sub>3</sub>(81)</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea7').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea7' value='5*4'>
+<input type='text' class='setInput' id='inputHArea7' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea7','outputArea7','#inputHArea7');">
+&nbsp;<span id='outputArea7' class='answer'></span>
+</form></p>
+
+</div>
+
+<div title='Umformen' id='slide2' class='step' data-x='3200' data-y='2100'
+data-goto-next="slide3" data-goto-prev="slide1">
+
+<img class='taskicon' src='../images/imgRearrange.png'>
+<h1>Umformen</h1>
+
+<p>Verschieben Sie die Kästchen so, dass sich Rechenregeln für Potenzen ergeben.</p>
+
+<p><form id='shuffle8'>
+<span class='piece' draggable='true'> <button class='p1'>(</button></span>
+<span class='piece' draggable='true'> <button class='p0'>a<sup>n</sup>/b<sup>n</sup> =</button></span>
+<span class='piece' draggable='true'> <button class='p5'>)<sup>n</sup></button></span>
+<span class='piece' draggable='true'> <button class='p2'>a</button></span>
+<span class='piece' draggable='true'> <button class='p3'>/</button></span>
+<span class='piece' draggable='true'> <button class='p4'>b</button></span>
+</form></p>
+
+
+<p><form id='shuffle9'>
+<span class='piece' draggable='true'> <button class='p3'>b)</button></span>
+<span class='piece' draggable='true'> <button class='p1'>(</button></span>
+<span class='piece' draggable='true'> <button class='p4'><sup>n</sup></button></span>
+<span class='piece' draggable='true'> <button class='p2'>a</button></span>
+<span class='piece' draggable='true'> <button class='p0'>a<sup>n</sup>*b<sup>n</sup> =</button></span>
+</form></p>
+
+
+<p><form id='shuffle10'>
+<span class='piece' draggable='true'> <button class='p1'>a<sup>n</sup></button></span>
+<span class='piece' draggable='true'> <button class='p2'><sup>*</sup></button></span>
+<span class='piece' draggable='true'> <button class='p0'>(a<sup>n</sup>)<sup>m</sup> =</button></span>
+<span class='piece' draggable='true'> <button class='p3'><sup>m</sup></button></span>
+</form></p>
+
+
+</div>
+
+<div title='Entscheiden' id='slide3' class='step' data-x='4400' data-y='2100'
+data-goto-next="slide4" data-goto-prev="slide2">
+
+<img class='taskicon' src='../images/imgEvaluate.png'>
+<h1>Entscheiden</h1>
+
+<p>Eine Menge A heißt <em>Teilmenge</em> einer Menge B, wenn alle Elemente von
+  A auch in B sind (notiert als A &sube; B oder im Computer als A &lt;= B). Für
+ein Element a in einer Menge A schreibt man a &isin; A oder im Computer:
+a in A. Entscheiden Sie für die folgenden Aussagen erst, ob sie wahr oder falsch
+  sind, bevor Sie sie ausführen.</p>
+
+<p><form onreset="document.getElementById('outputArea11').innerHTML='';">
+<input type='text' class='setInput' id='inputArea11' value='1 in {1,2,3}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea11','outputArea11');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea11' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea12').innerHTML='';">
+<input type='text' class='setInput' id='inputArea12' value='4 in {1,2,3}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea12','outputArea12');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea12' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea13').innerHTML='';">
+<input type='text' class='setInput' id='inputArea13' value='{1} <= {1,2,3}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea13','outputArea13');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea13' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea14').innerHTML='';">
+<input type='text' class='setInput' id='inputArea14' value='{1,2} <= {1,2,3}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea14','outputArea14');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea14' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea15').innerHTML='';">
+<input type='text' class='setInput' id='inputArea15' value='{1,4} <= {1,2,3}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea15','outputArea15');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea15' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea16').innerHTML='';">
+<input type='text' class='setInput' id='inputArea16' value='{} in {1,2,3}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea16','outputArea16');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea16' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea17').innerHTML='';">
+<input type='text' class='setInput' id='inputArea17' value='{} <= {1,2,3}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea17','outputArea17');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea17' class='answer'></span>
+</form></p>
+
+</div>
+
+<div title='Einsetzen' id='slide4' class='step' data-x='4400' data-y='3000'
+data-goto-next="slide5" data-goto-prev="slide3">
+
+<img class='taskicon' src='../images/imgInsert.png'>
+<h1>Einsetzen</h1>
+
+<p>Einfache Gleichungen kann man manchmal auch durch Raten anstatt Umformen lösen.
+Ersetzen Sie die X durch natürliche Zahlen, so dass die Gleichungen alle wahr sind.
+</p>
+
+<p><form onreset="document.getElementById('outputArea18').innerHTML='';">
+<input type='text' class='setInput' id='inputArea18' value='3 * X + 5 == 20'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea18','outputArea18');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea18' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea19').innerHTML='';">
+<input type='text' class='setInput' id='inputArea19' value='3 * X == 4 * X'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea19','outputArea19');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea19' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea20').innerHTML='';">
+<input type='text' class='setInput' id='inputArea20' value='(5 * X)/2 == 10'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea20','outputArea20');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea20' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea21').innerHTML='';">
+<input type='text' class='setInput' id='inputArea21' value='X**2 == 9'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea21','outputArea21');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea21' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea22').innerHTML='';">
+<input type='text' class='setInput' id='inputArea22' value='X**2 - 4 * X - 5 == 0'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea22','outputArea22');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea22' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea23').innerHTML='';">
+<input type='text' class='setInput' id='inputArea23' value='16/X + 3 == 7'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea23','outputArea23');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea23' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea24').innerHTML='';">
+<input type='text' class='setInput' id='inputArea24' value='sin(X) == 0'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea24','outputArea24');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea24' class='answer'></span>
+</form></p>
+
+</div>
+
+<div title='&Uuml;bersetzen' id='slide5' class='step' data-x='4400' data-y='3900'
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="slide4 slide6 slide6 slide6">
+
+<img class='taskicon' src='../images/imgTranslate.png'>
+<h1>Übersetzen</h1>
+
+Ordnen Sie zu
+
+<p><form id='shuffle25'>
+&naturals; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p4'>Komplexe Zahlen</button></span>
+<br>
+&integers; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>Natürliche Zahlen</button></span>
+<br>
+&rationals; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'>Ganze Zahlen</button></span>
+<br>
+&reals; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p3'>Reelle Zahlen</button></span>
+<br>
+&complexes; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>Rationale Zahlen</button></span>
+<br>
+</form></p>
+
+
+<p>Merkhilfe: Q steht für Quotient.</p>
+
+<p><form id='shuffle26'>
+&radic; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>Wurzel</button></span>
+<br>
+&forall; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p3'>unendlich</button></span>
+<br>
+&exist; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'>All-Quantor</button></span>
+<br>
+&infin; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>Existenz-Quantor</button></span>
+<br>
+&sum; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p4'>Summe</button></span>
+<br>
+</form></p>
+
+
+</div>
+
+<div title='Sehen' id='slide6' class='step' data-x='3200' data-y='3900'
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="slide5 slide7 slide7 slide7">
+
+<img class='taskicon' src='../images/imgVisualise.png'>
+<h1>Sehen</h1>
+
+<p>Bestimmen Sie, ob sich in dieser Tabelle eine Symmetrieachse befindet. 
+
+<table class='centerTable'>
+  <tr><td>a</td><td>b</td><td>c</td> <td>d</td><td>e</td><td>g</td></tr>
+  <tr><td>b</td><td>c</td><td>d</td> <td>e</td><td>g</td><td>a</td></tr>
+  <tr><td>c</td><td>d</td><td>e</td> <td>g</td><td>a</td><td>b</td></tr>
+  <tr><td>d</td><td>e</td><td>g</td> <td>a</td><td>b</td><td>c</td></tr>
+  <tr><td>e</td><td>g</td><td>a</td> <td>b</td><td>c</td><td>d</td></tr>
+  <tr><td>g</td><td>a</td><td>b</td> <td>c</td><td>d</td><td>e</td></tr>
+
+</table>
+
+<p>Hintergrund: solche Tabellen werden für mathematische Gruppen verwendet. Wenn
+die Diagonale von links oben nach rechts unten eine Symmetrieachse darstellt,
+ist die Gruppe kommutativ. Das Sehen visueller Muster ist manchmal gar nicht so
+leicht!</p>
+
+Antwort: 
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea27').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea27' value='prOnly(Ja, die Diagonale ist eine Symmetrieachse.)'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea27','outputArea27');">
+&nbsp;<span id='outputArea27' class='answer'></span>
+</form></p>
+
+</div>
+
+<div title='Verstehen' id='slide7' class='step' data-x='2000' data-y='3900'
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="slide8 slide8 slide6 slide8">
+
+<img class='taskicon' src='../images/imgUnderstand.png'>
+<h1>Verstehen</h1>
+
+<p><form onreset="document.getElementById('outputArea28').innerHTML='';">
+<input type='text' class='setInput' id='inputArea28' value='5*9 + 5 + 9'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea28','outputArea28');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea28' class='answer'></span>
+</form></p>
+
+<p>Behauptung: 59 ist die einzige Zahl, die als Summe Ihrer Ziffern plus dem
+Produkt ihrer Ziffern dargestellt werden kann.</p>
+
+<p>Beweis: <br>
+n*m + n + m = n*10 + m<br>
+n*m + n = n*10<br>
+  m + 1 = 10<br>
+  m = 9</p>
+
+<p>Ist diese Argumentation richtig oder falsch?</p>
+
+<p>Antwort:</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea29').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea29' value='prOnly(Falsch. m = 9 ist eindeutig. Aber für n kann jede Ziffer eingesetzt werden (probieren Sie es aus), da m nicht von n abhängt.)'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea29','outputArea29');">
+&nbsp;<span id='outputArea29' class='answer'></span>
+</form></p>
+
+</div>
+
+<div title='Modellieren' id='slide8' class='step' data-x='2000' data-y='3000'
+data-goto-next="overview" data-goto-prev="slide7">
+
+<img class='taskicon' src='../images/imgModel.png'>
+<h1>Modellieren</h1>
+
+<p>Man kann ein Blatt Papier normalerweise nur 6 oder 7 mal falten 
+  (probieren Sie es aus). Wie viele Lagen Papier ergeben sich bei 7 mal falten?</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea30').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea30' value='2**7'>
+<input type='text' class='setInput' id='inputHArea30' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea30','outputArea30','#inputHArea30');">
+&nbsp;<span id='outputArea30' class='answer'></span>
+</form></p>
+
+<p>Wenn Sie ein 0.01mm dickes Blatt 45 mal falten könnten, wie dick wäre es dann?
+  Schreiben Sie die Zeilennummer in das Feld. </p>
+<p>
+1 &nbsp; ca 400 000 km (d.h. wie die Entfernung der Erde zum Mond)<br>
+2 &nbsp; ca 40 000 km (d.h. wie der Erdumfang)<br>
+3 &nbsp; ca 400m (d.h. etwas höher als der Berliner Fernsehturm)<br>
+4 &nbsp; ca 40m (d.h. wie ein sehr großer Baum)
+</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea31').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea31' value='1'>
+<input type='text' class='setInput' id='inputHArea31' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea31','outputArea31','#inputHArea31');">
+&nbsp;<span id='outputArea31' class='answer'></span>
+</form></p>
+
+Tipp: die Formel, die man braucht, ist:
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea32').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea32' value='prOnly(2**n)'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea32','outputArea32');">
+&nbsp;<span id='outputArea32' class='answer'></span>
+</form></p>
+
+</div>
+
+<div title='Fertig' id='overview' class='step' data-x='4000' 
+     data-y='4000' data-scale='4' style='pointer-events: none;'>
+<span style='position: absolute; bottom: 0;font-size:100px'>Das war's!</span>
+</div>
+</div>  <!-- closes id='impress' -->
+<div id='impress-toolbar'></div>
+<div class='impress-progress'></div>
+<script type='text/javascript' src='utils/impress.js'></script>
+<script>impress().init();</script>
+</body>
+</html>
