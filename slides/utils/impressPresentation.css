@@ -84,6 +84,8 @@ img { width: 300px }
 
 img.taskicon { width: 90px; float: right; padding: 30px; } 
 
+img.large { width: 600px }
+
 div#slide0 svg { position: absolute; left: 0; top: 0; z-index: -1; } /* picture on slide0 */
 
 .setInput { font-size: xx-large; }               /* large input fields */
