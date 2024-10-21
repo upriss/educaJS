@@ -22,6 +22,7 @@ function simplify(n) { let temp = n.replaceAll("**","^");
 		       temp = String(temp).replaceAll("^","**");
 		       return temp; }
 function solve(n) { return nerdamer.solve(n,'X') }
+function mod(n,m) { return ((n % m) + m) % m; }
 
 let traces = [];
 let plotArea = "";
