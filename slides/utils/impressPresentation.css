@@ -84,7 +84,7 @@ img { width: 300px }
 
 img.taskicon { width: 90px; float: right; padding: 30px; } 
 
-img.large { width: 600px }
+img.large { width: 600px }    /** delete this (only No5) **/
 
 div#slide0 svg { position: absolute; left: 0; top: 0; z-index: -1; } /* picture on slide0 */
 
@@ -102,6 +102,7 @@ span.answerDrag { color: green; padding: 30px; font-size: 1em;}
 .modebar-container { display:none }
 
 .centerTable { margin-left: auto; margin-right: auto; }
+p.clear { clear: right; }
 
 /**************************** dark scheme overrides ***********************/
 
