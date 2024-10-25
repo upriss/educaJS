@@ -98,7 +98,8 @@ span.over button { font-size: xxx-large; }       /* larger when over */
 span.answerDrag { color: green; padding: 30px; font-size: 1em;}
 
 .inputhide { display: inline; } 
-.plotArea { width:300; max-width:300;float: right; }
+.plotArea { width:300; max-width:300; float: right; }
+.plotCentered { max-width: fit-content; margin-left: auto; margin-right: auto;}
 .modebar-container { display:none }
 
 .centerTable { margin-left: auto; margin-right: auto; }
