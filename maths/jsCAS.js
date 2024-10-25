@@ -78,7 +78,7 @@ function compute(inA,outA,inA2){
    document.getElementById(outA).innerHTML=result;
 }
 
-function plotThis(data,pl,lsize,dvals) {
+function plotThis(data,pl,config,lsize,dvals) {
     let xValues = [];
     let yValues = [];
     if (typeof(lsize)  == 'undefined') { lsize = [600,300]; }
@@ -90,5 +90,5 @@ function plotThis(data,pl,lsize,dvals) {
 	       margin: { l: 30, r: 30, b: 30, t: 30, pad: 4 },
 	       font: { size: 18 }     //, paper_bgcolor: '#7f7f7f', plot_bgcolor: '#c7c7c7'
 	     };
-    Plotly.newPlot(pl, traces, layout);
+    Plotly.newPlot(pl, traces, layout, config);
 }
