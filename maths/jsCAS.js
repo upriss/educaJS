@@ -86,13 +86,19 @@ function plotThis(data,pl,layoutNr,config) {
     let yValues = [];
     let layout = {};
     let traces = [];
-    data = data.replaceAll("pi","Math.PI");
-    if (layoutNr == 1) {
+    if (layoutNr == 1) {        // for evaluating a function
+	data = data.replaceAll("pi","Math.PI");
 	for (let x = 0; x <= 10; x += 0.1) {xValues.push(x); yValues.push(eval(data));}
 	traces.push({x:xValues, y:yValues, mode:"lines"});
 	layout = { autosize: false, width: 600, height: 300, xanchor: "center",
 	       margin: { l: 50, r: 50, b: 40, t: 40, pad: 4 },
 	       font: { size: 18 }     //, paper_bgcolor: '#7f7f7f', plot_bgcolor: '#c7c7c7'
+	       };
+    } else if (layoutNr == 2) {
+	traces = data;
+	layout = { autosize: false, width: 600, height: 300, xanchor: "center",
+	       margin: { l: 50, r: 50, b: 40, t: 40, pad: 4 },
+	       font: { size: 18 }
 	       };
     }
     if (typeof(config) == 'undefined') { config = {displayModeBar: false}; }
