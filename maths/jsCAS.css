@@ -15,7 +15,7 @@ tr:nth-child(even) { background-color: #EEEEEE; }
 .inputhide {display: inline;}
 
 .plotArea { width:300; max-width:300;float: right;}
-.modebar-container { display:none }
+/* .modebar-container { display:none } */
 
 @media (prefers-color-scheme: dark) { 
   body{color: white; background: #2F3F3F }

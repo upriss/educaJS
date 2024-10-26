@@ -26,7 +26,7 @@ function mod(n,m) { return ((n % m) + m) % m; }
 
 let traces = [];
 let plotArea = "";
-function zeichnen2(pl) { Plotly.newPlot(pl, traces);}
+function zeichnen2(pl) { Plotly.newPlot(pl, traces,{},{displayModeBar: false});}
 function zeichnen(n,pl) {
     let xValues = [];
     let yValues = [];
@@ -36,7 +36,10 @@ function zeichnen(n,pl) {
     zeichnen2(pl);
     return "" 
 }
-function zeichnenReset() { traces = []; Plotly.newPlot(plotArea, traces); }
+function zeichnenReset() { 
+    traces = []; 
+    Plotly.newPlot(plotArea, traces,{},{displayModeBar: false}); 
+}
 
 function compute(inA,outA,inA2){
    let result = "";
@@ -87,8 +90,9 @@ function plotThis(data,pl,config,lsize,dvals) {
     for (let x = 0; x <= dvals[0]; x += dvals[1]) {xValues.push(x); yValues.push(eval(data));}
     traces.push({x:xValues, y:yValues, mode:dvals[2]});
     layout = { autosize: false, width: lsize[0], height: lsize[1], xanchor: "center",
-	       margin: { l: 30, r: 30, b: 30, t: 30, pad: 4 },
+	       margin: { l: 50, r: 50, b: 40, t: 40, pad: 4 },
 	       font: { size: 18 }     //, paper_bgcolor: '#7f7f7f', plot_bgcolor: '#c7c7c7'
 	     };
+    if (typeof(config) == 'undefined') { config = {displayModeBar: false}; }
     Plotly.newPlot(pl, traces, layout, config);
 }
