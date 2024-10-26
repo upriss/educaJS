@@ -81,18 +81,20 @@ function compute(inA,outA,inA2){
    document.getElementById(outA).innerHTML=result;
 }
 
-function plotThis(data,pl,config,lsize,dvals) {
+function plotThis(data,pl,layoutNr,config) {
     let xValues = [];
     let yValues = [];
-    if (typeof(lsize)  == 'undefined') { lsize = [600,300]; }
-    if (typeof(dvals)  == 'undefined') { dvals = [10,0.1,"lines"]; }
+    let layout = {};
+    let traces = [];
     data = data.replaceAll("pi","Math.PI");
-    for (let x = 0; x <= dvals[0]; x += dvals[1]) {xValues.push(x); yValues.push(eval(data));}
-    traces.push({x:xValues, y:yValues, mode:dvals[2]});
-    layout = { autosize: false, width: lsize[0], height: lsize[1], xanchor: "center",
+    if (layoutNr == 1) {
+	for (let x = 0; x <= 10; x += 0.1) {xValues.push(x); yValues.push(eval(data));}
+	traces.push({x:xValues, y:yValues, mode:"lines"});
+	layout = { autosize: false, width: 600, height: 300, xanchor: "center",
 	       margin: { l: 50, r: 50, b: 40, t: 40, pad: 4 },
 	       font: { size: 18 }     //, paper_bgcolor: '#7f7f7f', plot_bgcolor: '#c7c7c7'
-	     };
+	       };
+    }
     if (typeof(config) == 'undefined') { config = {displayModeBar: false}; }
     Plotly.newPlot(pl, traces, layout, config);
 }
