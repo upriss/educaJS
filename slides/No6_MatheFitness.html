@@ -5,7 +5,6 @@
   <title>MatheFitness</title>
   <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/jsCAS.js'></script>
   <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathjs12.4.2_math.js'></script>
-  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/nerdamerPrime.min.js'></script>
   <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/plotly.min.js'></script>
   <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/jsSET.js'></script>
   <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/load-mathjax.js' async></script>
@@ -21,7 +20,6 @@ presented with a simplified version of this presentation.</p>
 <div id='impress' data-transition-duration='500'>
 <div title='Es geht los' id='slide0' class='step' data-x='3200' data-y='3000'
 data-goto-next="slide1" data-goto-prev="slide0">
-
 <h1>6. Runde des Mathe-Fitness-Training</h1>
 
 <svg height='100%' width='100%' xmlns='http://www.w3.org/2000/svg'>
@@ -130,12 +128,12 @@ x = log<sub>2</sub> 3
   in dem Beispiel angewendet werden.</p>
 
 <p><form id='shuffle8'>
-<span class='piece' draggable='true'> <button class='p3'>Wurzelziehen erfordert positive Zahl</button></span>
-<span class='piece' draggable='true'> <button class='p5'>logarithmieren</button></span>
-<span class='piece' draggable='true'> <button class='p0'>durch y ersetzen</button></span>
 <span class='piece' draggable='true'> <button class='p4'>x wieder einsetzen</button></span>
 <span class='piece' draggable='true'> <button class='p1'>faktorisieren</button></span>
+<span class='piece' draggable='true'> <button class='p3'>Wurzelziehen erfordert positive Zahl</button></span>
+<span class='piece' draggable='true'> <button class='p5'>logarithmieren</button></span>
 <span class='piece' draggable='true'> <button class='p2'>Lösungen als Nullteiler</button></span>
+<span class='piece' draggable='true'> <button class='p0'>durch y ersetzen</button></span>
 </form></p>
 
 
@@ -206,17 +204,17 @@ definiert durch g(x) = x<sup>2</sup>. Mit f(g(x)) wird das nacheinander Ausführ
 <p>Ordnen Sie zu:</p>
 
 <p><form id='shuffle15'>
-f(g(2))= &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p3'>36</button></span>
+f(g(2))= &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>12</button></span>
 <br>
-f(g(4))= &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p4'>81</button></span>
+f(g(4))= &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>27</button></span>
 <br>
-f(g(-3))= &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'>48</button></span>
+f(g(-3))= &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p5'>45</button></span>
 <br>
-g(f(2))= &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>12</button></span>
+g(f(2))= &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p4'>81</button></span>
 <br>
-g(f(-3))= &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>27</button></span>
+g(f(-3))= &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'>48</button></span>
 <br>
-f(f(5)) &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p5'>45</button></span>
+f(f(5)) &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p3'>36</button></span>
 <br>
 </form></p>
 
@@ -228,16 +226,16 @@ data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
 data-goto-next-list="slide4 slide6 slide6 slide6">
 
 <img class='taskicon' src='../images/imgTranslate.png'>
-<h1>Übersetzen</h1>
+<h1>&Uuml;bersetzen</h1>
 
 <p>Ordnen Sie zu:</p>
 
 <p><form id='shuffle16'>
-&naturals; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>Natürliche Zahlen</button></span>
+&naturals; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'>Ganze Zahlen</button></span>
 <br>
 &integers; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>Rationale Zahlen</button></span>
 <br>
-&rationals; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'>Ganze Zahlen</button></span>
+&rationals; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>Natürliche Zahlen</button></span>
 <br>
 </form></p>
 
@@ -247,15 +245,15 @@ data-goto-next-list="slide4 slide6 slide6 slide6">
   und Bedeutungen zu:</p>
 
 <p><form id='shuffle17'>
-{} &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p4'> Menge der natürlichen Zahlen</button></span>
+{} &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'> Menge rationaler Zahlen zwischen -1 und 1</button></span>
 <br>
-{x | x<0} &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'> Menge rationaler Zahlen zwischen -1 und 1</button></span>
+{x | x<0} &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>leere Menge</button></span>
 <br>
 {p/q | p/q &isin; &rationals; und p&lt;q} &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p3'> Menge der Quadratzahlen</button></span>
 <br>
-{x<sup>2</sup> | x &isin; &naturals;} &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'> Menge der negativen Zahlen</button></span>
+{x<sup>2</sup> | x &isin; &naturals;} &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p4'> Menge der natürlichen Zahlen</button></span>
 <br>
-{x | x &isin; &naturals;} &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>leere Menge</button></span>
+{x | x &isin; &naturals;} &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'> Menge der negativen Zahlen</button></span>
 <br>
 </form></p>
 
@@ -272,8 +270,8 @@ data-goto-next-list="slide5 slide7 slide7 slide7">
 <p>Welche Funktion wird in diesem Bild dargestellt?
 Tipp: setzen Sie Werte für x ein.</p>
 
-<p><div id="plot1" class="plotArea"></div>
-  <script>zeichnen("-10*x-5","plot1")</script></p>
+<p><div id="plot1" class = "plotCentered"></div>
+<script>plotThis("-10*x-5","plot1")</script>
 
 <p>
 1 &nbsp; x + 10 <br>
@@ -369,8 +367,9 @@ Generell, wie berechnet man 3 - n mod 12?
 &nbsp;<span id='outputArea23' class='answer'></span>
 </form></p>
 
-</div>
 
+
+</div>
 <div title='Fertig' id='overview' class='step' data-x='4000' 
      data-y='4000' data-scale='4' style='pointer-events: none;'>
 <span style='position: absolute; bottom: 0;font-size:100px'>Das war's!</span>

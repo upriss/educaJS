@@ -5,6 +5,7 @@
   <title>MatheFitness</title>
   <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/jsCAS.js'></script>
   <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathjs12.4.2_math.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/plotly.min.js'></script>
   <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/jsSET.js'></script>
   <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/load-mathjax.js' async></script>
   <link rel='stylesheet' type='text/css' href='jsCAS.css'>
@@ -19,7 +20,6 @@ presented with a simplified version of this presentation.</p>
 <div id='impress' data-transition-duration='500'>
 <div title='Es geht los' id='slide0' class='step' data-x='3200' data-y='3000'
 data-goto-next="slide1" data-goto-prev="slide0">
-
 <h1>5. Runde des Mathe-Fitness-Training</h1>
 
 <svg height='100%' width='100%' xmlns='http://www.w3.org/2000/svg'>
@@ -117,8 +117,8 @@ data-goto-next="slide3" data-goto-prev="slide1">
 
 <p><form id='shuffle7'>
 <span class='piece' draggable='true'> <button class='p2'>Distributivgesetz</button></span>
-<span class='piece' draggable='true'> <button class='p3'>Addieren</button></span>
 <span class='piece' draggable='true'> <button class='p0'>Assoziativgesetz</button></span>
+<span class='piece' draggable='true'> <button class='p3'>Addieren</button></span>
 <span class='piece' draggable='true'> <button class='p1'>Kommutativgesetz</button></span>
 </form></p>
 
@@ -247,18 +247,18 @@ data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
 data-goto-next-list="slide4 slide6 slide6 slide6">
 
 <img class='taskicon' src='../images/imgTranslate.png'>
-<h1>Übersetzen</h1>
+<h1>&Uuml;bersetzen</h1>
 
 <p>Ordnen Sie zu:</p>
 
 <p><form id='shuffle22'>
 &exist;x&forall;y &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p4'>Für alle x gibt es ein y</button></span>
 <br>
-&forall;y&forall;x &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p3'>Für alle y gibt es ein x</button></span>
+&forall;y&forall;x &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>Es gibt ein y und ein x</button></span>
 <br>
-&exist;x&exist;y &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'>Für alle x und y</button></span>
+&exist;x&exist;y &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p3'>Für alle y gibt es ein x</button></span>
 <br>
-&forall;y&exist;x &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>Es gibt ein y und ein x</button></span>
+&forall;y&exist;x &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'>Für alle x und y</button></span>
 <br>
 &forall;x&exist;y &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>Es gibt ein x für alle y</button></span>
 <br>
@@ -274,13 +274,13 @@ Hinweis:
 </form></p>
 
 <p><form id='shuffle24'>
-&and; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p3'>vereinigt</button></span>
+&and; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>geschnitten</button></span>
 <br>
 &or; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'>logisches Oder</button></span>
 <br>
-&cap; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>logisches Und</button></span>
+&cap; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p3'>vereinigt</button></span>
 <br>
-&cup; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>geschnitten</button></span>
+&cup; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>logisches Und</button></span>
 <br>
 &isin; &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p4'>ist Element von</button></span>
 <br>
@@ -297,10 +297,10 @@ data-goto-next-list="slide5 slide7 slide7 slide7">
 <h1>Sehen</h1>
 
 <p>Welche Funktion wird in diesem Bild dargestellt?
-Schreiben Sie die Zeilennummer in das Feld. 
-Tipp: setzen Sie Werte für x ein, falls Sie es nicht auf Anhieb sehen.</p>
+Tipp: setzen Sie Werte für x ein.</p>
 
-<img class='large' src='../images/funct_sqrtx.jpg'>
+<p><div id="plot1" class = "plotCentered"></div>
+<script>plotThis("sqrt(x)","plot1")</script>
 
 <p>
 1 &nbsp; 1/x<sup>2</sup> <br>
@@ -310,14 +310,14 @@ Tipp: setzen Sie Werte für x ein, falls Sie es nicht auf Anhieb sehen.</p>
 5 &nbsp; &radic; x <br>
 </p>
 
+<p class='clear'>Schreiben Sie die Zeilennummer in das Feld. </p>
+
 <p><form class="inputhide" onreset="document.getElementById('outputArea25').innerHTML='';">
 <input type='hidden' class='setInput' id='inputArea25' value='5'>
 <input type='text' class='setInput' id='inputHArea25' value=''>
 <input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea25','outputArea25','#inputHArea25');">
 &nbsp;<span id='outputArea25' class='answer'></span>
 </form></p>
-
-
 
 </div>
 
@@ -401,8 +401,9 @@ Tipp:
 &nbsp;<span id='outputArea30' class='answer'></span>
 </form></p> 
 
-</div>
 
+
+</div>
 <div title='Fertig' id='overview' class='step' data-x='4000' 
      data-y='4000' data-scale='4' style='pointer-events: none;'>
 <span style='position: absolute; bottom: 0;font-size:100px'>Das war's!</span>
