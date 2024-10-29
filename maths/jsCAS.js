@@ -100,7 +100,12 @@ function plotThis(data,pl,layoutNr,config) {
 	       margin: { l: 50, r: 50, b: 40, t: 40, pad: 4 },
 	       font: { size: 18 }
 	       };
+    } else {
+	traces = data;
+	layout = layoutNr;
     }
+
+
     if (typeof(config) == 'undefined') { config = {displayModeBar: false}; }
     Plotly.newPlot(pl, traces, layout, config);
 }
