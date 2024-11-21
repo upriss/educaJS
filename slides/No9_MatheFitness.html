@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
+  <title>MatheFitness</title>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/jsCAS.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathjs12.4.2_math.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/plotly.min.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/jsSET.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/load-mathjax.js' async></script>
+  <link rel='stylesheet' type='text/css' href='jsCAS.css'>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/drag-drop-touch.esm.min.js?autoload' type='module'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/drag.js'></script>
+<link href='utils/impressPresentation.css' rel='stylesheet' />
+</head><body class='impress-not-supported' onload='addEventLstners()'><div class='fallback-message'>
+<p>Your browser <b>doesn't support the features required</b> by impress.js, so you are 
+presented with a simplified version of this presentation.</p>
+<p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or 
+<b>Firefox</b> browser with Javascript turned on.</p></div>
+<div id='impress' data-transition-duration='500'>
+<div title='Es geht los' id='slide0' class='step' data-x='3200' data-y='3000'
+data-goto-next="slide1" data-goto-prev="slide0">
+<h1>9. Runde des Mathe-Fitness-Training</h1>
+
+<svg height='100%' width='100%' xmlns='http://www.w3.org/2000/svg'>
+  <circle r='10%' cx='20%' cy='20%' fill='lightblue' />
+  <circle r='10%' cx='20%' cy='50%' fill='lightblue' />
+  <circle r='10%' cx='20%' cy='80%' fill='lightblue' />
+  <circle r='10%' cx='80%' cy='20%' fill='lightblue' />
+  <circle r='10%' cx='80%' cy='50%' fill='lightblue' />
+  <circle r='10%' cx='80%' cy='80%' fill='lightblue' />
+  <circle r='10%' cx='50%' cy='20%' fill='lightblue' />
+  <circle r='10%' cx='50%' cy='50%' fill='lightblue' />
+  <circle r='10%' cx='50%' cy='80%' fill='lightblue' /></svg> <p>
+<p>Thema heute: Mengen und Funktionen</p>
+
+<p>Für Mengenlehre verwenden Sie | für die Vereinigung, & für den
+Durchschnitt, 'in' für die Element-Beziehung und <= für Teilmenge. (Das
+ist die in Python übliche Notation.)
+
+<p><form onreset="document.getElementById('outputArea1').innerHTML='';">
+<input type='text' class='setInput' id='inputArea1' value='{1,2,3} == {3,1,2}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea1' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea2').innerHTML='';">
+<input type='text' class='setInput' id='inputArea2' value='1 in {3,1,2}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea2','outputArea2');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea2' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea3').innerHTML='';">
+<input type='text' class='setInput' id='inputArea3' value='{1,2,3} | {3,4,5}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea3','outputArea3');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea3' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea4').innerHTML='';">
+<input type='text' class='setInput' id='inputArea4' value='{1,2,3} & {3,4,5}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea4','outputArea4');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea4' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea5').innerHTML='';">
+<input type='text' class='setInput' id='inputArea5' value='{1,2,3} <= {2,3,5}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea5','outputArea5');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea5' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea6').innerHTML='';">
+<input type='text' class='setInput' id='inputArea6' value='{2,3} <= {2,3,5}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea6','outputArea6');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea6' class='answer'></span>
+</form></p>
+
+<p>Verwenden Sie das Menü oben links zur Navigation. Klicken Sie jetzt auf
+[>] oder die rechte Pfeiltaste Ihrer Tastatur, um zur nächsten Station zu gelangen.</p>
+
+</div>
+
+<div title='Rechnen' id='slide1' class='step' data-x='2000' data-y='2100'
+data-goto-next="slide2" data-goto-prev="slide0">
+
+<img class='taskicon' src='../images/imgCompute.png'>
+<h1>Rechnen</h1>
+
+<p>Rechnen Sie erst auf Papier und überprüfen Sie dann Ihr Ergebnis.
+In der Statistik und Kombinatorik braucht man die Fakultät
+n! = 1 * 2 * 3 * ... * n</p>
+
+<p>5! =</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea7').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea7' value='factorial(5)'>
+<input type='text' class='setInput' id='inputHArea7' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea7','outputArea7','#inputHArea7');">
+&nbsp;<span id='outputArea7' class='answer'></span>
+</form></p>
+
+<p>5!/5 =</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea8').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea8' value='factorial(4)'>
+<input type='text' class='setInput' id='inputHArea8' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea8','outputArea8','#inputHArea8');">
+&nbsp;<span id='outputArea8' class='answer'></span>
+</form></p>
+
+<p>5!/4! =</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea9').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea9' value='5'>
+<input type='text' class='setInput' id='inputHArea9' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea9','outputArea9','#inputHArea9');">
+&nbsp;<span id='outputArea9' class='answer'></span>
+</form></p>
+
+<p>100!/99! =</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea10').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea10' value='100'>
+<input type='text' class='setInput' id='inputHArea10' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea10','outputArea10','#inputHArea10');">
+&nbsp;<span id='outputArea10' class='answer'></span>
+</form></p>
+
+</div>
+
+<div title='Umformen' id='slide2' class='step' data-x='3200' data-y='2100'
+data-goto-next="slide3" data-goto-prev="slide1">
+
+<img class='taskicon' src='../images/imgRearrange.png'>
+<h1>Umformen</h1>
+
+<p>In der folgenden Rechnung werden verschiedene Rechenregeln nacheinander
+  angewendet.</p>
+
+<center>
+(((A &cap; B) &cup; A) &cup; {}) &cap; (B &cup; (A &cap; B))<br>
+((A &cap; B) &cup; A &cup; {}) &cap; (B &cup; (A &cap; B))<br>
+((A &cap; B) &cup; A) &cap; (B &cup; (A &cap; B))<br>
+((A &cap; B) &cup; A) &cap; ((A &cap; B) &cup; B))<br>
+(A &cap; B) &cup; (A &cap; B)<br>
+A &cap; B
+</center>
+
+<p>Bringen Sie die Namen der Regeln in die gleiche Reihenfolge, in der sie
+  in dem Beispiel angewendet werden.</p>
+
+<p><form id='shuffle11'>
+<span class='piece' draggable='true'> <button class='p1'>neutrales Element</button></span>
+<span class='piece' draggable='true'> <button class='p2'>Kommutativgesetz</button></span>
+<span class='piece' draggable='true'> <button class='p4'>Idempotenzgesetz</button></span>
+<span class='piece' draggable='true'> <button class='p3'>Distributivgesetz</button></span>
+<span class='piece' draggable='true'> <button class='p0'>Assoziativgesetz</button></span>
+</form></p>
+
+
+</div>
+
+<div title='Entscheiden' id='slide3' class='step' data-x='4400' data-y='2100'
+data-goto-next="slide4" data-goto-prev="slide2">
+
+<img class='taskicon' src='../images/imgEvaluate.png'>
+<h1>Entscheiden</h1>
+
+<p>Überlegen Sie erst, was diese Mengenoperationen ergeben,
+bevor Sie sie ausführen.</p>
+
+<p><form onreset="document.getElementById('outputArea12').innerHTML='';">
+<input type='text' class='setInput' id='inputArea12' value='{} | {1,2,3}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea12','outputArea12');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea12' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea13').innerHTML='';">
+<input type='text' class='setInput' id='inputArea13' value='{} & {1,2,3}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea13','outputArea13');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea13' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea14').innerHTML='';">
+<input type='text' class='setInput' id='inputArea14' value='{1,2,3} & {1,2,3}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea14','outputArea14');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea14' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea15').innerHTML='';">
+<input type='text' class='setInput' id='inputArea15' value='{1,2,3,4,5} == {1,1,4,3,2,5}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea15','outputArea15');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea15' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea16').innerHTML='';">
+<input type='text' class='setInput' id='inputArea16' value='{} <= {1,2,3}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea16','outputArea16');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea16' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea17').innerHTML='';">
+<input type='text' class='setInput' id='inputArea17' value='{} in {1,2,3}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea17','outputArea17');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea17' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea18').innerHTML='';">
+<input type='text' class='setInput' id='inputArea18' value='{1,2,3} <= {}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea18','outputArea18');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea18' class='answer'></span>
+</form></p>
+
+</div>
+
+<div title='Einsetzen' id='slide4' class='step' data-x='4400' data-y='3000'
+data-goto-next="slide5" data-goto-prev="slide3">
+
+<img class='taskicon' src='../images/imgInsert.png'>
+<h1>Einsetzen</h1>
+
+<p>Für die Funktion $f(x) = \frac{2^x+1}{|x|-1}$ bestimmen Sie, welche
+Funktionswerte zu welchen Eingabewerten gehören:
+</p>
+
+<p><form id='shuffle19'>
+f(-2) &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>-2</button></span>
+<br>
+f(-1) &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>1.25</button></span>
+<br>
+f(0) &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p3'>5</button></span>
+<br>
+f(2) &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p4'>9/2</button></span>
+<br>
+f(3) &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'>geht nicht</button></span>
+<br>
+</form></p>
+
+
+<p>Gibt es noch andere Werte, für die f nicht definiert ist?</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea20').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea20' value='prOnly(Auch nicht definiert für 1, da der Nenner dann 0 ist.)'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea20','outputArea20');">
+&nbsp;<span id='outputArea20' class='answer'></span>
+</form></p>
+
+</div>
+
+<div title='&Uuml;bersetzen' id='slide5' class='step' data-x='4400' data-y='3900'
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="slide4 slide6 slide6 slide6">
+
+<img class='taskicon' src='../images/imgTranslate.png'>
+<h1>&Uuml;bersetzen</h1>
+
+<p>Mengen-Konstruktoren der Form {x | ...} liest man als
+"Menge der x, für die ... gilt". Ordnen Sie die folgenden Mengen-Konstruktoren
+  und Bedeutungen zu. Dabei ist N = {1,2...,20}.</p>
+
+<p><form id='shuffle21'>
+{x | x &isin; N und x > 5} &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>Zahlen von 6 bis 20</button></span>
+<br>
+{x | x &isin; N und x mod 2 = 0} &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p4'>N\{6}</button></span>
+<br>
+{x | x &isin; N und x > 5 und x < 7} &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>{6}</button></span>
+<br>
+{x | x &isin; N und x > 7 und x < 5} &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'>gerade Zahlen zwischen 1 und 20</button></span>
+<br>
+{x | x &isin; N und x &ge; 7 oder x &le; 5} &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p3'>{}</button></span>
+<br>
+</form></p>
+
+
+</div>
+
+<div title='Sehen' id='slide6' class='step' data-x='3200' data-y='3900'
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="slide5 slide7 slide7 slide7">
+
+<img class='taskicon' src='../images/imgVisualise.png'>
+<h1>Sehen</h1>
+
+<p>Welche Aussage über die Mengen in dem folgenden Mengen-Diagramm
+stimmt nicht?</p>
+
+<img src='../images/sets1.png'>
+
+<p>
+1 &nbsp; A &sube; B<br>
+2 &nbsp; C &cap; D = &empty;<br>
+3 &nbsp; A &cup; C = C<br>
+4 &nbsp; A &cap; B = C<br>
+5 &nbsp; B &cap; D &sub; B
+</p>
+
+<p>Schreiben Sie die Zeilennummer in das Feld. </p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea22').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea22' value='4'>
+<input type='text' class='setInput' id='inputHArea22' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea22','outputArea22','#inputHArea22');">
+&nbsp;<span id='outputArea22' class='answer'></span>
+</form></p>
+
+</div>
+
+<div title='Verstehen' id='slide7' class='step' data-x='2000' data-y='3900'
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="slide8 slide8 slide6 slide8">
+
+<img class='taskicon' src='../images/imgUnderstand.png'>
+<h1>Verstehen</h1>
+
+<p>Aussage: Die leere Menge ist Teilmenge jeder Menge, aber sie ist nicht Element 
+jeder Menge.</p>
+
+<p>Die Aussage folgt aus der Definition: eine Menge A 
+ist Teilmenge einer Menge B, wenn für alle Elemente gilt: <b>wenn</b> x &isin; A <b>dann</b> 
+x &isin; B. Die
+leere Menge enthält keine Elemente. Daher ist bei der wenn-dann Aussage die
+Bedingung x &isin; {} immer falsch.
+Wenn-dann-Aussagen, bei denen die Bedingung immer falsch ist, sind als Ganzes
+immer wahr. Oder anders ausgedrückt: die Bedingung gilt für <i>alle</i> Elemente
+der leeren Menge, da es keine Elemente gibt und somit auch keine, die dem widersprechen.<p>
+
+<p>Die leere Menge ist nicht Element jeder Menge, da z.B. {} &notin; &naturals;
+</p>
+<p>Ist diese Argumentation richtig oder falsch?
+  Geben Sie t für richtig (true) oder f für falsch ein.</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea23').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea23' value='strT'>
+<input type='text' class='setInput' id='inputHArea23' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea23','outputArea23','#inputHArea23');">
+&nbsp;<span id='outputArea23' class='answer'></span>
+</form></p>
+
+</div>
+
+<div title='Modellieren' id='slide8' class='step' data-x='2000' data-y='3000'
+data-goto-next="overview" data-goto-prev="slide7">
+
+<img class='taskicon' src='../images/imgModel.png'>
+<h1>Modellieren</h1>
+
+<p>Wie viele Möglichkeiten gibt es einen Raum mit 4 Wänden so zu streichen, dass jede 
+Wand eine andere Farbe hat, wenn Sie genau 
+4 verschiedene Farben haben?</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea24').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea24' value='4*3*2'>
+<input type='text' class='setInput' id='inputHArea24' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea24','outputArea24','#inputHArea24');">
+&nbsp;<span id='outputArea24' class='answer'></span>
+</form></p>
+
+<p>Wie viele verschiedene Möglichkeiten gibt es den Raum zu streichen, wenn Sie
+6 Farben haben?</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea25').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea25' value='6*5*4*3'>
+<input type='text' class='setInput' id='inputHArea25' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea25','outputArea25','#inputHArea25');">
+&nbsp;<span id='outputArea25' class='answer'></span>
+</form></p>
+
+<p>Wie viele verschiedene Möglichkeiten gibt es, wenn Sie 6 Farben haben und 
+die jeweils gegenüber liegenden Wände in der gleichen Farbe gestrichen werden sollen?
+</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea26').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea26' value='6*5'>
+<input type='text' class='setInput' id='inputHArea26' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea26','outputArea26','#inputHArea26');">
+&nbsp;<span id='outputArea26' class='answer'></span>
+</form></p>
+
+Tipp:
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea27').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea27' value='prOnly(Für die erste Wand haben sie alle Möglichkeiten, für die nächste dann eine weniger usw. Die Anzahlen müssen Sie dann multiplizieren.)'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea27','outputArea27');">
+&nbsp;<span id='outputArea27' class='answer'></span>
+</form></p> 
+
+
+
+</div>
+<div title='Fertig' id='overview' class='step' data-x='4000' 
+     data-y='4000' data-scale='4' style='pointer-events: none;'>
+<span style='position: absolute; bottom: 0;font-size:100px'>Das war's!</span>
+</div>
+</div>  <!-- closes id='impress' -->
+<div id='impress-toolbar'></div>
+<div class='impress-progress'></div>
+<script type='text/javascript' src='utils/impress.js'></script>
+<script>impress().init();</script>
+</body>
+</html>
