@@ -82,6 +82,8 @@ sup { line-height: 0; }
 
 img { width: 300px }
 
+img.largeImg { width: 700px }
+
 img.taskicon { width: 90px; float: right; padding: 30px; } 
 
 div#slide0 svg { position: absolute; left: 0; top: 0; z-index: -1; } /* picture on slide0 */
@@ -102,6 +104,8 @@ span.answerDrag { color: green; padding: 30px; font-size: 1em;}
 
 .centerTable { margin-left: auto; margin-right: auto; }
 p.clear { clear: right; }
+
+.trthtble,.trthtble th,.trthtble td { border: 1px solid; padding: 5px;text-align: center;}
 
 /**************************** dark scheme overrides ***********************/
 
