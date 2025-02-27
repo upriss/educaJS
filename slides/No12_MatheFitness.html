@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
+  <title>MatheFitness</title>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/jsCAS.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/mathjs12.4.2_math.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/plotly.min.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/jsSET.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/load-mathjax.js' async></script>
+  <link rel='stylesheet' type='text/css' href='jsCAS.css'>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/utils/drag-drop-touch.esm.min.js?autoload' type='module'></script>
+  <script src='https://cdn.jsdelivr.net/gh/upriss/educaJS/maths/drag.js'></script>
+<link href='utils/impressPresentation.css' rel='stylesheet' />
+</head><body class='impress-not-supported' onload='addEventLstners()'><div class='fallback-message'>
+<p>Your browser <b>doesn't support the features required</b> by impress.js, so you are 
+presented with a simplified version of this presentation.</p>
+<p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or 
+<b>Firefox</b> browser with Javascript turned on.</p></div>
+<div id='impress' data-transition-duration='500'>
+<div title='Es geht los' id='slide0' class='step' data-x='3200' data-y='3000'
+data-goto-next="slide1" data-goto-prev="slide0">
+<h1>12. Runde des Mathe-Fitness-Training</h1>
+<svg height='100%' width='100%' xmlns='http://www.w3.org/2000/svg'>
+  <circle r='8%' cx='35%' cy='65%' fill='lightblue' />
+  <circle r='8%' cx='35%' cy='35%' fill='lightblue' />
+  <circle r='8%' cx='65%' cy='65%' fill='lightblue' />
+  <circle r='8%' cx='65%' cy='35%' fill='lightblue' />
+  <circle r='8%' cx='65%' cy='90%' fill='lightblue' />
+  <circle r='8%' cx='35%' cy='90%' fill='lightblue' />
+  <circle r='8%' cx='10%' cy='65%' fill='lightblue' />
+  <circle r='8%' cx='10%' cy='35%' fill='lightblue' />
+  <circle r='8%' cx='35%' cy='10%' fill='lightblue' />
+  <circle r='8%' cx='65%' cy='10%' fill='lightblue' />
+  <circle r='8%' cx='90%' cy='35%' fill='lightblue' />
+  <circle r='8%' cx='90%' cy='65%' fill='lightblue' /></svg> <p>
+<p>In der Statistik und Kombinatorik verwendet man einen sogenannten
+<b>Binomial Koeffizienten</b>, der so definiert ist:</p>
+
+<center>${\scriptsize \left(\begin{array}{c}n\\k\\\end{array}\right)}
+ = \frac{n!}{k!(n-k)!}$</center>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Dabei ist n! die Fakultät n! = 1 * 2 * 3 * ... * n und 0! = 1.<br> Zum Beispiel:
+${\scriptsize \left(\begin{array}{c}4\\2\\\end{array}\right)} = \frac{4!}{2!(4-2)!}
+= \frac{4*3*2*1}{2*1*2*1} = \frac{4*3}{2*1}$</p>
+<p>&nbsp;</p>
+
+<p><form onreset="document.getElementById('outputArea1').innerHTML='';">
+<input type='text' class='setInput' id='inputArea1' value='4*3*2*1/(2*1*2*1)'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea1','outputArea1');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea1' class='answer'></span>
+</form></p>
+
+<p>Verwenden Sie das Menü oben links zur Navigation. Klicken Sie jetzt auf
+[>] oder die rechte Pfeiltaste Ihrer Tastatur, um zur nächsten Station zu gelangen.</p>
+
+</div>
+
+<div title='Rechnen' id='slide1' class='step' data-x='2000' data-y='2100'
+data-goto-next="slide2" data-goto-prev="slide0">
+
+<img class='taskicon' src='../images/imgCompute.png'>
+<h1>Rechnen</h1>
+
+<p>Rechnen Sie erst auf einem Blatt Papier und tragen Sie dann Ihr Ergebnis ein
+um es zu prüfen.</p>
+
+<p>$\scriptsize \left(\begin{array}{c}5\\2\\\end{array}\right)$</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea2').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea2' value='comb(5,2)'>
+<input type='text' class='setInput' id='inputHArea2' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea2','outputArea2','#inputHArea2');">
+&nbsp;<span id='outputArea2' class='answer'></span>
+</form></p>
+
+<p>$\scriptsize \left(\begin{array}{c}5\\5\\\end{array}\right)$</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea3').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea3' value='comb(5,5)'>
+<input type='text' class='setInput' id='inputHArea3' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea3','outputArea3','#inputHArea3');">
+&nbsp;<span id='outputArea3' class='answer'></span>
+</form></p>
+
+<p>$\scriptsize \left(\begin{array}{c}5\\0\\\end{array}\right)$</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea4').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea4' value='comb(5,0)'>
+<input type='text' class='setInput' id='inputHArea4' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea4','outputArea4','#inputHArea4');">
+&nbsp;<span id='outputArea4' class='answer'></span>
+</form></p>
+
+</div>
+
+<div title='Umformen' id='slide2' class='step' data-x='3200' data-y='2100'
+data-goto-next="slide3" data-goto-prev="slide1">
+
+<img class='taskicon' src='../images/imgRearrange.png'>
+<h1>Umformen</h1>
+
+<p>Welche dieser Umformungen ist falsch? 
+Schreiben Sie die Zeilennummer in das Feld. </p>
+
+<p>
+1 &nbsp; $\small \frac{100!}{98!} = 100 * 99$<br>
+2 &nbsp; (n+1) * n! = (n+1)! <br>
+3 &nbsp; (n + m)! = n! + m!<br>
+4 &nbsp; 0! * 2! = 2<br>
+5 &nbsp; $\scriptsize \left(\begin{array}{c}n\\k\\\end{array}\right)
+= \left(\begin{array}{c}n\\n-k\\\end{array}\right)$
+</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea5').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea5' value='3'>
+<input type='text' class='setInput' id='inputHArea5' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea5','outputArea5','#inputHArea5');">
+&nbsp;<span id='outputArea5' class='answer'></span>
+</form></p>
+
+</div>
+
+<div title='Entscheiden' id='slide3' class='step' data-x='4400' data-y='2100'
+data-goto-next="slide4" data-goto-prev="slide2">
+
+<img class='taskicon' src='../images/imgEvaluate.png'>
+<h1>Entscheiden</h1>
+
+<p>Mit |A| bezeichnet man die Anzahl der Elemente der Menge A. Zwei Mengen sind
+disjunkt, wenn sie keine gemeinsamen Elemente haben. A x B ist das kartesische
+Produkt der Mengen A und B.
+Ordnen Sie zu:</p>
+
+<p><form id='shuffle6'>
+|A &cup; B| = &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>|A| + |B| - |A &cap; B|</button></span>
+<br>
+A und B disjunkt &comma; |A &cup; B| = &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p5'>|A||B|</button></span>
+<br>
+|A \ B| = &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p3'>|A|</button></span>
+<br>
+A und B disjunkt &comma; |A \ B| = &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'>|A| + |B|</button></span>
+<br>
+B &sube; A &comma; |A \ B| = &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p4'>|A| - |B|</button></span>
+<br>
+|A x B| = &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>|A| - |A &cap; B|</button></span>
+<br>
+</form></p>
+
+
+</div>
+
+<div title='Einsetzen' id='slide4' class='step' data-x='4400' data-y='3000'
+data-goto-next="slide5" data-goto-prev="slide3">
+
+<img class='taskicon' src='../images/imgInsert.png'>
+<h1>Einsetzen</h1>
+
+<p>In diesen Gleichungen soll X jeweils ein inverses Element sein, d.h. 
+ein Element mit dem man verknüpft um das neutrale Element zu erhalten.
+Ersetzen Sie X in diesen Gleichungen, so dass true herauskommt.</p>
+
+<p><form onreset="document.getElementById('outputArea7').innerHTML='';">
+<input type='text' class='setInput' id='inputArea7' value='5 + X == 0'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea7','outputArea7');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea7' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea8').innerHTML='';">
+<input type='text' class='setInput' id='inputArea8' value='5 * X == 1'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea8','outputArea8');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea8' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea9').innerHTML='';">
+<input type='text' class='setInput' id='inputArea9' value='({1,2,3} | X) == {1,2,3}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea9','outputArea9');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea9' class='answer'></span>
+</form></p>
+<p><form onreset="document.getElementById('outputArea10').innerHTML='';">
+<input type='text' class='setInput' id='inputArea10' value='({1,2,3} & X) == {1,2,3}'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea10','outputArea10');">
+<input type='reset' class='medBut' value='&circlearrowleft;'>
+&nbsp;<span id='outputArea10' class='answer'></span>
+</form></p>
+
+<p>In welchen Zeilen ist X nicht eindeutig, da es mehrere Möglichkeiten gibt?<p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea11').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea11' value='prOnly(Das neutrale Element der Vereinigung ist die leere Menge und das neutrale Element des Durchschnitts ist das Universum, aber es gibt auch andere Möglichkeiten für die letzten beiden Zeilen.)'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea11','outputArea11');">
+&nbsp;<span id='outputArea11' class='answer'></span>
+</form></p>
+
+</div>
+
+<div title='&Uuml;bersetzen' id='slide5' class='step' data-x='4400' data-y='3900'
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="slide4 slide6 slide6 slide6">
+
+<img class='taskicon' src='../images/imgTranslate.png'>
+<h1>&Uuml;bersetzen</h1>
+
+<p>Ordnen Sie Funktionentypen und Formeln zu:</p>
+
+<p><form id='shuffle12'>
+linear &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p8'> y = &radic; x</button></span>
+<br>
+ exponential &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p5'> y = |x|</button></span>
+<br>
+ quadratisch &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>y = ax<sup>2</sup></button></span>
+<br>
+ polynomial &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p7'> y = a sin(bx)</button></span>
+<br>
+ rational &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>y = ax + b</button></span>
+<br>
+ Absolutwert &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p6'> y = log<sub>b</sub>(x)</button></span>
+<br>
+ logarithmisch &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p3'> y = ax<sup>5</sup> + bx<sup>2</sup> + c</button></span>
+<br>
+ trigonometrisch &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p4'>y = a/x</button></span>
+<br>
+ Wurzel &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'> y = ab<sup>x</sup></button></span>
+<br>
+</form></p>
+
+
+</div>
+
+<div title='Sehen' id='slide6' class='step' data-x='3200' data-y='3900'
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="slide5 slide7 slide7 slide7">
+
+<img class='taskicon' src='../images/imgVisualise.png'>
+<h1>Sehen</h1>
+
+<center><img src='../images/funkt4.png' class='largeImg'></center>
+
+<p>In dem Diagramm ist eine Funktion 4mal unterschiedlich dargestellt (als
+Mengendiagramm, Graph, Matrix und Menge). Allerdings ist in einer Darstellung
+ein Wert anders. Wo ist das:
+
+<p>
+1 &nbsp; f1 <br>
+2 &nbsp; f2 <br>
+3 &nbsp; f3 <br>
+4 &nbsp; f4 <br>
+</p>
+
+<p>Schreiben Sie die Zeilennummer in das Feld. </p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea13').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea13' value='4'>
+<input type='text' class='setInput' id='inputHArea13' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea13','outputArea13','#inputHArea13');">
+&nbsp;<span id='outputArea13' class='answer'></span>
+</form></p>
+
+</div>
+
+<div title='Verstehen' id='slide7' class='step' data-x='2000' data-y='3900'
+data-goto-key-list="ArrowUp ArrowDown ArrowLeft ArrowRight"
+data-goto-next-list="slide8 slide8 slide6 slide8">
+
+<img class='taskicon' src='../images/imgUnderstand.png'>
+<h1>Verstehen</h1>
+
+<p>Es gilt:
+$\scriptsize \left(\begin{array}{c}n\\k\\\end{array}\right) =
+\left(\begin{array}{c}n\\n-k\\\end{array}\right)$</p>
+
+<p>Man kann das durch Ausrechnen zeigen:
+${\scriptsize \left(\begin{array}{c}n\\k\\\end{array}\right)} = \frac{n!}{k!(n-k)!}$.
+Jetzt kann man k ersetzen durch k = n - j und erhält:
+$\frac{n!}{(n-j)!(n-(n-j))!} = \frac{n!}{(n-j)!(n-n+j)!}=\frac{n!}{(n-j)!j!}$.
+Dann ersetzt man j = k und erhält:
+$\frac{n!}{(n-k)!k!} = \frac{n!}{k!(n-k)!}$<p>
+
+<p>Ist diese Argumentation richtig oder falsch?
+  Geben Sie t für richtig (true) oder f für falsch ein.</p>
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea14').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea14' value='strT'>
+<input type='text' class='setInput' id='inputHArea14' value=''>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea14','outputArea14','#inputHArea14');">
+&nbsp;<span id='outputArea14' class='answer'></span>
+</form></p>
+
+</div>
+
+<div title='Modellieren' id='slide8' class='step' data-x='2000' data-y='3000'
+data-goto-next="overview" data-goto-prev="slide7">
+
+<img class='taskicon' src='../images/imgModel.png'>
+<h1>Modellieren</h1>
+
+<p>In der natürlichen Sprache wird "wenn" anders benutzt als in der Logik.
+Ordnen Sie natürlich-sprachlichen Sätze und deren logische Modellierung zu.</p>
+
+<p><form id='shuffle15'>
+Wenn es schneit&comma; ist es kalt. &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p1'>&lArr;</button></span>
+<br>
+Wenn man 18 ist&comma; darf man in Deutschland wählen. &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p2'>&hArr;</button></span>
+<br>
+Wenn eine Zahl gerade ist&comma; ist sie durch 2 teilbar. &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p0'>&rArr;</button></span>
+<br>
+Mögen Sie es&comma; wenn es schneit? &nbsp; &nbsp; <span class='piece' draggable='true'> <button class='p3'>keine logische Aussage</button></span>
+<br>
+</form></p>
+
+
+Tipp: 
+
+<p><form class="inputhide" onreset="document.getElementById('outputArea16').innerHTML='';">
+<input type='hidden' class='setInput' id='inputArea16' value='prOnly(Außer dem Alter ist auch die Staatsangehörigkeit noch erforderlich zum Wählen. Die andere Richtung gilt aber: wenn man wählen darf, ist man mindestens 18.)'>
+<input type='button' class='medBut' value='&#8253;' onclick="compute('#inputArea16','outputArea16');">
+&nbsp;<span id='outputArea16' class='answer'></span>
+</form></p>
+</div>
+<div title='Fertig' id='overview' class='step' data-x='4000' 
+     data-y='4000' data-scale='4' style='pointer-events: none;'>
+<span style='position: absolute; bottom: 0;font-size:100px'>Das war's!</span>
+</div>
+</div>  <!-- closes id='impress' -->
+<div id='impress-toolbar'></div>
+<div class='impress-progress'></div>
+<script type='text/javascript' src='utils/impress.js'></script>
+<script>impress().init();</script>
+</body>
+</html>
