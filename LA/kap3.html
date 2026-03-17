@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Linear Algebra</title>
+<script type="module" src="https://cdn.jsdelivr.net/gh/upriss/educaJS/LA/mathjslab.web.esm2022.js"></script>
+<script type="module">
+import { Evaluator } from "https://cdn.jsdelivr.net/gh/upriss/educaJS/LA/mathjslab.web.esm2022.js";
+window.Evaluator = Evaluator;     // make it available outside modules
+</script>
+<script src="https://cdn.jsdelivr.net/gh/upriss/educaJS/LA/mathjslabSettings.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/upriss/educaJS/LA/mathjslab.css" />
+<noscript>This webpage needs Javascript!</noscript>
+</head>
+
+<body>
+<div class='style_container'>
+<h2 id='header2'>Tupel</h2>
+<form><textarea class="codeLineInput" id="inputArea1" rows="5">
+informatikgebaeude=[52.178815,10.559401]
+informatikgebaeude(1)
+informatikgebaeude(2)
+length(informatikgebaeude)
+</textarea></form>
+<button onclick="compu(document.querySelector('#inputArea1').value,
+		       document.querySelector('#outArea1'))">Ergebnis:</button>
+<p></p></div>
+<div id="outArea1"></div>
+
+<div class='style_container'>
+<h2 id='header2'>Tupel vergleichen</h2>
+<form><textarea class="codeLineInput" id="inputArea3" rows="5">
+a=[-1,0,1]; b=[0,1]; c=[1,0,1]; d=[(-1)^2,0,5-4]
+a==c
+a==d
+c==d
+</textarea></form>
+<button onclick="compu(document.querySelector('#inputArea3').value,
+		       document.querySelector('#outArea3'))">Ergebnis:</button>
+<p></p></div>
+<div id="outArea3"></div>
+
+<div class='style_container'>
+<h2 id='header2'>Tupel addieren</h2>
+<form><textarea class="codeLineInput" id="inputArea5" rows="6">
+a=[-1,0,1]; b=[0,1]; c=[1,0,1]; d=[(-1)^2,0,5-4]
+a+c
+c+a
+a-c
+c-a
+</textarea></form>
+<button onclick="compu(document.querySelector('#inputArea5').value,
+		       document.querySelector('#outArea5'))">Ergebnis:</button>
+<p></p></div>
+<div id="outArea5"></div>
+
+<div class='style_container'>
+<h2 id='header2'>Skalare Multiplikation</h2>
+<form><textarea class="codeLineInput" id="inputArea6" rows="5">
+a=[-1,0,1]; v=[1/2,0,3,42,-3/4]
+5*a
+-pi/2*a
+2*v
+</textarea></form>
+<button onclick="compu(document.querySelector('#inputArea6').value,
+		       document.querySelector('#outArea6'))">Ergebnis:</button>
+<p></p></div>
+<div id="outArea6"></div>
+
+<div class='style_container'>
+<h2 id='header2'>Assoziativ</h2>
+<form><textarea class="codeLineInput" id="inputArea8" rows="4">
+a=[-1,0,1]
+2*(5*a)
+(2*5)*a
+</textarea></form>
+<button onclick="compu(document.querySelector('#inputArea8').value,
+		       document.querySelector('#outArea8'))">Ergebnis:</button>
+<p></p></div>
+<div id="outArea8"></div>
+
+<div class='style_container'>
+<h2 id='header2'>Aufgabe</h2>
+Schauen Sie sich die Eigenschaften der "Strukturklasse" der Tupel im
+Lehrbuch nochmal an. Überprüfen Sie an Beispielen einige der Eigenschaften,
+die oben noch fehlen (z.B. Distributivgesetz). Finden Sie außerdem
+Eigenschaften, die nicht gelten (z.B. bezüglich der Subtraktion von Tupeln).
+Kann man Tupel multiplizieren oder dividieren?
+<form><textarea class="codeLineInput" id="inputArea9" rows="10">
+a=[-1,0,1]; b=[0,1,5]; c=[1,0,1];
+</textarea></form>
+<button onclick="compu(document.querySelector('#inputArea9').value,
+		       document.querySelector('#outArea9'))">Ergebnis:</button>
+<p></p></div>
+<div id="outArea9"></div>
+
+
+
+
+</body>
+</html>
