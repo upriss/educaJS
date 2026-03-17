@@ -1,0 +1,59 @@
+body { font-family: Arial, Helvetica, sans-serif; } 
+
+@media (prefers-color-scheme: dark) { 
+  body{color: white; background: #272727 }
+  hr{color: #B3B3B3}
+  svg{color: black; background: #BBBBBB }
+  textarea{background: #BBBBBB }
+  input{background: #BBBBBB }
+}
+
+h2 { font-size: 1em; }
+
+textarea.codeLineInput { width: 70%; display: block}
+label { margin-top: 1em;  display: block; }
+.error { color: red; } 
+
+input.setInput { width: 25%; }
+input.smallInp { width : 30px }
+input.attrHeader { width : 75px; cursor: pointer; }   /* HTML table */
+input.objHeader { width : 75px; cursor: pointer;  }   /* HTML table */
+td.tableCell { cursor: pointer;  }                    /* HTML table */
+
+button { cursor: pointer; margin-left: 5px; margin-top: 5px; }
+button.floating { float: inline-end; }
+
+button.tooltip:hover { position: relative; }
+button.tooltip span { display: none; }
+button.tooltip:hover span { border: #666 2px solid; padding: 5px 20px 5px 5px;
+  display: block; z-index: 100; background: #e3e3e3; right: 0px; margin: 15px;
+  width: 500px; position: absolute; top: 150%; text-align: left;}
+
+div.style_container { width:90%; }
+/*span.small_container { width:25%; float: inline-end; }*/
+span.small_container {  margin-right: 5%;float: right }
+/* span.answer_container { width:20px; display: inline-block }*/
+span.answer_container { float: right}
+
+math {
+    width:70%;
+    text-align: left;
+    font-size: 1.5em; 
+}
+mtd {
+  color: #0000FF; 
+  text-align: left;
+}
+
+div.tooltip {text-align: center;text-decoration: underline;}
+div.tooltip:hover { position: relative; }
+div.tooltip div { display: none; }
+div.tooltip:hover div { border: #666 2px solid; padding: 5px 20px 5px 5px;
+  display: block; z-index: 100; background: #e3e3e3; left: 100px; margin: 0px;
+  width: 800px; position: absolute; bottom: -5px; text-align: left;}
+
+@media (prefers-color-scheme: dark) { div.tooltip:hover div {background: #404040;} }
+
+summary {cursor: pointer;}
+p.clear { clear: left; }     /* moved below floating elements before it */
+
