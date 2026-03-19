@@ -37,6 +37,7 @@ span.answer_container { float: right}
 
 math {
     width:70%;
+    float: left;
     text-align: left;
     font-size: 1.5em; 
 }
@@ -44,6 +45,8 @@ mtd {
   color: #0000FF; 
   text-align: left;
 }
+
+@media (prefers-color-scheme: dark) { mtd {color: lightblue; }}
 
 div.tooltip {text-align: center;text-decoration: underline;}
 div.tooltip:hover { position: relative; }
